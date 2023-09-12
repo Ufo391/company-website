@@ -9,7 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { MenubarModule } from 'primeng/menubar';
 import { HeaderComponent } from './header/header.component';
-import { ContentModule } from './content/content-module.module';
+import { ContentModule } from './content/content.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
