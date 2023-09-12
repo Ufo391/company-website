@@ -1,0 +1,32 @@
+<h1>Dienstleistungen</h1>
+<p-card [style]="currentStyle">
+  <ng-template pTemplate="header">
+    <img
+      alt="Card"
+      src="https://primefaces.org/cdn/primeng/images/usercard.png"
+    />
+  </ng-template>
+  <h3>{{ currentSubtitle }}</h3>
+  <p>
+    {{ currentDescription }}
+  </p>
+  <ng-template pTemplate="footer">
+    <div class="card">
+      <div
+        class="flex justify-content-end flex-wrap card-container"
+      >
+        <p-button
+          icon="pi pi-angle-left"
+          styleClass="p-button-text"
+          (click)="clickLastItemHandler()"
+        ></p-button>
+        <p-button
+          icon="pi pi-angle-right"
+          class="ml-1"
+          styleClass="p-button-text"
+          (click)="clickNextItemHandler()"
+        ></p-button>
+      </div>
+    </div>
+  </ng-template>
+</p-card>
