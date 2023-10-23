@@ -7,6 +7,7 @@ import { ServicesComponent } from './services/services.component';
 
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
   imports: [CommonModule, CardModule, ButtonModule],
@@ -15,6 +16,7 @@ import { ButtonModule } from 'primeng/button';
     BlockImageComponent,
     PotraitComponent,
     ServicesComponent,
+    ProjectsComponent,
   ],
   exports: [ContentComponent],
 })
