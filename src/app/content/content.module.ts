@@ -8,9 +8,11 @@ import { ServicesComponent } from './services/services.component';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { ProjectsComponent } from './projects/projects.component';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+
 
 @NgModule({
-  imports: [CommonModule, CardModule, ButtonModule],
+  imports: [CommonModule, CardModule, ButtonModule, ScrollPanelModule],
   declarations: [
     ContentComponent,
     BlockImageComponent,

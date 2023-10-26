@@ -1,21 +1,36 @@
 <h1>Projekte</h1>
-<p-card>
+<p-card class="bg-gray-400">
   <ng-template pTemplate="header">
-    <div>
-      <h3>Projektname</h3>
-      <p>Technologien</p>
-      <p>Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!</p>
+    <div class="p-3 flex flex-column">
+      <div class="text-left font-bold">
+        {{ selected?.name }}
+      </div>
+      <div class="flex flex-row flex-wrap">
+        <div class="text-left w-6">{{ selected?.role }}</div>
+        <div class="text-right w-6">
+          {{ selected && selected.techStack[0] }}
+        </div>
+      </div>
+      <div class="flex flex-row flex-wrap">
+        <div class="text-left w-6">{{ selected?.industry }}</div>
+        <div class="text-right w-6">
+          {{ selected && selected.techStack[1] }}
+        </div>
+      </div>
+      <div class="flex flex-row flex-wrap">
+        <div class="text-left w-6">{{ selected?.durationInMonths }} Monate</div>
+        <div class="text-right w-6">
+          {{ selected && selected.techStack[2] }}
+        </div>
+      </div>
     </div>
   </ng-template>
-  <h3>HALLO</h3>
-  <p>
-    BLUB
-  </p>
+  <p-scrollPanel [style]="{ width: '100%', height: '150px' }">
+    <p class="text-justify">{{ selected?.description }}</p>
+  </p-scrollPanel>
   <ng-template pTemplate="footer">
     <div class="card">
-      <div
-        class="flex justify-content-end flex-wrap card-container"
-      >
+      <div class="flex justify-content-end flex-wrap card-container">
         <p-button
           icon="pi pi-angle-left"
           styleClass="p-button-text"

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IProject } from 'src/app/models/IProject';
+import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
   selector: 'app-projects',
@@ -6,11 +8,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements OnInit {
-  constructor() {}
+  projects: IProject[] = [];
+  selected?: IProject;
+  indexer?: number;
 
-  ngOnInit() {}
+  constructor(private projectsService: ProjectsService) {}
 
-  clickNextItemHandler(): void {}
+  ngOnInit() {
+    this.projects = this.projectsService.getAllProjects();
+    this.indexer = 0;
+    this.selected = this.projects[this.indexer];
+  }
 
-  clickLastItemHandler(): void {}
+  clickNextItemHandler(): void {
+    if (this.indexer !== undefined) {
+      this.indexer =
+        this.indexer === this.projects.length - 1 ? 0 : this.indexer + 1;
+      this.selected = this.projects[this.indexer];
+    }
+  }
+
+  clickLastItemHandler(): void {
+    if (this.indexer !== undefined) {
+      this.indexer =
+        this.indexer === 0 ? this.projects.length - 1 : this.indexer - 1;
+      this.selected = this.projects[this.indexer];
+    }
+  }
 }
