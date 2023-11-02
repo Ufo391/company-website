@@ -9,16 +9,24 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { ProjectsComponent } from './projects/projects.component';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
-
+import { ContactComponent } from './contact/contact.component';
+import { DividerModule } from 'primeng/divider';
 
 @NgModule({
-  imports: [CommonModule, CardModule, ButtonModule, ScrollPanelModule],
+  imports: [
+    CommonModule,
+    CardModule,
+    ButtonModule,
+    ScrollPanelModule,
+    DividerModule,
+  ],
   declarations: [
     ContentComponent,
     BlockImageComponent,
     PotraitComponent,
     ServicesComponent,
     ProjectsComponent,
+    ContactComponent,
   ],
   exports: [ContentComponent],
 })
