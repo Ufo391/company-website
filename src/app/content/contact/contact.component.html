@@ -29,5 +29,59 @@
       </div>
     </div>
   </div>
-  <div>Formular</div>
+
+  <p-card>
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            ngModel
+            required
+            class="p-inputtext"
+          />
+        </div>
+
+        <div class="p-field">
+          <label for="email">E-Mail:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            ngModel
+            required
+            email
+            class="p-inputtext"
+          />
+        </div>
+
+        <div class="p-field">
+          <label for="subject">Betreff:</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            ngModel
+            required
+            class="p-inputtext"
+          />
+        </div>
+
+        <div class="p-field">
+          <label for="message">Nachricht:</label>
+          <textarea
+            id="message"
+            name="message"
+            ngModel
+            required
+            class="p-inputtext"
+          ></textarea>
+        </div>
+        <p-button [disabled]="!myForm.valid" label="Nachricht schicken" type="submit"></p-button>
+      </div>
+    </form>
+  </p-card>
 </div>

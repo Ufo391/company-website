@@ -11,6 +11,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { ContactComponent } from './contact/contact.component';
 import { DividerModule } from 'primeng/divider';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { DividerModule } from 'primeng/divider';
     ButtonModule,
     ScrollPanelModule,
     DividerModule,
+    FormsModule
   ],
   declarations: [
     ContentComponent,
