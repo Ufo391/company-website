@@ -30,68 +30,73 @@
     </div>
   </div>
 
-  <p-card>
-    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
-      <div class="p-fluid">
-        <div class="p-field">
-          <span class="p-float-label">
-            <input
-              name="email"
-              id="email"
-              [(ngModel)]="lastInputMail"
-              required
-              type="email"
-              [ngClass]="{ 'p-inputtext': true, 'p-filled': lastInputMail }"
-            />
-            <label for="float-input">E-Mail</label>
-          </span>
+  <div class="mt-5">
+    <p-card [style]="{background: '#F7F7F7'}">
+      <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+        <div class="p-fluid">
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                name="email"
+                id="email"
+                [(ngModel)]="lastInputMail"
+                required
+                type="email"
+                [ngClass]="{ 'p-inputtext': true, 'p-filled': lastInputMail }"
+              />
+              <label for="float-input">E-Mail</label>
+            </span>
+          </div>
+          <div class="p-field mt-4">
+            <span class="p-float-label">
+              <input
+                name="name"
+                id="name"
+                [(ngModel)]="lastInputName"
+                required
+                type="text"
+                [ngClass]="{ 'p-inputtext': true, 'p-filled': lastInputName }"
+              />
+              <label for="float-input">Name</label>
+            </span>
+          </div>
+          <div class="p-field mt-4">
+            <span class="p-float-label">
+              <input
+                name="subject"
+                id="subject"
+                [(ngModel)]="lastInputSubject"
+                required
+                type="text"
+                [ngClass]="{
+                  'p-inputtext': true,
+                  'p-filled': lastInputSubject
+                }"
+              />
+              <label for="float-input">Betreff</label>
+            </span>
+          </div>
+          <div class="p-field mt-4">
+            <span class="p-float-label">
+              <textarea
+                name="message"
+                id="message"
+                [(ngModel)]="lastInputMessage"
+                required
+                [ngClass]="{ 'p-inputtext': true, 'p-filled': lastInputMessage, }"
+                style="resize: vertical"
+              >
+              </textarea>
+              <label for="float-input">Nachricht</label>
+            </span>
+          </div>
+          <p-button
+            [disabled]="!myForm.valid"
+            label="Nachricht schicken"
+            type="submit"
+          ></p-button>
         </div>
-        <div class="p-field mt-4">
-          <span class="p-float-label">
-            <input
-              name="name"
-              id="name"
-              [(ngModel)]="lastInputName"
-              required
-              type="text"
-              [ngClass]="{ 'p-inputtext': true, 'p-filled': lastInputName }"
-            />
-            <label for="float-input">Name</label>
-          </span>
-        </div>
-        <div class="p-field mt-4">
-          <span class="p-float-label">
-            <input
-              name="subject"
-              id="subject"
-              [(ngModel)]="lastInputSubject"
-              required
-              type="text"
-              [ngClass]="{ 'p-inputtext': true, 'p-filled': lastInputSubject }"
-            />
-            <label for="float-input">Betreff</label>
-          </span>
-        </div>
-        <div class="p-field mt-4">
-          <span class="p-float-label">
-            <textarea
-              name="message"
-              id="message"
-              [(ngModel)]="lastInputMessage"
-              required
-              [ngClass]="{ 'p-inputtext': true, 'p-filled': lastInputMessage, }"
-              style="resize: vertical"
-            >
-            </textarea>
-            <label for="float-input">Nachricht</label>
-          </span>
-        </div>
-        <p-button
-          [disabled]="!myForm.valid"
-          label="Nachricht schicken"
-          type="submit"
-        ></p-button>
-      </div>
-    </form>
-  </p-card>
+      </form>
+    </p-card>
+  </div>
 </div>
