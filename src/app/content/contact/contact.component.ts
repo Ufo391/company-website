@@ -9,13 +9,21 @@ import { IMessage } from 'src/app/models/IMessage';
 })
 export class ContactComponent implements OnInit {
   messageObj?: IMessage;
+  lastInputMail?: string;
+  lastInputName?: string;
+  lastInputSubject?: string;
+  lastInputMessage?: string;
 
   constructor() {}
 
   ngOnInit() {}
 
   onSubmit(form: NgForm): void {
-    this.messageObj = form.value;
+    this.send(form.value);
     form.resetForm();
+  }
+
+  private send(msg: IMessage): void {
+    console.log(msg);
   }
 }
