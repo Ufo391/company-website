@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContentComponent } from './content.component';
+import { NgModule } from '@angular/core';
 import { BlockImageComponent } from './block-image/block-image.component';
+import { ContentComponent } from './content.component';
 import { PotraitComponent } from './potrait/potrait.component';
 import { ServicesComponent } from './services/services.component';
 
-import { CardModule } from 'primeng/card';
+import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { ProjectsComponent } from './projects/projects.component';
+import { CardModule } from 'primeng/card';
+import { DividerModule } from 'primeng/divider';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { ContactComponent } from './contact/contact.component';
-import { DividerModule } from 'primeng/divider';
-import { FormsModule } from '@angular/forms';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
   imports: [
