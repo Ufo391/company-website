@@ -1,51 +1,48 @@
-<div style="position: relative; display: block">
+<div
+  style="
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  "
+>
   <img
     class="bg-repeat-y h-screen w-12"
     src="assets/footer.png"
     alt="background"
   />
-  <div
-    style="
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      position: absolute;
-    "
-  >
+  <div style="position: absolute; text-align: center">
     <a
       href="https://de.linkedin.com/company/klo%C3%9F-it-solutions?trk=public_profile_topcard-current-company"
       target="_blank"
     >
-      <div>
+      <div class="align-items-center">
         <i class="pi pi-linkedin" style="font-size: 500%"></i>
-        <h4 class="text-center">LinkedIn</h4>
+        <h4>LinkedIn</h4>
       </div>
     </a>
     <a href="https://www.xing.com/profile/Nikolai_Kloss2" target="_blank">
-      <div>
-        <img src="assets/xing_icon.svg" alt="background" />
-        <h4 class="text-center">Xing</h4>
+      <div style="display: flex; flex-direction: column; align-items: center">
+        <img
+          src="assets/xing_icon.svg"
+          alt="background"
+          style="width: 25%; height: 25%"
+        />
+        <h4>Xing</h4>
       </div>
     </a>
     <a href="https://github.com/Ufo391" target="_blank">
-      <div>
+      <div class="align-items-center">
         <i class="pi pi-github" style="font-size: 500%"></i>
-        <h4 class="text-center">GitHub</h4>
+        <h4>GitHub</h4>
       </div>
     </a>
-    <div
-      style="
-        font-size: small;
-        top: 120%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        position: absolute;
-        width: 100vw;
-      "
-    >
+    <div class="text-sm w-screen">
       <p-divider />
-      <div class="text-center">©Copyright Kloß IT-Solutions.</div>
-      <div class="text-center">Alle Rechte vorbehalten</div>
+      <div class="text-center">
+        © Copyright Kloß IT-Solutions. Alle Rechte vorbehalten
+      </div>
       <div class="flex flex-row justify-content-center">
         <a
           href="https://google.de"
@@ -57,7 +54,6 @@
           href="https://google.de"
           target="_blank"
           class="text-center mr-2 font-bold"
-          class="text-center font-bold"
           >Datenschutz</a
         >
       </div>
