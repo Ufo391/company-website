@@ -12,12 +12,13 @@
     src="assets/footer.png"
     alt="background"
   />
-  <div style="position: absolute; bottom: 0;">
+  <div style="position: absolute; top: 20vh">
+    <app-contact class="block text-center border-round mb-3" />
+  </div>
+  <div style="position: absolute; bottom: 0">
     <div class="text-sm">
-      <p-divider/>
-      <p class="text-center">
-        © Kloß IT-Solutions. Alle Rechte vorbehalten
-      </p>
+      <p-divider />
+      <p>©{{ currentYear }} Kloß IT-Solutions. Alle Rechte vorbehalten.</p>
       <div class="flex flex-row justify-content-center mb-3">
         <a
           href="https://google.de"

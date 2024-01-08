@@ -10,7 +10,6 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
-import { ContactComponent } from './contact/contact.component';
 import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
@@ -28,7 +27,6 @@ import { ProjectsComponent } from './projects/projects.component';
     PotraitComponent,
     ServicesComponent,
     ProjectsComponent,
-    ContactComponent,
   ],
   exports: [ContentComponent],
 })
