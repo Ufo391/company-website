@@ -1,0 +1,20 @@
+.menu-button {
+  background-color: transparent;
+  color: black;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.fixed {
+  position: fixed;
+  z-index: 2;
+  transition: 0.5s linear;
+  top: 0px;
+}
+
+.nofixed {
+  position: static;
+  transition: 0.5s linear;
+  top: -80px;
+}

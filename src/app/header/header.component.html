@@ -1,20 +1,25 @@
-<div class="card">
-  <div class="flex justify-content-between flex-wrap">
-    <div
-      class="flex align-items-center justify-content-center w-5rem h-5rem"
-    >
-      <img class="max-h-full" src="assets/logo.png" alt="Firmenlogo"/>
-    </div>
-    <div
-      class="flex align-items-center justify-content-center w-5rem h-5rem"
-    >
-      <button
-        pButton
-        type="button"
-        icon="pi pi-bars"
-        class="menu-button"
-        (click)="toggleSidebar()"
-      ></button>
-    </div>
+<div
+  *ngIf="navbarfixed"
+  style="background-color: white; height: 10vh; width: 100vw"
+></div>
+<div
+  [ngClass]="navbarfixed ? 'fixed w-full' : 'nofixed'"
+  style="background-color: white; height: 10vh; opacity: 92%"
+  (scroll)="onscroll()"
+>
+  <div class="flex justify-content-between align-items-center">
+    <img
+      class="max-h-full"
+      src="assets/logo.png"
+      alt="Firmenlogo"
+      style="width: 10vh; height: 10vh; padding: 1rem"
+    />
+    <button
+      pButton
+      type="button"
+      icon="pi pi-bars"
+      class="menu-button mr-3"
+      (click)="toggleSidebar()"
+    ></button>
   </div>
 </div>

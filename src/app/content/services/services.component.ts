@@ -14,7 +14,7 @@ export class ServicesComponent implements OnInit {
     { background: '#b2bccd' },
   ];
   currentSubtitle: string = '';
-  subtitles: string[] = ['Beratung', 'Neuentwicklung', 'Legacy Code'];
+  subtitles: string[] = ['Expertise', 'Beratung', 'Entwicklung'];
   currentDescription: string = '';
   descriptions: string[] = [
     "Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!",
