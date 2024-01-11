@@ -142,6 +142,14 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event']) onscroll() {
     let height: number = window.innerHeight * 0.1;
-    this.navbarfixed = window.scrollY > height;
+    const lastState: boolean = this.navbarfixed;
+    const newState: boolean = window.scrollY > height
+    if(lastState && !newState){
+      this.navbarfixed = window.scrollY > 0;
+    }
+    else{
+      this.navbarfixed = newState;
+    }
+
   }
 }
