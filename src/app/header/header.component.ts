@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { ChapterService } from '../services/chapter.service';
 
 @Component({
   selector: 'app-header',
@@ -134,7 +135,7 @@ export class HeaderComponent implements OnInit {
 
   navbarfixed: boolean = false;
 
-  constructor() {}
+  constructor(public chapterService: ChapterService) {}
 
   ngOnInit() {}
 
@@ -143,13 +144,12 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:scroll', ['$event']) onscroll() {
     let height: number = window.innerHeight * 0.1;
     const lastState: boolean = this.navbarfixed;
-    const newState: boolean = window.scrollY > height
-    if(lastState && !newState){
+    const newState: boolean = window.scrollY > height;
+    if (lastState && !newState) {
       this.navbarfixed = window.scrollY > 0;
-    }
-    else{
+    } else {
       this.navbarfixed = newState;
     }
-
+    this.chapterService.onScrollPositionChanged(window);
   }
 }

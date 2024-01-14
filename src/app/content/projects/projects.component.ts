@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { IProject } from 'src/app/models/IProject';
+import { ChapterService } from 'src/app/services/chapter.service';
 import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
@@ -7,17 +14,25 @@ import { ProjectsService } from 'src/app/services/projects.service';
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css'],
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent implements OnInit, AfterViewInit {
+  @ViewChild('title', { static: true }) myElement!: ElementRef;
   projects: IProject[] = [];
   selected?: IProject;
   indexer?: number;
 
-  constructor(private projectsService: ProjectsService) {}
+  constructor(
+    private projectsService: ProjectsService,
+    private chapterService: ChapterService
+  ) {}
 
   ngOnInit() {
     this.projects = this.projectsService.getAllProjects();
     this.indexer = 0;
     this.selected = this.projects[this.indexer];
+  }
+
+  ngAfterViewInit() {
+    this.chapterService.addChapter(this.myElement);
   }
 
   clickNextItemHandler(): void {
