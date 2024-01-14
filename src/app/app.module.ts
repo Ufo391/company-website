@@ -9,7 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { MenubarModule } from 'primeng/menubar';
-import { ContactComponent } from './content/contact/contact.component';
+import { ContactComponent } from './footer/contact/contact.component';
 import { ContentModule } from './content/content.module';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
