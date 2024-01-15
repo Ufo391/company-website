@@ -6,7 +6,7 @@ import { IChapterData } from '../models/IChapterData';
   providedIn: 'root',
 })
 export class ChapterService {
-  private chapters: IChapterData[] = [{ position: 0, title: '' }];
+  private chapters: IChapterData[] = [{ position: 0, title: 'Kloß IT-Solutions' }];
   public currentChapter$!: BehaviorSubject<string>;
   private index: number = 0;
 

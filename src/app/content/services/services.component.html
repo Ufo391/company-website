@@ -1,10 +1,12 @@
-<h1 #title>Dienstleistungen</h1>
 <p-card [style]="currentStyle">
   <ng-template pTemplate="header">
-    <img
-      alt="Card"
-      src="https://primefaces.org/cdn/primeng/images/usercard.png"
-    />
+    <div class="flex flex-column">
+      <h2 #title>Dienstleistungen</h2>
+      <img
+        alt="Card"
+        src="https://primefaces.org/cdn/primeng/images/usercard.png"
+      />
+    </div>
   </ng-template>
   <h3>{{ currentSubtitle }}</h3>
   <p>
@@ -12,9 +14,7 @@
   </p>
   <ng-template pTemplate="footer">
     <div class="card">
-      <div
-        class="flex justify-content-end flex-wrap card-container"
-      >
+      <div class="flex justify-content-end flex-wrap card-container">
         <p-button
           icon="pi pi-angle-left"
           styleClass="p-button-text"

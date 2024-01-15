@@ -15,7 +15,7 @@ import { ProjectsService } from 'src/app/services/projects.service';
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements OnInit, AfterViewInit {
-  @ViewChild('title', { static: true }) myElement!: ElementRef;
+  @ViewChild('title') myElement!: ElementRef;
   projects: IProject[] = [];
   selected?: IProject;
   indexer?: number;

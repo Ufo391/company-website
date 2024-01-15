@@ -18,7 +18,7 @@ export class PotraitComponent implements OnInit, AfterViewInit {
 
   constructor(private chapterService: ChapterService) {}
 
-  @ViewChild('title', { static: true }) myElement!: ElementRef;
+  @ViewChild('title') myElement!: ElementRef;
 
   ngOnInit() {}
 

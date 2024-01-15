@@ -13,13 +13,14 @@ import { ChapterService } from 'src/app/services/chapter.service';
   styleUrls: ['./services.component.css'],
 })
 export class ServicesComponent implements OnInit, AfterViewInit {
-  @ViewChild('title', { static: true }) myElement!: ElementRef;
+  @ViewChild('title') myElement!: ElementRef;
+  readonly cardHeight: string = "90vh";
   pointer: number = 0;
   currentStyle: object = {};
   cardStyles = [
-    { background: '#daeaf0' },
-    { background: '#9fb1c5' },
-    { background: '#b2bccd' },
+    { background: '#daeaf0', height: this.cardHeight },
+    { background: '#9fb1c5', height: this.cardHeight },
+    { background: '#b2bccd', height: this.cardHeight },
   ];
   currentSubtitle: string = '';
   subtitles: string[] = ['Expertise', 'Beratung', 'Entwicklung'];

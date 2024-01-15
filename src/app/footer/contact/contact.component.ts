@@ -15,7 +15,7 @@ import { ChapterService } from 'src/app/services/chapter.service';
   styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent implements OnInit, AfterViewInit {
-  @ViewChild('title', { static: true }) myElement!: ElementRef;
+  @ViewChild('title') myElement!: ElementRef;
 
   messageObj?: IMessage;
   lastInputMail?: string;
