@@ -1,34 +1,34 @@
 <div class="text-center">
-  <p-card [style]="{ background: '#F7F7F7', height: '40vh' }">
+  <p-card [style]="{ background: '#F7F7F7' }">
     <ng-template pTemplate="header">
-      <div class="flex flex-column mb-3">
+      <div class="flex flex-column ">
         <h2 #title>Kontakt</h2>
       </div>
     </ng-template>
     <div>
-      <div class="flex flex-column flex-wrap">
-        <div class="flex flex-row flex-wrap align-items-center mb-6">
+      <div class="flex flex-column">
+        <div class="flex flex-row align-items-center">
           <i class="pi pi-map-marker" style="font-size: 2rem"></i>
           <p-divider layout="vertical"></p-divider>
-          <div class="flex flex-column flex-wrap text-left">
-            <div class="font-bold">Ort:</div>
-            <div>Gütersloh</div>
+          <div class="flex flex-column text-left">
+            <p><span class="font-bold">Ort:</span><br />Gütersloh</p>
           </div>
         </div>
-        <div class="flex flex-row flex-wrap align-items-center mb-6">
+        <div class="flex flex-row align-items-center">
           <i class="pi pi-envelope" style="font-size: 2rem"></i>
           <p-divider layout="vertical"></p-divider>
-          <div class="flex flex-column flex-wrap text-left">
-            <div class="font-bold">E-Mail:</div>
-            <div>info@klossitsolutions.com</div>
+          <div class="flex flex-column text-left">
+            <p>
+              <span class="font-bold">E-Mail:</span
+              ><br />info@klossitsolutions.com
+            </p>
           </div>
         </div>
         <div class="flex flex-row flex-wrap align-items-center">
           <i class="pi pi-phone" style="font-size: 2rem"></i>
           <p-divider layout="vertical"></p-divider>
           <div class="flex flex-column flex-wrap text-left">
-            <div class="font-bold">Mobil:</div>
-            <div>+491523 5834040</div>
+            <p><span class="font-bold">Mobil:</span><br />+491523 5834040</p>
           </div>
         </div>
       </div>
