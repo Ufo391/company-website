@@ -1,35 +1,42 @@
-<div class="flex flex-column flex-wrap">
-  <h1 class="mb-6 text-center" #title>Kontakt</h1>
-  <div>
-    <div class="flex flex-column flex-wrap">
-      <div class="flex flex-row flex-wrap align-items-center mb-6">
-        <i class="pi pi-map-marker" style="font-size: 2rem"></i>
-        <p-divider layout="vertical"></p-divider>
-        <div class="flex flex-column flex-wrap text-left">
-          <div class="font-bold">Ort:</div>
-          <div>Gütersloh</div>
-        </div>
+<div class="text-center">
+  <p-card [style]="{ background: '#F7F7F7', height: '40vh' }">
+    <ng-template pTemplate="header">
+      <div class="flex flex-column mb-3">
+        <h2 #title>Kontakt</h2>
       </div>
-      <div class="flex flex-row flex-wrap align-items-center mb-6">
-        <i class="pi pi-envelope" style="font-size: 2rem"></i>
-        <p-divider layout="vertical"></p-divider>
-        <div class="flex flex-column flex-wrap text-left">
-          <div class="font-bold">E-Mail:</div>
-          <div>info@klossitsolutions.com</div>
+    </ng-template>
+    <div>
+      <div class="flex flex-column flex-wrap">
+        <div class="flex flex-row flex-wrap align-items-center mb-6">
+          <i class="pi pi-map-marker" style="font-size: 2rem"></i>
+          <p-divider layout="vertical"></p-divider>
+          <div class="flex flex-column flex-wrap text-left">
+            <div class="font-bold">Ort:</div>
+            <div>Gütersloh</div>
+          </div>
         </div>
-      </div>
-      <div class="flex flex-row flex-wrap align-items-center">
-        <i class="pi pi-phone" style="font-size: 2rem"></i>
-        <p-divider layout="vertical"></p-divider>
-        <div class="flex flex-column flex-wrap text-left">
-          <div class="font-bold">Mobil:</div>
-          <div>+491523 5834040</div>
+        <div class="flex flex-row flex-wrap align-items-center mb-6">
+          <i class="pi pi-envelope" style="font-size: 2rem"></i>
+          <p-divider layout="vertical"></p-divider>
+          <div class="flex flex-column flex-wrap text-left">
+            <div class="font-bold">E-Mail:</div>
+            <div>info@klossitsolutions.com</div>
+          </div>
+        </div>
+        <div class="flex flex-row flex-wrap align-items-center">
+          <i class="pi pi-phone" style="font-size: 2rem"></i>
+          <p-divider layout="vertical"></p-divider>
+          <div class="flex flex-column flex-wrap text-left">
+            <div class="font-bold">Mobil:</div>
+            <div>+491523 5834040</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </p-card>
+</div>
 
-  <!--div class="mt-5">
+<!--div class="mt-5">
     <p-card [style]="{background: '#F7F7F7'}">
       <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
         <div class="p-fluid">
@@ -98,4 +105,3 @@
       </form>
     </p-card>
   </div-->
-</div>
