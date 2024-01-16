@@ -18,9 +18,9 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   pointer: number = 0;
   currentStyle: object = {};
   cardStyles = [
-    { background: '#daeaf0', height: this.cardHeight },
-    { background: '#9fb1c5', height: this.cardHeight },
-    { background: '#b2bccd', height: this.cardHeight },
+    { background: '#daeaf0' },
+    { background: '#9fb1c5' },
+    { background: '#b2bccd' },
   ];
   currentSubtitle: string = '';
   subtitles: string[] = ['Expertise', 'Beratung', 'Entwicklung'];

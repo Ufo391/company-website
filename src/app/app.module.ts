@@ -9,13 +9,13 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { MenubarModule } from 'primeng/menubar';
-import { ContactComponent } from './footer/contact/contact.component';
+import { SidebarModule } from 'primeng/sidebar';
 import { ContentModule } from './content/content.module';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, ContactComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,6 +25,7 @@ import { HeaderComponent } from './header/header.component';
     MenubarModule,
     ContentModule,
     DividerModule,
+    SidebarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

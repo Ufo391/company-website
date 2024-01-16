@@ -6,7 +6,9 @@ import { IChapterData } from '../models/IChapterData';
   providedIn: 'root',
 })
 export class ChapterService {
-  private chapters: IChapterData[] = [{ position: 0, title: 'Kloß IT-Solutions' }];
+  private chapters: IChapterData[] = [
+    { position: 0, title: 'Kloß IT-Solutions' },
+  ];
   public currentChapter$!: BehaviorSubject<string>;
   private index: number = 0;
 
@@ -23,6 +25,10 @@ export class ChapterService {
     const c: IChapterData = { position: pos, title: element.innerText };
     this.chapters.push(c);
     this.chapters.sort((a, b) => a.position - b.position);
+  }
+
+  scrollToChapter(index: number): void {
+    window.scrollTo({ top: this.chapters[index].position, behavior: 'smooth' });
   }
 
   onScrollPositionChanged(w: Window): void {
