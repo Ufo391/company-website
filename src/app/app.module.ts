@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { MenubarModule } from 'primeng/menubar';
+import { SidebarModule } from 'primeng/sidebar';
 import { ContentModule } from './content/content.module';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -24,6 +25,7 @@ import { HeaderComponent } from './header/header.component';
     MenubarModule,
     ContentModule,
     DividerModule,
+    SidebarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

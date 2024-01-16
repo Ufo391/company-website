@@ -9,9 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
+import { PanelModule } from 'primeng/panel';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
-import { ProjectsComponent } from './projects/projects.component';
 import { ContactComponent } from './contact/contact.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { ContactComponent } from './contact/contact.component';
     ButtonModule,
     ScrollPanelModule,
     DividerModule,
-    FormsModule
+    FormsModule,
+    PanelModule,
   ],
   declarations: [
     ContentComponent,

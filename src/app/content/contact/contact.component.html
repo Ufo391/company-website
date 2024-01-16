@@ -1,107 +1,35 @@
-<div class="text-center">
-  <p-card [style]="{ background: '#F7F7F7' }">
-    <ng-template pTemplate="header">
-      <div class="flex flex-column ">
-        <h2 #title>Kontakt</h2>
+<p-panel>
+  <ng-template pTemplate="header"
+    ><div class="w-12">
+      <h2>Kontakt</h2>
+    </div>
+  </ng-template>
+  <div>
+    <div class="flex flex-column">
+      <div class="flex flex-row align-items-center ml-5">
+        <i class="pi pi-map-marker" style="font-size: 2rem"></i>
+        <p-divider layout="vertical"></p-divider>
+        <div class="flex flex-column text-left">
+          <p><span class="font-bold">Ort:</span><br />Gütersloh</p>
+        </div>
       </div>
-    </ng-template>
-    <div>
-      <div class="flex flex-column">
-        <div class="flex flex-row align-items-center">
-          <i class="pi pi-map-marker" style="font-size: 2rem"></i>
-          <p-divider layout="vertical"></p-divider>
-          <div class="flex flex-column text-left">
-            <p><span class="font-bold">Ort:</span><br />Gütersloh</p>
-          </div>
+      <div class="flex flex-row align-items-center ml-5">
+        <i class="pi pi-envelope" style="font-size: 2rem"></i>
+        <p-divider layout="vertical"></p-divider>
+        <div class="flex flex-column text-left">
+          <p>
+            <span class="font-bold">E-Mail:</span
+            ><br />info@klossitsolutions.com
+          </p>
         </div>
-        <div class="flex flex-row align-items-center">
-          <i class="pi pi-envelope" style="font-size: 2rem"></i>
-          <p-divider layout="vertical"></p-divider>
-          <div class="flex flex-column text-left">
-            <p>
-              <span class="font-bold">E-Mail:</span
-              ><br />info@klossitsolutions.com
-            </p>
-          </div>
-        </div>
-        <div class="flex flex-row flex-wrap align-items-center">
-          <i class="pi pi-phone" style="font-size: 2rem"></i>
-          <p-divider layout="vertical"></p-divider>
-          <div class="flex flex-column flex-wrap text-left">
-            <p><span class="font-bold">Mobil:</span><br />+491523 5834040</p>
-          </div>
+      </div>
+      <div class="flex flex-row flex-wrap align-items-center ml-5">
+        <i class="pi pi-phone" style="font-size: 2rem"></i>
+        <p-divider layout="vertical"></p-divider>
+        <div class="flex flex-column flex-wrap text-left">
+          <p><span class="font-bold">Mobil:</span><br />+491523 5834040</p>
         </div>
       </div>
     </div>
-  </p-card>
-</div>
-
-<!--div class="mt-5">
-    <p-card [style]="{background: '#F7F7F7'}">
-      <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
-        <div class="p-fluid">
-          <div class="p-field">
-            <span class="p-float-label">
-              <input
-                name="email"
-                id="email"
-                [(ngModel)]="lastInputMail"
-                required
-                type="email"
-                [ngClass]="{ 'p-inputtext': true, 'p-filled': lastInputMail }"
-              />
-              <label for="float-input">E-Mail</label>
-            </span>
-          </div>
-          <div class="p-field mt-4">
-            <span class="p-float-label">
-              <input
-                name="name"
-                id="name"
-                [(ngModel)]="lastInputName"
-                required
-                type="text"
-                [ngClass]="{ 'p-inputtext': true, 'p-filled': lastInputName }"
-              />
-              <label for="float-input">Name</label>
-            </span>
-          </div>
-          <div class="p-field mt-4">
-            <span class="p-float-label">
-              <input
-                name="subject"
-                id="subject"
-                [(ngModel)]="lastInputSubject"
-                required
-                type="text"
-                [ngClass]="{
-                  'p-inputtext': true,
-                  'p-filled': lastInputSubject
-                }"
-              />
-              <label for="float-input">Betreff</label>
-            </span>
-          </div>
-          <div class="p-field mt-4">
-            <span class="p-float-label">
-              <textarea
-                name="message"
-                id="message"
-                [(ngModel)]="lastInputMessage"
-                required
-                [ngClass]="{ 'p-inputtext': true, 'p-filled': lastInputMessage, }"
-                style="resize: vertical"
-              >
-              </textarea>
-              <label for="float-input">Nachricht</label>
-            </span>
-          </div>
-          <p-button
-            [disabled]="!myForm.valid"
-            label="Nachricht schicken"
-            type="submit"
-          ></p-button>
-        </div>
-      </form>
-    </p-card>
-  </div-->
+  </div>
+</p-panel>
