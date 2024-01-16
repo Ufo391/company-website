@@ -18,6 +18,11 @@ export class HeaderComponent implements OnInit {
     this.sidebarVisible = !this.sidebarVisible;
   }
 
+  click() {
+    this.chapterService.scrollToChapter(3);
+    this.sidebarVisible = false;
+  }
+
   @HostListener('window:scroll', ['$event']) onscroll() {
     let height: number = window.innerHeight * 0.1;
     const lastState: boolean = this.navbarfixed;
