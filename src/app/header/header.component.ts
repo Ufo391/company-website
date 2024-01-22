@@ -18,8 +18,12 @@ export class HeaderComponent implements OnInit {
     this.sidebarVisible = !this.sidebarVisible;
   }
 
-  click() {
-    this.chapterService.scrollToChapter(3);
+  click(e: MouseEvent) {
+    const target: HTMLElement = e.target as HTMLElement;
+    const txt: string = target.innerText;
+    this.chapterService.scrollToChapter(
+      this.chapterService.chapters$.value.indexOf(txt)
+    );
     this.sidebarVisible = false;
   }
 
