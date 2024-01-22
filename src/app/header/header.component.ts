@@ -9,22 +9,31 @@ import { ChapterService } from '../services/chapter.service';
 export class HeaderComponent implements OnInit {
   navbarfixed: boolean = false;
   sidebarVisible: boolean = false;
+  isLanguageGerman: boolean = true;
+  currentYear: string = "";
 
   constructor(public chapterService: ChapterService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    let d: Date = new Date(Date.now());
+    this.currentYear = d.getFullYear().toString();
+  }
 
   toggleSidebar() {
     this.sidebarVisible = !this.sidebarVisible;
   }
 
-  click(e: MouseEvent) {
+  changeCurrentChapter(e: MouseEvent) {
     const target: HTMLElement = e.target as HTMLElement;
     const txt: string = target.innerText;
     this.chapterService.scrollToChapter(
       this.chapterService.chapters$.value.indexOf(txt)
     );
     this.sidebarVisible = false;
+  }
+
+  changeLanguage(): void {
+    this.isLanguageGerman = !this.isLanguageGerman;
   }
 
   @HostListener('window:scroll', ['$event']) onscroll() {
