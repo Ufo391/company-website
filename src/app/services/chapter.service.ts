@@ -6,44 +6,54 @@ import { IChapterData } from '../models/IChapterData';
   providedIn: 'root',
 })
 export class ChapterService {
-  private chapters: IChapterData[] = [
-    { position: 0, title: 'Kloß IT-Solutions' },
-  ];
+  private chapters: IChapterData[] = [];
   public currentChapter$!: BehaviorSubject<string>;
+  public chapters$!: BehaviorSubject<string[]>;
   private index: number = 0;
+  private offsetHeight: number = 0;
 
   constructor() {
-    this.currentChapter$ = new BehaviorSubject<string>(
-      this.chapters[this.index].title
-    );
+    this.currentChapter$ = new BehaviorSubject<string>('Kloß IT-Solutions');
+    this.chapters$ = new BehaviorSubject<string[]>([]);
+    this.offsetHeight = window.innerHeight * 0.1;
   }
 
   addChapter(e: ElementRef): void {
     const element: HTMLElement = e.nativeElement;
-    const rect: DOMRect = element.getBoundingClientRect();
-    const pos = rect.y + rect.height;
-    const c: IChapterData = { position: pos, title: element.innerText };
+    const c: IChapterData = {
+      element: element.parentElement !== null ? element.parentElement : element,
+      title: element.innerText,
+    };
     this.chapters.push(c);
-    this.chapters.sort((a, b) => a.position - b.position);
+    this.chapters.sort((a, b) => a.element.offsetTop - b.element.offsetTop);
+    this.chapters$.next(this.chapters.map((c) => c.title));
   }
 
   scrollToChapter(index: number): void {
-    window.scrollTo({ top: this.chapters[index].position, behavior: 'smooth' });
+    const c: IChapterData = this.chapters[index];
+    const pos: number =
+      c.element.parentElement !== null
+        ? c.element.parentElement.offsetTop - this.offsetHeight
+        : c.element.offsetTop - this.offsetHeight;
+    window.scrollTo({
+      top: pos,
+      behavior: 'smooth',
+    });
   }
 
   onScrollPositionChanged(w: Window): void {
-    const y: number = w.scrollY;
+    const y: number = w.scrollY + this.offsetHeight;
     const curChapter: IChapterData = this.chapters[this.index];
     const nxtChapter: IChapterData = this.chapters[this.index + 1];
     const lstChapter: IChapterData = this.chapters[this.index - 1];
     const isCurChapter: boolean =
-      y > curChapter.position && y < nxtChapter?.position;
+      y > curChapter.element.offsetTop && y < nxtChapter?.element.offsetTop;
 
     if (isCurChapter == false) {
       const isLstChapter: boolean =
-        y < curChapter.position && y > lstChapter?.position;
+        y < curChapter.element.offsetTop && y > lstChapter?.element.offsetTop;
       const isNxtChapter: boolean =
-        y > curChapter.position && y > nxtChapter?.position;
+        y > curChapter.element.offsetTop && y > nxtChapter?.element.offsetTop;
 
       if (isNxtChapter) {
         this.index += 1;

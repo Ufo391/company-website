@@ -14,7 +14,7 @@
       alt="Firmenlogo"
       style="width: 10vh; height: 10vh; padding: 1rem"
     />
-    <h2 style="color: #596970">{{ (chapterService.currentChapter$ | async) }}</h2>
+    <h2 style="color: #596970">{{ chapterService.currentChapter$ | async }}</h2>
     <button
       pButton
       type="button"
@@ -24,10 +24,84 @@
     ></button>
   </div>
 </div>
-<p-sidebar z-1 [(visible)]="sidebarVisible" position="right">
-  <h3 (click)="click()">Unternehmen</h3>
-  <h3>Dienstleistungen</h3>
-  <h3>Projekte</h3>
-  <hr/>
-  <h3>Kontakt</h3>
+<p-sidebar class="z-1" [(visible)]="sidebarVisible" position="right">
+  <ng-template pTemplate="header">
+    <div
+      (click)="changeLanguage()"
+      class="w-11 align-items-center flex flex-row justify-content-start"
+    >
+      <img
+        *ngIf="isLanguageGerman"
+        src="assets/countries/de.svg"
+        alt="SVG-Grafik"
+        width="15%"
+        height="15%"
+      />
+      <img
+        *ngIf="!isLanguageGerman"
+        src="assets/countries/gb.svg"
+        alt="SVG-Grafik"
+        width="15%"
+        height="15%"
+      />
+      <h3 class="text-center w-12 opacity-40" style="color: #3c5573">
+        Kloß IT-Solutions
+      </h3>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="content">
+    <hr />
+    <ng-container *ngFor="let c of chapterService.chapters$ | async">
+      <div class="w-12 flex flex-row align-items-center" style="color: #507199">
+        <i class="pi pi-bookmark"></i>
+        <h3 (click)="changeCurrentChapter($event)" class="ml-2">{{ c }}</h3>
+      </div>
+    </ng-container>
+    <hr />
+    <div style="color: #507199">
+      <div class="w-12 flex flex-row align-items-center">
+        <i class="pi pi-lock"></i>
+        <h3 class="ml-2">Datenschutz</h3>
+      </div>
+      <div class="w-12 flex flex-row align-items-center">
+        <i class="pi pi-file"></i>
+        <h3 class="ml-2">Impressum</h3>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer"
+    ><hr />
+    <div>
+
+      <div class="text-sm text-center">
+        <p>©{{currentYear}} Kloß IT-Solutions.</p>
+        <div class="flex justify-content-center mb-3">
+          <a
+            href="https://de.linkedin.com/company/klo%C3%9F-it-solutions?trk=public_profile_topcard-current-company"
+            target="_blank"
+            class="mr-2"
+          >
+            <i class="pi pi-linkedin" style="font-size: 200%"></i>
+          </a>
+          <a
+            href="https://www.xing.com/profile/Nikolai_Kloss2"
+            target="_blank"
+            class="mr-2"
+          >
+            <img
+              src="assets/xing_icon2.svg"
+              alt="background"
+              width="28"
+              height="28"
+            />
+          </a>
+          <a href="https://github.com/Ufo391" target="_blank">
+            <i class="pi pi-github" style="font-size: 200%"></i>
+          </a>
+        </div>
+      </div>
+
+
+    </div>
+  </ng-template>
 </p-sidebar>
