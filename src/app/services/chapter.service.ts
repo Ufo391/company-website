@@ -33,8 +33,8 @@ export class ChapterService {
     const c: IChapterData = this.chapters[index];
     const pos: number =
       c.element.parentElement !== null
-        ? c.element.parentElement.offsetTop - this.offsetHeight
-        : c.element.offsetTop - this.offsetHeight;
+        ? c.element.parentElement.offsetTop - this.offsetHeight + 3
+        : c.element.offsetTop - this.offsetHeight + 3;
     window.scrollTo({
       top: pos,
       behavior: 'smooth',
