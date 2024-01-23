@@ -4,7 +4,7 @@
       <h2 #title class="m-0">Kontakt</h2>
     </div>
   </ng-template>
-  <div>
+  <div [@meineAnimation]="animationStatus">
     <div class="flex flex-column">
       <div class="flex flex-row align-items-center ml-5">
         <i class="pi pi-map-marker" style="font-size: 2rem"></i>
@@ -33,3 +33,4 @@
     </div>
   </div>
 </p-panel>
+<button (click)="toggleAnimation()"> Animiere mich</button>

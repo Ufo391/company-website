@@ -12,10 +12,10 @@ html {
 }
 
 a:visited {
-  color: $textColor;
+  color: black;
 }
 a {
-  color: $textColor;
+  color: black;
 }
 
 h2 {
@@ -23,6 +23,10 @@ h2 {
 }
 
 h3 {
+  color: $textColor;
+}
+
+h4 {
   color: $textColor;
 }
 

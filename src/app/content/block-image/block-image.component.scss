@@ -1,0 +1,20 @@
+.image-container {
+  width: 100vw;
+  height: 30vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.cropped-image {
+  width: 125%;
+  height: 125%;
+  object-fit: cover;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 25%;
+  left: 0%;
+  transform: translate(-0%, -50%);
+  z-index: 1;
+}
