@@ -8,27 +8,12 @@ import {
 import { NgForm } from '@angular/forms';
 import { IMessage } from 'src/app/models/IMessage';
 import { ChapterService } from 'src/app/services/chapter.service';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
-  animations: [
-    trigger('meineAnimation', [
-      state('aktiviert', style({
-        opacity: 1,
-        transform: 'translateX(0)'
-      })),
-      state('deaktiviert', style({
-        opacity: 0,
-        transform: 'translateX(-100%)'
-      })),
-      transition('aktiviert <=> deaktiviert', [
-        animate('0.5s')
-      ])
-    ])
-  ]
+  animations: [],
 })
 export class ContactComponent implements OnInit, AfterViewInit {
   @ViewChild('title') myElement!: ElementRef;
@@ -39,12 +24,6 @@ export class ContactComponent implements OnInit, AfterViewInit {
   lastInputSubject?: string;
   lastInputMessage?: string;
 
-  animationStatus = 'aktiviert';
-
-  toggleAnimation() {
-    this.animationStatus = (this.animationStatus === 'aktiviert') ? 'deaktiviert' : 'aktiviert';
-  }
-
   constructor(private chapterService: ChapterService) {}
 
   ngOnInit() {}
@@ -53,12 +32,30 @@ export class ContactComponent implements OnInit, AfterViewInit {
     this.chapterService.addChapter(this.myElement);
   }
 
-  onSubmit(form: NgForm): void {
-    this.send(form.value);
-    form.resetForm();
+  openDefaultEmailClient() {
+    const to = 'info@klossitsolutions.com';
+    const subject = 'Anfrage';
+
+    const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}`;
+
+    window.location.href = mailtoLink;
   }
 
-  private send(msg: IMessage): void {
-    console.log(msg);
+  openDefaultPhoneApp() {
+    const phoneNumber = '+4915235834040';
+
+    const telLink = `tel:${phoneNumber}`;
+
+    window.location.href = telLink;
+  }
+
+  openGoogleMaps() {
+    const latitude = 51.902997;
+    const longitude = 8.385755;
+    const zoomLevel = 2;
+
+    const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}&z=${zoomLevel}`;
+
+    window.location.href = mapsLink;
   }
 }
