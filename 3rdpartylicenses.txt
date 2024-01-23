@@ -16,6 +16,9 @@ MIT
 @angular/router
 MIT
 
+@ngneat/until-destroy
+MIT
+
 primeflex
 MIT
 The MIT License (MIT)
