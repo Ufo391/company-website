@@ -14,7 +14,7 @@
       alt="Firmenlogo"
       style="width: 10vh; height: 10vh; padding: 1rem"
     />
-    <h2 style="color: #596970" class="opacity-50">{{ chapterService.currentChapter$ | async }}</h2>
+    <h2 [@opacityAnimation]="animationStatus" style="color: #596970" >{{ chapterService.currentChapter$ | async }}</h2>
     <button
       pButton
       type="button"
