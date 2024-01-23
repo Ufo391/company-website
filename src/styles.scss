@@ -3,8 +3,41 @@
 @import "primeicons/primeicons.css";
 @import "primeflex/primeflex.css";
 
+$textColor: #596970;
+
 body,
 html {
   margin: 0;
   padding: 0px;
+}
+
+a:visited {
+  color: black;
+}
+a {
+  color: black;
+}
+
+h2 {
+  color: $textColor;
+}
+
+h3 {
+  color: $textColor;
+}
+
+h4 {
+  color: $textColor;
+}
+
+p {
+  color: $textColor;
+}
+
+i {
+  color: $textColor;
+}
+
+.text-black {
+  color: black;
 }

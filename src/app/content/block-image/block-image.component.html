@@ -1,1 +1,27 @@
-<img class="max-h-full max-w-full" src="assets/slogan_mobile.png" alt="Firmenlogo"/>
+<div class="image-container">
+  <div
+    class="overlay-text"
+    [@HeadlineScrollAnimation]="animationStatusHeadline"
+  >
+    <p class="font-bold text-2xl">Meine Erfahrung. Ihr Gewinn!</p>
+    <p>
+      <span [@SubtitleOpacityAnimation]="animationStatusSubtitle[0]"
+        >Effizienz gestalten.</span
+      >
+      <br />
+      <span [@SubtitleOpacityAnimation]="animationStatusSubtitle[1]"
+        >Prozesse beschleunigen.</span
+      >
+      <br />
+      <span [@SubtitleOpacityAnimation]="animationStatusSubtitle[2]"
+        >Individuelle Softwarelösungen</span
+      >
+    </p>
+  </div>
+  <img
+    [@backgroundScrollAnimation]="animationStatusBackground"
+    class="cropped-image"
+    src="assets/Homepage_notext_noicons.png"
+    alt="Firmenlogo"
+  />
+</div>
