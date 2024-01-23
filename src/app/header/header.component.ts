@@ -7,6 +7,7 @@ import {
 } from '@angular/animations';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ChapterService } from '../services/chapter.service';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 const opacityHeaderInMs: number = 1500;
 
@@ -33,6 +34,7 @@ const opacityHeaderInMs: number = 1500;
     ]),
   ],
 })
+@UntilDestroy()
 export class HeaderComponent implements OnInit {
   navbarfixed: boolean = false;
   sidebarVisible: boolean = false;
@@ -41,13 +43,14 @@ export class HeaderComponent implements OnInit {
   animationStatus = 'off';
 
   constructor(public chapterService: ChapterService) {
-    this.chapterService.currentChapter$.subscribe((c) => {
-      this.animationStatus = 'off';
-      const id = setTimeout(() => {
-        this.animationStatus = 'on';
-      }, 100);
-
-    });
+    this.chapterService.currentChapter$
+      .pipe(untilDestroyed(this))
+      .subscribe((c) => {
+        this.animationStatus = 'off';
+        const id = setTimeout(() => {
+          this.animationStatus = 'on';
+        }, 100);
+      });
   }
 
   ngOnInit() {
