@@ -4,39 +4,36 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20vh;
+    height: 16vh;
   "
 >
   <img
     class="bg-repeat-y w-12"
-    style="height: 20vh;"
+    style="height: 16vh"
     src="assets/footer.png"
     alt="background"
   />
   <div style="position: absolute; bottom: 0">
-    <div class="text-sm" >
-      <p class="text-black">©{{ currentYear }} Kloß IT-Solutions. Alle Rechte vorbehalten.</p>
-      <div class="flex flex-row justify-content-center mb-3">
+    <div class="text-sm">
+      <div class="flex justify-content-center mb-1">
         <a
-          href="https://google.de"
+          href="https://www.freelancermap.de/profil/fullstack-entwickler-und-berater"
           target="_blank"
-          class="text-center mr-2 font-bold text-black"
-          >Impressum</a
+          class="mr-2"
         >
-        <a
-          href="https://google.de"
-          target="_blank"
-          class="text-center mr-2 font-bold text-black"
-          >Datenschutz</a
-        >
-      </div>
-      <div class="flex justify-content-center mb-3">
+          <img
+            src="assets/freelancermap_icon.png"
+            alt="background"
+            [style.width]="iconSize"
+            [style.height]="iconSize"
+          />
+        </a>
         <a
           href="https://de.linkedin.com/company/klo%C3%9F-it-solutions?trk=public_profile_topcard-current-company"
           target="_blank"
           class="mr-2"
         >
-          <i class="pi pi-linkedin text-black" style="font-size: 200%"></i>
+          <i class="pi pi-linkedin text-black text-2xl"></i>
         </a>
         <a
           href="https://www.xing.com/profile/Nikolai_Kloss2"
@@ -46,13 +43,31 @@
           <img
             src="assets/xing_icon2.svg"
             alt="background"
-            width="28"
-            height="28"
+            [style.width]="iconSize"
+            [style.height]="iconSize"
           />
         </a>
         <a href="https://github.com/Ufo391" target="_blank">
-          <i class="pi pi-github text-black" style="font-size: 200%"></i>
+          <i class="pi pi-github text-black text-2xl"></i>
         </a>
+      </div>
+      <p class="text-black p-0 m-0">
+        ©{{ currentYear }} Kloß IT-Solutions. Alle Rechte vorbehalten.
+      </p>
+      <div class="flex flex-row justify-content-center mb-4">
+        <a
+          href="https://google.de"
+          target="_blank"
+          class="text-center mr-1 font-bold text-black"
+          >Impressum</a
+        >
+        <p class="p-0 m-0">|</p>
+        <a
+          href="https://google.de"
+          target="_blank"
+          class="text-center ml-1 font-bold text-black"
+          >Datenschutz</a
+        >
       </div>
     </div>
   </div>

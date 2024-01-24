@@ -14,7 +14,9 @@
       alt="Firmenlogo"
       style="width: 10vh; height: 10vh; padding: 1rem"
     />
-    <h2 [@opacityAnimation]="animationStatus" style="color: #596970" >{{ chapterService.currentChapter$ | async }}</h2>
+    <h2 [@opacityAnimation]="animationStatus" style="color: #596970">
+      {{ chapterService.currentChapter$ | async }}
+    </h2>
     <button
       pButton
       type="button"
@@ -72,34 +74,44 @@
   </ng-template>
   <ng-template pTemplate="footer"
     ><hr />
-    <div>
-      <div class="text-sm text-center">
-        <p class="text-black">©{{ currentYear }} Kloß IT-Solutions.</p>
-        <div class="flex justify-content-center mb-3">
-          <a
-            href="https://de.linkedin.com/company/klo%C3%9F-it-solutions?trk=public_profile_topcard-current-company"
-            target="_blank"
-            class="mr-2"
-          >
-            <i class="pi pi-linkedin text-black" style="font-size: 200%"></i>
-          </a>
-          <a
-            href="https://www.xing.com/profile/Nikolai_Kloss2"
-            target="_blank"
-            class="mr-2"
-          >
-            <img
-              src="assets/xing_icon2.svg"
-              alt="background"
-              width="28"
-              height="28"
-            />
-          </a>
-          <a href="https://github.com/Ufo391" target="_blank">
-            <i class="pi pi-github text-black" style="font-size: 200%"></i>
-          </a>
-        </div>
+    <div class="text-sm text-center mt-3">
+      <div class="flex justify-content-center mb-1">
+        <a
+          href="https://www.freelancermap.de/profil/fullstack-entwickler-und-berater"
+          target="_blank"
+          class="mr-2"
+        >
+          <img
+            src="assets/freelancermap_icon.png"
+            alt="background"
+            [style.width]="iconSize"
+            [style.height]="iconSize"
+          />
+        </a>
+        <a
+          href="https://de.linkedin.com/company/klo%C3%9F-it-solutions?trk=public_profile_topcard-current-company"
+          target="_blank"
+          class="mr-2"
+        >
+          <i class="pi pi-linkedin text-black text-2xl"></i>
+        </a>
+        <a
+          href="https://www.xing.com/profile/Nikolai_Kloss2"
+          target="_blank"
+          class="mr-2"
+        >
+          <img
+            src="assets/xing_icon2.svg"
+            alt="background"
+            [style.width]="iconSize"
+            [style.height]="iconSize"
+          />
+        </a>
+        <a href="https://github.com/Ufo391" target="_blank">
+          <i class="pi pi-github text-black text-2xl"></i>
+        </a>
       </div>
+      <p class="text-black m-0 p-0">©{{ currentYear }} Kloß IT-Solutions.</p>
     </div>
   </ng-template>
 </p-sidebar>

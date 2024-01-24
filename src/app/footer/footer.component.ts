@@ -9,6 +9,7 @@ export class FooterComponent implements OnInit {
 
   constructor() { }
 
+  iconSize = '1.5rem';
   currentYear: string = "";
 
   ngOnInit() {

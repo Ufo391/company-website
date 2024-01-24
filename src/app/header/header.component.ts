@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   isLanguageGerman: boolean = true;
   currentYear: string = '';
   animationStatus = 'off';
+  iconSize: string = '1.5rem';
 
   constructor(public chapterService: ChapterService) {
     this.chapterService.currentChapter$
