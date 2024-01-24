@@ -51,8 +51,8 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     if (this.pointer >= this.cardStyles.length) {
       this.pointer = 0;
     }
-    this.onPointerChanged();
     this.flipNext();
+    this.onPointerChanged();
   }
 
   clickLastItemHandler(): void {
@@ -60,8 +60,8 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     if (this.pointer < 0) {
       this.pointer = this.cardStyles.length - 1;
     }
-    this.onPointerChanged();
     this.flipLast();
+    this.onPointerChanged();
   }
 
   private onPointerChanged(): void {
@@ -72,14 +72,14 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     this.isLastElement = this.pointer === this.descriptions.length - 1;
   }
 
-  private flipNext(): void{
+  private flipNext(): void {
     this.nxtElementAnimation = true;
     setTimeout(() => {
       this.nxtElementAnimation = false;
     }, this.flipSpeedInMs);
   }
 
-  private flipLast(): void{
+  private flipLast(): void {
     this.lstElementAnimation = true;
     setTimeout(() => {
       this.lstElementAnimation = false;
