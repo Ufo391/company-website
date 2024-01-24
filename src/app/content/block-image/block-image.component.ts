@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import {
   animationInSeconds,
   backgroundScrollAnimation,
@@ -18,19 +18,25 @@ import {
     subtitleOpacityAnimation,
   ],
 })
-export class BlockImageComponent implements OnInit, OnDestroy, AfterViewInit {
+export class BlockImageComponent implements OnDestroy, AfterViewInit {
   animationStatusBackground = 'on';
   animationStatusHeadline = 'on';
   animationStatusSubtitle = ['off', 'off', 'off'];
   timerBackgroundId: any;
 
-  ngOnInit() {
+  ngOnDestroy(): void {
+    clearInterval(this.timerBackgroundId);
+  }
+
+  constructor(private cdRef: ChangeDetectorRef) {}
+
+  ngAfterViewInit(): void {
     this.timerBackgroundId = setInterval(() => {
       this.toggleAnimation();
     }, animationInSeconds * 1000 + 5000);
 
     let index: number = 0;
-    const scrollTimerId = setInterval(() => {
+    setTimeout(() => {
       const opacityTimerId = setInterval(() => {
         if (index === this.animationStatusSubtitle.length) {
           clearInterval(opacityTimerId);
@@ -39,18 +45,9 @@ export class BlockImageComponent implements OnInit, OnDestroy, AfterViewInit {
           index += 1;
         }
       }, opacitySubtitleInSecounds * 1000);
-      clearInterval(scrollTimerId);
     }, headlineScrollInSecounds * 1000);
-  }
-
-  ngOnDestroy() {
-    clearInterval(this.timerBackgroundId);
-  }
-
-  constructor() {}
-
-  ngAfterViewInit(): void {
     this.toggleAnimation();
+    this.cdRef.detectChanges();
   }
 
   toggleAnimation() {
