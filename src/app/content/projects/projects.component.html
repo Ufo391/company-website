@@ -41,18 +41,23 @@
     </p-scrollPanel>
   </div>
   <ng-template pTemplate="footer">
-    <div class="card">
+    <div
+      class="animation-duration-1000 animation-iteration-1"
+      [ngClass]="{ fadein: fadeinAnimationStatus }"
+    >
       <div class="flex justify-content-end flex-wrap card-container">
         <p-button
           icon="pi pi-angle-left"
           styleClass="p-button-text"
           (click)="clickLastItemHandler()"
+          [disabled]="fadeinAnimationStatus"
         ></p-button>
         <p-button
           icon="pi pi-angle-right"
           class="ml-1"
           styleClass="p-button-text"
           (click)="clickNextItemHandler()"
+          [disabled]="fadeinAnimationStatus"
         ></p-button>
       </div>
     </div>
