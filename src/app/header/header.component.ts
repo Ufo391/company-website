@@ -1,39 +1,13 @@
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ChapterService } from '../services/chapter.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-
-const opacityHeaderInMs: number = 1500;
-const delayHeaderInMs: number = 100;
+import { delayHeaderInMs, opacityAnimation } from './header.animations';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-
-  animations: [
-    trigger('opacityAnimation', [
-      state(
-        'on',
-        style({
-          opacity: 0.66,
-        })
-      ),
-      state(
-        'off',
-        style({
-          opacity: 0,
-        })
-      ),
-      transition('off => on', [animate(`${opacityHeaderInMs}ms`)]),
-    ]),
-  ],
+  animations: [opacityAnimation],
 })
 @UntilDestroy()
 export class HeaderComponent implements OnInit {

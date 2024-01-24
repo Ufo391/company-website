@@ -1,70 +1,21 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-} from '@angular/animations';
-
-const intervalInSeconds: number = 55;
-const headlineScrollInSecounds: number = 3;
-const opacitySubtitleInSecounds: number = 1;
+  animationInSeconds,
+  backgroundScrollAnimation,
+  headlineScrollAnimation,
+  headlineScrollInSecounds,
+  opacitySubtitleInSecounds,
+  subtitleOpacityAnimation,
+} from './block-image.animations';
 
 @Component({
   selector: 'app-block-image',
   templateUrl: './block-image.component.html',
   styleUrls: ['./block-image.component.scss'],
   animations: [
-    trigger('backgroundScrollAnimation', [
-      state(
-        'on',
-        style({
-          opacity: 1,
-          transform: 'translateX(15%) scale(1.35) rotate(-7deg)',
-        })
-      ),
-      state(
-        'off',
-        style({
-          opacity: 0.66,
-          transform: 'translateX(-30%) scale(2) rotate(7deg)',
-        })
-      ),
-      transition('on <=> off', [animate(`${intervalInSeconds}s`)]),
-    ]),
-    trigger('HeadlineScrollAnimation', [
-      state(
-        'on',
-        style({
-          opacity: 0,
-          transform: 'translateX(0%) scale(0.96)',
-        })
-      ),
-      state(
-        'off',
-        style({
-          opacity: 1,
-          transform: 'translateX(5%) scale(1)',
-        })
-      ),
-      transition('on <=> off', [animate(`${headlineScrollInSecounds}s`)]),
-    ]),
-    trigger('SubtitleOpacityAnimation', [
-      state(
-        'on',
-        style({
-          opacity: 1,
-        })
-      ),
-      state(
-        'off',
-        style({
-          opacity: 0,
-        })
-      ),
-      transition('on <=> off', [animate(`${opacitySubtitleInSecounds}s`)]),
-    ]),
+    backgroundScrollAnimation,
+    headlineScrollAnimation,
+    subtitleOpacityAnimation,
   ],
 })
 export class BlockImageComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -76,7 +27,7 @@ export class BlockImageComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     this.timerBackgroundId = setInterval(() => {
       this.toggleAnimation();
-    }, intervalInSeconds * 1000 + 5000);
+    }, animationInSeconds * 1000 + 5000);
 
     let index: number = 0;
     const scrollTimerId = setInterval(() => {
