@@ -1,32 +1,41 @@
-<p-card [style]="currentStyle">
-  <ng-template pTemplate="header">
-    <div class="flex flex-column">
-      <h2 #title>Dienstleistungen</h2>
-      <img
-        alt="Card"
-        src="https://primefaces.org/cdn/primeng/images/usercard.png"
-      />
-    </div>
-  </ng-template>
-  <h3>{{ currentSubtitle }}</h3>
-  <p>
-    {{ currentDescription }}
-  </p>
-  <ng-template pTemplate="footer">
-    <div class="card">
+<div
+  [ngClass]="{
+    'flipleft': nxtElementAnimation,
+    'flipright': lstElementAnimation,
+    'animation-duration-1000': nxtElementAnimation || lstElementAnimation,
+    'animation-iteration-1': nxtElementAnimation || lstElementAnimation
+  }"
+>
+  <p-card [style]="currentStyle">
+    <ng-template pTemplate="header">
+      <div class="flex flex-column">
+        <h2 #title>Dienstleistungen</h2>
+        <img
+          alt="Card"
+          src="https://primefaces.org/cdn/primeng/images/usercard.png"
+        />
+      </div>
+    </ng-template>
+    <h3>{{ currentSubtitle }}</h3>
+    <p>
+      {{ currentDescription }}
+    </p>
+    <ng-template pTemplate="footer">
       <div class="flex justify-content-end flex-wrap card-container">
         <p-button
           icon="pi pi-angle-left"
           styleClass="p-button-text"
           (click)="clickLastItemHandler()"
+          [disabled]="nxtElementAnimation || lstElementAnimation"
         ></p-button>
         <p-button
           icon="pi pi-angle-right"
           class="ml-1"
           styleClass="p-button-text"
           (click)="clickNextItemHandler()"
+          [disabled]="nxtElementAnimation || lstElementAnimation"
         ></p-button>
       </div>
-    </div>
-  </ng-template>
-</p-card>
+    </ng-template>
+  </p-card>
+</div>

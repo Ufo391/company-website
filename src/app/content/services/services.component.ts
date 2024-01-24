@@ -14,7 +14,8 @@ import { ChapterService } from 'src/app/services/chapter.service';
 })
 export class ServicesComponent implements OnInit, AfterViewInit {
   @ViewChild('title') myElement!: ElementRef;
-  readonly cardHeight: string = "90vh";
+  readonly cardHeight: string = '90vh';
+  readonly flipSpeedInMs: number = 1000;
   pointer: number = 0;
   currentStyle: object = {};
   cardStyles = [
@@ -32,6 +33,8 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   ];
   isFirstElement: boolean = false;
   isLastElement: boolean = false;
+  nxtElementAnimation: boolean = false;
+  lstElementAnimation: boolean = false;
 
   constructor(private chapterService: ChapterService) {}
 
@@ -49,6 +52,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
       this.pointer = 0;
     }
     this.onPointerChanged();
+    this.flipNext();
   }
 
   clickLastItemHandler(): void {
@@ -57,6 +61,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
       this.pointer = this.cardStyles.length - 1;
     }
     this.onPointerChanged();
+    this.flipLast();
   }
 
   private onPointerChanged(): void {
@@ -65,5 +70,19 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     this.currentDescription = this.descriptions[this.pointer];
     this.isFirstElement = this.pointer === 0;
     this.isLastElement = this.pointer === this.descriptions.length - 1;
+  }
+
+  private flipNext(): void{
+    this.nxtElementAnimation = true;
+    setTimeout(() => {
+      this.nxtElementAnimation = false;
+    }, this.flipSpeedInMs);
+  }
+
+  private flipLast(): void{
+    this.lstElementAnimation = true;
+    setTimeout(() => {
+      this.lstElementAnimation = false;
+    }, this.flipSpeedInMs);
   }
 }
