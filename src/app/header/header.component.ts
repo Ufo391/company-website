@@ -10,6 +10,7 @@ import { ChapterService } from '../services/chapter.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 const opacityHeaderInMs: number = 1500;
+const delayHeaderInMs: number = 100;
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,7 @@ const opacityHeaderInMs: number = 1500;
       state(
         'on',
         style({
-          opacity: 1,
+          opacity: 0.66,
         })
       ),
       state(
@@ -49,7 +50,7 @@ export class HeaderComponent implements OnInit {
         this.animationStatus = 'off';
         const id = setTimeout(() => {
           this.animationStatus = 'on';
-        }, 100);
+        }, delayHeaderInMs);
       });
   }
 

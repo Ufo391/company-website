@@ -1,34 +1,45 @@
-
 <p-card [style]="{ background: '#F7F7F7' }">
   <ng-template pTemplate="header">
     <div class="p-3 flex flex-column">
       <h2 #title>Projekte</h2>
-      <p class="text-left font-bold p-0 m-0">
-        {{ selected?.name }}
-      </p>
-      <div class="flex flex-row flex-wrap">
-        <p class="text-left w-6 p-0 m-0">{{ selected?.role }}</p>
-        <p class="text-right w-6 p-0 m-0">
-          {{ selected && selected.techStack[0] }}
+      <div
+        class="animation-duration-1000 animation-iteration-1"
+        [ngClass]="{ fadein: fadeinAnimationStatus }"
+      >
+        <p class="text-left font-bold p-0 m-0">
+          {{ selected?.name }}
         </p>
-      </div>
-      <div class="flex flex-row flex-wrap">
-        <p class="text-left w-6 p-0 m-0">{{ selected?.industry }}</p>
-        <p class="text-right w-6 p-0 m-0">
-          {{ selected && selected.techStack[1] }}
-        </p>
-      </div>
-      <div class="flex flex-row flex-wrap">
-        <p class="text-left w-6 p-0 m-0">{{ selected?.durationInMonths }} Monate</p>
-        <p class="text-right w-6 p-0 m-0">
-          {{ selected && selected.techStack[2] }}
-        </p>
+        <div class="flex flex-row flex-wrap">
+          <p class="text-left w-6 p-0 m-0">{{ selected?.role }}</p>
+          <p class="text-right w-6 p-0 m-0">
+            {{ selected && selected.techStack[0] }}
+          </p>
+        </div>
+        <div class="flex flex-row flex-wrap">
+          <p class="text-left w-6 p-0 m-0">{{ selected?.industry }}</p>
+          <p class="text-right w-6 p-0 m-0">
+            {{ selected && selected.techStack[1] }}
+          </p>
+        </div>
+        <div class="flex flex-row flex-wrap">
+          <p class="text-left w-6 p-0 m-0">
+            {{ selected?.durationInMonths }} Monate
+          </p>
+          <p class="text-right w-6 p-0 m-0">
+            {{ selected && selected.techStack[2] }}
+          </p>
+        </div>
       </div>
     </div>
   </ng-template>
-  <p-scrollPanel [style]="{ width: '100%', height: '40vh' }">
-    <p class="text-justify">{{ selected?.description }}</p>
-  </p-scrollPanel>
+  <div
+    class="animation-duration-1000 animation-iteration-1"
+    [ngClass]="{ fadein: fadeinAnimationStatus }"
+  >
+    <p-scrollPanel [style]="{ width: '100%', height: '40vh' }">
+      <p class="text-justify">{{ selected?.description }}</p>
+    </p-scrollPanel>
+  </div>
   <ng-template pTemplate="footer">
     <div class="card">
       <div class="flex justify-content-end flex-wrap card-container">

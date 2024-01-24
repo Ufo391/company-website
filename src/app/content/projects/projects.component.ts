@@ -19,6 +19,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   projects: IProject[] = [];
   selected?: IProject;
   indexer?: number;
+  fadeinAnimationStatus: boolean = false;
 
   constructor(
     private projectsService: ProjectsService,
@@ -41,6 +42,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
         this.indexer === this.projects.length - 1 ? 0 : this.indexer + 1;
       this.selected = this.projects[this.indexer];
     }
+    this.fadeinContent();
   }
 
   clickLastItemHandler(): void {
@@ -49,5 +51,13 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
         this.indexer === 0 ? this.projects.length - 1 : this.indexer - 1;
       this.selected = this.projects[this.indexer];
     }
+    this.fadeinContent();
+  }
+
+  private fadeinContent(): void {
+    this.fadeinAnimationStatus = true;
+    setTimeout(() => {
+      this.fadeinAnimationStatus = false;
+    }, 1000);
   }
 }
