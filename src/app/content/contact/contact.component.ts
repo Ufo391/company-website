@@ -58,11 +58,11 @@ export class ContactComponent implements OnInit, AfterViewInit {
   }
 
   openGoogleMaps() {
-    const latitude = 51.902997;
-    const longitude = 8.385755;
-    const zoomLevel = 2;
-
-    const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}&z=${zoomLevel}`;
+    const location: string =
+      this.lService.MasterData$.value.contact.values.find(
+        (c) => c.type === 'location'
+      )?.value.value!;
+    const mapsLink = `https://www.google.com/maps?q=${encodeURIComponent(location)}`;
 
     window.location.href = mapsLink;
   }
