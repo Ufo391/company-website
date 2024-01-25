@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
   currentYear: string = '';
   animationStatus = 'off';
   iconSize: string = '1.5rem';
+  flagSize: string = '2rem';
+  logoSize: string = '2.5rem';
 
   constructor(public chapterService: ChapterService) {
     this.chapterService.currentChapter$

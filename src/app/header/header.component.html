@@ -29,23 +29,13 @@
 </div>
 <p-sidebar class="z-1" [(visible)]="sidebarVisible" position="right">
   <ng-template pTemplate="header">
-    <div
-      (click)="changeLanguage()"
-      class="w-11 align-items-center flex flex-row justify-content-start"
-    >
+    <div class="w-11 align-items-center flex flex-row justify-content-start">
       <img
-        *ngIf="isLanguageGerman"
-        src="assets/countries/de.svg"
-        alt="SVG-Grafik"
-        width="15%"
-        height="15%"
-      />
-      <img
-        *ngIf="!isLanguageGerman"
-        src="assets/countries/gb.svg"
-        alt="SVG-Grafik"
-        width="15%"
-        height="15%"
+        class="max-h-full"
+        src="assets/logo.png"
+        alt="Firmenlogo"
+        [style.width]="logoSize"
+        [style.height]="logoSize"
       />
       <h3 class="text-center w-12 opacity-40" style="color: #596970">
         Kloß IT-Solutions
@@ -75,6 +65,22 @@
   <ng-template pTemplate="footer"
     ><hr />
     <div class="text-sm text-center mt-3">
+      <div (click)="changeLanguage()">
+        <img
+          *ngIf="isLanguageGerman"
+          src="assets/countries/de.svg"
+          alt="SVG-Grafik"
+          [style.width]="flagSize"
+          [style.height]="flagSize"
+        />
+        <img
+          *ngIf="!isLanguageGerman"
+          src="assets/countries/gb.svg"
+          alt="SVG-Grafik"
+          [style.width]="flagSize"
+          [style.height]="flagSize"
+        />
+      </div>
       <div class="flex justify-content-center mb-1">
         <a
           href="https://www.freelancermap.de/profil/fullstack-entwickler-und-berater"
