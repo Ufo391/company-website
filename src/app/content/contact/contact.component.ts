@@ -13,7 +13,7 @@ import { LanguageService } from 'src/app/services/language.service';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css'],
+  styleUrls: ['./contact.component.scss'],
   animations: [],
 })
 @UntilDestroy()
