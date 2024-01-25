@@ -10,7 +10,8 @@ export type LanguageCode = "de" | "en" | "pl"
 export interface ICompany{
   companyName: string;
   langCode: LanguageCode;
-  banner: IPost;
+  bannerTitle: string;
+  bannerSubtitles: string[];
   aboutMe: IPost;
   services: IServices;
   projects: IProjects;

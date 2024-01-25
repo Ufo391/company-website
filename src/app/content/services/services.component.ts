@@ -5,7 +5,9 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { IPost } from 'src/app/models/language/IPost';
 import { ChapterService } from 'src/app/services/chapter.service';
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-services',
@@ -23,20 +25,15 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     { background: '#9fb1c5' },
     { background: '#b2bccd' },
   ];
-  currentSubtitle: string = '';
-  subtitles: string[] = ['Expertise', 'Beratung', 'Entwicklung'];
-  currentDescription: string = '';
-  descriptions: string[] = [
-    'Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
-    'Neuentwicklung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
-    'Legacy Code. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
-  ];
   isFirstElement: boolean = false;
   isLastElement: boolean = false;
   nxtElementAnimation: boolean = false;
   lstElementAnimation: boolean = false;
 
-  constructor(private chapterService: ChapterService) {}
+  constructor(
+    private chapterService: ChapterService,
+    public lService: LanguageService
+  ) {}
 
   ngOnInit() {
     this.onPointerChanged();
@@ -66,10 +63,10 @@ export class ServicesComponent implements OnInit, AfterViewInit {
 
   private onPointerChanged(): void {
     this.currentStyle = this.cardStyles[this.pointer];
-    this.currentSubtitle = this.subtitles[this.pointer];
-    this.currentDescription = this.descriptions[this.pointer];
     this.isFirstElement = this.pointer === 0;
-    this.isLastElement = this.pointer === this.descriptions.length - 1;
+    this.isLastElement =
+      this.pointer ===
+      this.lService.MasterData$.value.services.values.length - 1;
   }
 
   private flipNext(): void {

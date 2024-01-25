@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { ChapterService } from '../services/chapter.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { LanguageCode } from '../models/language/ICompany';
+import { ChapterService } from '../services/chapter.service';
+import { LanguageService } from '../services/language.service';
 import { delayHeaderInMs, opacityAnimation } from './header.animations';
 
 @Component({
@@ -13,14 +15,16 @@ import { delayHeaderInMs, opacityAnimation } from './header.animations';
 export class HeaderComponent implements OnInit {
   navbarfixed: boolean = false;
   sidebarVisible: boolean = false;
-  isLanguageGerman: boolean = true;
   currentYear: string = '';
   animationStatus = 'off';
   iconSize: string = '1.5rem';
   flagSize: string = '2rem';
   logoSize: string = '2.5rem';
 
-  constructor(public chapterService: ChapterService) {
+  constructor(
+    public chapterService: ChapterService,
+    public lService: LanguageService
+  ) {
     this.chapterService.currentChapter$
       .pipe(untilDestroyed(this))
       .subscribe((c) => {
@@ -49,8 +53,8 @@ export class HeaderComponent implements OnInit {
     this.sidebarVisible = false;
   }
 
-  changeLanguage(): void {
-    this.isLanguageGerman = !this.isLanguageGerman;
+  changeLanguage(code: LanguageCode): void {
+    this.lService.changeLanguage(code);
   }
 
   @HostListener('window:scroll', ['$event']) onscroll() {

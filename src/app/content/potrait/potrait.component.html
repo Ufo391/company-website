@@ -1,8 +1,8 @@
-<div class="text-center">
+<div class="text-center" *ngIf="(lService.MasterData$ | async)?.aboutMe as ab">
   <p-card [style]="{ background: '#F7F7F7' }">
     <ng-template pTemplate="header">
       <div class="flex flex-column mb-3">
-        <h2 #title>Hintergrund</h2>
+        <h2 #title>{{ ab.title }}</h2>
         <div class="flex align-items-center justify-content-center">
           <img
             style="width: 50%; height: 50%"
@@ -14,7 +14,7 @@
       </div>
     </ng-template>
     <p-scrollPanel [style]="{ width: '100%', height: '40vh' }">
-      <p class="text-justify">{{ description }}</p>
+      <p class="text-justify">{{ ab.value }}</p>
     </p-scrollPanel>
   </p-card>
 </div>

@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ChapterService } from '../services/chapter.service';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-content',
@@ -14,7 +15,10 @@ import { ChapterService } from '../services/chapter.service';
 })
 export class ContentComponent implements OnInit, AfterViewInit {
   @ViewChild('invisible') myElement!: ElementRef;
-  constructor(private chapterService: ChapterService) {}
+  constructor(
+    private chapterService: ChapterService,
+    public lService: LanguageService
+  ) {}
 
   ngOnInit() {}
 

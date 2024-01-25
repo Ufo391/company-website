@@ -5,9 +5,8 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { IProject } from 'src/app/models/language/IProject';
 import { ChapterService } from 'src/app/services/chapter.service';
-import { MasterDataService } from 'src/app/services/master-data.service';
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-projects',
@@ -16,21 +15,16 @@ import { MasterDataService } from 'src/app/services/master-data.service';
 })
 export class ProjectsComponent implements OnInit, AfterViewInit {
   @ViewChild('title') myElement!: ElementRef;
-  projects: IProject[] = [];
-  selected?: IProject;
-  indexer?: number;
+  pointer!: number;
   fadeinAnimationStatus: boolean = false;
 
   constructor(
     private chapterService: ChapterService,
-    private masterDataService: MasterDataService
+    public lService: LanguageService
   ) {}
 
   ngOnInit() {
-    const p = this.masterDataService.Content.companyData.get("de")?.projects.values;
-    this.projects = p !== undefined ? p : [];
-    this.indexer = 0;
-    this.selected = this.projects[this.indexer];
+    this.pointer = 0;
   }
 
   ngAfterViewInit() {
@@ -38,19 +32,22 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   }
 
   clickNextItemHandler(): void {
-    if (this.indexer !== undefined) {
-      this.indexer =
-        this.indexer === this.projects.length - 1 ? 0 : this.indexer + 1;
-      this.selected = this.projects[this.indexer];
+    if (this.pointer !== undefined) {
+      this.pointer =
+        this.pointer ===
+        this.lService.MasterData$.value.projects.values.length - 1
+          ? 0
+          : this.pointer + 1;
     }
     this.fadeinContent();
   }
 
   clickLastItemHandler(): void {
-    if (this.indexer !== undefined) {
-      this.indexer =
-        this.indexer === 0 ? this.projects.length - 1 : this.indexer - 1;
-      this.selected = this.projects[this.indexer];
+    if (this.pointer !== undefined) {
+      this.pointer =
+        this.pointer === 0
+          ? this.lService.MasterData$.value.projects.values.length - 1
+          : this.pointer - 1;
     }
     this.fadeinContent();
   }

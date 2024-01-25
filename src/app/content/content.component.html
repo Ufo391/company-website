@@ -1,4 +1,6 @@
-<div #invisible><p style="font-size: 0%">Kloß IT-Solutions</p></div>
+<div #invisible>
+  <p style="font-size: 0%">{{ (lService.MasterData$ | async)?.companyName }}</p>
+</div>
 <div class="fadein animation-duration-1000 animation-iteration-1">
   <div class="block mt-3 mb-1">
     <app-block-image />

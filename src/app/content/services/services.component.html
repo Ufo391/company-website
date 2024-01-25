@@ -4,20 +4,21 @@
     'flipleft': nxtElementAnimation,
     'flipright': lstElementAnimation,
   }"
+  *ngIf="(lService.MasterData$ | async)?.services as s"
 >
   <p-card [style]="currentStyle">
     <ng-template pTemplate="header">
       <div class="flex flex-column">
-        <h2 #title>Dienstleistungen</h2>
+        <h2 #title>{{s.title}}</h2>
         <img
           alt="Card"
           src="https://primefaces.org/cdn/primeng/images/usercard.png"
         />
       </div>
     </ng-template>
-    <h3>{{ currentSubtitle }}</h3>
+    <h3>{{ s.values[pointer].title }}</h3>
     <p>
-      {{ currentDescription }}
+      {{ s.values[pointer].value }}
     </p>
     <ng-template pTemplate="footer">
       <div class="flex justify-content-end flex-wrap card-container">

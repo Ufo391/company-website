@@ -1,27 +1,31 @@
-<div class="image-container">
-  <div
-    class="overlay-text"
-    [@headlineScrollAnimation]="animationStatusHeadline"
-  >
-    <p class="font-bold text-xl">Meine Erfahrung. Ihr Gewinn!</p>
-    <p>
-      <span [@subtitleOpacityAnimation]="animationStatusSubtitle[0]"
-        >Effizienz gestalten.</span
-      >
-      <br />
-      <span [@subtitleOpacityAnimation]="animationStatusSubtitle[1]"
-        >Prozesse beschleunigen.</span
-      >
-      <br />
-      <span [@subtitleOpacityAnimation]="animationStatusSubtitle[2]"
-        >Individuelle Softwarelösungen</span
-      >
-    </p>
+<div *ngIf="lService.MasterData$ | async as md">
+  <div class="image-container">
+    <div
+      class="overlay-text"
+      [@headlineScrollAnimation]="animationStatusHeadline"
+    >
+      <p class="font-bold text-xl">
+        {{ md.bannerTitle }}
+      </p>
+      <p>
+        <span [@subtitleOpacityAnimation]="animationStatusSubtitle[0]">{{
+          md.bannerSubtitles[0]
+        }}</span>
+        <br />
+        <span [@subtitleOpacityAnimation]="animationStatusSubtitle[1]">{{
+          md.bannerSubtitles[1]
+        }}</span>
+        <br />
+        <span [@subtitleOpacityAnimation]="animationStatusSubtitle[2]">{{
+          md.bannerSubtitles[2]
+        }}</span>
+      </p>
+    </div>
+    <img
+      [@backgroundScrollAnimation]="animationStatusBackground"
+      class="cropped-image"
+      src="assets/Homepage_notext_noicons.png"
+      alt="Firmenlogo"
+    />
   </div>
-  <img
-    [@backgroundScrollAnimation]="animationStatusBackground"
-    class="cropped-image"
-    src="assets/Homepage_notext_noicons.png"
-    alt="Firmenlogo"
-  />
 </div>

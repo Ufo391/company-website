@@ -8,6 +8,7 @@ import {
 import { NgForm } from '@angular/forms';
 import { IMessage } from 'src/app/models/IMessage';
 import { ChapterService } from 'src/app/services/chapter.service';
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-contact',
@@ -24,7 +25,10 @@ export class ContactComponent implements OnInit, AfterViewInit {
   lastInputSubject?: string;
   lastInputMessage?: string;
 
-  constructor(private chapterService: ChapterService) {}
+  constructor(
+    private chapterService: ChapterService,
+    public lService: LanguageService
+  ) {}
 
   ngOnInit() {}
 
