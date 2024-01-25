@@ -5,9 +5,9 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { IProject } from 'src/app/models/IProject';
+import { IProject } from 'src/app/models/language/IProject';
 import { ChapterService } from 'src/app/services/chapter.service';
-import { ProjectsService } from 'src/app/services/projects.service';
+import { MasterDataService } from 'src/app/services/master-data.service';
 
 @Component({
   selector: 'app-projects',
@@ -22,12 +22,13 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   fadeinAnimationStatus: boolean = false;
 
   constructor(
-    private projectsService: ProjectsService,
-    private chapterService: ChapterService
+    private chapterService: ChapterService,
+    private masterDataService: MasterDataService
   ) {}
 
   ngOnInit() {
-    this.projects = this.projectsService.getAllProjects();
+    const p = this.masterDataService.Content.companyData.get("de")?.projects.values;
+    this.projects = p !== undefined ? p : [];
     this.indexer = 0;
     this.selected = this.projects[this.indexer];
   }
