@@ -29,6 +29,14 @@ export class ChapterService {
     this.chapters$.next(this.chapters.map((c) => c.title));
   }
 
+  translateChapter(e: ElementRef, value: string): void {
+    const h: HTMLElement = e.nativeElement as HTMLElement;
+    const c: IChapterData = this.chapters.find((c) => c.title === h.innerText)!;
+    c.title = value;
+    this.chapters$.next(this.chapters.map((c) => c.title));
+    this.currentChapter$.next(this.chapters[this.index].title);
+  }
+
   scrollToChapter(index: number): void {
     const c: IChapterData = this.chapters[index];
     const pos: number =

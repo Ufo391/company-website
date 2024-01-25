@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { LanguageCode } from '../models/language/ICompany';
 import { ChapterService } from '../services/chapter.service';
@@ -12,10 +12,9 @@ import { delayHeaderInMs, opacityAnimation } from './header.animations';
   animations: [opacityAnimation],
 })
 @UntilDestroy()
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   navbarfixed: boolean = false;
   sidebarVisible: boolean = false;
-  currentYear: string = '';
   animationStatus = 'off';
   iconSize: string = '1.5rem';
   flagSize: string = '2rem';
@@ -29,15 +28,10 @@ export class HeaderComponent implements OnInit {
       .pipe(untilDestroyed(this))
       .subscribe((c) => {
         this.animationStatus = 'off';
-        const id = setTimeout(() => {
+        setTimeout(() => {
           this.animationStatus = 'on';
         }, delayHeaderInMs);
       });
-  }
-
-  ngOnInit() {
-    let d: Date = new Date(Date.now());
-    this.currentYear = d.getFullYear().toString();
   }
 
   toggleSidebar() {

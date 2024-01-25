@@ -5,9 +5,11 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -29,6 +31,9 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.chapterService.addChapter(this.myElement);
+    this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
+      this.chapterService.translateChapter(this.myElement, c.projects.title);
+    });
   }
 
   clickNextItemHandler(): void {

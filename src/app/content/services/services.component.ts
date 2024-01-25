@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { IPost } from 'src/app/models/language/IPost';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
 
@@ -14,6 +14,7 @@ import { LanguageService } from 'src/app/services/language.service';
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.css'],
 })
+@UntilDestroy()
 export class ServicesComponent implements OnInit, AfterViewInit {
   @ViewChild('title') myElement!: ElementRef;
   readonly cardHeight: string = '90vh';
@@ -41,6 +42,9 @@ export class ServicesComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.chapterService.addChapter(this.myElement);
+    this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
+      this.chapterService.translateChapter(this.myElement, c.services.title);
+    });
   }
 
   clickNextItemHandler(): void {
