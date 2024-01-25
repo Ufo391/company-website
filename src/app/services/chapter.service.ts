@@ -13,7 +13,7 @@ export class ChapterService {
   private offsetHeight: number = 0;
 
   constructor() {
-    this.currentChapter$ = new BehaviorSubject<string>('Kloß IT-Solutions');
+    this.currentChapter$ = new BehaviorSubject<string>('Kloss IT-Solutions');
     this.chapters$ = new BehaviorSubject<string[]>([]);
     this.offsetHeight = window.innerHeight * 0.1;
   }
