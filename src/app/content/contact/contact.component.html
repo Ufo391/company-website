@@ -1,4 +1,4 @@
-<div *ngIf="(lService.MasterData$ | async)?.contact as c">
+<div class="mb-5" *ngIf="(lService.MasterData$ | async)?.contact as c">
   <p-panel id="scrollToElement">
     <ng-template pTemplate="header"
       ><div class="w-12">
@@ -6,6 +6,20 @@
       </div>
     </ng-template>
     <div>
+      <div class="surface-section text-700 text-center mt-5">
+        <div class="text-blue-600 font-bold mb-3">
+          <i class="pi pi-users">&#160;POWERED BY DISCORD </i>
+        </div>
+        <p class="text-900 font-bold text-5xl mb-3 p-0">
+          Join Our Design Community
+        </p>
+        <div class="text-700 text-2xl mb-5">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
+          numquam eligendi quos.
+        </div>
+        <hr />
+      </div>
+
       <div class="flex flex-row flex-wrap align-items-center ml-5">
         <i
           class="pi pi-phone shadow-5 text-2xl p-2 icon-button"
