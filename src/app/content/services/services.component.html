@@ -1,23 +1,25 @@
 <div
-  class="animation-duration-1000 animation-iteration-1"
+[@opacityAnimation]="fadeinAnimation"
+class="animation-duration-1000 animation-iteration-1"
   [ngClass]="{
     'flipleft': nxtElementAnimation,
     'flipright': lstElementAnimation,
   }"
+  *ngIf="(lService.MasterData$ | async)?.services as s"
 >
   <p-card [style]="currentStyle">
     <ng-template pTemplate="header">
       <div class="flex flex-column">
-        <h2 #title>Dienstleistungen</h2>
+        <h2 #title>{{s.title}}</h2>
         <img
           alt="Card"
           src="https://primefaces.org/cdn/primeng/images/usercard.png"
         />
       </div>
     </ng-template>
-    <h3>{{ currentSubtitle }}</h3>
+    <h3>{{ s.values[pointer].title }}</h3>
     <p>
-      {{ currentDescription }}
+      {{ s.values[pointer].value }}
     </p>
     <ng-template pTemplate="footer">
       <div class="flex justify-content-end flex-wrap card-container">
@@ -29,7 +31,7 @@
         ></p-button>
         <p-button
           icon="pi pi-angle-right"
-          class="ml-1"
+          class="ml-1 button-color"
           styleClass="p-button-text"
           (click)="clickNextItemHandler()"
           [disabled]="nxtElementAnimation || lstElementAnimation"

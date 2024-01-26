@@ -1,6 +1,8 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { ChapterService } from '../services/chapter.service';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { LanguageCode } from '../models/language/ICompany';
+import { ChapterService } from '../services/chapter.service';
+import { LanguageService } from '../services/language.service';
 import { delayHeaderInMs, opacityAnimation } from './header.animations';
 
 @Component({
@@ -10,28 +12,27 @@ import { delayHeaderInMs, opacityAnimation } from './header.animations';
   animations: [opacityAnimation],
 })
 @UntilDestroy()
-export class HeaderComponent implements OnInit {
-  navbarfixed: boolean = false;
-  sidebarVisible: boolean = false;
-  isLanguageGerman: boolean = true;
-  currentYear: string = '';
-  animationStatus = 'off';
-  iconSize: string = '1.5rem';
+export class HeaderComponent {
+  public navbarfixed: boolean = false;
+  public sidebarVisible: boolean = false;
+  public animationStatus = 'off';
+  public iconSize: string = '1.5rem';
+  public flagSize: string = '1rem';
+  public logoSize: string = '2.5rem';
+  private languagePointer: number = 0;
 
-  constructor(public chapterService: ChapterService) {
+  constructor(
+    public chapterService: ChapterService,
+    public lService: LanguageService
+  ) {
     this.chapterService.currentChapter$
       .pipe(untilDestroyed(this))
       .subscribe((c) => {
         this.animationStatus = 'off';
-        const id = setTimeout(() => {
+        setTimeout(() => {
           this.animationStatus = 'on';
         }, delayHeaderInMs);
       });
-  }
-
-  ngOnInit() {
-    let d: Date = new Date(Date.now());
-    this.currentYear = d.getFullYear().toString();
   }
 
   toggleSidebar() {
@@ -48,7 +49,10 @@ export class HeaderComponent implements OnInit {
   }
 
   changeLanguage(): void {
-    this.isLanguageGerman = !this.isLanguageGerman;
+    const lCodes: LanguageCode[] = this.lService.LanguageCodes;
+    const increment: number = this.languagePointer + 1;
+    this.languagePointer = increment === lCodes.length ? 0 : increment;
+    this.lService.changeLanguage(lCodes[this.languagePointer]);
   }
 
   @HostListener('window:scroll', ['$event']) onscroll() {

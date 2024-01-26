@@ -5,13 +5,18 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ChapterService } from 'src/app/services/chapter.service';
+import { LanguageService } from 'src/app/services/language.service';
+import { opacityAnimation } from '../content.animation';
 
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
-  styleUrls: ['./services.component.css'],
+  styleUrls: ['./services.component.scss'],
+  animations: [opacityAnimation],
 })
+@UntilDestroy()
 export class ServicesComponent implements OnInit, AfterViewInit {
   @ViewChild('title') myElement!: ElementRef;
   readonly cardHeight: string = '90vh';
@@ -23,27 +28,30 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     { background: '#9fb1c5' },
     { background: '#b2bccd' },
   ];
-  currentSubtitle: string = '';
-  subtitles: string[] = ['Expertise', 'Beratung', 'Entwicklung'];
-  currentDescription: string = '';
-  descriptions: string[] = [
-    'Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
-    'Neuentwicklung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
-    'Legacy Code. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
-  ];
   isFirstElement: boolean = false;
   isLastElement: boolean = false;
   nxtElementAnimation: boolean = false;
   lstElementAnimation: boolean = false;
+  fadeinAnimation = 'off';
 
-  constructor(private chapterService: ChapterService) {}
+  constructor(
+    private chapterService: ChapterService,
+    public lService: LanguageService
+  ) {}
 
   ngOnInit() {
     this.onPointerChanged();
   }
 
   ngAfterViewInit() {
-    this.chapterService.addChapter(this.myElement);
+    this.chapterService.addChapter(
+      this.myElement,
+      this.startFadeAnimation.bind(this),
+      this.leaveFadeAnimation.bind(this)
+    );
+    this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
+      this.chapterService.translateChapter(this.myElement, c.services.title);
+    });
   }
 
   clickNextItemHandler(): void {
@@ -66,10 +74,10 @@ export class ServicesComponent implements OnInit, AfterViewInit {
 
   private onPointerChanged(): void {
     this.currentStyle = this.cardStyles[this.pointer];
-    this.currentSubtitle = this.subtitles[this.pointer];
-    this.currentDescription = this.descriptions[this.pointer];
     this.isFirstElement = this.pointer === 0;
-    this.isLastElement = this.pointer === this.descriptions.length - 1;
+    this.isLastElement =
+      this.pointer ===
+      this.lService.MasterData$.value.services.values.length - 1;
   }
 
   private flipNext(): void {
@@ -84,5 +92,13 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.lstElementAnimation = false;
     }, this.flipSpeedInMs);
+  }
+
+  private startFadeAnimation(): void {
+    this.fadeinAnimation = 'on';
+  }
+
+  private leaveFadeAnimation(): void {
+    this.fadeinAnimation = 'off';
   }
 }

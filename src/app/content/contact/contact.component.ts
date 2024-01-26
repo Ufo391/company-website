@@ -5,16 +5,19 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { IMessage } from 'src/app/models/IMessage';
 import { ChapterService } from 'src/app/services/chapter.service';
+import { LanguageService } from 'src/app/services/language.service';
+import { opacityAnimation } from '../content.animation';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css'],
-  animations: [],
+  styleUrls: ['./contact.component.scss'],
+  animations: [opacityAnimation],
 })
+@UntilDestroy()
 export class ContactComponent implements OnInit, AfterViewInit {
   @ViewChild('title') myElement!: ElementRef;
 
@@ -23,13 +26,24 @@ export class ContactComponent implements OnInit, AfterViewInit {
   lastInputName?: string;
   lastInputSubject?: string;
   lastInputMessage?: string;
+  fadeinAnimation = 'off';
 
-  constructor(private chapterService: ChapterService) {}
+  constructor(
+    private chapterService: ChapterService,
+    public lService: LanguageService
+  ) {}
 
   ngOnInit() {}
 
   ngAfterViewInit() {
-    this.chapterService.addChapter(this.myElement);
+    this.chapterService.addChapter(
+      this.myElement,
+      this.startFadeAnimation.bind(this),
+      this.leaveFadeAnimation.bind(this)
+    );
+    this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
+      this.chapterService.translateChapter(this.myElement, c.contact.title);
+    });
   }
 
   openDefaultEmailClient() {
@@ -50,12 +64,22 @@ export class ContactComponent implements OnInit, AfterViewInit {
   }
 
   openGoogleMaps() {
-    const latitude = 51.902997;
-    const longitude = 8.385755;
-    const zoomLevel = 2;
-
-    const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}&z=${zoomLevel}`;
+    const location: string =
+      this.lService.MasterData$.value.contact.values.find(
+        (c) => c.type === 'location'
+      )?.value.value!;
+    const mapsLink = `https://www.google.com/maps?q=${encodeURIComponent(
+      location
+    )}`;
 
     window.location.href = mapsLink;
+  }
+
+  private startFadeAnimation(): void {
+    this.fadeinAnimation = 'on';
+  }
+
+  private leaveFadeAnimation(): void {
+    this.fadeinAnimation = 'off';
   }
 }

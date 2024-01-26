@@ -1,4 +1,10 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+} from '@angular/core';
+import { LanguageService } from 'src/app/services/language.service';
 import {
   animationInSeconds,
   backgroundScrollAnimation,
@@ -28,7 +34,10 @@ export class BlockImageComponent implements OnDestroy, AfterViewInit {
     clearInterval(this.timerBackgroundId);
   }
 
-  constructor(private cdRef: ChangeDetectorRef) {}
+  constructor(
+    private cdRef: ChangeDetectorRef,
+    public lService: LanguageService
+  ) {}
 
   ngAfterViewInit(): void {
     this.timerBackgroundId = setInterval(() => {

@@ -1,65 +1,69 @@
-<p-card [style]="{ background: '#F7F7F7' }">
-  <ng-template pTemplate="header">
-    <div class="p-3 flex flex-column">
-      <h2 #title>Projekte</h2>
-      <div
-        class="animation-duration-1000 animation-iteration-1"
-        [ngClass]="{ fadein: fadeinAnimationStatus }"
-      >
-        <p class="text-left font-bold p-0 m-0">
-          {{ selected?.name }}
-        </p>
-        <div class="flex flex-row flex-wrap">
-          <p class="text-left w-6 p-0 m-0">{{ selected?.role }}</p>
-          <p class="text-right w-6 p-0 m-0">
-            {{ selected && selected.techStack[0] }}
+<div *ngIf="(lService.MasterData$ | async)?.projects as p" [@opacityAnimation]="fadeinAnimation">
+  <p-card [style]="{ background: '#F7F7F7' }">
+    <ng-template pTemplate="header">
+      <div class="p-3 flex flex-column">
+        <h2 #title>{{ p.title }}</h2>
+        <div
+          class="animation-duration-1000 animation-iteration-1"
+          [ngClass]="{ fadein: fadeinContentAnimationStatus }"
+        >
+          <p class="text-left font-bold p-0 m-0">
+            {{ p.values[pointer].content.title }}
           </p>
-        </div>
-        <div class="flex flex-row flex-wrap">
-          <p class="text-left w-6 p-0 m-0">{{ selected?.industry }}</p>
-          <p class="text-right w-6 p-0 m-0">
-            {{ selected && selected.techStack[1] }}
-          </p>
-        </div>
-        <div class="flex flex-row flex-wrap">
-          <p class="text-left w-6 p-0 m-0">
-            {{ selected?.durationInMonths }} Monate
-          </p>
-          <p class="text-right w-6 p-0 m-0">
-            {{ selected && selected.techStack[2] }}
-          </p>
+          <div class="flex flex-row flex-wrap">
+            <p class="text-left w-6 p-0 m-0">{{ p.values[pointer].role }}</p>
+            <p class="text-right w-6 p-0 m-0">
+              {{ p.values[pointer].techStack[0] }}
+            </p>
+          </div>
+          <div class="flex flex-row flex-wrap">
+            <p class="text-left w-6 p-0 m-0">
+              {{ p.values[pointer].industry }}
+            </p>
+            <p class="text-right w-6 p-0 m-0">
+              {{ p.values[pointer].techStack[1] }}
+            </p>
+          </div>
+          <div class="flex flex-row flex-wrap">
+            <p class="text-left w-6 p-0 m-0">
+              {{ p.values[pointer].durationInMonths }} {{ p.duration }}
+            </p>
+            <p class="text-right w-6 p-0 m-0">
+              {{ p.values[pointer].techStack[2] }}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </ng-template>
-  <div
-    class="animation-duration-1000 animation-iteration-1"
-    [ngClass]="{ fadein: fadeinAnimationStatus }"
-  >
-    <p-scrollPanel [style]="{ width: '100%', height: '40vh' }">
-      <p class="text-justify">{{ selected?.description }}</p>
-    </p-scrollPanel>
-  </div>
-  <ng-template pTemplate="footer">
+    </ng-template>
     <div
       class="animation-duration-1000 animation-iteration-1"
-      [ngClass]="{ fadein: fadeinAnimationStatus }"
+      [ngClass]="{ fadein: fadeinContentAnimationStatus }"
     >
-      <div class="flex justify-content-end flex-wrap card-container">
-        <p-button
-          icon="pi pi-angle-left"
-          styleClass="p-button-text"
-          (click)="clickLastItemHandler()"
-          [disabled]="fadeinAnimationStatus"
-        ></p-button>
-        <p-button
-          icon="pi pi-angle-right"
-          class="ml-1"
-          styleClass="p-button-text"
-          (click)="clickNextItemHandler()"
-          [disabled]="fadeinAnimationStatus"
-        ></p-button>
-      </div>
+      <p-scrollPanel [style]="{ width: '100%', height: '40vh' }">
+        <p class="text-justify">{{ p.values[pointer].content.value }}</p>
+      </p-scrollPanel>
     </div>
-  </ng-template>
-</p-card>
+    <ng-template pTemplate="footer">
+      <div
+        class="animation-duration-1000 animation-iteration-1"
+        [ngClass]="{ fadein: fadeinContentAnimationStatus }"
+      >
+        <div class="flex justify-content-end flex-wrap card-container">
+          <p-button
+            icon="pi pi-angle-left"
+            styleClass="p-button-text"
+            (click)="clickLastItemHandler()"
+            [disabled]="fadeinContentAnimationStatus"
+          ></p-button>
+          <p-button
+            icon="pi pi-angle-right"
+            class="ml-1"
+            styleClass="p-button-text"
+            (click)="clickNextItemHandler()"
+            [disabled]="fadeinContentAnimationStatus"
+          ></p-button>
+        </div>
+      </div>
+    </ng-template>
+  </p-card>
+</div>
