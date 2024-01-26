@@ -8,11 +8,13 @@ import {
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
+import { opacityAnimation } from './services.animation';
 
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.scss'],
+  animations: [opacityAnimation],
 })
 @UntilDestroy()
 export class ServicesComponent implements OnInit, AfterViewInit {
@@ -30,6 +32,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   isLastElement: boolean = false;
   nxtElementAnimation: boolean = false;
   lstElementAnimation: boolean = false;
+  fadeinAnimation = 'off';
 
   constructor(
     private chapterService: ChapterService,
@@ -41,7 +44,11 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.chapterService.addChapter(this.myElement);
+    this.chapterService.addChapter(
+      this.myElement,
+      this.startFadeAnimation.bind(this),
+      this.leaveFadeAnimation.bind(this)
+    );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.services.title);
     });
@@ -85,5 +92,13 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.lstElementAnimation = false;
     }, this.flipSpeedInMs);
+  }
+
+  private startFadeAnimation(): void {
+    this.fadeinAnimation = 'on';
+  }
+
+  private leaveFadeAnimation(): void {
+    this.fadeinAnimation = 'off';
   }
 }

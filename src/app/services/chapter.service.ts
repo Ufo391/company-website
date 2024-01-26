@@ -2,6 +2,8 @@ import { ElementRef, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IChapterData } from '../models/IChapterData';
 
+type ChapterChangeType = 'cur' | 'nxt' | 'lst';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -18,11 +20,17 @@ export class ChapterService {
     this.offsetHeight = window.innerHeight * 0.1;
   }
 
-  addChapter(e: ElementRef): void {
+  addChapter(
+    e: ElementRef,
+    startCallback: () => void,
+    leaveCallback: () => void
+  ): void {
     const element: HTMLElement = e.nativeElement;
     const c: IChapterData = {
       element: element.parentElement !== null ? element.parentElement : element,
       title: element.innerText,
+      animationStartCallback: startCallback,
+      animationLeaveCallback: leaveCallback,
     };
     this.chapters.push(c);
     this.chapters.sort((a, b) => a.element.offsetTop - b.element.offsetTop);
@@ -50,25 +58,114 @@ export class ChapterService {
   }
 
   onScrollPositionChanged(w: Window): void {
-    const y: number = w.scrollY + this.offsetHeight;
+    const y: number = w.scrollY;
     const curChapter: IChapterData = this.chapters[this.index];
     const nxtChapter: IChapterData = this.chapters[this.index + 1];
     const lstChapter: IChapterData = this.chapters[this.index - 1];
+
+    const cChangeHeader: ChapterChangeType = this.detectChapterChange(
+      y,
+      curChapter,
+      nxtChapter,
+      lstChapter,
+      this.offsetHeight
+    );
+    const cChangeAnimation: ChapterChangeType = this.detectChapterChange(
+      y,
+      curChapter,
+      nxtChapter,
+      lstChapter,
+      this.offsetHeight + window.innerHeight * 0.33
+    );
+
+    this.changeResultAction(
+      cChangeHeader,
+      this.nxtHeader.bind(this),
+      this.lstHeader.bind(this)
+    );
+
+    this.changeResultAction(
+      cChangeAnimation,
+      () => {
+        nxtChapter?.animationStartCallback();
+        curChapter.animationLeaveCallback();
+      },
+      () => {
+        lstChapter?.animationStartCallback();
+        curChapter.animationLeaveCallback();
+      }
+    );
+  }
+
+  private detectChapterChange(
+    y: number,
+    curC: IChapterData,
+    nxtC: IChapterData,
+    lstC: IChapterData,
+    yOffset: number = 0
+  ): ChapterChangeType {
+    yOffset += y;
     const isCurChapter: boolean =
-      y > curChapter.element.offsetTop && y < nxtChapter?.element.offsetTop;
+      y === 0 ||
+      (yOffset > curC.element.offsetTop && yOffset < nxtC?.element.offsetTop);
 
     if (isCurChapter == false) {
       const isLstChapter: boolean =
-        y < curChapter.element.offsetTop && y > lstChapter?.element.offsetTop;
+        yOffset < curC.element.offsetTop && yOffset > lstC?.element.offsetTop;
       const isNxtChapter: boolean =
-        y > curChapter.element.offsetTop && y > nxtChapter?.element.offsetTop;
-
-      if (isNxtChapter) {
-        this.index += 1;
-      } else if (isLstChapter) {
-        this.index -= 1;
+        yOffset > curC.element.offsetTop && yOffset > nxtC?.element.offsetTop;
+      if (isLstChapter == true) {
+        return 'lst';
+      } else if (isNxtChapter == true) {
+        return 'nxt';
+      } else {
+        throw new Error('Not implemented error!');
       }
-      this.currentChapter$.next(this.chapters[this.index].title);
+    } else {
+      return 'cur';
     }
+  }
+
+  private changeResultAction(
+    cStatus: ChapterChangeType,
+    nxtAction: () => void,
+    lstAction: () => void
+  ): void {
+    switch (cStatus) {
+      case 'cur': {
+        break;
+      }
+      case 'lst': {
+        lstAction();
+        break;
+      }
+      case 'nxt': {
+        nxtAction();
+        break;
+      }
+      default: {
+        throw new Error('Not implemented error!');
+      }
+    }
+  }
+
+  private nxtHeader(): void {
+    this.index += 1;
+    this.currentChapter$.next(this.chapters[this.index].title);
+  }
+
+  private lstHeader(): void {
+    this.index -= 1;
+    this.currentChapter$.next(this.chapters[this.index].title);
+  }
+
+  private nxtAnimation(nxt: IChapterData, cur: IChapterData): void {
+    nxt.animationStartCallback();
+    cur.animationLeaveCallback();
+  }
+
+  private lstAnimation(lst: IChapterData, cur: IChapterData): void {
+    lst.animationStartCallback();
+    cur.animationLeaveCallback();
   }
 }

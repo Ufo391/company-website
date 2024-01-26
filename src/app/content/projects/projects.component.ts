@@ -30,7 +30,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.chapterService.addChapter(this.myElement);
+    this.chapterService.addChapter(this.myElement, () => {}, () => {});
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.projects.title);
     });

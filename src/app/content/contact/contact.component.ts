@@ -34,7 +34,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit() {
-    this.chapterService.addChapter(this.myElement);
+    this.chapterService.addChapter(this.myElement, () => {}, () => {});
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.contact.title);
     });
