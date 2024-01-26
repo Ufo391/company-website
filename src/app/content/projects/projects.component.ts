@@ -8,17 +8,20 @@ import {
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
+import { opacityAnimation } from '../content.animation';
 
 @UntilDestroy()
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css'],
+  animations: [opacityAnimation],
 })
 export class ProjectsComponent implements OnInit, AfterViewInit {
   @ViewChild('title') myElement!: ElementRef;
   pointer!: number;
-  fadeinAnimationStatus: boolean = false;
+  fadeinContentAnimationStatus: boolean = false;
+  fadeinAnimation = 'off';
 
   constructor(
     private chapterService: ChapterService,
@@ -30,7 +33,11 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.chapterService.addChapter(this.myElement, () => {}, () => {});
+    this.chapterService.addChapter(
+      this.myElement,
+      this.startFadeAnimation.bind(this),
+      this.leaveFadeAnimation.bind(this)
+    );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.projects.title);
     });
@@ -58,9 +65,17 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   }
 
   private fadeinContent(): void {
-    this.fadeinAnimationStatus = true;
+    this.fadeinContentAnimationStatus = true;
     setTimeout(() => {
-      this.fadeinAnimationStatus = false;
+      this.fadeinContentAnimationStatus = false;
     }, 1000);
+  }
+
+  private startFadeAnimation(): void {
+    this.fadeinAnimation = 'on';
+  }
+
+  private leaveFadeAnimation(): void {
+    this.fadeinAnimation = 'off';
   }
 }

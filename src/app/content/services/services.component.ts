@@ -8,7 +8,7 @@ import {
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
-import { opacityAnimation } from './services.animation';
+import { opacityAnimation } from '../content.animation';
 
 @Component({
   selector: 'app-services',

@@ -11,7 +11,7 @@ export class ChapterService {
   private chapters: IChapterData[] = [];
   public currentChapter$!: BehaviorSubject<string>;
   public chapters$!: BehaviorSubject<string[]>;
-  private index: number = 0;
+  private pointer: number = 0;
   private offsetHeight: number = 0;
 
   constructor() {
@@ -42,7 +42,7 @@ export class ChapterService {
     const c: IChapterData = this.chapters.find((c) => c.title === h.innerText)!;
     c.title = value;
     this.chapters$.next(this.chapters.map((c) => c.title));
-    this.currentChapter$.next(this.chapters[this.index].title);
+    this.currentChapter$.next(this.chapters[this.pointer].title);
   }
 
   scrollToChapter(index: number): void {
@@ -59,9 +59,9 @@ export class ChapterService {
 
   onScrollPositionChanged(w: Window): void {
     const y: number = w.scrollY;
-    const curChapter: IChapterData = this.chapters[this.index];
-    const nxtChapter: IChapterData = this.chapters[this.index + 1];
-    const lstChapter: IChapterData = this.chapters[this.index - 1];
+    const curChapter: IChapterData = this.chapters[this.pointer];
+    const nxtChapter: IChapterData = this.chapters[this.pointer + 1];
+    const lstChapter: IChapterData = this.chapters[this.pointer - 1];
 
     const cChangeHeader: ChapterChangeType = this.detectChapterChange(
       y,
@@ -75,7 +75,7 @@ export class ChapterService {
       curChapter,
       nxtChapter,
       lstChapter,
-      this.offsetHeight + window.innerHeight * 0.33
+      this.offsetHeight + window.innerHeight * 0.66
     );
 
     this.changeResultAction(
@@ -87,14 +87,16 @@ export class ChapterService {
     this.changeResultAction(
       cChangeAnimation,
       () => {
-        nxtChapter?.animationStartCallback();
-        curChapter.animationLeaveCallback();
+        nxtChapter.animationStartCallback();
       },
-      () => {
-        lstChapter?.animationStartCallback();
-        curChapter.animationLeaveCallback();
-      }
+      () => {}
     );
+
+    if (cChangeHeader === 'lst' && this.pointer === 0) {
+      this.chapters.forEach((c) => {
+        c.animationLeaveCallback();
+      });
+    }
   }
 
   private detectChapterChange(
@@ -114,10 +116,18 @@ export class ChapterService {
         yOffset < curC.element.offsetTop && yOffset > lstC?.element.offsetTop;
       const isNxtChapter: boolean =
         yOffset > curC.element.offsetTop && yOffset > nxtC?.element.offsetTop;
+      const isLstElement: boolean =
+        curC !== undefined && nxtC === undefined && lstC !== undefined;
+      const isFstElement: boolean =
+        curC !== undefined && nxtC !== undefined && lstC === undefined;
       if (isLstChapter == true) {
         return 'lst';
       } else if (isNxtChapter == true) {
         return 'nxt';
+      } else if (isLstElement == true) {
+        return 'cur';
+      } else if (isFstElement == true) {
+        return 'cur';
       } else {
         throw new Error('Not implemented error!');
       }
@@ -131,6 +141,10 @@ export class ChapterService {
     nxtAction: () => void,
     lstAction: () => void
   ): void {
+    if (cStatus === 'nxt') {
+      nxtAction();
+    }
+
     switch (cStatus) {
       case 'cur': {
         break;
@@ -150,22 +164,15 @@ export class ChapterService {
   }
 
   private nxtHeader(): void {
-    this.index += 1;
-    this.currentChapter$.next(this.chapters[this.index].title);
+    this.pointer =
+      this.pointer >= this.chapters.length - 1
+        ? this.chapters.length - 1
+        : this.pointer + 1;
+    this.currentChapter$.next(this.chapters[this.pointer].title);
   }
 
   private lstHeader(): void {
-    this.index -= 1;
-    this.currentChapter$.next(this.chapters[this.index].title);
-  }
-
-  private nxtAnimation(nxt: IChapterData, cur: IChapterData): void {
-    nxt.animationStartCallback();
-    cur.animationLeaveCallback();
-  }
-
-  private lstAnimation(lst: IChapterData, cur: IChapterData): void {
-    lst.animationStartCallback();
-    cur.animationLeaveCallback();
+    this.pointer = this.pointer <= 0 ? 0 : this.pointer - 1;
+    this.currentChapter$.next(this.chapters[this.pointer].title);
   }
 }

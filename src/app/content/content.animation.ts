@@ -6,7 +6,7 @@ import {
   trigger,
 } from '@angular/animations';
 
-export const opacityHeaderInMs: number = 750;
+export const opacityHeaderInMs: number = 1000;
 
 export const opacityAnimation = trigger('opacityAnimation', [
   state(

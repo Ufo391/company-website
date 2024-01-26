@@ -1,4 +1,8 @@
-<div class="mb-5" *ngIf="(lService.MasterData$ | async)?.contact as c">
+<div
+  class="mb-5"
+  *ngIf="(lService.MasterData$ | async)?.contact as c"
+  [@opacityAnimation]="fadeinAnimation"
+>
   <p-panel id="scrollToElement">
     <ng-template pTemplate="header"
       ><div class="w-12">

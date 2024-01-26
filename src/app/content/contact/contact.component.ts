@@ -9,12 +9,13 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { IMessage } from 'src/app/models/IMessage';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
+import { opacityAnimation } from '../content.animation';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
-  animations: [],
+  animations: [opacityAnimation],
 })
 @UntilDestroy()
 export class ContactComponent implements OnInit, AfterViewInit {
@@ -25,6 +26,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
   lastInputName?: string;
   lastInputSubject?: string;
   lastInputMessage?: string;
+  fadeinAnimation = 'off';
 
   constructor(
     private chapterService: ChapterService,
@@ -34,7 +36,11 @@ export class ContactComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit() {
-    this.chapterService.addChapter(this.myElement, () => {}, () => {});
+    this.chapterService.addChapter(
+      this.myElement,
+      this.startFadeAnimation.bind(this),
+      this.leaveFadeAnimation.bind(this)
+    );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.contact.title);
     });
@@ -62,8 +68,18 @@ export class ContactComponent implements OnInit, AfterViewInit {
       this.lService.MasterData$.value.contact.values.find(
         (c) => c.type === 'location'
       )?.value.value!;
-    const mapsLink = `https://www.google.com/maps?q=${encodeURIComponent(location)}`;
+    const mapsLink = `https://www.google.com/maps?q=${encodeURIComponent(
+      location
+    )}`;
 
     window.location.href = mapsLink;
+  }
+
+  private startFadeAnimation(): void {
+    this.fadeinAnimation = 'on';
+  }
+
+  private leaveFadeAnimation(): void {
+    this.fadeinAnimation = 'off';
   }
 }

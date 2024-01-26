@@ -1,11 +1,11 @@
-<div *ngIf="(lService.MasterData$ | async)?.projects as p">
+<div *ngIf="(lService.MasterData$ | async)?.projects as p" [@opacityAnimation]="fadeinAnimation">
   <p-card [style]="{ background: '#F7F7F7' }">
     <ng-template pTemplate="header">
       <div class="p-3 flex flex-column">
         <h2 #title>{{ p.title }}</h2>
         <div
           class="animation-duration-1000 animation-iteration-1"
-          [ngClass]="{ fadein: fadeinAnimationStatus }"
+          [ngClass]="{ fadein: fadeinContentAnimationStatus }"
         >
           <p class="text-left font-bold p-0 m-0">
             {{ p.values[pointer].content.title }}
@@ -37,7 +37,7 @@
     </ng-template>
     <div
       class="animation-duration-1000 animation-iteration-1"
-      [ngClass]="{ fadein: fadeinAnimationStatus }"
+      [ngClass]="{ fadein: fadeinContentAnimationStatus }"
     >
       <p-scrollPanel [style]="{ width: '100%', height: '40vh' }">
         <p class="text-justify">{{ p.values[pointer].content.value }}</p>
@@ -46,21 +46,21 @@
     <ng-template pTemplate="footer">
       <div
         class="animation-duration-1000 animation-iteration-1"
-        [ngClass]="{ fadein: fadeinAnimationStatus }"
+        [ngClass]="{ fadein: fadeinContentAnimationStatus }"
       >
         <div class="flex justify-content-end flex-wrap card-container">
           <p-button
             icon="pi pi-angle-left"
             styleClass="p-button-text"
             (click)="clickLastItemHandler()"
-            [disabled]="fadeinAnimationStatus"
+            [disabled]="fadeinContentAnimationStatus"
           ></p-button>
           <p-button
             icon="pi pi-angle-right"
             class="ml-1"
             styleClass="p-button-text"
             (click)="clickNextItemHandler()"
-            [disabled]="fadeinAnimationStatus"
+            [disabled]="fadeinContentAnimationStatus"
           ></p-button>
         </div>
       </div>
