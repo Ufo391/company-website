@@ -89,7 +89,7 @@ export class MasterDataService {
         duration: 'Monate',
       },
       footer: {
-        copyright: `©${this.currentYear} ${this.companyName}. Alle Rechte vorbehalten.`,
+        copyright: `©${this.currentYear} ${this.companyName}.`,
         imprint: 'Impressum',
         privacy: 'Datenschutz',
       },
@@ -115,6 +115,7 @@ export class MasterDataService {
         header: this.companyName,
         imprint: 'Impressum',
         privacy: 'Datenschutz',
+        langauge: 'Deutsch'
       },
     });
   }
@@ -183,7 +184,7 @@ export class MasterDataService {
         duration: 'Months',
       },
       footer: {
-        copyright: `©${this.currentYear} ${this.companyName}. All rights reserved.`,
+        copyright: `©${this.currentYear} ${this.companyName}.`,
         imprint: 'Imprint',
         privacy: 'Privacy',
       },
@@ -209,6 +210,7 @@ export class MasterDataService {
         header: this.companyName,
         imprint: 'Imprint',
         privacy: 'Privacy',
+        langauge: 'English'
       },
     });
   }
@@ -277,7 +279,7 @@ export class MasterDataService {
         duration: 'Miesiące',
       },
       footer: {
-        copyright: `©${this.currentYear} ${this.companyName}. Wszelkie prawa zastrzeżone.`,
+        copyright: `©${this.currentYear} ${this.companyName}.`,
         imprint: 'Impressum',
         privacy: 'Ochrona danych',
       },
@@ -303,6 +305,7 @@ export class MasterDataService {
         header: this.companyName,
         imprint: 'Impressum',
         privacy: 'Ochrona danych',
+        langauge: 'Polski'
       },
     });
   }

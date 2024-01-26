@@ -13,12 +13,13 @@ import { delayHeaderInMs, opacityAnimation } from './header.animations';
 })
 @UntilDestroy()
 export class HeaderComponent {
-  navbarfixed: boolean = false;
-  sidebarVisible: boolean = false;
-  animationStatus = 'off';
-  iconSize: string = '1.5rem';
-  flagSize: string = '2rem';
-  logoSize: string = '2.5rem';
+  public navbarfixed: boolean = false;
+  public sidebarVisible: boolean = false;
+  public animationStatus = 'off';
+  public iconSize: string = '1.5rem';
+  public flagSize: string = '1rem';
+  public logoSize: string = '2.5rem';
+  private languagePointer: number = 0;
 
   constructor(
     public chapterService: ChapterService,
@@ -47,8 +48,11 @@ export class HeaderComponent {
     this.sidebarVisible = false;
   }
 
-  changeLanguage(code: LanguageCode): void {
-    this.lService.changeLanguage(code);
+  changeLanguage(): void {
+    const lCodes: LanguageCode[] = this.lService.LanguageCodes;
+    const increment: number = this.languagePointer + 1;
+    this.languagePointer = increment === lCodes.length ? 0 : increment;
+    this.lService.changeLanguage(lCodes[this.languagePointer]);
   }
 
   @HostListener('window:scroll', ['$event']) onscroll() {

@@ -23,6 +23,10 @@ export class LanguageService {
     }
   }
 
+  public get LanguageCodes(): LanguageCode[] {
+    return Array.from(this.masterDataService.Content.companyData.keys());
+  }
+
   public get MasterData$(): BehaviorSubject<ICompany> {
     return this._masterData$;
   }

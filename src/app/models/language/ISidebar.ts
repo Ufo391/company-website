@@ -3,4 +3,5 @@ export interface ISidebar{
   privacy: string;
   imprint: string
   copyright: string;
+  langauge: string;
 }
