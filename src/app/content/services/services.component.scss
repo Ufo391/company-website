@@ -1,0 +1,12 @@
+.image-container {
+  width: 100%;
+  height: 30vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.cropped-image {
+  object-fit: cover;
+  filter: blur(1px) grayscale(1) brightness(125%);
+  opacity: 50%;
+}
