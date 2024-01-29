@@ -99,14 +99,17 @@ export class MasterDataService {
           {
             type: 'phone',
             value: { title: 'Mobil:', value: this.phone },
+            description: 'Anrufen',
           },
           {
             type: 'mail',
             value: { title: 'E-Mail:', value: this.mail },
+            description: 'Mailen',
           },
           {
             type: 'location',
             value: { title: 'Ort:', value: this.location },
+            description: 'Zeigen',
           },
         ],
       },
@@ -115,7 +118,7 @@ export class MasterDataService {
         header: this.companyName,
         imprint: 'Impressum',
         privacy: 'Datenschutz',
-        langauge: 'Deutsch'
+        langauge: 'Deutsch',
       },
     });
   }
@@ -194,14 +197,17 @@ export class MasterDataService {
           {
             type: 'phone',
             value: { title: 'Mobile:', value: this.phone },
+            description: 'Call'
           },
           {
             type: 'mail',
             value: { title: 'E-Mail:', value: this.mail },
+            description: 'Mail'
           },
           {
             type: 'location',
             value: { title: 'Location:', value: this.location },
+            description: 'Visit'
           },
         ],
       },
@@ -210,7 +216,7 @@ export class MasterDataService {
         header: this.companyName,
         imprint: 'Imprint',
         privacy: 'Privacy',
-        langauge: 'English'
+        langauge: 'English',
       },
     });
   }
@@ -289,14 +295,17 @@ export class MasterDataService {
           {
             type: 'phone',
             value: { title: 'Mobilny:', value: this.phone },
+            description: 'Połącz'
           },
           {
             type: 'mail',
             value: { title: 'E-Mail:', value: this.mail },
+            description: 'Mail'
           },
           {
             type: 'location',
             value: { title: 'Lokalizacja:', value: this.location },
+            description: 'Pokaż'
           },
         ],
       },
@@ -305,7 +314,7 @@ export class MasterDataService {
         header: this.companyName,
         imprint: 'Impressum',
         privacy: 'Ochrona danych',
-        langauge: 'Polski'
+        langauge: 'Polski',
       },
     });
   }

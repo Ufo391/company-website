@@ -24,50 +24,47 @@
         <hr />
       </div>
 
-      <div class="flex flex-row align-items-center ml-4">
+      <div class="flex flex-row align-items-center ml-3 mb-3 mt-3">
         <div class="shadow-5 icon-button p-2 w-3">
           <i
             class="pi pi-phone text-2xl mb-1"
             (click)="openDefaultPhoneApp()"
           ></i>
-          <p class="p-0 m-0 text-xs">Anrufen</p>
+          <p class="p-0 m-0 text-xs">{{ c.values[0].description }}</p>
         </div>
         <p-divider layout="vertical"></p-divider>
         <div class="flex flex-column flex-wrap text-left">
-          <p>
+          <p class="text-sm">
             <span class="font-bold">{{ c.values[0].value.title }}</span
             ><br />{{ c.values[0].value.value }}
           </p>
         </div>
       </div>
-      <div class="flex flex-row align-items-center ml-4">
+      <div class="flex flex-row align-items-center ml-3 mb-3">
         <div class="shadow-5 icon-button p-2 w-3">
           <i
             class="pi pi-envelope text-2xl"
             (click)="openDefaultEmailClient()"
           ></i>
-          <p class="p-0 m-0 text-xs">Mailen</p>
+          <p class="p-0 m-0 text-xs">{{ c.values[1].description }}</p>
         </div>
         <p-divider layout="vertical"></p-divider>
         <div class="flex flex-column text-left">
-          <p>
+          <p class="text-sm">
             <span class="font-bold">{{ c.values[1].value.title }}</span
             ><br />{{ c.values[1].value.value }}
           </p>
         </div>
       </div>
       <div class="flex flex-column">
-        <div class="flex flex-row align-items-center ml-4">
+        <div class="flex flex-row align-items-center ml-3 mb-3">
           <div class="shadow-5 icon-button p-2 w-3">
-            <i
-              class="pi pi-map-marker text-2xl"
-              (click)="openGoogleMaps()"
-            ></i>
-            <p class="p-0 m-0 text-xs">Anzeigen</p>
+            <i class="pi pi-map-marker text-2xl" (click)="openGoogleMaps()"></i>
+            <p class="p-0 m-0 text-xs">{{ c.values[2].description }}</p>
           </div>
           <p-divider layout="vertical"></p-divider>
           <div class="flex flex-column text-left">
-            <p>
+            <p class="text-sm">
               <span class="font-bold">{{ c.values[2].value.title }}</span
               ><br />{{ c.values[2].value.value }}
             </p>
