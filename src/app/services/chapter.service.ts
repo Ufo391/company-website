@@ -23,14 +23,14 @@ export class ChapterService {
   addChapter(
     e: ElementRef,
     startCallback: () => void,
-    leaveCallback: () => void
+    resetCallback: () => void
   ): void {
     const element: HTMLElement = e.nativeElement;
     const c: IChapterData = {
       element: element.parentElement !== null ? element.parentElement : element,
       title: element.innerText,
       animationStartCallback: startCallback,
-      animationLeaveCallback: leaveCallback,
+      componentResetCallback: resetCallback,
     };
     this.chapters.push(c);
     this.chapters.sort((a, b) => a.element.offsetTop - b.element.offsetTop);
@@ -94,7 +94,7 @@ export class ChapterService {
 
     if (cChangeHeader === 'lst' && this.pointer === 0) {
       this.chapters.forEach((c) => {
-        c.animationLeaveCallback();
+        c.componentResetCallback();
       });
     }
   }

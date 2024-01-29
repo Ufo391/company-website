@@ -1,4 +1,7 @@
-<div *ngIf="(lService.MasterData$ | async)?.projects as p" [@opacityAnimation]="fadeinAnimation">
+<div
+  *ngIf="(lService.MasterData$ | async)?.projects as p"
+  [@opacityAnimation]="fadeinAnimation"
+>
   <p-card [style]="{ background: '#F7F7F7' }">
     <ng-template pTemplate="header">
       <div class="p-3 flex flex-column">
@@ -52,12 +55,14 @@
           <p-button
             icon="pi pi-angle-left"
             styleClass="p-button-text"
+            [style]="{ color: 'inherit' }"
             (click)="clickLastItemHandler()"
             [disabled]="fadeinContentAnimationStatus"
           ></p-button>
           <p-button
             icon="pi pi-angle-right"
             class="ml-1"
+            [style]="{ color: 'inherit' }"
             styleClass="p-button-text"
             (click)="clickNextItemHandler()"
             [disabled]="fadeinContentAnimationStatus"

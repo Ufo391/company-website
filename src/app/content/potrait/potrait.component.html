@@ -18,17 +18,16 @@
         <p *ngIf="isFoldOut">
           {{ ab.value }}
         </p>
-        <p *ngIf="!isFoldOut" class="gradient-text">
+        <p *ngIf="!isFoldOut" class="gradient-text" (click)="toggleFoldOut()">
           {{ ab.value | slice : 0 : 400
           }}{{ ab.value.length > 400 ? "..." : "" }}
         </p>
       </div>
-      <p-button
-        styleClass="w-12 text-3xl border-0 outline-none opacity-80 zoomin  animation-duration-2000 animation-iteration-infinite"
-        [style]="{ 'background-color': 'transparent', color: '#596970' }"
-        [icon]="foldOutIcon"
-        (onClick)="toggleFoldOut()"
-      ></p-button>
+      <i
+        *ngIf="!isFoldOut"
+        class="pi pi-arrow-down w-12 text-2xl opacity-50 fadeinup animation-duration-1000 animation-iteration-infinite"
+        (click)="toggleFoldOut()"
+      ></i>
     </div>
   </p-card>
 </div>

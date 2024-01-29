@@ -17,7 +17,6 @@ import { LanguageService } from 'src/app/services/language.service';
 @UntilDestroy()
 export class PotraitComponent implements OnInit, AfterViewInit {
   isFoldOut: boolean = false;
-  foldOutIcon: string = 'pi pi-arrow-down';
 
   constructor(
     private chapterService: ChapterService,
@@ -32,7 +31,7 @@ export class PotraitComponent implements OnInit, AfterViewInit {
     this.chapterService.addChapter(
       this.myElement,
       () => {},
-      () => {}
+      this.resetComponent.bind(this)
     );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.aboutMe.title);
@@ -41,6 +40,9 @@ export class PotraitComponent implements OnInit, AfterViewInit {
 
   toggleFoldOut(): void {
     this.isFoldOut = !this.isFoldOut;
-    this.foldOutIcon = this.isFoldOut ? 'pi pi-arrow-up' : 'pi pi-arrow-down';
+  }
+
+  resetComponent(): void {
+    this.isFoldOut = false;
   }
 }
