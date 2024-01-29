@@ -24,11 +24,14 @@
         <hr />
       </div>
 
-      <div class="flex flex-row flex-wrap align-items-center ml-5">
-        <i
-          class="pi pi-phone shadow-5 text-2xl p-2 icon-button"
-          (click)="openDefaultPhoneApp()"
-        ></i>
+      <div class="flex flex-row align-items-center ml-4">
+        <div class="shadow-5 icon-button p-2 w-3">
+          <i
+            class="pi pi-phone text-2xl mb-1"
+            (click)="openDefaultPhoneApp()"
+          ></i>
+          <p class="p-0 m-0 text-xs">Anrufen</p>
+        </div>
         <p-divider layout="vertical"></p-divider>
         <div class="flex flex-column flex-wrap text-left">
           <p>
@@ -37,11 +40,14 @@
           </p>
         </div>
       </div>
-      <div class="flex flex-row align-items-center ml-5">
-        <i
-          class="pi pi-envelope shadow-5 text-2xl p-2 icon-button"
-          (click)="openDefaultEmailClient()"
-        ></i>
+      <div class="flex flex-row align-items-center ml-4">
+        <div class="shadow-5 icon-button p-2 w-3">
+          <i
+            class="pi pi-envelope text-2xl"
+            (click)="openDefaultEmailClient()"
+          ></i>
+          <p class="p-0 m-0 text-xs">Mailen</p>
+        </div>
         <p-divider layout="vertical"></p-divider>
         <div class="flex flex-column text-left">
           <p>
@@ -51,11 +57,14 @@
         </div>
       </div>
       <div class="flex flex-column">
-        <div class="flex flex-row align-items-center ml-5">
-          <i
-            class="pi pi-map-marker shadow-5 text-2xl p-2 icon-button"
-            (click)="openGoogleMaps()"
-          ></i>
+        <div class="flex flex-row align-items-center ml-4">
+          <div class="shadow-5 icon-button p-2 w-3">
+            <i
+              class="pi pi-map-marker text-2xl"
+              (click)="openGoogleMaps()"
+            ></i>
+            <p class="p-0 m-0 text-xs">Anzeigen</p>
+          </div>
           <p-divider layout="vertical"></p-divider>
           <div class="flex flex-column text-left">
             <p>
