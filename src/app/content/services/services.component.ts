@@ -28,6 +28,27 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     { background: '#9fb1c5' },
     { background: '#b2bccd' },
   ];
+  imgUris: string[] = [
+    'assets/ai/services/Expertiese3.jpg',
+    'assets/ai/services/Entwicklung4.jpg',
+
+    'assets/ai/services/Beratung4.jpg',
+  ];
+  imgStyles = [
+    {
+      width: '110%',
+      height: '110%',
+    },
+    {
+      width: '133%',
+      height: '133%',
+    },
+    {
+      width: '115%',
+      height: '115%',
+      transform: 'translate(0%, -5%)'
+    },
+  ];
   isFirstElement: boolean = false;
   isLastElement: boolean = false;
   nxtElementAnimation: boolean = false;
