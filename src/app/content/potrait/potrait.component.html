@@ -13,8 +13,22 @@
         </div>
       </div>
     </ng-template>
-    <p-scrollPanel [style]="{ width: '100%', height: '40vh' }">
-      <p class="text-justify">{{ ab.value }}</p>
-    </p-scrollPanel>
+    <div>
+      <div class="text-justify">
+        <p *ngIf="isFoldOut">
+          {{ ab.value }}
+        </p>
+        <p *ngIf="!isFoldOut" class="gradient-text">
+          {{ ab.value | slice : 0 : 400
+          }}{{ ab.value.length > 400 ? "..." : "" }}
+        </p>
+      </div>
+      <p-button
+        styleClass="w-12 text-3xl border-0 outline-none opacity-80 zoomin  animation-duration-2000 animation-iteration-infinite"
+        [style]="{ 'background-color': 'transparent', color: '#596970' }"
+        [icon]="foldOutIcon"
+        (onClick)="toggleFoldOut()"
+      ></p-button>
+    </div>
   </p-card>
 </div>
