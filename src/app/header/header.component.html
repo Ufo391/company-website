@@ -64,8 +64,11 @@
           <i class="pi pi-file"></i>
           <h3 class="ml-2">{{ md.sidebar.imprint }}</h3>
         </div>
-        <div class="w-12 flex flex-row align-items-center">
-          <div (click)="changeLanguage()">
+        <div
+          class="w-12 flex flex-row align-items-center"
+          (click)="changeLanguage()"
+        >
+          <div>
             <img
               *ngIf="md.langCode === 'de'"
               src="assets/countries/de.svg"

@@ -28,6 +28,11 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     { background: '#9fb1c5' },
     { background: '#b2bccd' },
   ];
+  fontStyles = [
+    { color: 'inherit' },
+    { color: 'white' },
+    { color: 'white' },
+  ];
   imgUris: string[] = [
     'assets/ai/services/Expertiese3.jpg',
     'assets/ai/services/Entwicklung4.jpg',
@@ -68,7 +73,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     this.chapterService.addChapter(
       this.myElement,
       this.startFadeAnimation.bind(this),
-      this.leaveFadeAnimation.bind(this)
+      this.resetComponent.bind(this)
     );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.services.title);
@@ -119,7 +124,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     this.fadeinAnimation = 'on';
   }
 
-  private leaveFadeAnimation(): void {
+  private resetComponent(): void {
     this.fadeinAnimation = 'off';
   }
 }

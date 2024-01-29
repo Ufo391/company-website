@@ -7,17 +7,22 @@
   }"
   *ngIf="(lService.MasterData$ | async)?.services as s"
 >
-  <p-card [style]="currentStyle">
+  <p-card [style]="cardStyles[pointer]">
     <ng-template pTemplate="header">
       <div class="flex flex-column">
-        <h2 #title>{{ s.title }}</h2>
+        <h2 #title [style]="fontStyles[pointer]">{{ s.title }}</h2>
         <div class="image-container">
-          <img alt="Card" class="cropped-image" [src]="imgUris[pointer]" [style]="imgStyles[pointer]" />
+          <img
+            alt="Card"
+            class="cropped-image"
+            [src]="imgUris[pointer]"
+            [style]="imgStyles[pointer]"
+          />
         </div>
       </div>
     </ng-template>
-    <h3>{{ s.values[pointer].title }}</h3>
-    <p>
+    <h3 [style]="fontStyles[pointer]">{{ s.values[pointer].title }}</h3>
+    <p class="text-justify" [style]="fontStyles[pointer]">
       {{ s.values[pointer].value }}
     </p>
     <ng-template pTemplate="footer">
@@ -25,6 +30,7 @@
         <p-button
           icon="pi pi-angle-left"
           styleClass="p-button-text"
+          [style]="fontStyles[pointer]"
           (click)="clickLastItemHandler()"
           [disabled]="nxtElementAnimation || lstElementAnimation"
         ></p-button>
@@ -32,6 +38,7 @@
           icon="pi pi-angle-right"
           class="ml-1 button-color"
           styleClass="p-button-text"
+          [style]="fontStyles[pointer]"
           (click)="clickNextItemHandler()"
           [disabled]="nxtElementAnimation || lstElementAnimation"
         ></p-button>
