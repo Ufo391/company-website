@@ -1,3 +1,6 @@
+$minW: 577px;
+$maxW: 576px;
+
 .menu-button {
   background-color: transparent;
   color: black;
@@ -17,4 +20,28 @@
   position: static;
   transition: 0.5s linear;
   top: -80px;
+}
+
+@media screen and (min-width: $minW) {
+  .company-icon {
+    height: 20vh;
+  }
+}
+
+@media screen and (max-width: $maxW) {
+  .company-icon {
+    height: 10vh;
+  }
+}
+
+@media screen and (min-width: $minW) {
+  .header-h {
+    height: 20vh;
+  }
+}
+
+@media screen and (max-width: $maxW) {
+  .header-h {
+    height: 10vh;
+  }
 }
