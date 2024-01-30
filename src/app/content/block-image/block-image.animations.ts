@@ -15,7 +15,7 @@ export const backgroundScrollAnimation = trigger('backgroundScrollAnimation', [
     'on',
     style({
       opacity: 1,
-      transform: 'translateX(15%) scale(1.35) rotate(-7deg)',
+      transform: 'translateX(15%) scale(1.5) rotate(-7deg)',
     })
   ),
   state(
