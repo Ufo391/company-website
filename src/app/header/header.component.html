@@ -1,21 +1,12 @@
 <div *ngIf="lService.MasterData$ | async as md">
-  <div
-    *ngIf="navbarfixed"
-    style="background-color: white; height: 10vh; width: 100vw"
-  ></div>
+  <div *ngIf="navbarfixed" class="bg-white header-h w-screen"></div>
   <div
     [ngClass]="navbarfixed ? 'fixed w-full' : 'nofixed'"
-    style="background-color: white; height: 10vh; opacity: 92%"
+    class="bg-white header-h opacity-90"
     (scroll)="onscroll()"
   >
     <div class="flex justify-content-between align-items-center">
-      <img
-        class="max-h-full"
-        src="assets/logo.png"
-        alt="Firmenlogo"
-        style="width: 10vh; height: 10vh; padding: 1rem"
-        loading="eager"
-      />
+      <img class="p-3 company-icon" src="assets/logo.png" loading="eager" />
       <h2 [@opacityAnimation]="animationStatus" style="color: #596970">
         {{ chapterService.currentChapter$ | async }}
       </h2>
@@ -29,7 +20,12 @@
       ></button>
     </div>
   </div>
-  <p-sidebar class="z-1" [(visible)]="sidebarVisible" position="right">
+  <p-sidebar
+    class="z-1"
+    styleClass="w-9"
+    [(visible)]="sidebarVisible"
+    position="right"
+  >
     <ng-template pTemplate="header">
       <div class="w-11 align-items-center flex flex-row justify-content-start">
         <img
@@ -47,27 +43,29 @@
     </ng-template>
     <ng-template pTemplate="content">
       <hr />
-      <ng-container *ngFor="let c of chapterService.chapters$ | async">
-        <div
-          class="w-12 flex flex-row align-items-center"
-          style="color: #596970"
-        >
-          <i class="pi pi-bookmark"></i>
-          <h3 (click)="changeCurrentChapter($event)" class="ml-2">{{ c }}</h3>
-        </div>
-      </ng-container>
+      <div class="md:flex md:flex-wrap">
+        <ng-container *ngFor="let c of chapterService.chapters$ | async">
+          <div
+            class="md:w-6 sm:w-12 flex flex-row align-items-center"
+            style="color: #596970"
+          >
+            <i class="pi pi-bookmark"></i>
+            <h3 (click)="changeCurrentChapter($event)" class="ml-2">{{ c }}</h3>
+          </div>
+        </ng-container>
+      </div>
       <hr />
-      <div style="color: #596970">
-        <div class="w-12 flex flex-row align-items-center">
+      <div class="md:flex md:flex-wrap" style="color: #596970">
+        <div class="md:w-6 sm:w-12 flex flex-row align-items-center">
           <i class="pi pi-lock"></i>
           <h3 class="ml-2">{{ md.sidebar.privacy }}</h3>
         </div>
-        <div class="w-12 flex flex-row align-items-center">
+        <div class="md:w-6 sm:w-12 flex flex-row align-items-center">
           <i class="pi pi-file"></i>
           <h3 class="ml-2">{{ md.sidebar.imprint }}</h3>
         </div>
         <div
-          class="w-12 flex flex-row align-items-center"
+          class="md:w-6 sm:w-12 flex flex-row align-items-center"
           (click)="changeLanguage()"
         >
           <div>

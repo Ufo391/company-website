@@ -1,10 +1,10 @@
 <div *ngIf="lService.MasterData$ | async as md">
-  <div class="image-container">
+  <div class="image-container image-container-h">
     <div
-      class="overlay-text"
+      class="overlay-text overlay-text-size"
       [@headlineScrollAnimation]="animationStatusHeadline"
     >
-      <p class="font-bold text-xl">
+      <p class="font-bold">
         {{ md.bannerTitle }}
       </p>
       <p>

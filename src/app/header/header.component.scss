@@ -1,3 +1,12 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+@import "primeflex/primeflex.css";
+
+$minW: 577px;
+$maxW: 576px;
+$maxH: 100px;
+
 .menu-button {
   background-color: transparent;
   color: black;
@@ -17,4 +26,34 @@
   position: static;
   transition: 0.5s linear;
   top: -80px;
+}
+
+@media screen and (min-width: $minW) {
+  .company-icon {
+    width: 10vw;
+    max-height: $maxH;
+    max-width: $maxH;
+  }
+}
+
+@media screen and (max-width: $maxW) {
+  .company-icon {
+    width: 20vw;
+    max-height: $maxH;
+    max-width: $maxH;
+  }
+}
+
+@media screen and (min-width: $minW) {
+  .header-h {
+    height: 20vh;
+    max-height: $maxH;
+  }
+}
+
+@media screen and (max-width: $maxW) {
+  .header-h {
+    height: 10vh;
+    max-height: $maxH;
+  }
 }

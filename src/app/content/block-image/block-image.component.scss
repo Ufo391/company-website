@@ -1,8 +1,22 @@
+$minW: 577px;
+$maxW: 576px;
+
 .image-container {
   width: 100vw;
-  height: 30vh;
   overflow: hidden;
   position: relative;
+}
+
+@media screen and (min-width: $minW) {
+  .image-container-h {
+    height: 80vh;
+  }
+}
+
+@media screen and (max-width: $maxW) {
+  .image-container-h {
+    height: 30vh;
+  }
 }
 
 .cropped-image {
@@ -18,3 +32,16 @@
   transform: translate(-0%, -50%);
   z-index: 1;
 }
+
+@media screen and (min-width:  $minW) {
+  .overlay-text-size {
+    font-size: 3vw;
+  }
+}
+
+@media screen and (max-width:  $maxW) {
+  .overlay-text-size {
+    font-size: 120%;
+  }
+}
+
