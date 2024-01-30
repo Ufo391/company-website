@@ -14,7 +14,7 @@
       </div>
     </ng-template>
     <div>
-      <div class="text-justify">
+      <div class="text-left">
         <p *ngIf="isFoldOut">
           {{ ab.value }}
         </p>
@@ -25,7 +25,7 @@
       </div>
       <i
         *ngIf="!isFoldOut"
-        class="pi pi-arrow-down w-12 text-2xl opacity-50 fadeinup animation-duration-1000 animation-iteration-infinite"
+        class="pi pi-arrow-down w-12  opacity-50 fadeinup animation-duration-1000 animation-iteration-infinite"
         (click)="toggleFoldOut()"
       ></i>
     </div>

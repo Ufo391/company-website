@@ -92,7 +92,7 @@ export class ChapterService {
       () => {}
     );
 
-    if (cChangeHeader === 'lst' && this.pointer === 0) {
+    if (y <= 0) {
       this.chapters.forEach((c) => {
         c.componentResetCallback();
       });
