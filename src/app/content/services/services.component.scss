@@ -1,6 +1,8 @@
+$minW: 577px;
+$maxW: 576px;
+
 .image-container {
   width: 100%;
-  height: 30vh;
   overflow: hidden;
   position: relative;
 }
@@ -9,4 +11,16 @@
   object-fit: cover;
   filter: blur(1px) grayscale(1) brightness(125%);
   opacity: 50%;
+}
+
+@media screen and  (min-width: $minW) {
+  .image-container-h{
+    height: 60vh;
+  }
+}
+
+@media screen and  (max-width: $maxW) {
+  .image-container-h{
+    height: 30vh;
+  }
 }

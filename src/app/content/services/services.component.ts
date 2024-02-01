@@ -8,6 +8,7 @@ import {
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
+import { ViewportService } from 'src/app/services/viewport.service';
 import { opacityAnimation } from '../content.animation';
 
 @Component({
@@ -28,11 +29,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     { background: '#9fb1c5' },
     { background: '#b2bccd' },
   ];
-  fontStyles = [
-    { color: 'inherit' },
-    { color: 'white' },
-    { color: 'white' },
-  ];
+  fontStyles = [{ color: 'inherit' }, { color: 'white' }, { color: 'white' }];
   imgUris: string[] = [
     'assets/ai/services/Expertiese3.jpg',
     'assets/ai/services/Entwicklung4.jpg',
@@ -51,7 +48,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     {
       width: '115%',
       height: '115%',
-      transform: 'translate(0%, -5%)'
+      transform: 'translate(0%, -5%)',
     },
   ];
   isFirstElement: boolean = false;
@@ -62,7 +59,8 @@ export class ServicesComponent implements OnInit, AfterViewInit {
 
   constructor(
     private chapterService: ChapterService,
-    public lService: LanguageService
+    public lService: LanguageService,
+    public vpService: ViewportService
   ) {}
 
   ngOnInit() {
