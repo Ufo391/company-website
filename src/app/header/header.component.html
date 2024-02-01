@@ -43,10 +43,10 @@
     </ng-template>
     <ng-template pTemplate="content">
       <hr />
-      <div class="md:flex md:flex-wrap">
+      <div class="sm:flex sm:flex-wrap">
         <ng-container *ngFor="let c of chapterService.chapters$ | async">
           <div
-            class="md:w-6 sm:w-12 flex flex-row align-items-center"
+            class="sm:w-6 w-12 flex flex-row align-items-center"
             style="color: #596970"
           >
             <i class="pi pi-bookmark"></i>
@@ -55,17 +55,17 @@
         </ng-container>
       </div>
       <hr />
-      <div class="md:flex md:flex-wrap" style="color: #596970">
-        <div class="md:w-6 sm:w-12 flex flex-row align-items-center">
+      <div class="sm:flex sm:flex-wrap" style="color: #596970">
+        <div class="sm:w-6 w-12 flex flex-row align-items-center">
           <i class="pi pi-lock"></i>
           <h3 class="ml-2">{{ md.sidebar.privacy }}</h3>
         </div>
-        <div class="md:w-6 sm:w-12 flex flex-row align-items-center">
+        <div class="sm:w-6 w-12 flex flex-row align-items-center">
           <i class="pi pi-file"></i>
           <h3 class="ml-2">{{ md.sidebar.imprint }}</h3>
         </div>
         <div
-          class="md:w-6 sm:w-12 flex flex-row align-items-center"
+          class="sm:w-6 w-12 flex flex-row align-items-center"
           (click)="changeLanguage()"
         >
           <div>
