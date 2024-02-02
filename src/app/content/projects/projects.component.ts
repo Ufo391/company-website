@@ -9,6 +9,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { opacityAnimation } from '../content.animation';
+import { ViewportService } from 'src/app/services/viewport.service';
 
 @UntilDestroy()
 @Component({
@@ -25,7 +26,8 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 
   constructor(
     private chapterService: ChapterService,
-    public lService: LanguageService
+    public lService: LanguageService,
+    public vpService: ViewportService
   ) {}
 
   ngOnInit() {
@@ -68,7 +70,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     this.fadeinContentAnimationStatus = true;
     setTimeout(() => {
       this.fadeinContentAnimationStatus = false;
-    }, 1000);
+    }, 500);
   }
 
   private startFadeAnimation(): void {
