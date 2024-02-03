@@ -1,3 +1,16 @@
-.icon-button{
+.i-btn-bg{
   background-color: #E0EBF0;
+
+}
+
+@media screen and (min-width: 577px) {
+  .i-btn-h{
+    width: 30vh
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .i-btn-h{
+    width: 12vh
+  }
 }

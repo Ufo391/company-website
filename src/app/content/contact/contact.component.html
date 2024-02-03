@@ -10,65 +10,70 @@
       </div>
     </ng-template>
     <ng-template pTemplate="content">
-      <div class="surface-section text-700 text-center mt-5">
-        <div class="text-blue-600 font-bold mb-3">
-          <i class="pi pi-users">&#160;POWERED BY DISCORD </i>
-        </div>
-        <p class="text-900 font-bold text-5xl mb-3 p-0">
-          Join Our Design Community
-        </p>
-        <div class="text-700 text-2xl mb-5">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-          numquam eligendi quos.
-        </div>
-        <hr />
-      </div>
-
-      <div class="flex justify-content-center">
-        <div class="">
-          <div class="flex flex-row align-items-center mb-3 mt-3">
-            <div class="shadow-5 icon-button p-2 w-3">
-              <i
-                class="pi pi-phone text-2xl mb-1"
-                (click)="openDefaultPhoneApp()"
-              ></i>
-              <p class="p-0 m-0 text-xs">{{ c.values[0].description }}</p>
-            </div>
-            <div class="flex flex-column flex-wrap text-left w-9 ml-4">
-              <p class="text-sm">
-                <span class="font-bold">{{ c.values[0].value.title }}</span
-                ><br />{{ c.values[0].value.value }}
-              </p>
-            </div>
+      <div class="sm:flex sm:flex-row">
+        <div class="surface-section text-700 text-center mt-5">
+          <div class="text-blue-600 font-bold mb-3">
+            <i class="pi pi-users">&#160;POWERED BY DISCORD </i>
           </div>
-          <div class="flex flex-row align-items-center mb-3">
-            <div class="shadow-5 icon-button p-2 w-3">
-              <i
-                class="pi pi-envelope text-2xl"
-                (click)="openDefaultEmailClient()"
-              ></i>
-              <p class="p-0 m-0 text-xs">{{ c.values[1].description }}</p>
-            </div>
-            <div class="flex flex-column text-left w-9 ml-5">
-              <p class="text-sm">
-                <span class="font-bold">{{ c.values[1].value.title }}</span
-                ><br />{{ c.values[1].value.value }}
-              </p>
-            </div>
+          <p class="text-900 font-bold text-5xl mb-3 p-0">
+            Join Our Design Community
+          </p>
+          <div class="text-700 text-2xl mb-5">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
+            numquam eligendi quos.
           </div>
-          <div class="flex flex-row align-items-center mb-3">
-            <div class="shadow-5 icon-button p-2 w-3">
-              <i
-                class="pi pi-map-marker text-2xl"
-                (click)="openGoogleMaps()"
-              ></i>
-              <p class="p-0 m-0 text-xs">{{ c.values[2].description }}</p>
+          <hr *ngIf="vpService.isSmallViewStream | async" />
+        </div>
+        <p-divider
+          *ngIf="!(vpService.isSmallViewStream | async)"
+          layout="vertical"
+        />
+        <div class="flex justify-content-center align-items-center">
+          <div>
+            <div class="flex flex-row align-items-center mb-3 mt-3">
+              <div class="shadow-5 i-btn-bg i-btn-h p-2">
+                <i
+                  class="pi pi-phone text-2xl mb-1"
+                  (click)="openDefaultPhoneApp()"
+                ></i>
+                <p class="p-0 m-0 text-xs">{{ c.values[0].description }}</p>
+              </div>
+              <div class="flex flex-column flex-wrap text-left w-9 ml-3">
+                <p class="text-sm">
+                  <span class="font-bold">{{ c.values[0].value.title }}</span
+                  ><br />{{ c.values[0].value.value }}
+                </p>
+              </div>
             </div>
-            <div class="flex flex-column text-left w-9 ml-4">
-              <p class="text-sm">
-                <span class="font-bold">{{ c.values[2].value.title }}</span
-                ><br />{{ c.values[2].value.value }}
-              </p>
+            <div class="flex flex-row align-items-center mb-3">
+              <div class="shadow-5 i-btn-bg i-btn-h p-2">
+                <i
+                  class="pi pi-envelope text-2xl"
+                  (click)="openDefaultEmailClient()"
+                ></i>
+                <p class="p-0 m-0 text-xs">{{ c.values[1].description }}</p>
+              </div>
+              <div class="flex flex-column text-left w-9 ml-3">
+                <p class="text-sm">
+                  <span class="font-bold">{{ c.values[1].value.title }}</span
+                  ><br />{{ c.values[1].value.value }}
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-row align-items-center mb-3">
+              <div class="shadow-5 i-btn-bg i-btn-h p-2">
+                <i
+                  class="pi pi-map-marker text-2xl"
+                  (click)="openGoogleMaps()"
+                ></i>
+                <p class="p-0 m-0 text-xs">{{ c.values[2].description }}</p>
+              </div>
+              <div class="flex flex-column text-left w-9 ml-3">
+                <p class="text-sm">
+                  <span class="font-bold">{{ c.values[2].value.title }}</span
+                  ><br />{{ c.values[2].value.value }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
