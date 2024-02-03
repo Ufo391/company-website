@@ -19,28 +19,28 @@
           class="animation-duration-500 animation-iteration-1 sm:w-3 w-12"
           [ngClass]="{ fadein: fadeinContentAnimationStatus }"
         >
-          <p class="text-left font-bold p-0 m-0">
+          <p class="text-center font-bold p-0 m-0">
             {{ p.values[pointer].content.title }}
           </p>
           <div class="flex flex-row sm:flex-column justify-content-between">
             <div>
-              <p class="text-left p-0 m-0">{{ p.values[pointer].role }}</p>
-              <p class="text-left p-0 m-0">
+              <p class="text-center p-0 m-0">{{ p.values[pointer].role }}</p>
+              <p class="text-center p-0 m-0">
                 {{ p.values[pointer].industry }}
               </p>
-              <p class="text-left p-0 m-0">
+              <p class="text-center p-0 m-0">
                 {{ p.values[pointer].durationInMonths }} {{ p.duration }}
               </p>
             </div>
-            <p-divider *ngIf="!(vpService.isSmallViewStream | async)" />
+<br *ngIf="!(vpService.isSmallViewStream | async)"/>
             <div>
-              <p class="text-right sm:text-left p-0 m-0">
+              <p class="text-right sm:text-center p-0 m-0">
                 {{ p.values[pointer].techStack[0] }}
               </p>
-              <p class="text-right sm:text-left p-0 m-0">
+              <p class="text-right sm:text-center p-0 m-0">
                 {{ p.values[pointer].techStack[1] }}
               </p>
-              <p class="text-right sm:text-left p-0 m-0">
+              <p class="text-right sm:text-center p-0 m-0">
                 {{ p.values[pointer].techStack[2] }}
               </p>
             </div>
