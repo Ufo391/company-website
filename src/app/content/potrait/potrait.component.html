@@ -1,7 +1,7 @@
 <div class="text-center" *ngIf="(lService.MasterData$ | async)?.aboutMe as ab">
   <p-card [style]="{ background: '#F7F7F7' }">
     <ng-template pTemplate="header">
-      <h2 class="p-3" #title>{{ ab.title }}</h2>
+      <h2 class="p-3 select-none" #title>{{ ab.title }}</h2>
     </ng-template>
     <ng-template pTemplate="content">
       <div

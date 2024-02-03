@@ -5,7 +5,7 @@
 >
   <p-panel id="scrollToElement">
     <ng-template pTemplate="header"
-      ><div class="w-12">
+      ><div class="w-12 select-none">
         <h2 #title class="m-0">{{ c.title }}</h2>
       </div>
     </ng-template>
@@ -31,12 +31,12 @@
         <div class="flex justify-content-center align-items-center">
           <div>
             <div class="flex flex-row align-items-center mb-3 mt-3">
-              <div class="shadow-5 i-btn-bg i-btn-h p-2">
+              <div class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer">
                 <i
                   class="pi pi-phone text-2xl mb-1"
                   (click)="openDefaultPhoneApp()"
                 ></i>
-                <p class="p-0 m-0 text-xs">{{ c.values[0].description }}</p>
+                <p class="p-0 m-0 text-xs select-none">{{ c.values[0].description }}</p>
               </div>
               <div class="flex flex-column flex-wrap text-left w-9 ml-3">
                 <p class="text-sm">
@@ -46,12 +46,12 @@
               </div>
             </div>
             <div class="flex flex-row align-items-center mb-3">
-              <div class="shadow-5 i-btn-bg i-btn-h p-2">
+              <div class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer">
                 <i
                   class="pi pi-envelope text-2xl"
                   (click)="openDefaultEmailClient()"
                 ></i>
-                <p class="p-0 m-0 text-xs">{{ c.values[1].description }}</p>
+                <p class="p-0 m-0 text-xs select-none">{{ c.values[1].description }}</p>
               </div>
               <div class="flex flex-column text-left w-9 ml-3">
                 <p class="text-sm">
@@ -61,9 +61,9 @@
               </div>
             </div>
             <div class="flex flex-row align-items-center mb-3">
-              <div class="shadow-5 i-btn-bg i-btn-h p-2">
+              <div class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer">
                 <i
-                  class="pi pi-map-marker text-2xl"
+                  class="pi pi-map-marker text-2xl select-none"
                   (click)="openGoogleMaps()"
                 ></i>
                 <p class="p-0 m-0 text-xs">{{ c.values[2].description }}</p>
