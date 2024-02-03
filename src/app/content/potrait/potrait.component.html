@@ -5,7 +5,7 @@
     </ng-template>
     <ng-template pTemplate="content">
       <div
-        class="flex flex-column sm:flex-row-reverse mt-3 align-items-center justify-content-between"
+        class="flex flex-column sm:flex-row mt-3 align-items-center justify-content-between"
       >
         <img
           class="picture"
@@ -13,7 +13,8 @@
           alt="Potrait"
           loading="eager"
         />
-        <div class="sm:mt-5 w-12 sm:w-8">
+        <p-divider *ngIf="!(vpService.isSmallViewStream | async)" class="Potrait" layout="vertical"/>
+        <div class=" w-12 sm:w-8">
           <div class="text-justify">
             <p *ngIf="isFoldOut">
               {{ ab.value }}
