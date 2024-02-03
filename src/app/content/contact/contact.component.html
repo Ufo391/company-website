@@ -9,7 +9,7 @@
         <h2 #title class="m-0">{{ c.title }}</h2>
       </div>
     </ng-template>
-    <div>
+    <ng-template pTemplate="content">
       <div class="surface-section text-700 text-center mt-5">
         <div class="text-blue-600 font-bold mb-3">
           <i class="pi pi-users">&#160;POWERED BY DISCORD </i>
@@ -24,53 +24,55 @@
         <hr />
       </div>
 
-      <div class="flex flex-row align-items-center ml-3 mb-3 mt-3">
-        <div class="shadow-5 icon-button p-2 w-3">
-          <i
-            class="pi pi-phone text-2xl mb-1"
-            (click)="openDefaultPhoneApp()"
-          ></i>
-          <p class="p-0 m-0 text-xs">{{ c.values[0].description }}</p>
-        </div>
-        <p-divider layout="vertical"></p-divider>
-        <div class="flex flex-column flex-wrap text-left">
-          <p class="text-sm">
-            <span class="font-bold">{{ c.values[0].value.title }}</span
-            ><br />{{ c.values[0].value.value }}
-          </p>
-        </div>
-      </div>
-      <div class="flex flex-row align-items-center ml-3 mb-3">
-        <div class="shadow-5 icon-button p-2 w-3">
-          <i
-            class="pi pi-envelope text-2xl"
-            (click)="openDefaultEmailClient()"
-          ></i>
-          <p class="p-0 m-0 text-xs">{{ c.values[1].description }}</p>
-        </div>
-        <p-divider layout="vertical"></p-divider>
-        <div class="flex flex-column text-left">
-          <p class="text-sm">
-            <span class="font-bold">{{ c.values[1].value.title }}</span
-            ><br />{{ c.values[1].value.value }}
-          </p>
-        </div>
-      </div>
-      <div class="flex flex-column">
-        <div class="flex flex-row align-items-center ml-3 mb-3">
-          <div class="shadow-5 icon-button p-2 w-3">
-            <i class="pi pi-map-marker text-2xl" (click)="openGoogleMaps()"></i>
-            <p class="p-0 m-0 text-xs">{{ c.values[2].description }}</p>
+      <div class="flex justify-content-center">
+        <div class="">
+          <div class="flex flex-row align-items-center mb-3 mt-3">
+            <div class="shadow-5 icon-button p-2 w-3">
+              <i
+                class="pi pi-phone text-2xl mb-1"
+                (click)="openDefaultPhoneApp()"
+              ></i>
+              <p class="p-0 m-0 text-xs">{{ c.values[0].description }}</p>
+            </div>
+            <div class="flex flex-column flex-wrap text-left w-9 ml-4">
+              <p class="text-sm">
+                <span class="font-bold">{{ c.values[0].value.title }}</span
+                ><br />{{ c.values[0].value.value }}
+              </p>
+            </div>
           </div>
-          <p-divider layout="vertical"></p-divider>
-          <div class="flex flex-column text-left">
-            <p class="text-sm">
-              <span class="font-bold">{{ c.values[2].value.title }}</span
-              ><br />{{ c.values[2].value.value }}
-            </p>
+          <div class="flex flex-row align-items-center mb-3">
+            <div class="shadow-5 icon-button p-2 w-3">
+              <i
+                class="pi pi-envelope text-2xl"
+                (click)="openDefaultEmailClient()"
+              ></i>
+              <p class="p-0 m-0 text-xs">{{ c.values[1].description }}</p>
+            </div>
+            <div class="flex flex-column text-left w-9 ml-5">
+              <p class="text-sm">
+                <span class="font-bold">{{ c.values[1].value.title }}</span
+                ><br />{{ c.values[1].value.value }}
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-row align-items-center mb-3">
+            <div class="shadow-5 icon-button p-2 w-3">
+              <i
+                class="pi pi-map-marker text-2xl"
+                (click)="openGoogleMaps()"
+              ></i>
+              <p class="p-0 m-0 text-xs">{{ c.values[2].description }}</p>
+            </div>
+            <div class="flex flex-column text-left w-9 ml-4">
+              <p class="text-sm">
+                <span class="font-bold">{{ c.values[2].value.title }}</span
+                ><br />{{ c.values[2].value.value }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </ng-template>
   </p-panel>
 </div>
