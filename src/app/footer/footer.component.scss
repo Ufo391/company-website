@@ -1,0 +1,22 @@
+$minW: 577px;
+$maxW: 576px;
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-width: $minW) {
+  .container-h{
+    height: 33vh;
+    max-height: 150px;
+  }
+}
+
+@media screen and (max-width: $maxW) {
+  .container-h{
+    height: 16vh;
+  }
+}
