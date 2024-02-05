@@ -32,7 +32,6 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   imgUris: string[] = [
     'assets/ai/services/Expertiese3.jpg',
     'assets/ai/services/Entwicklung4.jpg',
-
     'assets/ai/services/Beratung4.jpg',
   ];
   imgStyles!: object[];
@@ -55,6 +54,9 @@ export class ServicesComponent implements OnInit, AfterViewInit {
       .subscribe((v) => {
         this.imgStyles = this.switchImageStyle(v);
       });
+    this.imgUris.forEach((u) => {
+      this.preloadImage(u);
+    });
   }
 
   ngAfterViewInit() {
@@ -152,5 +154,10 @@ export class ServicesComponent implements OnInit, AfterViewInit {
         },
       ];
     }
+  }
+
+  private preloadImage(url: string): void {
+    const img = new Image();
+    img.src = url;
   }
 }
