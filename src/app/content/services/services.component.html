@@ -11,7 +11,7 @@
     <ng-template pTemplate="header">
       <div class="sm:flex sm:flex-row sm:w-12">
         <div class="flex flex-column w-12 select-none">
-          <h2 #title [style]="titleStyles[pointer]">{{ s.title }}</h2>
+          <h2 #title class="title-i">{{ s.title }}</h2>
           <div
             *ngIf="vpService.isSmallViewStream | async"
             class="image-container image-container-h"
@@ -30,52 +30,48 @@
     <ng-template pTemplate="content">
       <div class="sm:flex sm:flex-row align-items-center">
         <div
-          class="w-1 justify-content-center"
+          class="justify-content-center mr-5"
           *ngIf="!(vpService.isSmallViewStream | async)"
         >
-          <p-button
-            icon="pi pi-angle-left"
-            styleClass="p-button-text"
-            [style]="fontStyles[pointer]"
+          <i
+            class="pi pi-angle-left text-4xl fadeinright animation-duration-2000 animation-iteration-infinite"
             (click)="clickLastItemHandler()"
-            [disabled]="nxtElementAnimation || lstElementAnimation"
-          ></p-button>
+          ></i>
         </div>
-        <div
-          *ngIf="!(vpService.isSmallViewStream | async)"
-          class="image-container image-container-h border-round"
-        >
-          <img
-            alt="Card"
-            class="cropped-image"
-            [src]="imgUris[pointer]"
-            [style]="imgStyles[pointer]"
-            loading="eager"
+        <div class="sm:flex sm:flex-row sm:align-items-center">
+          <div
+            *ngIf="!(vpService.isSmallViewStream | async)"
+            class="image-container image-container-h border-round sm:w-4"
+          >
+            <img
+              class="cropped-image"
+              [src]="imgUris[pointer]"
+              [style]="imgStyles[pointer]"
+              loading="eager"
+            />
+          </div>
+          <p-divider
+            *ngIf="!(vpService.isSmallViewStream | async)"
+            layout="vertical"
+            class="sm:w-2"
           />
-        </div>
-        <p-divider
-          *ngIf="!(vpService.isSmallViewStream | async)"
-          layout="vertical"
-        />
-        <div>
-          <p class="text-center sm:text-left font-bold text-2xl m-0" [style]="fontStyles[pointer]">
-            {{ s.values[pointer].title }}
-          </p>
-          <p class="text-justify" [style]="fontStyles[pointer]">
-            {{ s.values[pointer].value }}
-          </p>
+          <div class="sm:w-6">
+            <p class="text-center sm:text-left font-bold text-2xl m-0">
+              {{ s.values[pointer].title }}
+            </p>
+            <p class="text-justify">
+              {{ s.values[pointer].value }}
+            </p>
+          </div>
         </div>
         <div
-          class="w-1 justify-content-center"
+          class="justify-content-center ml-5"
           *ngIf="!(vpService.isSmallViewStream | async)"
         >
-          <p-button
-            icon="pi pi-angle-right"
-            styleClass="p-button-text"
-            [style]="fontStyles[pointer]"
+          <i
+            class="pi pi-angle-right text-4xl fadeinleft animation-duration-2000 animation-iteration-infinite"
             (click)="clickNextItemHandler()"
-            [disabled]="nxtElementAnimation || lstElementAnimation"
-          ></p-button>
+          ></i>
         </div>
       </div>
     </ng-template>
@@ -86,16 +82,14 @@
       >
         <p-button
           icon="pi pi-angle-left"
-          styleClass="p-button-text"
-          [style]="fontStyles[pointer]"
+          styleClass="p-button-text text-gray-900"
           (click)="clickLastItemHandler()"
           [disabled]="nxtElementAnimation || lstElementAnimation"
         ></p-button>
         <p-button
           icon="pi pi-angle-right"
           class="ml-1"
-          styleClass="p-button-text"
-          [style]="fontStyles[pointer]"
+          styleClass="p-button-text text-gray-900"
           (click)="clickNextItemHandler()"
           [disabled]="nxtElementAnimation || lstElementAnimation"
         ></p-button>

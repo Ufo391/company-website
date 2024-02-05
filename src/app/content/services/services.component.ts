@@ -29,34 +29,13 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     { background: '#9fb1c5' },
     { background: '#b2bccd' },
   ];
-  fontStyles = [{ color: 'inherit' }, { color: 'white' }, { color: 'white' }];
-  titleStyles = [
-    { color: '#daeaf0', fontSize: '0px' },
-    { color: '#9fb1c5', fontSize: '0px' },
-    { color: '#b2bccd', fontSize: '0px' },
-  ];
   imgUris: string[] = [
     'assets/ai/services/Expertiese3.jpg',
     'assets/ai/services/Entwicklung4.jpg',
 
     'assets/ai/services/Beratung4.jpg',
   ];
-  imgStyles = [
-    {
-      width: '110%',
-      height: '110%',
-      transform: 'translate(-10%, 0%)',
-    },
-    {
-      width: '133%',
-      height: '133%',
-    },
-    {
-      width: '110%',
-      height: '110%',
-      transform: 'translate(0%, -5%)',
-    },
-  ];
+  imgStyles!: object[];
   isFirstElement: boolean = false;
   isLastElement: boolean = false;
   nxtElementAnimation: boolean = false;
@@ -71,6 +50,11 @@ export class ServicesComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.onPointerChanged();
+    this.vpService.isSmallViewStream
+      .pipe(untilDestroyed(this))
+      .subscribe((v) => {
+        this.imgStyles = this.switchImageStyle(v);
+      });
   }
 
   ngAfterViewInit() {
@@ -85,21 +69,25 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   }
 
   clickNextItemHandler(): void {
-    this.pointer = this.pointer + 1;
-    if (this.pointer >= this.cardStyles.length) {
-      this.pointer = 0;
+    if (!(this.nxtElementAnimation || this.lstElementAnimation)) {
+      this.pointer = this.pointer + 1;
+      if (this.pointer >= this.cardStyles.length) {
+        this.pointer = 0;
+      }
+      this.flipNext();
+      this.onPointerChanged();
     }
-    this.flipNext();
-    this.onPointerChanged();
   }
 
   clickLastItemHandler(): void {
-    this.pointer = this.pointer - 1;
-    if (this.pointer < 0) {
-      this.pointer = this.cardStyles.length - 1;
+    if (!(this.nxtElementAnimation || this.lstElementAnimation)) {
+      this.pointer = this.pointer - 1;
+      if (this.pointer < 0) {
+        this.pointer = this.cardStyles.length - 1;
+      }
+      this.flipLast();
+      this.onPointerChanged();
     }
-    this.flipLast();
-    this.onPointerChanged();
   }
 
   private onPointerChanged(): void {
@@ -130,5 +118,39 @@ export class ServicesComponent implements OnInit, AfterViewInit {
 
   private resetComponent(): void {
     this.fadeinAnimation = 'off';
+  }
+
+  private switchImageStyle(isVertical: boolean): object[] {
+    if (isVertical) {
+      return [
+        {
+          width: '100%',
+          height: '100%',
+        },
+        {
+          width: '130%',
+          height: '130%',
+        },
+        {
+          width: '110%',
+          height: '110%',
+        },
+      ];
+    } else {
+      return [
+        {
+          width: '150%',
+          height: '100%',
+        },
+        {
+          width: '150%',
+          height: '110%',
+        },
+        {
+          width: '100%',
+          height: '100%',
+        },
+      ];
+    }
   }
 }

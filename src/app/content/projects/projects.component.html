@@ -52,6 +52,9 @@
           [style]="{ height: '66vh' }"
           layout="vertical"
         />
+        <p-divider
+        *ngIf="(vpService.isSmallViewStream | async)"
+      />
         <div
           class="animation-duration-500 animation-iteration-1 sm:w-6 justify-content-center mt-5 sm:mt-0"
           [ngClass]="{ fadein: fadeinContentAnimationStatus }"

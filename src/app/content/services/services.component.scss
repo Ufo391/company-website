@@ -2,26 +2,37 @@ $minW: 577px;
 $maxW: 576px;
 
 .image-container {
-  width: 100%;
   overflow: hidden;
   position: relative;
 }
 
 .cropped-image {
   object-fit: cover;
-  filter: blur(0px) grayscale(0) brightness(100%);
-  opacity: 100%;
+  //filter: blur(0px) grayscale(0) brightness(100%);
+  //opacity: 100%;
 }
 
-@media screen and  (min-width: $minW) {
-  .image-container-h{
-    height: 50vh;
-
+@media screen and (min-width: $minW) {
+  .image-container-h {
+    height: 66vh;
+    width: 66vh;
   }
 }
 
-@media screen and  (max-width: $maxW) {
-  .image-container-h{
+@media screen and (max-width: $maxW) {
+  .image-container-h {
     height: 33vh;
   }
+}
+
+.title-i {
+  font-size: 0px;
+}
+
+i {
+  color: black;
+}
+
+p {
+  color: black;
 }
