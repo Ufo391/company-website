@@ -9,18 +9,19 @@ $maxW: 576px;
 
 .cropped-image {
   object-fit: cover;
-  filter: blur(1px) grayscale(1) brightness(125%);
-  opacity: 50%;
+  filter: blur(0px) grayscale(0) brightness(100%);
+  opacity: 100%;
 }
 
 @media screen and  (min-width: $minW) {
   .image-container-h{
-    height: 60vh;
+    height: 50vh;
+
   }
 }
 
 @media screen and  (max-width: $maxW) {
   .image-container-h{
-    height: 30vh;
+    height: 33vh;
   }
 }

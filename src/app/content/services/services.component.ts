@@ -30,6 +30,11 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     { background: '#b2bccd' },
   ];
   fontStyles = [{ color: 'inherit' }, { color: 'white' }, { color: 'white' }];
+  titleStyles = [
+    { color: '#daeaf0', fontSize: '0px' },
+    { color: '#9fb1c5', fontSize: '0px' },
+    { color: '#b2bccd', fontSize: '0px' },
+  ];
   imgUris: string[] = [
     'assets/ai/services/Expertiese3.jpg',
     'assets/ai/services/Entwicklung4.jpg',
@@ -40,14 +45,15 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     {
       width: '110%',
       height: '110%',
+      transform: 'translate(-10%, 0%)',
     },
     {
       width: '133%',
       height: '133%',
     },
     {
-      width: '115%',
-      height: '115%',
+      width: '110%',
+      height: '110%',
       transform: 'translate(0%, -5%)',
     },
   ];

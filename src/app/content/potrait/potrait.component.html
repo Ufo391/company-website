@@ -1,20 +1,24 @@
 <div class="text-center" *ngIf="(lService.MasterData$ | async)?.aboutMe as ab">
   <p-card [style]="{ background: '#F7F7F7' }">
-    <ng-template pTemplate="header">
-      <h2 class="p-3 select-none" #title>{{ ab.title }}</h2>
-    </ng-template>
     <ng-template pTemplate="content">
+      <h2 style="color: #f7f7f7; font-size: 0px" #title>
+        {{ ab.title }}
+      </h2>
       <div
         class="flex flex-column sm:flex-row mt-3 align-items-center justify-content-between"
       >
         <img
-          class="picture"
+          class="picture border-round"
           src="assets/potrait.jpg"
           alt="Potrait"
           loading="eager"
         />
-        <p-divider *ngIf="!(vpService.isSmallViewStream | async)" class="Potrait" layout="vertical"/>
-        <div class=" w-12 sm:w-8">
+        <p-divider
+          *ngIf="!(vpService.isSmallViewStream | async)"
+          class="Potrait"
+          layout="vertical"
+        />
+        <div class="mt-5 sm:mt-0 w-12 sm:w-8">
           <div class="text-justify">
             <p *ngIf="isFoldOut">
               {{ ab.value }}

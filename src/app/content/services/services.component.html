@@ -11,8 +11,11 @@
     <ng-template pTemplate="header">
       <div class="sm:flex sm:flex-row sm:w-12">
         <div class="flex flex-column w-12 select-none">
-          <h2 #title [style]="fontStyles[pointer]">{{ s.title }}</h2>
-          <div class="image-container image-container-h">
+          <h2 #title [style]="titleStyles[pointer]">{{ s.title }}</h2>
+          <div
+            *ngIf="vpService.isSmallViewStream | async"
+            class="image-container image-container-h"
+          >
             <img
               alt="Card"
               class="cropped-image"
@@ -25,7 +28,6 @@
       </div>
     </ng-template>
     <ng-template pTemplate="content">
-      <h3 [style]="fontStyles[pointer]">{{ s.values[pointer].title }}</h3>
       <div class="sm:flex sm:flex-row align-items-center">
         <div
           class="w-1 justify-content-center"
@@ -39,9 +41,30 @@
             [disabled]="nxtElementAnimation || lstElementAnimation"
           ></p-button>
         </div>
-        <p class="text-justify sm:w-10" [style]="fontStyles[pointer]">
-          {{ s.values[pointer].value }}
-        </p>
+        <div
+          *ngIf="!(vpService.isSmallViewStream | async)"
+          class="image-container image-container-h border-round"
+        >
+          <img
+            alt="Card"
+            class="cropped-image"
+            [src]="imgUris[pointer]"
+            [style]="imgStyles[pointer]"
+            loading="eager"
+          />
+        </div>
+        <p-divider
+          *ngIf="!(vpService.isSmallViewStream | async)"
+          layout="vertical"
+        />
+        <div>
+          <p class="text-center sm:text-left font-bold text-2xl m-0" [style]="fontStyles[pointer]">
+            {{ s.values[pointer].title }}
+          </p>
+          <p class="text-justify" [style]="fontStyles[pointer]">
+            {{ s.values[pointer].value }}
+          </p>
+        </div>
         <div
           class="w-1 justify-content-center"
           *ngIf="!(vpService.isSmallViewStream | async)"
@@ -58,7 +81,7 @@
     </ng-template>
     <ng-template pTemplate="footer">
       <div
-        *ngIf="(vpService.isSmallViewStream | async)"
+        *ngIf="vpService.isSmallViewStream | async"
         class="flex justify-content-end flex-wrap card-container"
       >
         <p-button
