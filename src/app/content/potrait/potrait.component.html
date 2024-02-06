@@ -14,7 +14,7 @@
           loading="eager"
         />
         <p-divider
-          *ngIf="!(vpService.isSmallViewStream | async)"
+        *ngIf="(vpService.breakPointS | async) !== 'xs'"
           class="Potrait"
           layout="vertical"
         />

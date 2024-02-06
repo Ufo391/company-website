@@ -10,6 +10,7 @@ import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { ViewportService } from 'src/app/services/viewport.service';
 import { opacityAnimation } from '../content.animation';
+import { ViewportModes } from 'src/app/models/ViewportModes';
 
 @Component({
   selector: 'app-services',
@@ -49,10 +50,10 @@ export class ServicesComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.onPointerChanged();
-    this.vpService.isSmallViewStream
+    this.vpService.breakPointS
       .pipe(untilDestroyed(this))
-      .subscribe((v) => {
-        this.imgStyles = this.switchImageStyle(v);
+      .subscribe((m) => {
+        this.imgStyles = this.switchImageStyle(m);
       });
     this.imgUris.forEach((u) => {
       this.preloadImage(u);
@@ -122,8 +123,8 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     this.fadeinAnimation = 'off';
   }
 
-  private switchImageStyle(isVertical: boolean): object[] {
-    if (isVertical) {
+  private switchImageStyle(mode: ViewportModes): object[] {
+    if (mode === 'xs') {
       return [
         {
           width: '100%',
