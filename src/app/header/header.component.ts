@@ -55,6 +55,10 @@ export class HeaderComponent {
     this.lService.changeLanguage(lCodes[this.languagePointer]);
   }
 
+  scrollToStart(): void {
+    this.chapterService.scrollToChapter(0);
+  }
+
   @HostListener('window:scroll', ['$event']) onscroll() {
     let height: number = window.innerHeight * 0.1;
     const lastState: boolean = this.navbarfixed;

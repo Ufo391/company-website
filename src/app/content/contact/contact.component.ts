@@ -74,7 +74,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
       location
     )}`;
 
-    window.location.href = mapsLink;
+    window.open(mapsLink, '_blank');
   }
 
   private startFadeAnimation(): void {

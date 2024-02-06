@@ -6,17 +6,24 @@
     (scroll)="onscroll()"
   >
     <div class="flex justify-content-between align-items-center select-none">
-      <img class="p-3 company-icon" src="assets/logo.png" loading="eager" />
-      <h2 [@opacityAnimation]="animationStatus" style="color: #596970">
+      <img
+        class="p-3 company-icon cursor-pointer"
+        (click)="scrollToStart()"
+        src="assets/logo.png"
+        loading="eager"
+      />
+      <p
+        style="font-size: 1.5rem; font-weight: bold"
+        [@opacityAnimation]="animationStatus"
+      >
         {{ chapterService.currentChapter$ | async }}
-      </h2>
+      </p>
       <button
         pButton
         type="button"
         icon="pi pi-bars"
         class="menu-button mr-3"
         (click)="toggleSidebar()"
-        style="color: #596970"
       ></button>
     </div>
   </div>
@@ -36,7 +43,7 @@
           [style.height]="logoSize"
           loading="eager"
         />
-        <h3 class="text-center w-12 opacity-70" style="color: #596970">
+        <h3 class="text-center w-12 opacity-70">
           {{ md.companyName }}
         </h3>
       </div>
@@ -46,16 +53,20 @@
       <div class="sm:flex sm:flex-wrap">
         <ng-container *ngFor="let c of chapterService.chapters$ | async">
           <div
-            class="sm:w-6 w-12 flex flex-row align-items-center"
-            style="color: #596970"
+            class="sm:w-6 w-12 flex flex-row align-items-center primary-color"
           >
             <i class="pi pi-bookmark cursor-pointer"></i>
-            <h3 (click)="changeCurrentChapter($event)" class="ml-2 cursor-pointer">{{ c }}</h3>
+            <h3
+              (click)="changeCurrentChapter($event)"
+              class="ml-2 cursor-pointer"
+            >
+              {{ c }}
+            </h3>
           </div>
         </ng-container>
       </div>
       <hr />
-      <div class="sm:flex sm:flex-wrap" style="color: #596970">
+      <div class="sm:flex sm:flex-wrap primary-color">
         <div class="sm:w-6 w-12 flex flex-row align-items-center">
           <i class="pi pi-lock cursor-pointer"></i>
           <h3 class="ml-2 cursor-pointer">{{ md.sidebar.privacy }}</h3>
