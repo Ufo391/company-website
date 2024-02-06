@@ -25,7 +25,7 @@
             </p>
             <p
               *ngIf="!isFoldOut"
-              class="gradient-text"
+              class="gradient-text cursor-pointer"
               (click)="toggleFoldOut()"
             >
               {{ ab.value | slice : 0 : 500 }}
@@ -33,7 +33,7 @@
           </div>
           <i
             *ngIf="!isFoldOut"
-            class="pi pi-arrow-down w-12 opacity-50 fadeinup animation-duration-1000 animation-iteration-infinite"
+            class="pi pi-arrow-down cursor-pointer w-12 opacity-50 fadeinup animation-duration-1000 animation-iteration-infinite"
             (click)="toggleFoldOut()"
           ></i>
         </div>

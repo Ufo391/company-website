@@ -10,7 +10,7 @@
       <div class="sm:flex sm:flex-row sm:align-items-center">
         <div class="w-1 pr-8" *ngIf="!(vpService.isSmallViewStream | async)">
           <i
-            class="pi pi-angle-left text-4xl fadeinright animation-duration-2000 animation-iteration-infinite"
+            class="pi pi-angle-left text-4xl cursor-pointer fadeinright animation-duration-2000 animation-iteration-infinite"
             (click)="clickLastItemHandler()"
             *ngIf="!fadeinContentAnimationStatus"
           ></i>
@@ -65,7 +65,7 @@
         </div>
         <div class="w-1 pl-6" *ngIf="!(vpService.isSmallViewStream | async)">
           <i
-            class="pi pi-angle-right text-4xl fadeinleft animation-duration-2000 animation-iteration-infinite"
+            class="pi pi-angle-right text-4xl cursor-pointer fadeinleft animation-duration-2000 animation-iteration-infinite"
             (click)="clickNextItemHandler()"
             *ngIf="!fadeinContentAnimationStatus"
           ></i>
