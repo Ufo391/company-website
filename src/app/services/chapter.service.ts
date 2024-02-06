@@ -14,6 +14,8 @@ export class ChapterService {
   public chapters$!: BehaviorSubject<string[]>;
   private pointer: number = 0;
   private offsetHeight: number = 0;
+  private lastY: number = 0;
+  private scrollInProgress: boolean = false;
 
   constructor(private vpService: ViewportService) {
     this.currentChapter$ = new BehaviorSubject<string>('Kloss IT-Solutions');
@@ -61,6 +63,16 @@ export class ChapterService {
       top: pos,
       behavior: 'smooth',
     });
+
+    if (this.vpService.breakPoint$.value === 'xl') {
+      setTimeout(() => {
+        if (Math.trunc(window.scrollY) === Math.trunc(pos)) {
+          this.scrollInProgress = false;
+        } else {
+          this.scrollToChapter(index);
+        }
+      }, 500);
+    }
   }
 
   onScrollPositionChanged(w: Window): void {
@@ -68,6 +80,19 @@ export class ChapterService {
     const curChapter: IChapterData = this.chapters[this.pointer];
     const nxtChapter: IChapterData = this.chapters[this.pointer + 1];
     const lstChapter: IChapterData = this.chapters[this.pointer - 1];
+
+    if (!this.scrollInProgress && this.vpService.breakPoint$.value === 'xl') {
+      this.scrollInProgress = true;
+      if (y > this.lastY) {
+        if (nxtChapter !== undefined) {
+          this.scrollToChapter(this.pointer + 1);
+        }
+      } else {
+        if (lstChapter !== undefined) {
+          this.scrollToChapter(this.pointer - 1);
+        }
+      }
+    }
 
     const cChangeHeader: ChapterChangeType = this.detectChapterChange(
       y,
@@ -103,6 +128,9 @@ export class ChapterService {
         c.componentResetCallback();
       });
     }
+
+    if (y <= this.chapters[this.chapters.length - 1].element.offsetTop)
+      this.lastY = y;
   }
 
   private detectChapterChange(
