@@ -2,11 +2,9 @@ import { ElementRef, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IChapterData } from '../models/IChapterData';
 import { ViewportService } from './viewport.service';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 type ChapterChangeType = 'cur' | 'nxt' | 'lst';
 
-@UntilDestroy()
 @Injectable({
   providedIn: 'root',
 })
@@ -114,7 +112,12 @@ export class ChapterService {
     lstC: IChapterData,
     yOffset: number = 0
   ): ChapterChangeType {
+    yOffset = Math.abs(yOffset);
     yOffset += y;
+    yOffset +=
+      this.vpService.breakPoint$.value === 'xl'
+        ? window.innerHeight * 0.5
+        : window.innerHeight * 0.33;
     const isCurChapter: boolean =
       y === 0 ||
       (yOffset > curC.element.offsetTop && yOffset < nxtC?.element.offsetTop);
