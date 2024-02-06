@@ -16,6 +16,7 @@ export class ChapterService {
   private offsetHeight: number = 0;
   private lastY: number = 0;
   private scrollInProgress: boolean = false;
+  private scrollProgressTS!: Date;
 
   constructor(private vpService: ViewportService) {
     this.currentChapter$ = new BehaviorSubject<string>('Kloss IT-Solutions');
@@ -81,17 +82,8 @@ export class ChapterService {
     const nxtChapter: IChapterData = this.chapters[this.pointer + 1];
     const lstChapter: IChapterData = this.chapters[this.pointer - 1];
 
-    if (!this.scrollInProgress && this.vpService.breakPoint$.value === 'xl') {
-      this.scrollInProgress = true;
-      if (y > this.lastY) {
-        if (nxtChapter !== undefined) {
-          this.scrollToChapter(this.pointer + 1);
-        }
-      } else {
-        if (lstChapter !== undefined) {
-          this.scrollToChapter(this.pointer - 1);
-        }
-      }
+    if (this.vpService.breakPoint$.value === 'xl') {
+      this.autoscroll(y, nxtChapter, lstChapter);
     }
 
     const cChangeHeader: ChapterChangeType = this.detectChapterChange(
@@ -213,5 +205,25 @@ export class ChapterService {
   private lstHeader(): void {
     this.pointer = this.pointer <= 0 ? 0 : this.pointer - 1;
     this.currentChapter$.next(this.chapters[this.pointer].title);
+  }
+
+  private autoscroll(y: number, nxt: IChapterData, lst: IChapterData): void {
+    if (this.scrollInProgress === true) {
+      const timeDifference =
+        new Date(Date.now()).getTime() - this.scrollProgressTS.getTime();
+      this.scrollInProgress = !(timeDifference >= 5000);
+    } else {
+      this.scrollInProgress = true;
+      this.scrollProgressTS = new Date(Date.now());
+      if (y > this.lastY) {
+        if (nxt !== undefined) {
+          this.scrollToChapter(this.pointer + 1);
+        }
+      } else {
+        if (lst !== undefined) {
+          this.scrollToChapter(this.pointer - 1);
+        }
+      }
+    }
   }
 }
