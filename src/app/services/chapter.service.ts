@@ -1,9 +1,12 @@
 import { ElementRef, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IChapterData } from '../models/IChapterData';
+import { ViewportService } from './viewport.service';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 type ChapterChangeType = 'cur' | 'nxt' | 'lst';
 
+@UntilDestroy()
 @Injectable({
   providedIn: 'root',
 })
@@ -14,10 +17,10 @@ export class ChapterService {
   private pointer: number = 0;
   private offsetHeight: number = 0;
 
-  constructor() {
+  constructor(private vpService: ViewportService) {
     this.currentChapter$ = new BehaviorSubject<string>('Kloss IT-Solutions');
     this.chapters$ = new BehaviorSubject<string[]>([]);
-    this.offsetHeight = window.innerHeight * 0.1;
+    this.offsetHeight = window.innerHeight * -0.1;
   }
 
   addChapter(
@@ -47,10 +50,15 @@ export class ChapterService {
 
   scrollToChapter(index: number): void {
     const c: IChapterData = this.chapters[index];
-    const pos: number =
-      c.element.parentElement !== null
-        ? c.element.parentElement.offsetTop - this.offsetHeight + 3
-        : c.element.offsetTop - this.offsetHeight + 3;
+    const target: HTMLElement = c.element.parentElement
+      ? c.element.parentElement
+      : c.element;
+    let pos: number =
+      index > 0
+        ? target.offsetTop -
+          (window.innerHeight - this.offsetHeight - target.offsetHeight) / 2
+        : 0;
+
     window.scrollTo({
       top: pos,
       behavior: 'smooth',

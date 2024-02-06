@@ -9,11 +9,11 @@
 >
   <p-card [style]="cardStyles[pointer]">
     <ng-template pTemplate="header">
+      <h2 #title class="title-i">{{ s.title }}</h2>
       <div class="sm:flex sm:flex-row sm:w-12">
         <div class="flex flex-column w-12 select-none">
-          <h2 #title class="title-i">{{ s.title }}</h2>
           <div
-          *ngIf="(vpService.breakPoint$ | async) === 'xs'"
+            *ngIf="(vpService.breakPoint$ | async) === 'xs'"
             class="image-container image-container-h"
           >
             <img
@@ -34,13 +34,13 @@
           *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
         >
           <i
-            class="pi pi-angle-left text-4xl cursor-pointer  fadeinright animation-duration-2000 animation-iteration-infinite"
+            class="pi pi-angle-left text-4xl cursor-pointer fadeinright animation-duration-2000 animation-iteration-infinite"
             (click)="clickLastItemHandler()"
           ></i>
         </div>
         <div class="sm:flex sm:flex-row sm:align-items-center">
           <div
-          *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
+            *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
             class="image-container image-container-h border-round sm:w-4"
           >
             <img
@@ -51,7 +51,7 @@
             />
           </div>
           <p-divider
-          *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
+            *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
             layout="vertical"
             class="sm:w-2"
           />
@@ -77,7 +77,7 @@
     </ng-template>
     <ng-template pTemplate="footer">
       <div
-      *ngIf="(vpService.breakPoint$ | async) === 'xs'"
+        *ngIf="(vpService.breakPoint$ | async) === 'xs'"
         class="flex justify-content-end flex-wrap card-container"
       >
         <p-button

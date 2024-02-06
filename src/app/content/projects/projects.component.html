@@ -1,6 +1,7 @@
 <div
   *ngIf="(lService.MasterData$ | async)?.projects as p"
   [@opacityAnimation]="fadeinAnimation"
+  class="text-center"
 >
   <p-card [style]="{ background: '#F7F7F7' }">
     <ng-template pTemplate="header">

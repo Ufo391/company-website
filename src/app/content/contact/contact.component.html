@@ -1,13 +1,11 @@
 <div
-  class="mb-5"
+  class="mb-5 text-center"
   *ngIf="(lService.MasterData$ | async)?.contact as c"
   [@opacityAnimation]="fadeinAnimation"
 >
   <p-panel id="scrollToElement">
-    <ng-template pTemplate="header"
-      ><div class="w-12 select-none">
-        <h2 #title class="m-0 title-i">{{ c.title }}</h2>
-      </div>
+    <ng-template pTemplate="header">
+      <h2 #title class="m-0 title-i">{{ c.title }}</h2>
     </ng-template>
     <ng-template pTemplate="content">
       <div class="sm:flex sm:flex-row">
@@ -25,7 +23,7 @@
           <hr *ngIf="(vpService.breakPoint$ | async) === 'xs'" />
         </div>
         <p-divider
-        *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
+          *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
           layout="vertical"
         />
         <div class="flex justify-content-center align-items-center">
