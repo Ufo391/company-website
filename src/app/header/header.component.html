@@ -16,7 +16,7 @@
         style="font-size: 1.5rem; font-weight: bold"
         [@opacityAnimation]="animationStatus"
       >
-        {{ chapterService.currentChapter$ | async }}
+        {{ chapterService.currentChapter$ | async }} {{vpService.breakPoint$ | async}}
       </p>
       <button
         pButton

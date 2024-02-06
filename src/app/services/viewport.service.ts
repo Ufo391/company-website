@@ -20,7 +20,7 @@ export class ViewportService {
   private lgMatcher: MediaQueryList = matchMedia(this.lg);
   private xlMatcher: MediaQueryList = matchMedia(this.xl);
 
-  public breakPointS!: BehaviorSubject<ViewportModes>; // Contrary to convention, do not append $ to the name --> otherwise always initialises undefined!
+  public breakPoint$!: BehaviorSubject<ViewportModes>;
 
   constructor() {
     this.xsMatcher.onchange = this.onChangeHandler.bind(this);
@@ -28,21 +28,21 @@ export class ViewportService {
     this.mdMatcher.onchange = this.onChangeHandler.bind(this);
     this.lgMatcher.onchange = this.onChangeHandler.bind(this);
     this.xlMatcher.onchange = this.onChangeHandler.bind(this);
-    this.breakPointS = new BehaviorSubject<ViewportModes>(this.initMode());
+    this.breakPoint$ = new BehaviorSubject<ViewportModes>(this.initMode());
   }
 
   public onChangeHandler(e: MediaQueryListEvent): void {
     if (e.matches === true) {
       if (e.media === this.xs) {
-        this.breakPointS.next('xs');
+        this.breakPoint$.next('xs');
       } else if (e.media === this.sm) {
-        this.breakPointS.next('sm');
+        this.breakPoint$.next('sm');
       } else if (e.media === this.md) {
-        this.breakPointS.next('md');
+        this.breakPoint$.next('md');
       } else if (e.media === this.lg) {
-        this.breakPointS.next('lg');
+        this.breakPoint$.next('lg');
       } else if (e.media === this.xl) {
-        this.breakPointS.next('xl');
+        this.breakPoint$.next('xl');
       } else {
         throw new Error('Not implemented!');
       }

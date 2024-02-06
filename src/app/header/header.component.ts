@@ -4,6 +4,7 @@ import { LanguageCode } from '../models/language/ICompany';
 import { ChapterService } from '../services/chapter.service';
 import { LanguageService } from '../services/language.service';
 import { delayHeaderInMs, opacityAnimation } from './header.animations';
+import { ViewportService } from '../services/viewport.service';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,8 @@ export class HeaderComponent {
 
   constructor(
     public chapterService: ChapterService,
-    public lService: LanguageService
+    public lService: LanguageService,
+    public vpService: ViewportService
   ) {
     this.chapterService.currentChapter$
       .pipe(untilDestroyed(this))

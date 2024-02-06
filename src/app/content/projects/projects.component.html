@@ -8,7 +8,7 @@
     </ng-template>
     <ng-template pTemplate="content">
       <div class="sm:flex sm:flex-row sm:align-items-center">
-        <div class="w-1 pr-8" *ngIf="(vpService.breakPointS | async) !== 'xs'">
+        <div class="w-1 pr-8" *ngIf="(vpService.breakPoint$ | async) !== 'xs'">
           <i
             class="pi pi-angle-left text-4xl cursor-pointer fadeinright animation-duration-2000 animation-iteration-infinite"
             (click)="clickLastItemHandler()"
@@ -32,7 +32,7 @@
                 {{ p.values[pointer].durationInMonths }} {{ p.duration }}
               </p>
             </div>
-            <br *ngIf="(vpService.breakPointS | async) !== 'xs'" />
+            <br *ngIf="(vpService.breakPoint$ | async) !== 'xs'" />
             <div>
               <p class="text-right sm:text-center p-0 m-0">
                 {{ p.values[pointer].techStack[0] }}
@@ -47,13 +47,13 @@
           </div>
         </div>
         <p-divider
-          *ngIf="(vpService.breakPointS | async) !== 'xs'"
+          *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
           class="w-1"
           [style]="{ height: '66vh' }"
           layout="vertical"
         />
         <p-divider
-        *ngIf="(vpService.breakPointS | async) === 'xs'"
+        *ngIf="(vpService.breakPoint$ | async) === 'xs'"
       />
         <div
           class="animation-duration-500 animation-iteration-1 sm:w-6 justify-content-center mt-5 sm:mt-0"
@@ -63,7 +63,7 @@
             <p class="text-justify">{{ p.values[pointer].content.value }}</p>
           </p-scrollPanel>
         </div>
-        <div class="w-1 pl-6" *ngIf="(vpService.breakPointS | async) !== 'xs'">
+        <div class="w-1 pl-6" *ngIf="(vpService.breakPoint$ | async) !== 'xs'">
           <i
             class="pi pi-angle-right text-4xl cursor-pointer fadeinleft animation-duration-2000 animation-iteration-infinite"
             (click)="clickNextItemHandler()"
@@ -78,7 +78,7 @@
         [ngClass]="{ fadein: fadeinContentAnimationStatus }"
       >
         <div
-        *ngIf="(vpService.breakPointS | async) === 'xs'"
+        *ngIf="(vpService.breakPoint$ | async) === 'xs'"
           class="flex justify-content-end flex-wrap card-container"
         >
           <p-button

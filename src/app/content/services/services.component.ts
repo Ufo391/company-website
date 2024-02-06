@@ -50,7 +50,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.onPointerChanged();
-    this.vpService.breakPointS
+    this.vpService.breakPoint$
       .pipe(untilDestroyed(this))
       .subscribe((m) => {
         this.imgStyles = this.switchImageStyle(m);

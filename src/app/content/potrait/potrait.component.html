@@ -14,7 +14,7 @@
           loading="eager"
         />
         <p-divider
-        *ngIf="(vpService.breakPointS | async) !== 'xs'"
+        *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
           class="Potrait"
           layout="vertical"
         />

@@ -22,10 +22,10 @@
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
             numquam eligendi quos.
           </div>
-          <hr *ngIf="(vpService.breakPointS | async) === 'xs'" />
+          <hr *ngIf="(vpService.breakPoint$ | async) === 'xs'" />
         </div>
         <p-divider
-        *ngIf="(vpService.breakPointS | async) !== 'xs'"
+        *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
           layout="vertical"
         />
         <div class="flex justify-content-center align-items-center">
