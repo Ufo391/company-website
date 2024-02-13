@@ -30,8 +30,14 @@
           <div>
             <div class="flex flex-row align-items-center mb-3 mt-3">
               <div
-                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer"
+                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer border-white"
+                [ngClass]="{
+                  'opacity-80': hoverOverState == 1,
+                  'border-1': hoverOverState == 1
+                }"
                 (click)="openDefaultPhoneApp()"
+                (mouseenter)="hoverOverHandler(1)"
+                (mouseleave)="hoverOverHandler(0)"
               >
                 <i class="pi pi-phone text-2xl mb-1"></i>
                 <p class="p-0 m-0 text-xs select-none">
@@ -48,8 +54,14 @@
             </div>
             <div class="flex flex-row align-items-center mb-3">
               <div
-                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer"
+                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer border-white"
+                [ngClass]="{
+                  'opacity-80': hoverOverState == 2,
+                  'border-1': hoverOverState == 2
+                }"
                 (click)="openDefaultEmailClient()"
+                (mouseenter)="hoverOverHandler(2)"
+                (mouseleave)="hoverOverHandler(0)"
               >
                 <i class="pi pi-envelope text-2xl"></i>
                 <p class="p-0 m-0 text-xs select-none">
@@ -66,8 +78,14 @@
             </div>
             <div class="flex flex-row align-items-center mb-3">
               <div
-                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer"
+                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer border-white"
+                [ngClass]="{
+                  'opacity-80': hoverOverState == 3,
+                  'border-1': hoverOverState == 3
+                }"
                 (click)="openGoogleMaps()"
+                (mouseenter)="hoverOverHandler(3)"
+                (mouseleave)="hoverOverHandler(0)"
               >
                 <i class="pi pi-map-marker text-2xl select-none"></i>
                 <p class="p-0 m-0 text-xs">{{ c.values[2].description }}</p>

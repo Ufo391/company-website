@@ -28,6 +28,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
   lastInputSubject?: string;
   lastInputMessage?: string;
   fadeinAnimation = 'off';
+  hoverOverState: number = 0;
 
   constructor(
     private chapterService: ChapterService,
@@ -75,6 +76,10 @@ export class ContactComponent implements OnInit, AfterViewInit {
     )}`;
 
     window.open(mapsLink, '_blank');
+  }
+
+  hoverOverHandler(id: number): void {
+    this.hoverOverState = id;
   }
 
   private startFadeAnimation(): void {
