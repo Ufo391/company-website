@@ -13,15 +13,15 @@ export class ChapterService {
   public currentChapter$!: BehaviorSubject<string>;
   public chapters$!: BehaviorSubject<string[]>;
   private pointer: number = 0;
+  private pointerAutoscroll: number = 0;
   private offsetHeight: number = 0;
-  private lastY: number = 0;
-  private scrollInProgress: boolean = false;
-  private scrollProgressTS!: Date;
+  private skipScrollTimeoutId!: any;
 
   constructor(private vpService: ViewportService) {
     this.currentChapter$ = new BehaviorSubject<string>('Kloss IT-Solutions');
     this.chapters$ = new BehaviorSubject<string[]>([]);
     this.offsetHeight = window.innerHeight * -0.1;
+    this.addEventListener();
   }
 
   addChapter(
@@ -50,6 +50,9 @@ export class ChapterService {
   }
 
   scrollToChapter(index: number): void {
+    if(this.skipScrollTimeoutId !== undefined){
+      clearTimeout(this.skipScrollTimeoutId);
+    }
     const c: IChapterData = this.chapters[index];
     const target: HTMLElement = c.element.parentElement
       ? c.element.parentElement
@@ -65,15 +68,11 @@ export class ChapterService {
       behavior: 'smooth',
     });
 
-    if (this.vpService.breakPoint$.value === 'xl') {
-      setTimeout(() => {
-        if (Math.trunc(window.scrollY) === Math.trunc(pos)) {
-          this.scrollInProgress = false;
-        } else {
-          this.scrollToChapter(index);
-        }
-      }, 500);
-    }
+    this.skipScrollTimeoutId = setTimeout(() => {
+      if(Math.abs(window.scrollY - pos) > 5){
+        this.scrollToChapter(index);
+      }
+    }, 500);
   }
 
   onScrollPositionChanged(w: Window): void {
@@ -81,10 +80,6 @@ export class ChapterService {
     const curChapter: IChapterData = this.chapters[this.pointer];
     const nxtChapter: IChapterData = this.chapters[this.pointer + 1];
     const lstChapter: IChapterData = this.chapters[this.pointer - 1];
-
-    if (this.vpService.breakPoint$.value === 'xl') {
-      this.autoscroll(y, nxtChapter, lstChapter);
-    }
 
     const cChangeHeader: ChapterChangeType = this.detectChapterChange(
       y,
@@ -120,9 +115,6 @@ export class ChapterService {
         c.componentResetCallback();
       });
     }
-
-    if (y <= this.chapters[this.chapters.length - 1].element.offsetTop)
-      this.lastY = y;
   }
 
   private detectChapterChange(
@@ -207,23 +199,33 @@ export class ChapterService {
     this.currentChapter$.next(this.chapters[this.pointer].title);
   }
 
-  private autoscroll(y: number, nxt: IChapterData, lst: IChapterData): void {
-    if (this.scrollInProgress === true) {
-      const timeDifference =
-        new Date(Date.now()).getTime() - this.scrollProgressTS.getTime();
-      this.scrollInProgress = !(timeDifference >= 5000);
+  private skipScroll(jumpToNext: boolean): void {
+    if (jumpToNext) {
+      // Scroll down
+      this.pointerAutoscroll =
+        this.pointerAutoscroll >= this.chapters.length
+          ? this.chapters.length - 1
+          : this.pointerAutoscroll + 1;
     } else {
-      this.scrollInProgress = true;
-      this.scrollProgressTS = new Date(Date.now());
-      if (y > this.lastY) {
-        if (nxt !== undefined) {
-          this.scrollToChapter(this.pointer + 1);
-        }
-      } else {
-        if (lst !== undefined) {
-          this.scrollToChapter(this.pointer - 1);
-        }
-      }
+      // Scroll up
+      this.pointerAutoscroll =
+        this.pointerAutoscroll === 0 ? 0 : this.pointerAutoscroll - 1;
     }
+    this.scrollToChapter(this.pointerAutoscroll);
+
+  }
+
+  private addEventListener(): void {
+    window.addEventListener('wheel', (event) => {
+      this.skipScroll(event.deltaY > 0);
+    });
+
+    window.addEventListener('keyup', (event) => {
+      if (event.key === 'ArrowUp') {
+        this.skipScroll(false);
+      } else if (event.key === 'ArrowDown') {
+        this.skipScroll(true);
+      }
+    });
   }
 }
