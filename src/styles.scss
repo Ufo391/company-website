@@ -41,3 +41,13 @@ i {
 .text-black {
   color: black;
 }
+
+/* Verstecke die vertikale Scrollbar */
+::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Verstecke die horizontale Scrollbar */
+::-webkit-scrollbar-thumb {
+  display: none;
+}
