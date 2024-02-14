@@ -25,6 +25,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   readonly flipSpeedInMs: number = 1000;
   pointer: number = 0;
   currentStyle: object = {};
+  anzahl = 3;
   cardStyles = [
     { background: '#daeaf0' },
     { background: '#9fb1c5' },

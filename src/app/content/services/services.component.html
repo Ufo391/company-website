@@ -7,93 +7,135 @@
   }"
   *ngIf="(lService.MasterData$ | async)?.services as s"
 >
-  <p-card [style]="cardStyles[pointer]">
-    <ng-template pTemplate="header">
-      <h2 #title class="title-i">{{ s.title }}</h2>
-      <div class="sm:flex sm:flex-row sm:w-12">
-        <div class="flex flex-column w-12 select-none">
-          <div
-            *ngIf="(vpService.breakPoint$ | async) === 'xs'"
-            class="image-container image-container-h"
-          >
-            <img
-              alt="Card"
-              class="cropped-image"
-              [src]="imgUris[pointer]"
-              [style]="imgStyles[pointer]"
-              loading="eager"
-            />
+  <!-- Single Card -->
+  <div *ngIf="(vpService.breakPoint$ | async) !== 'xl'">
+    <p-card [style]="cardStyles[pointer]">
+      <ng-template pTemplate="header">
+        <h2 #title class="title-i">{{ s.title }}</h2>
+        <div class="sm:flex sm:flex-row sm:w-12">
+          <div class="flex flex-column w-12 select-none">
+            <div
+              *ngIf="(vpService.breakPoint$ | async) === 'xs'"
+              class="image-container image-container-h"
+            >
+              <img
+                alt="Card"
+                class="cropped-image"
+                [src]="imgUris[pointer]"
+                [style]="imgStyles[pointer]"
+                loading="eager"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </ng-template>
-    <ng-template pTemplate="content">
-      <div class="sm:flex sm:flex-row align-items-center">
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="sm:flex sm:flex-row align-items-center">
+          <div
+            class="justify-content-center mr-5"
+            *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
+          >
+            <i
+              class="pi pi-angle-left text-4xl cursor-pointer fadeinright animation-duration-2000 animation-iteration-infinite"
+              (click)="clickLastItemHandler()"
+            ></i>
+          </div>
+          <div class="sm:flex sm:flex-row sm:align-items-center">
+            <div
+              *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
+              class="image-container image-container-h border-round sm:w-4"
+            >
+              <img
+                class="cropped-image"
+                [src]="imgUris[pointer]"
+                [style]="imgStyles[pointer]"
+                loading="eager"
+              />
+            </div>
+            <p-divider
+              *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
+              layout="vertical"
+              class="sm:w-2"
+            />
+            <div class="sm:w-6 select-none">
+              <p class="text-center sm:text-left font-bold text-2xl m-0">
+                {{ s.values[pointer].title }}
+              </p>
+              <p class="text-justify">
+                {{ s.values[pointer].value }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="justify-content-center ml-5"
+            *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
+          >
+            <i
+              class="pi pi-angle-right text-4xl cursor-pointer fadeinleft animation-duration-2000 animation-iteration-infinite"
+              (click)="clickNextItemHandler()"
+            ></i>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="footer">
         <div
-          class="justify-content-center mr-5"
-          *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
+          *ngIf="(vpService.breakPoint$ | async) === 'xs'"
+          class="flex justify-content-end flex-wrap card-container"
         >
-          <i
-            class="pi pi-angle-left text-4xl cursor-pointer fadeinright animation-duration-2000 animation-iteration-infinite"
+          <p-button
+            icon="pi pi-angle-left"
+            styleClass="p-button-text text-gray-900"
             (click)="clickLastItemHandler()"
-          ></i>
-        </div>
-        <div class="sm:flex sm:flex-row sm:align-items-center">
-          <div
-            *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
-            class="image-container image-container-h border-round sm:w-4"
-          >
-            <img
-              class="cropped-image"
-              [src]="imgUris[pointer]"
-              [style]="imgStyles[pointer]"
-              loading="eager"
-            />
-          </div>
-          <p-divider
-            *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
-            layout="vertical"
-            class="sm:w-2"
-          />
-          <div class="sm:w-6 select-none">
-            <p class="text-center sm:text-left font-bold text-2xl m-0">
-              {{ s.values[pointer].title }}
-            </p>
-            <p class="text-justify">
-              {{ s.values[pointer].value }}
-            </p>
-          </div>
-        </div>
-        <div
-          class="justify-content-center ml-5"
-          *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
-        >
-          <i
-            class="pi pi-angle-right text-4xl cursor-pointer fadeinleft animation-duration-2000 animation-iteration-infinite"
+            [disabled]="nxtElementAnimation || lstElementAnimation"
+          ></p-button>
+          <p-button
+            icon="pi pi-angle-right"
+            class="ml-1"
+            styleClass="p-button-text text-gray-900"
             (click)="clickNextItemHandler()"
-          ></i>
+            [disabled]="nxtElementAnimation || lstElementAnimation"
+          ></p-button>
         </div>
-      </div>
-    </ng-template>
-    <ng-template pTemplate="footer">
+      </ng-template>
+    </p-card>
+  </div>
+
+  <!-- Desktop Cards -->
+  <div *ngIf="(vpService.breakPoint$ | async) === 'xl'" class="card-h-d">
+    <div class="flex flex-row justify-content-between">
       <div
-        *ngIf="(vpService.breakPoint$ | async) === 'xs'"
-        class="flex justify-content-end flex-wrap card-container"
+        *ngFor="let index of [].constructor(cardStyles.length); let i = index" class="p-3"
       >
-        <p-button
-          icon="pi pi-angle-left"
-          styleClass="p-button-text text-gray-900"
-          (click)="clickLastItemHandler()"
-          [disabled]="nxtElementAnimation || lstElementAnimation"
-        ></p-button>
-        <p-button
-          icon="pi pi-angle-right"
-          class="ml-1"
-          styleClass="p-button-text text-gray-900"
-          (click)="clickNextItemHandler()"
-          [disabled]="nxtElementAnimation || lstElementAnimation"
-        ></p-button>
+        <p-card [style]="cardStyles[i]" >
+          <ng-template pTemplate="header">
+            <h2 #title class="title-i">{{ s.title }}</h2>
+            <div
+              class="image-container image-container-h w-12"
+              style="height: 30vh"
+            >
+              <img
+                alt="Card"
+                class="cropped-image"
+                [src]="imgUris[i]"
+                [style]="imgStyles[i]"
+                loading="eager"
+              />
+            </div>
+          </ng-template>
+          <ng-template pTemplate="content">
+            <div class="align-items-center">
+              <div class="select-none">
+                <p class="text-center font-bold text-2xl m-0">
+                  {{ s.values[i].title }}
+                </p>
+                <p class="text-justify">
+                  {{ s.values[i].value }}
+                </p>
+              </div>
+            </div>
+          </ng-template>
+        </p-card>
       </div>
-    </ng-template>
-  </p-card>
+    </div>
+  </div>
 </div>
