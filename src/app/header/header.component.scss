@@ -2,8 +2,8 @@ $minW: 577px;
 $maxW: 576px;
 $maxH: 100px;
 
-.primary-color{
-  color: #596970
+.primary-color {
+  color: #596970;
 }
 
 .menu-button {
@@ -21,10 +21,32 @@ $maxH: 100px;
   top: 0px;
 }
 
+@media screen and (max-width: 1199px) {
+  .fixed-w {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .fixed-w {
+    width: 83.333%;
+  }
+}
+
 .nofixed {
   position: static;
   transition: 0.5s linear;
   top: -80px;
+}
+@media screen and (max-width: 1199px) {
+  .nofixed-w {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .nofixed-w {
+    width: 83.333vw;
+  }
 }
 
 @media screen and (min-width: $minW) {

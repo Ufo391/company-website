@@ -1,5 +1,5 @@
-<div *ngIf="lService.MasterData$ | async as md">
-  <div class="image-container image-container-h">
+<div *ngIf="lService.MasterData$ | async as md" class="flex justify-content-center">
+  <div class="image-container image-container-w image-container-h xl:border-round">
     <div
       class="overlay-text overlay-text-size select-none"
       [@headlineScrollAnimation]="animationStatusHeadline"

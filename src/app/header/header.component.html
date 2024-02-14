@@ -1,7 +1,10 @@
-<div *ngIf="lService.MasterData$ | async as md">
+<div
+  *ngIf="lService.MasterData$ | async as md"
+  class="xl:flex xl:justify-content-center"
+>
   <div *ngIf="navbarfixed" class="bg-white header-h w-screen"></div>
   <div
-    [ngClass]="navbarfixed ? 'fixed w-full' : 'nofixed'"
+    [ngClass]="navbarfixed ? 'fixed fixed-w' : 'nofixed nofixed-w'"
     class="bg-white header-h opacity-90"
     (scroll)="onscroll()"
   >
@@ -12,13 +15,78 @@
         src="assets/logo.png"
         loading="eager"
       />
+      <div
+        *ngIf="(vpService.breakPoint$ | async) === 'xl'"
+        class="w-12 py-3"
+        style="height: 100px"
+      >
+        <div class="flex flex-column w-12">
+          <div
+            class="flex flex-row justify-content-end pr-3"
+            style="height: 68px"
+          >
+            <ng-container *ngFor="let c of chapterService.chapters$ | async">
+              <div class="primary-color flex flex-row align-items-end text-2xl">
+                <p
+                  (click)="changeCurrentChapter($event)"
+                  class="my-0 cursor-pointer"
+                  [ngClass]="{
+                      'font-bold':
+                        (chapterService.currentChapter$ | async) === c,
+                      'opacity-50':
+                        (chapterService.currentChapter$ | async) !== c,
+                      'opacity-100':
+                        (chapterService.currentChapter$ | async) === c,
+                    }"
+                >
+                  {{ c }}
+                </p>
+                <p class="mx-2 my-0">|</p>
+              </div>
+            </ng-container>
+            <div
+              class="flex flex-row align-items-end"
+              (click)="changeLanguage()"
+            >
+              <div class="cursor-pointer flex align-items-center">
+                <img
+                  *ngIf="md.langCode === 'de'"
+                  src="assets/countries/de.svg"
+                  alt="SVG-Grafik"
+                  [style.width]="flagSize"
+                  [style.height]="flagSize"
+                  loading="eager"
+                />
+                <img
+                  *ngIf="md.langCode === 'en'"
+                  src="assets/countries/gb.svg"
+                  alt="SVG-Grafik"
+                  [style.width]="flagSize"
+                  [style.height]="flagSize"
+                  loading="eager"
+                />
+                <img
+                  *ngIf="md.langCode === 'pl'"
+                  src="assets/countries/pl.svg"
+                  alt="SVG-Grafik"
+                  [style.width]="flagSize"
+                  [style.height]="flagSize"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <p
+        *ngIf="(vpService.breakPoint$ | async) !== 'xl'"
         style="font-size: 1.5rem; font-weight: bold"
         [@opacityAnimation]="animationStatus"
       >
         {{ chapterService.currentChapter$ | async }}
       </p>
       <button
+        *ngIf="(vpService.breakPoint$ | async) !== 'xl'"
         pButton
         type="button"
         icon="pi pi-bars"
@@ -26,132 +94,135 @@
         (click)="toggleSidebar()"
       ></button>
     </div>
-  </div>
-  <p-sidebar
-    class="z-1 select-none"
-    styleClass="w-9"
-    [(visible)]="sidebarVisible"
-    position="right"
-  >
-    <ng-template pTemplate="header">
-      <div class="w-11 align-items-center flex flex-row justify-content-start">
-        <img
-          class="max-h-full"
-          src="assets/logo.png"
-          alt="Firmenlogo"
-          [style.width]="logoSize"
-          [style.height]="logoSize"
-          loading="eager"
-        />
-        <h3 class="text-center w-12 opacity-70">
-          {{ md.companyName }}
-        </h3>
-      </div>
-    </ng-template>
-    <ng-template pTemplate="content">
-      <hr />
-      <div class="sm:flex sm:flex-wrap">
-        <ng-container *ngFor="let c of chapterService.chapters$ | async">
-          <div
-            class="sm:w-6 w-12 flex flex-row align-items-center primary-color"
-          >
-            <i class="pi pi-bookmark cursor-pointer"></i>
-            <h3
-              (click)="changeCurrentChapter($event)"
-              class="ml-2 cursor-pointer"
-            >
-              {{ c }}
-            </h3>
-          </div>
-        </ng-container>
-      </div>
-      <hr />
-      <div class="sm:flex sm:flex-wrap primary-color">
-        <div class="sm:w-6 w-12 flex flex-row align-items-center">
-          <i class="pi pi-lock cursor-pointer"></i>
-          <h3 class="ml-2 cursor-pointer">{{ md.sidebar.privacy }}</h3>
-        </div>
-        <div class="sm:w-6 w-12 flex flex-row align-items-center">
-          <i class="pi pi-file cursor-pointer"></i>
-          <h3 class="ml-2 cursor-pointer">{{ md.sidebar.imprint }}</h3>
-        </div>
+
+    <p-sidebar
+      class="z-1 select-none"
+      styleClass="w-9"
+      [(visible)]="sidebarVisible"
+      position="right"
+    >
+      <ng-template pTemplate="header">
         <div
-          class="sm:w-6 w-12 flex flex-row align-items-center"
-          (click)="changeLanguage()"
+          class="w-11 align-items-center flex flex-row justify-content-start"
         >
-          <div class="cursor-pointer">
-            <img
-              *ngIf="md.langCode === 'de'"
-              src="assets/countries/de.svg"
-              alt="SVG-Grafik"
-              [style.width]="flagSize"
-              [style.height]="flagSize"
-              loading="eager"
-            />
-            <img
-              *ngIf="md.langCode === 'en'"
-              src="assets/countries/gb.svg"
-              alt="SVG-Grafik"
-              [style.width]="flagSize"
-              [style.height]="flagSize"
-              loading="eager"
-            />
-            <img
-              *ngIf="md.langCode === 'pl'"
-              src="assets/countries/pl.svg"
-              alt="SVG-Grafik"
-              [style.width]="flagSize"
-              [style.height]="flagSize"
-              loading="eager"
-            />
+          <img
+            class="max-h-full"
+            src="assets/logo.png"
+            alt="Firmenlogo"
+            [style.width]="logoSize"
+            [style.height]="logoSize"
+            loading="eager"
+          />
+          <h3 class="text-center w-12 opacity-70">
+            {{ md.companyName }}
+          </h3>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <hr />
+        <div class="sm:flex sm:flex-wrap">
+          <ng-container *ngFor="let c of chapterService.chapters$ | async">
+            <div
+              class="sm:w-6 w-12 flex flex-row align-items-center primary-color"
+            >
+              <i class="pi pi-bookmark cursor-pointer"></i>
+              <h3
+                (click)="changeCurrentChapter($event)"
+                class="ml-2 cursor-pointer"
+              >
+                {{ c }}
+              </h3>
+            </div>
+          </ng-container>
+        </div>
+        <hr />
+        <div class="sm:flex sm:flex-wrap primary-color">
+          <div class="sm:w-6 w-12 flex flex-row align-items-center">
+            <i class="pi pi-lock cursor-pointer"></i>
+            <h3 class="ml-2 cursor-pointer">{{ md.sidebar.privacy }}</h3>
           </div>
-          <h3 class="ml-2 cursor-pointer">{{ md.sidebar.langauge }}</h3>
+          <div class="sm:w-6 w-12 flex flex-row align-items-center">
+            <i class="pi pi-file cursor-pointer"></i>
+            <h3 class="ml-2 cursor-pointer">{{ md.sidebar.imprint }}</h3>
+          </div>
+          <div
+            class="sm:w-6 w-12 flex flex-row align-items-center"
+            (click)="changeLanguage()"
+          >
+            <div class="cursor-pointer">
+              <img
+                *ngIf="md.langCode === 'de'"
+                src="assets/countries/de.svg"
+                alt="SVG-Grafik"
+                [style.width]="flagSize"
+                [style.height]="flagSize"
+                loading="eager"
+              />
+              <img
+                *ngIf="md.langCode === 'en'"
+                src="assets/countries/gb.svg"
+                alt="SVG-Grafik"
+                [style.width]="flagSize"
+                [style.height]="flagSize"
+                loading="eager"
+              />
+              <img
+                *ngIf="md.langCode === 'pl'"
+                src="assets/countries/pl.svg"
+                alt="SVG-Grafik"
+                [style.width]="flagSize"
+                [style.height]="flagSize"
+                loading="eager"
+              />
+            </div>
+            <h3 class="ml-2 cursor-pointer">{{ md.sidebar.langauge }}</h3>
+          </div>
         </div>
-      </div>
-    </ng-template>
-    <ng-template pTemplate="footer"
-      ><hr />
-      <div class="text-sm text-center mt-3">
-        <div class="flex justify-content-center mb-1">
-          <a
-            href="https://www.freelancermap.de/profil/fullstack-entwickler-und-berater"
-            target="_blank"
-            class="mr-2"
-          >
-            <img
-              src="assets/freelancermap_icon.png"
-              alt="background"
-              [style.width]="iconSize"
-              [style.height]="iconSize"
-              loading="eager"
-            />
-          </a>
-          <a
-            href="https://de.linkedin.com/company/klo%C3%9F-it-solutions?trk=public_profile_topcard-current-company"
-            target="_blank"
-            class="mr-2"
-          >
-            <i class="pi pi-linkedin text-black text-2xl"></i>
-          </a>
-          <a
-            href="https://www.xing.com/profile/Nikolai_Kloss2"
-            target="_blank"
-            class="mr-2"
-          >
-            <img
-              src="assets/xing_icon2.svg"
-              alt="background"
-              [style.width]="iconSize"
-              [style.height]="iconSize"
-              loading="eager"
-            />
-          </a>
-          <a href="https://github.com/Ufo391" target="_blank">
-            <i class="pi pi-github text-black text-2xl"></i>
-          </a>
+      </ng-template>
+      <ng-template pTemplate="footer"
+        ><hr />
+        <div class="text-sm text-center mt-3">
+          <div class="flex justify-content-center mb-1">
+            <a
+              href="https://www.freelancermap.de/profil/fullstack-entwickler-und-berater"
+              target="_blank"
+              class="mr-2"
+            >
+              <img
+                src="assets/freelancermap_icon.png"
+                alt="background"
+                [style.width]="iconSize"
+                [style.height]="iconSize"
+                loading="eager"
+              />
+            </a>
+            <a
+              href="https://de.linkedin.com/company/klo%C3%9F-it-solutions?trk=public_profile_topcard-current-company"
+              target="_blank"
+              class="mr-2"
+            >
+              <i class="pi pi-linkedin text-black text-2xl"></i>
+            </a>
+            <a
+              href="https://www.xing.com/profile/Nikolai_Kloss2"
+              target="_blank"
+              class="mr-2"
+            >
+              <img
+                src="assets/xing_icon2.svg"
+                alt="background"
+                [style.width]="iconSize"
+                [style.height]="iconSize"
+                loading="eager"
+              />
+            </a>
+            <a href="https://github.com/Ufo391" target="_blank">
+              <i class="pi pi-github text-black text-2xl"></i>
+            </a>
+          </div>
+          <p class="text-black m-0 p-0">{{ md.sidebar.copyright }}</p>
         </div>
-        <p class="text-black m-0 p-0">{{ md.sidebar.copyright }}</p>
-      </div>
-    </ng-template>
-  </p-sidebar>
+      </ng-template>
+    </p-sidebar>
+  </div>
 </div>

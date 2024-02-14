@@ -35,6 +35,14 @@ export class HeaderComponent {
           this.animationStatus = 'on';
         }, delayHeaderInMs);
       });
+    this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((v) => {
+      if (v === 'xl') {
+        this.flagSize = '1.5rem';
+      }
+      else{
+        this.flagSize = '1rem';
+      }
+    });
   }
 
   toggleSidebar() {
