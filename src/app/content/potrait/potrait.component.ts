@@ -38,6 +38,9 @@ export class PotraitComponent implements OnInit, AfterViewInit {
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.aboutMe.title);
     });
+    this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((v) => {
+      this.isFoldOut = v === 'xl';
+    });
   }
 
   toggleFoldOut(): void {
@@ -45,6 +48,6 @@ export class PotraitComponent implements OnInit, AfterViewInit {
   }
 
   resetComponent(): void {
-    this.isFoldOut = false;
+    this.isFoldOut = this.vpService.breakPoint$.value === 'xl';
   }
 }
