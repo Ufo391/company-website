@@ -72,6 +72,9 @@ export class ChapterService {
       if(Math.abs(window.scrollY - pos) > 5){
         this.scrollToChapter(index);
       }
+      else{
+        this.pointerAutoscroll = this.pointer;
+      }
     }, 500);
   }
 
