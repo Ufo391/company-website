@@ -25,7 +25,9 @@
           </p>
           <div class="flex flex-row sm:flex-column justify-content-between">
             <div>
-              <p class="text-left sm:text-center p-0 m-0">{{ p.values[pointer].role }}</p>
+              <p class="text-left sm:text-center p-0 m-0">
+                {{ p.values[pointer].role }}
+              </p>
               <p class="text-left sm:text-center p-0 m-0">
                 {{ p.values[pointer].industry }}
               </p>
@@ -53,12 +55,12 @@
           [style]="{ height: '66vh' }"
           layout="vertical"
         />
-        <p-divider
-        *ngIf="(vpService.breakPoint$ | async) === 'xs'"
-      />
+        <p-divider *ngIf="(vpService.breakPoint$ | async) === 'xs'" />
         <div
           class="animation-duration-500 animation-iteration-1 sm:w-6 justify-content-center mt-5 sm:mt-0"
           [ngClass]="{ fadein: fadeinContentAnimationStatus }"
+          (mouseenter)="chapterService.disableSkipScroll(true)"
+          (mouseleave)="chapterService.disableSkipScroll(false)"
         >
           <p-scrollPanel [style]="{ height: '66vh' }">
             <p class="text-justify">{{ p.values[pointer].content.value }}</p>
@@ -79,7 +81,7 @@
         [ngClass]="{ fadein: fadeinContentAnimationStatus }"
       >
         <div
-        *ngIf="(vpService.breakPoint$ | async) === 'xs'"
+          *ngIf="(vpService.breakPoint$ | async) === 'xs'"
           class="flex justify-content-end flex-wrap card-container"
         >
           <p-button

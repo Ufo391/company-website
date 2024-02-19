@@ -25,7 +25,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   fadeinAnimation = 'off';
 
   constructor(
-    private chapterService: ChapterService,
+    public chapterService: ChapterService,
     public lService: LanguageService,
     public vpService: ViewportService
   ) {}

@@ -16,6 +16,7 @@ export class ChapterService {
   private pointerAutoscroll: number = 0;
   private offsetHeight: number = 0;
   private skipScrollTimeoutId!: any;
+  private skipScrollIsDisabled: boolean = false;
 
   constructor(private vpService: ViewportService) {
     this.currentChapter$ = new BehaviorSubject<string>('Kloss IT-Solutions');
@@ -50,7 +51,7 @@ export class ChapterService {
   }
 
   scrollToChapter(index: number): void {
-    if(this.skipScrollTimeoutId !== undefined){
+    if (this.skipScrollTimeoutId !== undefined) {
       clearTimeout(this.skipScrollTimeoutId);
     }
     const c: IChapterData = this.chapters[index];
@@ -69,10 +70,9 @@ export class ChapterService {
     });
 
     this.skipScrollTimeoutId = setTimeout(() => {
-      if(Math.abs(window.scrollY - pos) > 5){
+      if (Math.abs(window.scrollY - pos) > 5) {
         this.scrollToChapter(index);
-      }
-      else{
+      } else {
         this.pointerAutoscroll = this.pointer;
       }
     }, 500);
@@ -118,6 +118,10 @@ export class ChapterService {
         c.componentResetCallback();
       });
     }
+  }
+
+  disableSkipScroll(v: boolean): void {
+    this.skipScrollIsDisabled = v;
   }
 
   private detectChapterChange(
@@ -215,12 +219,13 @@ export class ChapterService {
         this.pointerAutoscroll === 0 ? 0 : this.pointerAutoscroll - 1;
     }
     this.scrollToChapter(this.pointerAutoscroll);
-
   }
 
   private addEventListener(): void {
     window.addEventListener('wheel', (event) => {
-      this.skipScroll(event.deltaY > 0);
+      if (this.skipScrollIsDisabled === false) {
+        this.skipScroll(event.deltaY > 0);
+      }
     });
 
     window.addEventListener('keyup', (event) => {
