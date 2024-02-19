@@ -15,7 +15,7 @@ import { ViewportService } from 'src/app/services/viewport.service';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css'],
+  styleUrls: ['./projects.component.scss'],
   animations: [opacityAnimation],
 })
 export class ProjectsComponent implements OnInit, AfterViewInit {
@@ -23,6 +23,8 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   pointer!: number;
   fadeinContentAnimationStatus: boolean = false;
   fadeinAnimation = 'off';
+  cardStyle = { background: '#f7f7f7' };
+  scrollPanelStyle = {};
 
   constructor(
     public chapterService: ChapterService,
@@ -42,6 +44,13 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.projects.title);
+    });
+    this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((v) => {
+      if (v === 'xl') {
+        this.scrollPanelStyle = { height: '33vh' };
+      } else {
+        this.scrollPanelStyle = { height: '66vh' };
+      }
     });
   }
 

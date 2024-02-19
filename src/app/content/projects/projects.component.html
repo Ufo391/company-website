@@ -3,7 +3,7 @@
   [@opacityAnimation]="fadeinAnimation"
   class="text-center"
 >
-  <p-card [style]="{ background: '#F7F7F7' }">
+  <p-card [style]="cardStyle">
     <ng-template pTemplate="header">
       <h2 #title class="pt-3 select-none">{{ p.title }}</h2>
     </ng-template>
@@ -52,7 +52,7 @@
         <p-divider
           *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
           class="w-1"
-          [style]="{ height: '66vh' }"
+          [style]="scrollPanelStyle"
           layout="vertical"
         />
         <p-divider *ngIf="(vpService.breakPoint$ | async) === 'xs'" />
@@ -62,7 +62,7 @@
           (mouseenter)="chapterService.disableSkipScroll(true)"
           (mouseleave)="chapterService.disableSkipScroll(false)"
         >
-          <p-scrollPanel [style]="{ height: '66vh' }">
+          <p-scrollPanel [style]="scrollPanelStyle">
             <p class="text-justify">{{ p.values[pointer].content.value }}</p>
           </p-scrollPanel>
         </div>
