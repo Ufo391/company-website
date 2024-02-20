@@ -1,4 +1,8 @@
-<div class="text-center" *ngIf="(lService.MasterData$ | async)?.aboutMe as ab">
+<div
+  class="text-center"
+  *ngIf="(lService.MasterData$ | async)?.aboutMe as ab"
+  [@opacityAnimation]="fadeinAnimation"
+>
   <p-card [style]="{ background: '#F7F7F7' }">
     <ng-template pTemplate="content">
       <h2 class="title-i" #title>
@@ -14,7 +18,7 @@
           loading="eager"
         />
         <p-divider
-        *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
+          *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
           class="Potrait"
           layout="vertical"
         />

@@ -9,15 +9,18 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { ViewportService } from 'src/app/services/viewport.service';
+import { opacityAnimation } from '../content.animation';
 
 @Component({
   selector: 'app-potrait',
   templateUrl: './potrait.component.html',
   styleUrls: ['./potrait.component.scss'],
+  animations: [opacityAnimation],
 })
 @UntilDestroy()
 export class PotraitComponent implements OnInit, AfterViewInit {
   isFoldOut: boolean = false;
+  fadeinAnimation = 'off';
 
   constructor(
     private chapterService: ChapterService,
@@ -32,8 +35,8 @@ export class PotraitComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.chapterService.addChapter(
       this.myElement,
-      () => {},
-      this.resetComponent.bind(this),
+      this.startFadeAnimation.bind(this),
+      this.leaveFadeAnimation.bind(this),
       () => {},
       () => {},
     );
@@ -49,7 +52,12 @@ export class PotraitComponent implements OnInit, AfterViewInit {
     this.isFoldOut = !this.isFoldOut;
   }
 
-  resetComponent(): void {
+  private startFadeAnimation(): void {
+    this.fadeinAnimation = 'on';
+  }
+
+  private leaveFadeAnimation(): void {
+    this.fadeinAnimation = 'off';
     this.isFoldOut = this.vpService.breakPoint$.value === 'xl';
   }
 }
