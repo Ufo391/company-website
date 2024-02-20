@@ -46,12 +46,7 @@ export class ViewportService {
       } else {
         throw new Error('Not implemented!');
       }
-
-      // Workaround for missing refresh on ngif blocks
-      window.scrollTo({
-        top: window.scrollY + 1,
-        behavior: 'smooth',
-      });
+      this.reloadPage();
     }
   }
 
@@ -69,5 +64,13 @@ export class ViewportService {
     } else {
       throw new Error('Not implemented!');
     }
+  }
+
+  private reloadPage(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'instant',
+    });
+    window.location.reload();
   }
 }
