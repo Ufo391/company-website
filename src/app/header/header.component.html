@@ -94,135 +94,132 @@
         (click)="toggleSidebar()"
       ></button>
     </div>
-
-    <p-sidebar
-      class="z-1 select-none"
-      styleClass="w-9"
-      [(visible)]="sidebarVisible"
-      position="right"
-    >
-      <ng-template pTemplate="header">
-        <div
-          class="w-11 align-items-center flex flex-row justify-content-start"
-        >
-          <img
-            class="max-h-full"
-            src="assets/logo.png"
-            alt="Firmenlogo"
-            [style.width]="logoSize"
-            [style.height]="logoSize"
-            loading="eager"
-          />
-          <h3 class="text-center w-12 opacity-70">
-            {{ md.companyName }}
-          </h3>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="content">
-        <hr />
-        <div class="sm:flex sm:flex-wrap">
-          <ng-container *ngFor="let c of chapterService.chapters$ | async">
-            <div
-              class="sm:w-6 w-12 flex flex-row align-items-center primary-color"
-            >
-              <i class="pi pi-bookmark cursor-pointer"></i>
-              <h3
-                (click)="changeCurrentChapter($event)"
-                class="ml-2 cursor-pointer"
-              >
-                {{ c }}
-              </h3>
-            </div>
-          </ng-container>
-        </div>
-        <hr />
-        <div class="sm:flex sm:flex-wrap primary-color">
-          <div class="sm:w-6 w-12 flex flex-row align-items-center">
-            <i class="pi pi-lock cursor-pointer"></i>
-            <h3 class="ml-2 cursor-pointer">{{ md.sidebar.privacy }}</h3>
-          </div>
-          <div class="sm:w-6 w-12 flex flex-row align-items-center">
-            <i class="pi pi-file cursor-pointer"></i>
-            <h3 class="ml-2 cursor-pointer">{{ md.sidebar.imprint }}</h3>
-          </div>
-          <div
-            class="sm:w-6 w-12 flex flex-row align-items-center"
-            (click)="changeLanguage()"
-          >
-            <div class="cursor-pointer">
-              <img
-                *ngIf="md.langCode === 'de'"
-                src="assets/countries/de.svg"
-                alt="SVG-Grafik"
-                [style.width]="flagSize"
-                [style.height]="flagSize"
-                loading="eager"
-              />
-              <img
-                *ngIf="md.langCode === 'en'"
-                src="assets/countries/gb.svg"
-                alt="SVG-Grafik"
-                [style.width]="flagSize"
-                [style.height]="flagSize"
-                loading="eager"
-              />
-              <img
-                *ngIf="md.langCode === 'pl'"
-                src="assets/countries/pl.svg"
-                alt="SVG-Grafik"
-                [style.width]="flagSize"
-                [style.height]="flagSize"
-                loading="eager"
-              />
-            </div>
-            <h3 class="ml-2 cursor-pointer">{{ md.sidebar.langauge }}</h3>
-          </div>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="footer"
-        ><hr />
-        <div class="text-sm text-center mt-3">
-          <div class="flex justify-content-center mb-1">
-            <a
-              href="https://www.freelancermap.de/profil/fullstack-entwickler-und-berater"
-              target="_blank"
-              class="mr-2"
-            >
-              <img
-                src="assets/freelancermap_icon.png"
-                alt="background"
-                [style.width]="iconSize"
-                [style.height]="iconSize"
-                loading="eager"
-              />
-            </a>
-            <a
-              href="https://de.linkedin.com/company/klo%C3%9F-it-solutions?trk=public_profile_topcard-current-company"
-              target="_blank"
-              class="mr-2"
-            >
-              <i class="pi pi-linkedin text-black text-2xl"></i>
-            </a>
-            <a
-              href="https://www.xing.com/profile/Nikolai_Kloss2"
-              target="_blank"
-              class="mr-2"
-            >
-              <img
-                src="assets/xing_icon2.svg"
-                alt="background"
-                [style.width]="iconSize"
-                [style.height]="iconSize"
-                loading="eager"
-              />
-            </a>
-            <a href="https://github.com/Ufo391" target="_blank">
-              <i class="pi pi-github text-black text-2xl"></i>
-            </a>
-          </div>
-          <p class="text-black m-0 p-0">{{ md.sidebar.copyright }}</p>
-        </div>
-      </ng-template>
-    </p-sidebar>
   </div>
+  <p-sidebar
+    class="z-1 select-none"
+    styleClass="w-9"
+    [(visible)]="sidebarVisible"
+    position="right"
+  >
+    <ng-template pTemplate="header">
+      <div class="w-11 align-items-center flex flex-row justify-content-start">
+        <img
+          class="max-h-full"
+          src="assets/logo.png"
+          alt="Firmenlogo"
+          [style.width]="logoSize"
+          [style.height]="logoSize"
+          loading="eager"
+        />
+        <h3 class="text-center w-12 opacity-70">
+          {{ md.companyName }}
+        </h3>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <hr />
+      <div class="sm:flex sm:flex-wrap">
+        <ng-container *ngFor="let c of chapterService.chapters$ | async">
+          <div
+            class="sm:w-6 w-12 flex flex-row align-items-center primary-color"
+          >
+            <i class="pi pi-bookmark cursor-pointer"></i>
+            <h3
+              (click)="changeCurrentChapter($event)"
+              class="ml-2 cursor-pointer"
+            >
+              {{ c }}
+            </h3>
+          </div>
+        </ng-container>
+      </div>
+      <hr />
+      <div class="sm:flex sm:flex-wrap primary-color">
+        <div class="sm:w-6 w-12 flex flex-row align-items-center">
+          <i class="pi pi-lock cursor-pointer"></i>
+          <h3 class="ml-2 cursor-pointer">{{ md.sidebar.privacy }}</h3>
+        </div>
+        <div class="sm:w-6 w-12 flex flex-row align-items-center">
+          <i class="pi pi-file cursor-pointer"></i>
+          <h3 class="ml-2 cursor-pointer">{{ md.sidebar.imprint }}</h3>
+        </div>
+        <div
+          class="sm:w-6 w-12 flex flex-row align-items-center"
+          (click)="changeLanguage()"
+        >
+          <div class="cursor-pointer">
+            <img
+              *ngIf="md.langCode === 'de'"
+              src="assets/countries/de.svg"
+              alt="SVG-Grafik"
+              [style.width]="flagSize"
+              [style.height]="flagSize"
+              loading="eager"
+            />
+            <img
+              *ngIf="md.langCode === 'en'"
+              src="assets/countries/gb.svg"
+              alt="SVG-Grafik"
+              [style.width]="flagSize"
+              [style.height]="flagSize"
+              loading="eager"
+            />
+            <img
+              *ngIf="md.langCode === 'pl'"
+              src="assets/countries/pl.svg"
+              alt="SVG-Grafik"
+              [style.width]="flagSize"
+              [style.height]="flagSize"
+              loading="eager"
+            />
+          </div>
+          <h3 class="ml-2 cursor-pointer">{{ md.sidebar.langauge }}</h3>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer"
+      ><hr />
+      <div class="text-sm text-center mt-3">
+        <div class="flex justify-content-center mb-1">
+          <a
+            href="https://www.freelancermap.de/profil/fullstack-entwickler-und-berater"
+            target="_blank"
+            class="mr-2"
+          >
+            <img
+              src="assets/freelancermap_icon.png"
+              alt="background"
+              [style.width]="iconSize"
+              [style.height]="iconSize"
+              loading="eager"
+            />
+          </a>
+          <a
+            href="https://de.linkedin.com/company/klo%C3%9F-it-solutions?trk=public_profile_topcard-current-company"
+            target="_blank"
+            class="mr-2"
+          >
+            <i class="pi pi-linkedin text-black text-2xl"></i>
+          </a>
+          <a
+            href="https://www.xing.com/profile/Nikolai_Kloss2"
+            target="_blank"
+            class="mr-2"
+          >
+            <img
+              src="assets/xing_icon2.svg"
+              alt="background"
+              [style.width]="iconSize"
+              [style.height]="iconSize"
+              loading="eager"
+            />
+          </a>
+          <a href="https://github.com/Ufo391" target="_blank">
+            <i class="pi pi-github text-black text-2xl"></i>
+          </a>
+        </div>
+        <p class="text-black m-0 p-0">{{ md.sidebar.copyright }}</p>
+      </div>
+    </ng-template>
+  </p-sidebar>
 </div>
