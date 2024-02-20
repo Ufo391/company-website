@@ -33,7 +33,9 @@ export class PotraitComponent implements OnInit, AfterViewInit {
     this.chapterService.addChapter(
       this.myElement,
       () => {},
-      this.resetComponent.bind(this)
+      this.resetComponent.bind(this),
+      () => {},
+      () => {},
     );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.aboutMe.title);

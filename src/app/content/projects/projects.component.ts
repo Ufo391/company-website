@@ -42,7 +42,9 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     this.chapterService.addChapter(
       this.myElement,
       this.startFadeAnimation.bind(this),
-      this.leaveFadeAnimation.bind(this)
+      this.leaveFadeAnimation.bind(this),
+      this.clickLastItemHandler.bind(this),
+      this.clickNextItemHandler.bind(this),
     );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.projects.title);

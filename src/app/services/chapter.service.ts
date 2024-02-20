@@ -28,7 +28,9 @@ export class ChapterService {
   addChapter(
     e: ElementRef,
     startCallback: () => void,
-    resetCallback: () => void
+    resetCallback: () => void,
+    leftCallback: () => void,
+    rightCallback: () => void
   ): void {
     const element: HTMLElement = e.nativeElement;
     const c: IChapterData = {
@@ -36,6 +38,8 @@ export class ChapterService {
       title: element.innerText,
       animationStartCallback: startCallback,
       componentResetCallback: resetCallback,
+      keypressLeftCallback: leftCallback,
+      keypressRightCallback: rightCallback,
     };
     this.chapters.push(c);
     this.chapters.sort((a, b) => a.element.offsetTop - b.element.offsetTop);
@@ -233,6 +237,10 @@ export class ChapterService {
         this.skipScroll(false);
       } else if (event.key === 'ArrowDown') {
         this.skipScroll(true);
+      } else if (event.key === 'ArrowLeft') {
+        this.chapters[this.pointer].keypressLeftCallback();
+      } else if (event.key === 'ArrowRight') {
+        this.chapters[this.pointer].keypressRightCallback();
       }
     });
   }

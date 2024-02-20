@@ -42,7 +42,9 @@ export class ContactComponent implements OnInit, AfterViewInit {
     this.chapterService.addChapter(
       this.myElement,
       this.startFadeAnimation.bind(this),
-      this.leaveFadeAnimation.bind(this)
+      this.leaveFadeAnimation.bind(this),
+      () => {},
+      () => {}
     );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.contact.title);
