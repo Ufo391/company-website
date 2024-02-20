@@ -2,9 +2,11 @@ import { ElementRef, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IChapterData } from '../models/IChapterData';
 import { ViewportService } from './viewport.service';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 type ChapterChangeType = 'cur' | 'nxt' | 'lst';
 
+@UntilDestroy()
 @Injectable({
   providedIn: 'root',
 })
@@ -211,18 +213,20 @@ export class ChapterService {
   }
 
   private skipScroll(jumpToNext: boolean): void {
-    if (jumpToNext) {
-      // Scroll down
-      this.pointerAutoscroll =
-        this.pointerAutoscroll >= this.chapters.length
-          ? this.chapters.length - 1
-          : this.pointerAutoscroll + 1;
-    } else {
-      // Scroll up
-      this.pointerAutoscroll =
-        this.pointerAutoscroll === 0 ? 0 : this.pointerAutoscroll - 1;
+    if (this.vpService.breakPoint$.value === 'xl') {
+      if (jumpToNext) {
+        // Scroll down
+        this.pointerAutoscroll =
+          this.pointerAutoscroll >= this.chapters.length
+            ? this.chapters.length - 1
+            : this.pointerAutoscroll + 1;
+      } else {
+        // Scroll up
+        this.pointerAutoscroll =
+          this.pointerAutoscroll === 0 ? 0 : this.pointerAutoscroll - 1;
+      }
+      this.scrollToChapter(this.pointerAutoscroll);
     }
-    this.scrollToChapter(this.pointerAutoscroll);
   }
 
   private addEventListener(): void {

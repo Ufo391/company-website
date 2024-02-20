@@ -51,11 +51,9 @@ export class ServicesComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.onPointerChanged();
-    this.vpService.breakPoint$
-      .pipe(untilDestroyed(this))
-      .subscribe((m) => {
-        this.imgStyles = this.switchImageStyle(m);
-      });
+    this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((m) => {
+      this.imgStyles = this.switchImageStyle(m);
+    });
     this.imgUris.forEach((u) => {
       this.preloadImage(u);
     });
@@ -66,8 +64,8 @@ export class ServicesComponent implements OnInit, AfterViewInit {
       this.myElement,
       this.startFadeAnimation.bind(this),
       this.resetComponent.bind(this),
-      () => {},
-      () => {},
+      this.clickLastItemHandler.bind(this),
+      this.clickNextItemHandler.bind(this)
     );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.services.title);
