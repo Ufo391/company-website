@@ -62,7 +62,7 @@
           (mouseenter)="chapterService.disableSkipScroll(true)"
           (mouseleave)="chapterService.disableSkipScroll(false)"
         >
-          <p-scrollPanel [style]="scrollPanelStyle">
+          <p-scrollPanel #scroll [style]="scrollPanelStyle">
             <p class="text-justify">{{ p.values[pointer].content.value }}</p>
           </p-scrollPanel>
         </div>

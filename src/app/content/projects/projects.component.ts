@@ -10,6 +10,7 @@ import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { opacityAnimation } from '../content.animation';
 import { ViewportService } from 'src/app/services/viewport.service';
+import { ScrollPanel } from 'primeng/scrollpanel';
 
 @UntilDestroy()
 @Component({
@@ -20,6 +21,7 @@ import { ViewportService } from 'src/app/services/viewport.service';
 })
 export class ProjectsComponent implements OnInit, AfterViewInit {
   @ViewChild('title') myElement!: ElementRef;
+  @ViewChild('scroll') scroll!: ScrollPanel;
   pointer!: number;
   fadeinContentAnimationStatus: boolean = false;
   fadeinAnimation = 'off';
@@ -63,6 +65,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
           : this.pointer + 1;
     }
     this.fadeinContent();
+    this.scroll.scrollTop(0);
   }
 
   clickLastItemHandler(): void {
@@ -73,6 +76,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
           : this.pointer - 1;
     }
     this.fadeinContent();
+    this.scroll.scrollTop(0);
   }
 
   private fadeinContent(): void {
@@ -88,5 +92,6 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 
   private leaveFadeAnimation(): void {
     this.fadeinAnimation = 'off';
+    this.scroll.scrollTop(0);
   }
 }
