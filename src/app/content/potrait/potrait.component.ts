@@ -38,13 +38,14 @@ export class PotraitComponent implements OnInit, AfterViewInit {
       this.startFadeAnimation.bind(this),
       this.leaveFadeAnimation.bind(this),
       () => {},
-      () => {},
+      () => {}
     );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.aboutMe.title);
     });
     this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((v) => {
       this.isFoldOut = v === 'xl';
+      this.fadeinAnimation = v === 'xl' ? 'off' : 'on';
     });
   }
 
@@ -57,7 +58,9 @@ export class PotraitComponent implements OnInit, AfterViewInit {
   }
 
   private leaveFadeAnimation(): void {
-    this.fadeinAnimation = 'off';
+    if (this.vpService.breakPoint$.value === 'xl') {
+      this.fadeinAnimation = 'off';
+    }
     this.isFoldOut = this.vpService.breakPoint$.value === 'xl';
   }
 }
