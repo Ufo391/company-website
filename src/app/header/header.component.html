@@ -136,12 +136,24 @@
       <hr />
       <div class="sm:flex sm:flex-wrap primary-color">
         <div class="sm:w-6 w-12 flex flex-row align-items-center">
-          <i class="pi pi-lock cursor-pointer"></i>
-          <h3 class="ml-2 cursor-pointer">{{ md.sidebar.privacy }}</h3>
+          <i class="pi pi-file cursor-pointer"></i>
+          <a
+            href="/imprint"
+            style="font-size: 16.38px; margin-top: 16.38px; margin-bottom: 16.38px;"
+            class="ml-2 cursor-pointer no-underline font-bold primary-color"
+          >
+            {{ md.sidebar.imprint }}
+          </a>
         </div>
         <div class="sm:w-6 w-12 flex flex-row align-items-center">
-          <i class="pi pi-file cursor-pointer"></i>
-          <h3 class="ml-2 cursor-pointer">{{ md.sidebar.imprint }}</h3>
+          <i class="pi pi-lock cursor-pointer"></i>
+          <a
+            href="/dsgvo"
+            style="font-size: 16.38px; margin-top: 16.38px; margin-bottom: 16.38px;"
+            class="ml-2 cursor-pointer no-underline font-bold primary-color"
+          >
+            {{ md.sidebar.privacy }}
+          </a>
         </div>
         <div
           class="sm:w-6 w-12 flex flex-row align-items-center"

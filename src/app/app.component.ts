@@ -1,14 +1,27 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { filter } from 'rxjs';
 
+@UntilDestroy()
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 'company-website';
+export class AppComponent implements AfterViewInit {
+  public isHeaderVisible: boolean = true;
 
-  test(): void {
-    console.log('HELLO');
+  constructor(private router: Router) {}
+
+  ngAfterViewInit(): void {
+    this.router.events
+      .pipe(
+        untilDestroyed(this),
+        filter((event) => event instanceof NavigationEnd)
+      )
+      .subscribe((event) => {
+        this.isHeaderVisible = event.toString().includes("url: '/',");
+      });
   }
 }

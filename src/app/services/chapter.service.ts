@@ -48,6 +48,10 @@ export class ChapterService {
     this.chapters$.next(this.chapters.map((c) => c.title));
   }
 
+  clear(): void {
+    this.chapters = [];
+  }
+
   translateChapter(e: ElementRef, value: string): void {
     const h: HTMLElement = e.nativeElement as HTMLElement;
     const c: IChapterData = this.chapters.find((c) => c.title === h.innerText)!;
