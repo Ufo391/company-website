@@ -51,7 +51,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     });
     this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((v) => {
       if (v === 'xl') {
-        this.scrollPanelStyle = { height: '33vh' };
+        this.scrollPanelStyle = { height: '50vh' };
       } else {
         this.scrollPanelStyle = { height: '66vh' };
       }
