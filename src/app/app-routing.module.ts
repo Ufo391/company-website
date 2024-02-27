@@ -6,8 +6,8 @@ import { DsgvoComponent } from './dsgvo/dsgvo.component';
 
 const routes: Routes = [
   { path: '', component: ContentComponent },
-  { path: 'imprint', component: ImprintComponent },
-  { path: 'dsgvo', component: DsgvoComponent },
+  { path: 'company-website/imprint', component: ImprintComponent },
+  { path: 'company-website/dsgvo', component: DsgvoComponent },
 ];
 
 @NgModule({
