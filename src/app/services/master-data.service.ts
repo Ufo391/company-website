@@ -38,7 +38,7 @@ export class MasterDataService {
       aboutMe: {
         title: 'Hintergrund',
         value:
-          'Ich bin ein erfahrener Softwareentwickler mit über 5 Jahren Berufserfahrung, einschließlich Consulting und fachlicher Führung. Meine Expertise liegt in .NET C# Entwicklung, Angular-Entwicklung und Microsoft Power Platform Entwicklung & Beratung. Ich beherrsche vielfältige Programmiersprachen und Technologien und bin versiert in agilen Methoden sowie Test-Driven Development. Ich habe erfolgreich kaufmännische Prozesse digitalisiert und zeichne mich durch die Fähigkeit aus, mich in unstrukturierte Umgebungen einzuarbeiten und durch methodische Herangehensweisen positive Ergebnisse zu liefern. Klare und offene Kommunikation mit Kunden und Teammitgliedern sind mir wichtig, um absolute Kundenzufriedenheit zu gewährleisten. Ich setze kontinuierliche Weiterbildung in neuen Technologien und Branchen ein, um dieses Ziel zu erreichen.',
+          '"Softwareingenieure lösen Probleme". In meiner 5-jährigen Berufserfahrung habe ich gelernt, dass es keine Probleme gibt - sondern lediglich Lösungen. Durch diese Denkweise konnte ich erfolgreich zahlreiche Prozesse digitalisieren und automatisieren. Mein Schwerpunkt liegt dabei auf Konzept- und Implementierungsarbeiten im Bereich der kaufmännischen Datenverarbeitung. \nMeine Stärken liegen in der Fähigkeit, mich in unstrukturierte Umgebungen einzuarbeiten, und in methodischen Ansätzen, die positive Ergebnisse hervorbringen. Klare und offene Kommunikation sowohl mit Kunden als auch Teammitgliedern sind für mich von zentraler Bedeutung, um absolute Kundenzufriedenheit zu gewährleisten. \nUm stets auf dem neuesten Stand zu bleiben, investiere ich kontinuierlich in meine Weiterbildung. Mein Ziel ist es, durch diese fortlaufende Entwicklung hochwertige Lösungen zu bieten und langfristige Erfolge zu sichern.',
       },
       services: {
         title: 'Dienstleistungen',
@@ -136,7 +136,7 @@ export class MasterDataService {
       aboutMe: {
         title: 'Background',
         value:
-          'I am an experienced software developer with over 5 years of professional experience, including consulting and technical leadership. My expertise lies in .NET C# development, Angular development and Microsoft Power Platform development & consulting. I am proficient in a wide range of programming languages and technologies and am well versed in agile methods and test-driven development. I have successfully digitised commercial processes and excel at working in unstructured environments and delivering positive results through methodical approaches. Clear and open communication with customers and team members is important to me to ensure total customer satisfaction. I utilise continuous training in new technologies and industries to achieve this goal.',
+          '"Software engineers solve problems". In my 5 years of professional experience, I have learnt that there are no problems - only solutions. This way of thinking has enabled me to successfully digitalise and automate numerous processes. My focus is on concept and implementation work in the area of commercial data processing. \nMy strengths lie in my ability to familiarise myself with unstructured environments and in methodical approaches that produce positive results. Clear and open communication with both clients and team members is key for me to ensure total customer satisfaction. \nIn order to stay up to date, I continuously invest in my further training. My aim is to offer high-quality solutions and ensure long-term success through this ongoing development.',
       },
       services: {
         title: 'Services',
@@ -197,17 +197,17 @@ export class MasterDataService {
           {
             type: 'phone',
             value: { title: 'Mobile:', value: this.phone },
-            description: 'Call'
+            description: 'Call',
           },
           {
             type: 'mail',
             value: { title: 'E-Mail:', value: this.mail },
-            description: 'Mail'
+            description: 'Mail',
           },
           {
             type: 'location',
             value: { title: 'Location:', value: this.location },
-            description: 'Visit'
+            description: 'Visit',
           },
         ],
       },
@@ -234,7 +234,7 @@ export class MasterDataService {
       aboutMe: {
         title: 'Kontekst',
         value:
-          'Jestem doświadczonym programistą z ponad 5-letnim doświadczeniem zawodowym, w tym w zakresie doradztwa i przywództwa technicznego. Specjalizuję się w rozwoju .NET C#, rozwoju Angular oraz rozwoju i doradztwie Microsoft Power Platform. Jestem biegły w szerokiej gamie języków programowania i technologii oraz dobrze zorientowany w metodach zwinnych i rozwoju opartym na testach. Z powodzeniem digitalizowałem procesy komercyjne i wyróżniam się w pracy w nieustrukturyzowanych środowiskach i dostarczaniu pozytywnych wyników dzięki metodycznemu podejściu. Jasna i otwarta komunikacja z klientami i członkami zespołu jest dla mnie ważna, aby zapewnić pełną satysfakcję klienta. Wykorzystuję ciągłe szkolenia w zakresie nowych technologii i branż, aby osiągnąć ten cel.',
+          '"Inżynierowie oprogramowania rozwiązują problemy". W ciągu mojego 5-letniego doświadczenia zawodowego nauczyłem się, że nie ma problemów - są tylko rozwiązania. Ten sposób myślenia umożliwił mi skuteczną cyfryzację i automatyzację wielu procesów. Koncentruję się na pracach koncepcyjnych i wdrożeniowych w obszarze komercyjnego przetwarzania danych. \nMoje mocne strony to umiejętność odnajdywania się w nieustrukturyzowanych środowiskach i metodyczne podejście, które przynosi pozytywne rezultaty. Jasna i otwarta komunikacja zarówno z klientami, jak i członkami zespołu jest dla mnie kluczem do zapewnienia pełnej satysfakcji klienta. \nAby być na bieżąco, stale inwestuję w swoje dalsze szkolenia. Moim celem jest oferowanie wysokiej jakości rozwiązań i zapewnienie długoterminowego sukcesu poprzez ciągły rozwój.',
       },
       services: {
         title: 'usługi',
@@ -295,17 +295,17 @@ export class MasterDataService {
           {
             type: 'phone',
             value: { title: 'Mobilny:', value: this.phone },
-            description: 'Połącz'
+            description: 'Połącz',
           },
           {
             type: 'mail',
             value: { title: 'E-Mail:', value: this.mail },
-            description: 'Mail'
+            description: 'Mail',
           },
           {
             type: 'location',
             value: { title: 'Lokalizacja:', value: this.location },
-            description: 'Pokaż'
+            description: 'Pokaż',
           },
         ],
       },

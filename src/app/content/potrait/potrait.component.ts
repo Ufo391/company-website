@@ -21,6 +21,7 @@ import { opacityAnimation } from '../content.animation';
 export class PotraitComponent implements OnInit, AfterViewInit {
   isFoldOut: boolean = false;
   fadeinAnimation = 'off';
+  text: string[] = [];
 
   constructor(
     private chapterService: ChapterService,
@@ -42,11 +43,13 @@ export class PotraitComponent implements OnInit, AfterViewInit {
     );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.aboutMe.title);
+      this.text = this.splitText(c.aboutMe.value, "\n");
     });
     this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((v) => {
       this.isFoldOut = v === 'xl';
       this.fadeinAnimation = v === 'xl' ? 'off' : 'on';
     });
+
   }
 
   toggleFoldOut(): void {
@@ -62,5 +65,9 @@ export class PotraitComponent implements OnInit, AfterViewInit {
       this.fadeinAnimation = 'off';
     }
     this.isFoldOut = this.vpService.breakPoint$.value === 'xl';
+  }
+
+  splitText(text: string, splitter: string): string[] {
+    return text.split(splitter);
   }
 }
