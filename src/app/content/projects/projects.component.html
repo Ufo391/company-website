@@ -20,30 +20,30 @@
           class="animation-duration-500 animation-iteration-1 sm:w-3 w-12"
           [ngClass]="{ fadein: fadeinContentAnimationStatus }"
         >
-          <p class="text-left sm:text-center font-bold xl:text-4xl p-0 m-0">
+          <p class="text-left sm:text-right font-bold xl:text-4xl p-0 m-0">
             {{ p.values[pointer].content.title }}
           </p>
           <div class="flex flex-row sm:flex-column justify-content-between">
             <div>
-              <p class="text-left sm:text-center xl:text-2xl p-0 m-0">
+              <p class="text-left sm:text-right xl:text-2xl p-0 m-0">
                 {{ p.values[pointer].role }}
               </p>
-              <p class="text-left sm:text-center xl:text-2xl p-0 m-0">
+              <p class="text-left sm:text-right xl:text-2xl p-0 m-0">
                 {{ p.values[pointer].industry }}
               </p>
-              <p class="text-left sm:text-center xl:text-2xl p-0 m-0">
+              <p class="text-left sm:text-right xl:text-2xl p-0 m-0">
                 {{ p.values[pointer].durationInMonths }} {{ p.duration }}
               </p>
             </div>
             <br *ngIf="(vpService.breakPoint$ | async) !== 'xs'" />
             <div>
-              <p class="text-right sm:text-center xl:text-2xl p-0 m-0">
+              <p class="text-right sm:text-right xl:text-2xl p-0 m-0">
                 {{ p.values[pointer].techStack[0] }}
               </p>
-              <p class="text-right sm:text-center xl:text-2xl p-0 m-0">
+              <p class="text-right sm:text-right xl:text-2xl p-0 m-0">
                 {{ p.values[pointer].techStack[1] }}
               </p>
-              <p class="text-right sm:text-center xl:text-2xl p-0 m-0">
+              <p class="text-right sm:text-right xl:text-2xl p-0 m-0">
                 {{ p.values[pointer].techStack[2] }}
               </p>
             </div>
