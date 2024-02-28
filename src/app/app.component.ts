@@ -22,7 +22,7 @@ export class AppComponent implements AfterViewInit {
       )
       .subscribe((event) => {
         const e: NavigationEnd = event as NavigationEnd;
-        this.isHeaderVisible = e.url === '/company-website' || e.url === '/';
+        this.isHeaderVisible = e.url === '/';
       });
   }
 }

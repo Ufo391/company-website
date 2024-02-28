@@ -5,8 +5,9 @@ import { ImprintComponent } from './imprint/imprint.component';
 import { DsgvoComponent } from './dsgvo/dsgvo.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'company-website', pathMatch: 'full' },
-  { path: 'company-website', component: ContentComponent },
+  { path: '', component: ContentComponent },
+  { path: 'imprint', component: ImprintComponent },
+  { path: 'privacy', component: DsgvoComponent },
   { path: 'company-website/imprint', component: ImprintComponent },
   { path: 'company-website/privacy', component: DsgvoComponent },
 ];
