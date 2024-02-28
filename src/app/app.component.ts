@@ -21,7 +21,8 @@ export class AppComponent implements AfterViewInit {
         filter((event) => event instanceof NavigationEnd)
       )
       .subscribe((event) => {
-        this.isHeaderVisible = event.toString().includes("url: '/',");
+        const e: NavigationEnd = event as NavigationEnd;
+        this.isHeaderVisible = e.url === '/company-website' || e.url === '/';
       });
   }
 }
