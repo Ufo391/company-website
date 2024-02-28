@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'company-website', pathMatch: 'full' },
   { path: 'company-website', component: ContentComponent },
   { path: 'company-website/imprint', component: ImprintComponent },
-  { path: 'company-website/dsgvo', component: DsgvoComponent },
+  { path: 'company-website/privacy', component: DsgvoComponent },
 ];
 
 @NgModule({
