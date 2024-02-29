@@ -1,12 +1,10 @@
-import { ElementRef, Injectable } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ChangeDetectorRef, ElementRef, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IChapterData } from '../models/IChapterData';
 import { ChapterChangeType } from '../models/chapterChangeType';
 import { SCROLL_STATE } from '../models/scrollStates';
 import { ViewportService } from './viewport.service';
 
-@UntilDestroy()
 @Injectable({
   providedIn: 'root',
 })
@@ -253,7 +251,7 @@ export class ChapterService {
       }
     });
 
-    this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((v) => {
+    this.vpService.breakPoint$.subscribe((v) => {
       if (v === 'xl') {
         this.scrollState = 'SkipScroll';
       } else {
