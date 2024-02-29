@@ -17,7 +17,6 @@ export class ChapterService {
   private pointer: number = 0;
   private pointerAutoscroll: number = 0;
   private offsetHeight: number = 0;
-  private skipScrollTimeoutId!: any;
   private skipScrollIsDisabled: boolean = false;
   private scrollState: SCROLL_STATE = 'Default';
 
@@ -62,9 +61,6 @@ export class ChapterService {
   }
 
   scrollToChapter(index: number): void {
-    if (this.skipScrollTimeoutId !== undefined) {
-      clearTimeout(this.skipScrollTimeoutId);
-    }
     const c: IChapterData = this.chapters[index];
     const target: HTMLElement = c.element.parentElement
       ? c.element.parentElement
@@ -79,14 +75,6 @@ export class ChapterService {
       top: pos,
       behavior: 'smooth',
     });
-
-    this.skipScrollTimeoutId = setTimeout(() => {
-      if (Math.abs(window.scrollY - pos) > 5) {
-        this.scrollToChapter(index);
-      } else {
-        this.pointerAutoscroll = this.pointer;
-      }
-    }, 500);
   }
 
   onScrollPositionChanged(w: Window): void {
