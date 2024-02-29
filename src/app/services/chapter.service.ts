@@ -15,9 +15,12 @@ export class ChapterService {
   public currentChapter$!: BehaviorSubject<string>;
   public chapters$!: BehaviorSubject<string[]>;
   private pointer: number = 0;
-  private pointerAutoscroll: number = 0;
+  private pointerSkipscroll: number = 0;
   private offsetHeight: number = 0;
   private skipScrollIsDisabled: boolean = false;
+  private tsSkipScroll: Date = new Date(Date.now());
+  private readonly skipScrollDelayInMs: number = 550;
+  private readonly deltaYTreshold: number = 45;
   private scrollState: SCROLL_STATE = 'Default';
 
   constructor(private vpService: ViewportService) {
@@ -75,6 +78,8 @@ export class ChapterService {
       top: pos,
       behavior: 'smooth',
     });
+
+    this.pointerSkipscroll = index;
   }
 
   onScrollPositionChanged(w: Window): void {
@@ -206,27 +211,34 @@ export class ChapterService {
   }
 
   private skipScroll(jumpToNext: boolean): void {
-    if (this.scrollState === 'SkipScroll') {
+    if (
+      this.scrollState === 'SkipScroll' &&
+      this.isSkipScrollReady(this.tsSkipScroll)
+    ) {
+      this.tsSkipScroll = new Date(Date.now());
       if (jumpToNext) {
         // Scroll down
-        this.pointerAutoscroll =
-          this.pointerAutoscroll >= this.chapters.length
+        this.pointerSkipscroll =
+          this.pointerSkipscroll >= this.chapters.length
             ? this.chapters.length - 1
-            : this.pointerAutoscroll + 1;
+            : this.pointerSkipscroll + 1;
       } else {
         // Scroll up
-        this.pointerAutoscroll =
-          this.pointerAutoscroll === 0 ? 0 : this.pointerAutoscroll - 1;
+        this.pointerSkipscroll =
+          this.pointerSkipscroll === 0 ? 0 : this.pointerSkipscroll - 1;
       }
-      this.scrollToChapter(this.pointerAutoscroll);
+      this.scrollToChapter(this.pointerSkipscroll);
     }
+  }
+
+  private isSkipScrollReady(ts: Date): boolean {
+    const now: Date = new Date(Date.now());
+    return now.getTime() - ts.getTime() >= this.skipScrollDelayInMs;
   }
 
   private addEventListener(): void {
     window.addEventListener('wheel', (event) => {
-      if (this.skipScrollIsDisabled === false) {
-        this.skipScroll(event.deltaY > 0);
-      }
+      this.debounceTouchpadSkipScroll(event);
     });
 
     window.addEventListener('keyup', (event) => {
@@ -248,5 +260,11 @@ export class ChapterService {
         this.scrollState = 'Default';
       }
     });
+  }
+
+  private debounceTouchpadSkipScroll(event: WheelEvent): void {
+    if (this.skipScrollIsDisabled === false && Math.abs(event.deltaY) >= this.deltaYTreshold) {
+      this.skipScroll(event.deltaY > 0);
+    }
   }
 }
