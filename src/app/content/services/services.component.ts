@@ -10,7 +10,7 @@ import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { ViewportService } from 'src/app/services/viewport.service';
 import { opacityAnimation } from '../content.animation';
-import { ViewportModes } from 'src/app/models/ViewportModes';
+import { ViewportModes } from 'src/app/models/viewportModes';
 
 @Component({
   selector: 'app-services',

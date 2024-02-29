@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { BehaviorSubject } from 'rxjs';
-import { ViewportModes } from '../models/ViewportModes';
+import { ViewportModes } from '../models/viewportModes';
 
 @UntilDestroy()
 @Injectable({

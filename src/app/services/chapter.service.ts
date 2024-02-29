@@ -1,10 +1,10 @@
 import { ElementRef, Injectable } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject } from 'rxjs';
 import { IChapterData } from '../models/IChapterData';
+import { ChapterChangeType } from '../models/chapterChangeType';
+import { SCROLL_STATE } from '../models/scrollStates';
 import { ViewportService } from './viewport.service';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-
-type ChapterChangeType = 'cur' | 'nxt' | 'lst';
 
 @UntilDestroy()
 @Injectable({
@@ -19,6 +19,7 @@ export class ChapterService {
   private offsetHeight: number = 0;
   private skipScrollTimeoutId!: any;
   private skipScrollIsDisabled: boolean = false;
+  private scrollState: SCROLL_STATE = 'Default';
 
   constructor(private vpService: ViewportService) {
     this.currentChapter$ = new BehaviorSubject<string>('Kloss IT-Solutions');
@@ -217,7 +218,7 @@ export class ChapterService {
   }
 
   private skipScroll(jumpToNext: boolean): void {
-    if (this.vpService.breakPoint$.value === 'xl') {
+    if (this.scrollState === 'SkipScroll') {
       if (jumpToNext) {
         // Scroll down
         this.pointerAutoscroll =
@@ -249,6 +250,14 @@ export class ChapterService {
         this.chapters[this.pointer].keypressLeftCallback();
       } else if (event.key === 'ArrowRight') {
         this.chapters[this.pointer].keypressRightCallback();
+      }
+    });
+
+    this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((v) => {
+      if (v === 'xl') {
+        this.scrollState = 'SkipScroll';
+      } else {
+        this.scrollState = 'Default';
       }
     });
   }
