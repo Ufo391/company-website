@@ -33,7 +33,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   ];
   imgUris: string[] = [
     'assets/ai/services/Expertiese3.jpg',
-    'assets/ai/services/Entwicklung4.jpg',
+    'assets/free/code-angular.jpg',
     'assets/ai/services/Beratung4.jpg',
   ];
   imgStyles!: object[];
@@ -147,7 +147,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
           height: '100%',
         },
         {
-          width: '150%',
+          width: '120%',
           height: '110%',
         },
         {
