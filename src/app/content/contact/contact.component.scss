@@ -1,20 +1,32 @@
-.i-btn-bg{
-  background-color: #E0EBF0;
-
+.i-btn-bg {
+  background-color: #e0ebf0;
 }
 
 @media screen and (min-width: 577px) {
-  .i-btn-h{
-    width: 30vh
+  .i-btn-h {
+    width: 30vh;
   }
 }
 
 @media screen and (max-width: 576px) {
-  .i-btn-h{
-    width: 12vh
+  .i-btn-h {
+    width: 12vh;
   }
 }
 
-.title-i{
+.title-i {
   font-size: 0px;
+}
+
+.img-contact {
+  height: 20vh;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 577px) and (max-width: 1199px) {
+  .img-contact {
+    height: 40vh;
+    max-width: 33vw;
+    object-fit: cover;
+  }
 }
