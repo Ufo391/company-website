@@ -62,15 +62,20 @@ export class ChapterService {
   }
 
   scrollToChapter(index: number): void {
-    const c: IChapterData = this.chapters[index];
-    const target: HTMLElement = c.element.parentElement
-      ? c.element.parentElement
-      : c.element;
-    let pos: number =
-      index > 0
-        ? target.offsetTop -
-          (window.innerHeight - this.offsetHeight - target.offsetHeight) / 2
-        : 0;
+    let pos: number = 0;
+    if (index < this.chapters.length) {
+      const c: IChapterData = this.chapters[index];
+      const target: HTMLElement = c.element.parentElement
+        ? c.element.parentElement
+        : c.element;
+      pos =
+        index > 0
+          ? target.offsetTop -
+            (window.innerHeight - this.offsetHeight - target.offsetHeight) / 2
+          : 0;
+    } else {
+      pos = document.body.scrollHeight;
+    }
 
     window.scrollTo({
       top: pos,
@@ -261,7 +266,10 @@ export class ChapterService {
   }
 
   private debounceTouchpadSkipScroll(event: WheelEvent): void {
-    if (this.skipScrollIsDisabled === false && Math.abs(event.deltaY) >= this.deltaYTreshold) {
+    if (
+      this.skipScrollIsDisabled === false &&
+      Math.abs(event.deltaY) >= this.deltaYTreshold
+    ) {
       this.skipScroll(event.deltaY > 0);
     }
   }
