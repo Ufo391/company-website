@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, ElementRef, Injectable } from '@angular/core';
+import { ElementRef, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IChapterData } from '../models/IChapterData';
 import { ChapterChangeType } from '../models/chapterChangeType';
