@@ -1,10 +1,8 @@
 <div *ngIf="(lService.MasterData$ | async)?.footer as f">
-  <div class="container container-h"
-  >
+  <div class="container container-h">
     <img
       class="bg-repeat-y container-h w-12"
       src="assets/footer.png"
-      alt="background"
       loading="eager"
     />
     <div style="position: absolute; bottom: 0">
@@ -17,7 +15,6 @@
           >
             <img
               src="assets/freelancermap_icon.png"
-              alt="background"
               [style.width]="iconSize"
               [style.height]="iconSize"
               loading="eager"
@@ -37,7 +34,6 @@
           >
             <img
               src="assets/xing_icon2.svg"
-              alt="background"
               [style.width]="iconSize"
               [style.height]="iconSize"
               loading="eager"
@@ -50,20 +46,23 @@
         <p class="text-black text-center p-0 m-0">
           {{ f.copyright }}
         </p>
-        <div class="flex flex-row justify-content-center text-center mb-4 mt-1">
-          <a
-            href="imprint"
-            class="text-center mr-1 font-bold text-black"
-          >
+        <div class="flex flex-row justify-content-center text-center mb-1 mt-1">
+          <a href="imprint" class="text-center mr-1 font-bold text-black">
             {{ f.imprint }}</a
           >
           <p class="p-0 m-0">|</p>
-          <a
-            href="privacy"
-            class="text-center ml-1 font-bold text-black"
-          >
+          <a href="privacy" class="text-center ml-1 font-bold text-black">
             {{ f.privacy }}</a
           >
+        </div>
+        <div class="flex flex-row align-items-center justify-content-center mt-1 mb-3">
+          <p class="m-0 p-0 select-none" style="font-size: 0.5rem">POWERED BY</p>
+          <img
+            src="assets/free/angular-48.png"
+            [style.width]="'1rem'"
+            [style.height]="'1rem'"
+            loading="eager"
+          />
         </div>
       </div>
     </div>
