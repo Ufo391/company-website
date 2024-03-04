@@ -36,6 +36,9 @@ export class ChapterService {
     rightCallback: () => void
   ): void {
     const element: HTMLElement = e.nativeElement;
+    if (this.chapters.some((c) => c.title === element.innerText)) {
+      this.chapters = this.chapters.filter((c) => c.title !== element.innerText);
+    }
     const c: IChapterData = {
       element: element.parentElement !== null ? element.parentElement : element,
       title: element.innerText,
