@@ -37,7 +37,9 @@ export class ChapterService {
   ): void {
     const element: HTMLElement = e.nativeElement;
     if (this.chapters.some((c) => c.title === element.innerText)) {
-      this.chapters = this.chapters.filter((c) => c.title !== element.innerText);
+      this.chapters = this.chapters.filter(
+        (c) => c.title !== element.innerText
+      );
     }
     const c: IChapterData = {
       element: element.parentElement !== null ? element.parentElement : element,
@@ -50,6 +52,9 @@ export class ChapterService {
     this.chapters.push(c);
     this.chapters.sort((a, b) => a.element.offsetTop - b.element.offsetTop);
     this.chapters$.next(this.chapters.map((c) => c.title));
+    if (window.innerHeight !== 0) {
+      this.scrollToChapter(0);
+    }
   }
 
   clear(): void {
@@ -64,7 +69,7 @@ export class ChapterService {
     this.currentChapter$.next(this.chapters[this.pointer].title);
   }
 
-  scrollToChapter(index: number): void {
+  scrollToChapter(index: number, mode: ScrollBehavior = 'smooth'): void {
     let pos: number = 0;
     if (index < this.chapters.length) {
       const c: IChapterData = this.chapters[index];
@@ -82,7 +87,7 @@ export class ChapterService {
 
     window.scrollTo({
       top: pos,
-      behavior: 'smooth',
+      behavior: mode,
     });
 
     this.pointerSkipscroll = index;
