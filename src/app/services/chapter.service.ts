@@ -71,7 +71,7 @@ export class ChapterService {
 
   scrollToChapter(index: number, mode: ScrollBehavior = 'smooth'): void {
     let pos: number = 0;
-    if (index < this.chapters.length) {
+    if (index < this.chapters.length - 1) {
       const c: IChapterData = this.chapters[index];
       const target: HTMLElement = c.element.parentElement
         ? c.element.parentElement
