@@ -71,7 +71,12 @@ export class ChapterService {
 
   scrollToChapter(index: number, mode: ScrollBehavior = 'smooth'): void {
     let pos: number = 0;
-    if (index < this.chapters.length - 1) {
+    if (
+      index >= this.chapters.length - 1 &&
+      this.vpService.breakPoint$.value === 'xl'
+    ) {
+      pos = document.body.scrollHeight;
+    } else {
       const c: IChapterData = this.chapters[index];
       const target: HTMLElement = c.element.parentElement
         ? c.element.parentElement
@@ -81,8 +86,6 @@ export class ChapterService {
           ? target.offsetTop -
             (window.innerHeight - this.offsetHeight - target.offsetHeight) / 2
           : 0;
-    } else {
-      pos = document.body.scrollHeight;
     }
 
     window.scrollTo({
