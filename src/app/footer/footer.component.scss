@@ -1,5 +1,10 @@
 $minW: 577px;
 $maxW: 576px;
+$background: linear-gradient(to right, #daeaf0, #9fb1c5);
+
+.bg-color{
+ background: $background;
+}
 
 .container {
   position: relative;

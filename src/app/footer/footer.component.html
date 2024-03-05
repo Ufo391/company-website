@@ -1,81 +1,64 @@
 <div *ngIf="(lService.MasterData$ | async)?.footer as f">
-  <div class="container container-h">
-    <img
-      class="bg-repeat-y container-h w-12"
-      src="assets/footer.png"
-      loading="eager"
-    />
-    <div style="position: absolute; bottom: 0">
-      <div class="text-sm">
-        <div
-          class="flex flex-row align-items-center justify-content-center mb-2"
+  <div class="container container-h bg-color">
+    <div class="text-sm">
+      <div class="flex flex-row align-items-center justify-content-center mb-2">
+        <p class="m-0 p-0 select-none" style="font-size: 0.5rem">POWERED BY</p>
+        <img
+          src="assets/free/angular-48.png"
+          [style.width]="'1rem'"
+          [style.height]="'1rem'"
+          loading="eager"
+        />
+      </div>
+      <div class="flex justify-content-center mb-1">
+        <a
+          href="https://www.freelancermap.de/profil/fullstack-entwickler-und-berater"
+          target="_blank"
+          class="mr-2"
         >
-          <p class="m-0 p-0 select-none" style="font-size: 0.5rem">
-            POWERED BY
-          </p>
           <img
-            src="assets/free/angular-48.png"
-            [style.width]="'1rem'"
-            [style.height]="'1rem'"
+            src="assets/freelancermap_icon.png"
+            [style.width]="iconSize"
+            [style.height]="iconSize"
             loading="eager"
+            pTooltip="freelancermap"
           />
-        </div>
-        <div class="flex justify-content-center mb-1">
-          <a
-            href="https://www.freelancermap.de/profil/fullstack-entwickler-und-berater"
-            target="_blank"
-            class="mr-2"
-          >
-            <img
-              src="assets/freelancermap_icon.png"
-              [style.width]="iconSize"
-              [style.height]="iconSize"
-              loading="eager"
-              pTooltip="freelancermap"
-            />
-          </a>
-          <a
-            href="https://de.linkedin.com/company/klo%C3%9F-it-solutions?trk=public_profile_topcard-current-company"
-            target="_blank"
-            class="mr-2"
-          >
-            <i
-              class="pi pi-linkedin text-black text-2xl"
-              pTooltip="Linkedin"
-            ></i>
-          </a>
-          <a
-            href="https://www.xing.com/profile/Nikolai_Kloss2"
-            target="_blank"
-            class="mr-2"
-          >
-            <img
-              src="assets/xing_icon2.svg"
-              [style.width]="iconSize"
-              [style.height]="iconSize"
-              loading="eager"
-              pTooltip="Xing"
-            />
-          </a>
-          <a href="https://github.com/Ufo391" target="_blank">
-            <i
-              class="pi pi-github text-black text-2xl"
-              pTooltip="GitHub"
-            ></i>
-          </a>
-        </div>
-        <p class="text-black text-center p-0 m-0">
-          {{ f.copyright }}
-        </p>
-        <div class="flex flex-row justify-content-center text-center mb-4 mt-1">
-          <a href="imprint" class="text-center mr-1 font-bold text-black">
-            {{ f.imprint }}</a
-          >
-          <p class="p-0 m-0">|</p>
-          <a href="privacy" class="text-center ml-1 font-bold text-black">
-            {{ f.privacy }}</a
-          >
-        </div>
+        </a>
+        <a
+          href="https://de.linkedin.com/company/klo%C3%9F-it-solutions?trk=public_profile_topcard-current-company"
+          target="_blank"
+          class="mr-2"
+        >
+          <i class="pi pi-linkedin text-black text-2xl" pTooltip="Linkedin"></i>
+        </a>
+        <a
+          href="https://www.xing.com/profile/Nikolai_Kloss2"
+          target="_blank"
+          class="mr-2"
+        >
+          <img
+            src="assets/xing_icon2.svg"
+            [style.width]="iconSize"
+            [style.height]="iconSize"
+            loading="eager"
+            pTooltip="Xing"
+          />
+        </a>
+        <a href="https://github.com/Ufo391" target="_blank">
+          <i class="pi pi-github text-black text-2xl" pTooltip="GitHub"></i>
+        </a>
+      </div>
+      <p class="text-black text-center p-0 m-0">
+        {{ f.copyright }}
+      </p>
+      <div class="flex flex-row justify-content-center text-center mt-1">
+        <a href="imprint" class="text-center mr-1 font-bold text-black">
+          {{ f.imprint }}</a
+        >
+        <p class="p-0 m-0">|</p>
+        <a href="privacy" class="text-center ml-1 font-bold text-black">
+          {{ f.privacy }}</a
+        >
       </div>
     </div>
   </div>
