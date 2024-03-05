@@ -7,7 +7,7 @@ import { ICompany, LanguageCode } from '../models/language/ICompany';
 })
 export class MasterDataService {
   currentYear: string = '';
-  readonly companyName: string = 'Kloss IT-Solutions';
+  readonly companyName: string = 'Kloß IT-Solutions';
   readonly phone: string = '+491523 5834040';
   readonly mail: string = 'info@klossitsolutions.com';
   readonly location: string = 'Gütersloh';
