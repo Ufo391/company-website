@@ -10,20 +10,16 @@
     <ng-template pTemplate="content">
       <div class="sm:flex sm:flex-row">
         <div class="surface-section text-700 text-center mt-5 select-none">
-          <div class="text-blue-600 font-bold mb-3">
-            <i class="pi pi-users">&#160;POWERED BY DISCORD </i>
-          </div>
           <img
-          class="img-contact"
-          [src]="'assets/free/communication.png'"
-          loading="eager"
-        />
+            class="img-contact"
+            [src]="'assets/free/communication.png'"
+            loading="eager"
+          />
           <p class="text-900 font-bold text-5xl mb-3 p-0">
-            Join Our Design Community
+            {{ c.description.title }}
           </p>
-          <div class="text-700 text-2xl mb-5">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-            numquam eligendi quos.
+          <div class="text-700 text-2xl mb-5 text-center">
+            {{ c.description.value }}
           </div>
           <hr *ngIf="(vpService.breakPoint$ | async) === 'xs'" />
         </div>

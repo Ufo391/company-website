@@ -95,21 +95,26 @@ export class MasterDataService {
       },
       contact: {
         title: 'Kontakt',
+        description: {
+          title: 'JETZT STARTEN',
+          value:
+            'Profitieren Sie von meiner Expertise und bringen Sie Ihr Unternehmen mit maßgeschneiderten Lösungen auf die nächste Stufe. Lukrativer Stundensatz für die ersten 2-3 Aufträge.',
+        },
         values: [
           {
             type: 'phone',
             value: { title: 'Mobil:', value: this.phone },
-            description: 'Anrufen',
+            description: 'Jetzt anrufen',
           },
           {
             type: 'mail',
             value: { title: 'E-Mail:', value: this.mail },
-            description: 'Mailen',
+            description: 'Jetzt mailen',
           },
           {
             type: 'location',
             value: { title: 'Ort:', value: this.location },
-            description: 'Zeigen',
+            description: 'Anzeigen',
           },
         ],
       },
@@ -193,6 +198,10 @@ export class MasterDataService {
       },
       contact: {
         title: 'Contact',
+        description: {
+          title: "START NOW",
+          value: "Benefit from my expertise and take your company to the next level with customised solutions. Lucrative hourly rate for the first 2-3 orders."
+        },
         values: [
           {
             type: 'phone',
@@ -291,6 +300,10 @@ export class MasterDataService {
       },
       contact: {
         title: 'Skontaktuj się z nami',
+        description: {
+          title: "START TERAZ",
+          value: "Skorzystaj z mojej wiedzy i przenieś swoją firmę na wyższy poziom dzięki niestandardowym rozwiązaniom. Lukratywna stawka godzinowa za pierwsze 2-3 zlecenia."
+        },
         values: [
           {
             type: 'phone',
