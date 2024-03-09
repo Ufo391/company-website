@@ -46,17 +46,17 @@ export class MasterDataService {
           {
             title: 'Expertise',
             value:
-              'Expertise. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
+              'Profitieren Sie von meiner Expertise in der Digitalisierung von kaufmännischen Prozessen, der Entwicklung moderner Softwarelösungen und der Optimierung kaufmännischer Prozesse. Ich finde die optimale Lösung für Ihre Digitalisierung - ob Neuentwicklung oder Erweiterung bestehender Systeme.',
           },
           {
             title: 'Entwicklung',
             value:
-              'Entwicklung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
+              'Ich setze auf test-getriebene Entwicklung mit C# und Angular, um Ihnen qualitativ hochwertige Softwarelösungen zu liefern. Meine Leistungen umfassen die Realisierung von Backend-Anwendungen in .Net Core, Desktopanwendungen in WPF, Low-Code-Lösungen mit der Microsoft Power-Plattform sowie die Entwicklung und Umsetzung von Datenbanken.',
           },
           {
             title: 'Beratung',
             value:
-              'Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
+              'Gemeinsam mit Ihnen entdecke ich neue Möglichkeiten, Ihr Tagesgeschäft effizienter zu gestalten. Meine Erfahrung und Expertise ermöglichen die schnelle Erstellung von Konzepten für komplexe Unternehmensabläufe und die dazugehörigen Softwarearchitekturen.',
           },
         ],
       },
@@ -149,17 +149,17 @@ export class MasterDataService {
           {
             title: 'Expertise',
             value:
-              'Expertise. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
+              "Benefit from my expertise in the digitalisation of commercial processes, the development of modern software solutions and the optimisation of commercial processes. I will find the optimal solution for your digitalisation - whether it's a new development or an expansion of existing systems.",
           },
           {
             title: 'Development',
             value:
-              'Dev. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
+              'I rely on test-driven development with C# and Angular to provide you with high-quality software solutions. My services include the realisation of backend applications in .Net Core, desktop applications in WPF, low-code solutions with the Microsoft Power platform as well as the development and implementation of databases.',
           },
           {
             title: 'Consulting',
             value:
-              'Con. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
+              'Together with you, I will discover new ways to organise your day-to-day business more efficiently. My experience and expertise enable me to quickly create concepts for complex business processes and the associated software architectures.',
           },
         ],
       },
@@ -199,24 +199,25 @@ export class MasterDataService {
       contact: {
         title: 'Contact',
         description: {
-          title: "START NOW",
-          value: "Benefit from my expertise and take your company to the next level with customised solutions. Lucrative hourly rate for the first 2-3 orders."
+          title: 'START NOW',
+          value:
+            'Benefit from my expertise and take your company to the next level with customised solutions. Lucrative hourly rate for the first 2-3 orders.',
         },
         values: [
           {
             type: 'phone',
             value: { title: 'Mobile:', value: this.phone },
-            description: 'Call',
+            description: 'Call now',
           },
           {
             type: 'mail',
             value: { title: 'E-Mail:', value: this.mail },
-            description: 'Mail',
+            description: 'Mail now',
           },
           {
             type: 'location',
             value: { title: 'Location:', value: this.location },
-            description: 'Visit',
+            description: 'Show',
           },
         ],
       },
@@ -251,17 +252,17 @@ export class MasterDataService {
           {
             title: 'Wiedza specjalistyczna',
             value:
-              'Wiedza specjalistyczna. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
+              'Skorzystaj z mojego doświadczenia w zakresie cyfryzacji procesów handlowych, opracowywania nowoczesnych rozwiązań programowych i optymalizacji procesów handlowych. Znajdę optymalne rozwiązanie dla Twojej cyfryzacji - niezależnie od tego, czy chodzi o nowy rozwój, czy rozbudowę istniejących systemów.',
           },
           {
             title: 'Rozwój',
             value:
-              'Rozwój. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
+              'Polegam na rozwoju opartym na testach przy użyciu C# i Angular, aby zapewnić wysokiej jakości rozwiązania programistyczne. Moje usługi obejmują realizację aplikacji backendowych w .Net Core, aplikacji desktopowych w WPF, rozwiązań low-code z platformą Microsoft Power, a także rozwój i wdrażanie baz danych.',
           },
           {
             title: 'Doradztwo',
             value:
-              'Doradztwo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
+              'Wspólnie z Tobą odkryję nowe sposoby na bardziej efektywną organizację Twojej codziennej działalności. Moje doświadczenie i wiedza pozwalają mi szybko tworzyć koncepcje złożonych procesów biznesowych i związanych z nimi architektur oprogramowania.',
           },
         ],
       },
@@ -301,19 +302,20 @@ export class MasterDataService {
       contact: {
         title: 'Skontaktuj się z nami',
         description: {
-          title: "START TERAZ",
-          value: "Skorzystaj z mojej wiedzy i przenieś swoją firmę na wyższy poziom dzięki niestandardowym rozwiązaniom. Lukratywna stawka godzinowa za pierwsze 2-3 zlecenia."
+          title: 'START TERAZ',
+          value:
+            'Skorzystaj z mojej wiedzy i przenieś swoją firmę na wyższy poziom dzięki niestandardowym rozwiązaniom. Lukratywna stawka godzinowa za pierwsze 2-3 zlecenia.',
         },
         values: [
           {
             type: 'phone',
             value: { title: 'Mobilny:', value: this.phone },
-            description: 'Połącz',
+            description: 'Zadzwoń teraz',
           },
           {
             type: 'mail',
             value: { title: 'E-Mail:', value: this.mail },
-            description: 'Mail',
+            description: 'Poczta teraz',
           },
           {
             type: 'location',
