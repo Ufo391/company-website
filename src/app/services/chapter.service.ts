@@ -18,7 +18,7 @@ export class ChapterService {
   private skipScrollIsDisabled: boolean = false;
   private tsSkipScroll: Date = new Date(Date.now());
   private readonly skipScrollDelayInMs: number = 550;
-  private readonly deltaYTreshold: number = 45;
+  private readonly deltaYTreshold: number = 70;
   private scrollState: SCROLL_STATE = 'Default';
 
   constructor(private vpService: ViewportService) {
