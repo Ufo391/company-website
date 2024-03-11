@@ -64,29 +64,115 @@ export class MasterDataService {
         title: 'Projekte',
         values: [
           {
-            content: {
+            description: {
               title: 'Kooperationsportal',
               value:
-                'Entwicklung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
+                'In diesem Softwareprojekt lag das Hauptziel darin, potenziellen Kooperationspartnern die Option zu bieten, sich über eine webbasierte Plattform für Zusammenarbeiten zu bewerben, wobei sämtliche erforderlichen Genehmigungsverfahren implementiert wurden. Die erledigten Aufgaben umfassten:',
             },
-            durationInMonths: 15,
+            durationInMonths: 8,
             industry: 'Baubranche (Konzern)',
             role: 'Full-Stack-Entwickler',
-            techStack: ['Azure', 'Angular 16', 'ASP.Net 6 Core'],
+            techStack: ['Angular 16', 'ASP.Net 6 Core', 'Azure'],
+            listing: [
+              'Aktive Teilnahme an regelmäßigen Teamabstimmungen innerhalb eines 5-köpfigen Teams, um Architekturentscheidungen zu treffen und den agilen Entwicklungsprozess zu gestalten.',
+              'Umsetzung des Autorisierungsprozesses mithilfe eines Rollenmodells, Einbindung von Azure AD und MSAL für erhöhte Sicherheit.',
+              'Realisierung des Genehmigungsprozesses und der Verwaltung von Stammdaten für potenzielle Kooperationspartner auf der Frontend-Ebene.',
+              'Implementierung von Frontend-Komponenten zur Visualisierung von aktualisierten Stammdaten nach Änderungen und zur Validierung von Eingaben beim Hochladen von PDF-Dokumenten.',
+              'Einbindung von Frontend-Komponenten zur Anzeige von hochgeladenen PDF-Dokumenten innerhalb der Anwendung zur Genehmigung und Korrektur.',
+              'Umsetzung der Funktionen zum Genehmigen und Ablehnen von Dokumenten direkt im Frontend.',
+              'Implementierung des State-Managements mittels einer Redux-Bibliothek auf der Frontend-Ebene.',
+              'Unterstützung des Backend-Teams bei auftretenden Problemen.',
+              'Entwurf von Layoutkonzepten für das Frontend und deren Umsetzung in Abstimmung mit den Teammitgliedern.',
+              'Implementierung der Internationalisierung mithilfe einer i18n-Bibliothek, um die Anwendung mehrsprachig nutzbar zu machen.',
+            ],
+            conclusion:
+              'Das Projekt resultierte in einer erfolgreichen webbasierten Plattform, die eine reibungslose Bewerbung und Genehmigung von Kooperationen ermöglichte und somit den Arbeitsablauf für potenzielle Partner optimierte.',
           },
           {
-            content: {
-              title: 'Center of Excellence',
+            description: {
+              title: 'Kundenfeedback',
               value:
-                'Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
+                'Das Projektziel bestand darin, eine mobile Anwendung zu entwickeln, die es ermöglicht, vor Ort beim Kunden Feedbackinterviews durchzuführen. Dabei sollte der Fragenkatalog flexibel an jedes Produkt und jeden Kunden angepasst werden können. Die Aufgaben und Ergebnisse des Projekts umfassen:',
             },
-            durationInMonths: 9,
+            durationInMonths: 12,
+            industry: 'Baubranche (Konzern)',
+            role: 'Full-Stack-Entwickler',
+            techStack: ['MS-Power-Apps', 'ASP.Net Core 6', 'MS-SQL'],
+            listing: [
+              'Alleinige Entwicklertätigkeit in enger Zusammenarbeit mit dem Product Owner und dem Fachbereich.',
+              'Entwurf und Umsetzung der Softwarearchitektur, inklusive Datenbankarchitektur im Code-First-Ansatz mit dem Entity Framework.',
+              'Aufbau, Konfiguration und Versionierung der Azure-Infrastruktur (Entwicklungs- und Produktivumgebung) mittels Terraform.',
+              'Konfiguration von Azure CI/CD über ein YAML-Skript.',
+              'Implementierung der Authentifizierung und Autorisierung mittels des Client Credentials Flow.',
+              'Realisierung der Client-Server-Kommunikation durch MS Power Platform Custom Connectors und ASP.NET Core 6 API.',
+              'Integration und Aggregation von Daten aus ERP- und CRM-Systemen über Schnittstellen, die Bauprojekt- und Kundeninformationen enthalten. Später wurde eine separate API entwickelt, um diesen Schritt zu vereinfachen.',
+              'Import des initialen Fragenkatalogs aus einer Excel-Datei unter Verwendung von "Data Seeding".',
+              'Anzeige von Fragen abhängig vom adaptiven Antwortverlauf.',
+              'Verwaltung von Fragensammlungen, inklusive Hinzufügen, Ändern und Löschen von Fragen und Clustern.',
+              'Klassifizierung von Fragen durch Zuordnung zu Gebäude- und Fragentypen.',
+              'Individuelle Konfiguration der Reihenfolge und Erscheinung von Fragen für jedes Bauprojekt.',
+              'Umsetzung adaptiver Fragenverläufe basierend auf vorherigen Antworten.',
+              'Abstimmung und Realisierung von eigenen Schnittstellen für das Auswertungsteam.',
+            ],
+            conclusion:
+              'Insgesamt führte das Projekt zur erfolgreichen Entwicklung einer mobilen Anwendung, die effiziente Feedbackinterviews vor Ort ermöglicht, die Anpassung von Fragebögen und eine nahtlose Integration von Datenquellen für fundierte Auswertungen gewährleistet.',
+          },
+          {
+            description: {
+              title: 'Kanban-Tool-API',
+              value:
+                'Das Projekt hatte das Ziel, einen Ausschreibungsprozess durch die automatisierte Erstellung von Kanban-Karten zu beschleunigen. Dies wurde durch die Erweiterung einer bestehenden Backend-Anwendung erreicht. Dabei griff die Anwendung über REST auf die API eines externen Kanban-Tools zu und legte automatisch Kanban-Karten für neue Produkte an, wobei Produktinformationen aus ERP-Datenquellen verwendet wurden. Die Hauptaufgaben und Ergebnisse des Projekts sind:',
+            },
+            durationInMonths: 3,
+            industry: 'Baubranche (Konzern)',
+            role: 'Full-Stack-Entwickler',
+            techStack: ['ASP.Net Core 6', 'Kanban-Tool-DLL', 'MS-SQL'],
+            listing: [
+              'Zusammenarbeit an einem bestehendem Backend mit zwei weiteren Entwicklern und einem Product Owner',
+              'API-Zugriffe auf das Kanban-Tool über den Client Credentials Flow.',
+              'Automatische Erstellung von Kanban-Karten basierend auf Vorlagen.',
+              'Neue Karten wurden vorab gemäß der Tagesgeschäftspraxis vorbefüllt, verknüpft und erstellt.',
+              'Integration von Bauprojekt-ERP-Daten in die Kanban-Karten zur verbesserten Informationsbasis.',
+              'Design des Datenmodells und Integration in die Anwendung mittels Entity Framework.',
+              'Umsetzung von Data Seeding zur Initialbefüllung von Daten.',
+              'Entwicklung von Komponententests für die neuen Funktionalitäten.',
+              'Optimierung der RAM-Auslastung, um die Leistungsfähigkeit der Anwendung zu verbessern.',
+            ],
+            conclusion:
+              'Das Ergebnis des Projekts war eine erweiterte Backend-Anwendung, die in der Lage war, den Ausschreibungsprozess durch die automatisierte Erstellung von Kanban-Karten erheblich zu beschleunigen. Die Integration von ERP-Datenquellen und die Vorlagenbasierte Erstellung der Karten trugen dazu bei, die Effizienz und Genauigkeit des Prozesses zu steigern.',
+          },
+          {
+            description: {
+              title: 'Center of excellence',
+              value:
+                'Das Projektziel bestand darin, ein Center of Excellence für die Microsoft Power Platform aufzubauen. Dieses Low-Code Framework ermöglichte es nicht-IT-Mitarbeitern, Prozessautomatisierungen in den Geschäftsabläufen eigenständig umzusetzen. Die Hauptaufgaben und Ergebnisse des Projekts waren:',
+            },
+            durationInMonths: 13,
             industry: 'Baubranche (Konzern)',
             role: 'Berater',
-            techStack: ['-', '-', '-'],
+            techStack: ['MS-Power-Platform', '-', '-'],
+            listing: [
+              'Alleinige Entwicklung und Umstrukturierung von Prozessen im Zusammenhang mit der weitverbreiteten Power Platform.',
+              'Berücksichtigung von Low-Code-Entwicklern außerhalb der zentralen IT-Abteilung.',
+              'Erreichen von Zielen wie Datenschutz, Lizenzkostenminimierung, Vermeidung redundanter Entwicklungen und juristischer Fallstricke.',
+              'Integration der Bedürfnisse der Low-Code-Entwickler durch Interviews.',
+              'Definition der Struktur von Entwicklungs- und Produktivumgebungen sowie Berechtigungskonzepten für Low-Code-Entwickler.',
+              'Gestaltung von Prozessen für die Umsetzung und Freigabe neuer Low-Code-Softwareprojekte.',
+              'Konzept für ein Support/Ticketsystem, einschließlich Wissensdatenbank und Kommunikationspfaden.',
+              'Präsentationen zu Richtlinien, Regeländerungen und Technologieinnovationen.',
+              'Aufbau einer Community mit Kommunikationskanälen für fortlaufendes Feedback.',
+              'Vernetzung der Entwickler und Etablierung einer Lösungs- und Austauschplattform.',
+              'Durchführung von Workshops für Low-Code-Entwickler, um ihnen Einblicke in die Möglichkeiten und Grenzen der Technologie zu vermitteln, State-of-the-Art-Wissen für angehende Entwickler zu präsentieren und Lösungskonzepte für individuelle Herausforderungen vorzustellen.',
+              'Consulting-Tätigkeiten, einschließlich Beratung vor und während der Projektumsetzung sowie Unterstützung bei dringenden Problemen, inklusive Kontaktaufnahme mit Microsoft.',
+              'Betreuung der Einführung der Technologie an internationalen Standorten außerhalb Deutschlands.',
+              'Monitoring und Verwaltung des Center of Excellence Dashboards, Überwachung der Kosten, Abstimmung mit verschiedenen Abteilungen wie Datenschutz, juristische Abteilung und IT-Infrastruktur.',
+              'Diplomatische Handlungen zur Bewältigung von Interessenskonflikten zwischen Low-Code-Entwicklern und der IT-Abteilung, wobei durch Unterstützung und Hilfestellungen eine höhere Akzeptanz der neuen Konzepte erreicht wurde.',
+            ],
+            conclusion:
+              'Aktuell werden die von mir entwickelten Konzepte und Prozesse umgesetzt, allerdings nicht mehr unter meiner direkten Verantwortung. Die erfolgreiche Implementierung ermöglicht es nicht-IT-Mitarbeitern, die Power Platform effektiv für Prozessautomatisierungen zu nutzen und die Geschäftsabläufe zu optimieren.',
           },
         ],
-        duration: 'Monate',
+        durationType: 'Monate',
       },
       footer: {
         copyright: `©${this.currentYear} ${this.companyName}.`,
@@ -167,7 +253,7 @@ export class MasterDataService {
         title: 'Projects',
         values: [
           {
-            content: {
+            description: {
               title: 'Cooperation portal',
               value:
                 'Dev. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
@@ -176,9 +262,11 @@ export class MasterDataService {
             industry: 'Construction industry',
             role: 'Full stack developer',
             techStack: ['Azure', 'Angular 16', 'ASP.Net 6 Core'],
+            listing: [],
+            conclusion: '',
           },
           {
-            content: {
+            description: {
               title: 'Center of Excellence',
               value:
                 'Consulting. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
@@ -187,9 +275,11 @@ export class MasterDataService {
             industry: 'Construction industry',
             role: 'Consultant',
             techStack: ['-', '-', '-'],
+            listing: [],
+            conclusion: '',
           },
         ],
-        duration: 'Months',
+        durationType: 'Months',
       },
       footer: {
         copyright: `©${this.currentYear} ${this.companyName}.`,
@@ -270,7 +360,7 @@ export class MasterDataService {
         title: 'Projekty',
         values: [
           {
-            content: {
+            description: {
               title: 'Portal współpracy',
               value:
                 'Portal współpracy. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
@@ -279,9 +369,11 @@ export class MasterDataService {
             industry: 'Przemysł budowlany',
             role: 'Full stack developer',
             techStack: ['Azure', 'Angular 16', 'ASP.Net 6 Core'],
+            listing: [],
+            conclusion: '',
           },
           {
-            content: {
+            description: {
               title: 'Centrum doskonałości',
               value:
                 'Centrum doskonałości. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!Beratung. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditateneque quas! lkjasdlkjasdklda!',
@@ -290,9 +382,11 @@ export class MasterDataService {
             industry: 'Przemysł budowlany',
             role: 'Konsultant',
             techStack: ['-', '-', '-'],
+            listing: [],
+            conclusion: '',
           },
         ],
-        duration: 'Miesiące',
+        durationType: 'Miesiące',
       },
       footer: {
         copyright: `©${this.currentYear} ${this.companyName}.`,

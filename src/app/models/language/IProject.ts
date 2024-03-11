@@ -1,7 +1,9 @@
-import { IPost } from "./IPost";
+import { IPost } from './IPost';
 
 export interface IProject {
-  content: IPost;
+  description: IPost;
+  listing: string[];
+  conclusion: string;
   role: string;
   industry: string;
   durationInMonths: number;

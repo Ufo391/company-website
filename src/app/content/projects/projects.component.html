@@ -21,7 +21,7 @@
           [ngClass]="{ fadein: fadeinContentAnimationStatus }"
         >
           <p class="text-left sm:text-right font-bold xl:text-4xl p-0 m-0">
-            {{ p.values[pointer].content.title }}
+            {{ p.values[pointer].description.title }}
           </p>
           <div class="flex flex-row sm:flex-column justify-content-between">
             <div>
@@ -32,7 +32,7 @@
                 {{ p.values[pointer].industry }}
               </p>
               <p class="text-left sm:text-right xl:text-2xl p-0 m-0">
-                {{ p.values[pointer].durationInMonths }} {{ p.duration }}
+                {{ p.values[pointer].durationInMonths }} {{ p.durationType }}
               </p>
             </div>
             <br *ngIf="(vpService.breakPoint$ | async) !== 'xs'" />
@@ -63,7 +63,20 @@
           (mouseleave)="chapterService.disableSkipScroll(false)"
         >
           <p-scrollPanel #scroll [style]="scrollPanelStyle">
-            <p class="text-justify">{{ p.values[pointer].content.value }}</p>
+            <div class="text-left">
+              <p>
+                {{ p.values[pointer].description.value }}
+              </p>
+
+              <ul>
+                <li *ngFor="let v of p.values[pointer].listing">
+                  {{ v }}
+                </li>
+              </ul>
+              <p>
+                {{ p.values[pointer].conclusion }}
+              </p>
+            </div>
           </p-scrollPanel>
         </div>
         <div class="w-1 pl-6" *ngIf="(vpService.breakPoint$ | async) !== 'xs'">
