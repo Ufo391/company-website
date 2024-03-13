@@ -17,13 +17,11 @@
       />
       <div
         *ngIf="(vpService.breakPoint$ | async) === 'xl'"
-        class="w-12 py-3"
-        style="height: 100px"
+        class="w-12 py-3 header-h-desktop"
       >
         <div class="flex flex-column w-12">
           <div
-            class="flex flex-row justify-content-end pr-3"
-            style="height: 68px"
+            class="flex flex-row justify-content-end pr-3 header-h-desktop-in"
           >
             <ng-container *ngFor="let c of chapterService.chapters$ | async">
               <div class="primary-color flex flex-row align-items-end text-2xl">
@@ -77,7 +75,7 @@
       </div>
       <p
         *ngIf="(vpService.breakPoint$ | async) !== 'xl'"
-        style="font-size: 1.5rem; font-weight: bold"
+        class="header-desc"
         [@opacityAnimation]="animationStatus"
       >
         {{ chapterService.currentChapter$ | async }}

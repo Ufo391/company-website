@@ -10,6 +10,7 @@ import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { ViewportService } from 'src/app/services/viewport.service';
 import { opacityAnimation } from '../content.animation';
+import { STYLES_POTRAIT as STYLES } from './potrait.styles';
 
 @Component({
   selector: 'app-potrait',
@@ -22,6 +23,7 @@ export class PotraitComponent implements OnInit, AfterViewInit {
   isFoldOut: boolean = false;
   fadeinAnimation = 'off';
   text: string[] = [];
+  cardStyle: object = { background: STYLES.CARD_BG_CL };
 
   constructor(
     private chapterService: ChapterService,
@@ -43,13 +45,12 @@ export class PotraitComponent implements OnInit, AfterViewInit {
     );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.aboutMe.title);
-      this.text = this.splitText(c.aboutMe.value, "\n");
+      this.text = this.splitText(c.aboutMe.value, '\n');
     });
     this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((v) => {
       this.isFoldOut = v === 'xl';
       this.fadeinAnimation = v === 'xl' ? 'off' : 'on';
     });
-
   }
 
   toggleFoldOut(): void {

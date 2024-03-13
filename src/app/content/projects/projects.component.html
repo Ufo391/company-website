@@ -100,14 +100,14 @@
           <p-button
             icon="pi pi-angle-left"
             styleClass="p-button-text"
-            [style]="{ color: 'inherit' }"
+            [style]="buttonStyle"
             (click)="clickLastItemHandler()"
             [disabled]="fadeinContentAnimationStatus"
           ></p-button>
           <p-button
             icon="pi pi-angle-right"
             class="ml-1"
-            [style]="{ color: 'inherit' }"
+            [style]="buttonStyle"
             styleClass="p-button-text"
             (click)="clickNextItemHandler()"
             [disabled]="fadeinContentAnimationStatus"

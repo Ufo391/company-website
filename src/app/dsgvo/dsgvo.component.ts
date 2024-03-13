@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChapterService } from '../services/chapter.service';
+import { STYLES_DSGVO as STYLES } from './dsgvo.styles';
 
 @Component({
   selector: 'app-dsgvo',
@@ -8,6 +9,8 @@ import { ChapterService } from '../services/chapter.service';
   styleUrls: ['./dsgvo.component.scss'],
 })
 export class DsgvoComponent implements OnInit, OnDestroy {
+  buttonStyle: object = STYLES.BUTTON
+
   constructor(private chapterService: ChapterService, private router: Router) {}
 
   ngOnInit(): void {

@@ -11,6 +11,7 @@ import { LanguageService } from 'src/app/services/language.service';
 import { ViewportService } from 'src/app/services/viewport.service';
 import { opacityAnimation } from '../content.animation';
 import { ViewportModes } from 'src/app/models/viewportModes';
+import { STYLES_SERVICES as STYLES } from './services.styles';
 
 @Component({
   selector: 'app-services',
@@ -27,9 +28,9 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   currentStyle: object = {};
   anzahl = 3;
   cardStyles = [
-    { background: '#daeaf0' },
-    { background: '#9fb1c5' },
-    { background: '#b2bccd' },
+    { background: STYLES.CARD_BG_CL_0 },
+    { background: STYLES.CARD_BG_CL_1 },
+    { background: STYLES.CARD_BG_CL_2 },
   ];
   imgUris: string[] = [
     'assets/ai/services/Expertiese3.jpg',
@@ -126,35 +127,9 @@ export class ServicesComponent implements OnInit, AfterViewInit {
 
   private switchImageStyle(mode: ViewportModes): object[] {
     if (mode === 'xs') {
-      return [
-        {
-          width: '100%',
-          height: '100%',
-        },
-        {
-          width: '130%',
-          height: '130%',
-        },
-        {
-          width: '110%',
-          height: '110%',
-        },
-      ];
+      return STYLES.IMG_SIZE_XS;
     } else {
-      return [
-        {
-          width: '150%',
-          height: '100%',
-        },
-        {
-          width: '120%',
-          height: '110%',
-        },
-        {
-          width: '100%',
-          height: '100%',
-        },
-      ];
+      return STYLES.IMG_SIZE_nXS;
     }
   }
 

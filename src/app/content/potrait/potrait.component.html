@@ -3,7 +3,7 @@
   *ngIf="(lService.MasterData$ | async)?.aboutMe as ab"
   [@opacityAnimation]="fadeinAnimation"
 >
-  <p-card [style]="{ background: '#F7F7F7' }">
+  <p-card [style]="cardStyle">
     <ng-template pTemplate="content">
       <h2 class="title-i" #title>
         {{ ab.title }}

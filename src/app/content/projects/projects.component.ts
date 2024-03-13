@@ -11,6 +11,7 @@ import { LanguageService } from 'src/app/services/language.service';
 import { opacityAnimation } from '../content.animation';
 import { ViewportService } from 'src/app/services/viewport.service';
 import { ScrollPanel } from 'primeng/scrollpanel';
+import { STYLES_PROJECTS as STYLES } from './projects.styles';
 
 @UntilDestroy()
 @Component({
@@ -25,8 +26,9 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   pointer!: number;
   fadeinContentAnimationStatus: boolean = false;
   fadeinAnimation = 'off';
-  cardStyle = { background: '#f7f7f7' };
-  scrollPanelStyle = {};
+  cardStyle: object = { background: STYLES.CARD_BG_CL };
+  scrollPanelStyle: object = {};
+  buttonStyle: object = { color: STYLES.BUTTON_CL };
 
   constructor(
     public chapterService: ChapterService,
@@ -44,16 +46,16 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
       this.startFadeAnimation.bind(this),
       this.leaveFadeAnimation.bind(this),
       this.clickLastItemHandler.bind(this),
-      this.clickNextItemHandler.bind(this),
+      this.clickNextItemHandler.bind(this)
     );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.projects.title);
     });
     this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((v) => {
       if (v === 'xl') {
-        this.scrollPanelStyle = { height: '50vh' };
+        this.scrollPanelStyle = { height: STYLES.SCROLLPANEL_H_XL };
       } else {
-        this.scrollPanelStyle = { height: '66vh' };
+        this.scrollPanelStyle = { height: STYLES.SCROLLPANEL_H_nXL };
       }
     });
   }

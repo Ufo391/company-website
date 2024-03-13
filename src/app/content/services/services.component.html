@@ -103,15 +103,13 @@
   <div *ngIf="(vpService.breakPoint$ | async) === 'xl'" class="card-h-d">
     <div class="flex flex-row justify-content-between">
       <div
-        *ngFor="let index of [].constructor(cardStyles.length); let i = index" class="p-3"
+        *ngFor="let index of [].constructor(cardStyles.length); let i = index"
+        class="p-3"
       >
-        <p-card [style]="cardStyles[i]" >
+        <p-card [style]="cardStyles[i]">
           <ng-template pTemplate="header">
             <h2 #title class="title-i">{{ s.title }}</h2>
-            <div
-              class="image-container image-container-h w-12"
-              style="height: 30vh"
-            >
+            <div class="image-container w-12 image-container-h-desktop">
               <img
                 class="cropped-image"
                 [src]="imgUris[i]"
