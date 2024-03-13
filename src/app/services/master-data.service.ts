@@ -184,7 +184,14 @@ export class MasterDataService {
         description: {
           title: 'JETZT STARTEN',
           value:
-            'Profitieren Sie von meiner Expertise und bringen Sie Ihr Unternehmen mit maßgeschneiderten Lösungen auf die nächste Stufe. Lukrativer Stundensatz für die ersten 2-3 Aufträge.',
+            'Profitieren Sie von meiner Expertise und bringen Sie Ihr Unternehmen mit maßgeschneiderten Lösungen auf die nächste Stufe.',
+        },
+        offerDesc: 'Sichern Sie sich jetzt das Einführungsangebot!',
+        offerName: 'ANGEBOT',
+        offerDialog: {
+          title: 'ERÖFFNUNGSANGEBOT',
+          value:
+            'Starten Sie Ihr Softwareprojekt mit einem exklusiven Einführungsangebot! Als Teil meiner Eröffnungsaktion biete ich einen |F-vergünstigten Stundensatz für meine ersten Aufträge an.-| Profitieren Sie von meiner Expertise zu einem besonders attraktiven Preis, um Ihr Projekt kosteneffizient umzusetzen. |F-Diese Aktion ist zeitlich begrenzt-|, also zögern Sie nicht, mich jetzt zu kontaktieren!',
         },
         values: [
           {
@@ -293,6 +300,13 @@ export class MasterDataService {
           value:
             'Benefit from my expertise and take your company to the next level with customised solutions. Lucrative hourly rate for the first 2-3 orders.',
         },
+        offerDesc: 'Get the introductory offer now!',
+        offerName: 'OFFER',
+        offerDialog: {
+          title: 'OPENING OFFER',
+          value:
+            "Start your software project with an exclusive introductory offer! As part of my launch promotion, I am offering a discounted hourly rate for my first assignments. Benefit from my expertise at a particularly attractive price to implement your project cost-efficiently. This promotion is limited in time, so don't hesitate to contact me now!",
+        },
         values: [
           {
             type: 'phone',
@@ -400,6 +414,14 @@ export class MasterDataService {
           value:
             'Skorzystaj z mojej wiedzy i przenieś swoją firmę na wyższy poziom dzięki niestandardowym rozwiązaniom. Lukratywna stawka godzinowa za pierwsze 2-3 zlecenia.',
         },
+        offerDesc: 'Skorzystaj z oferty wstępnej już teraz!',
+        offerName: 'OFERTA',
+        offerDialog: {
+          title: 'OFERTA OTWARCIA',
+          value:
+            'Rozpocznij swój projekt oprogramowania z ekskluzywną ofertą wstępną! W ramach mojej promocji startowej oferuję obniżoną stawkę godzinową za moje pierwsze zadania. Skorzystaj z mojego doświadczenia w wyjątkowo atrakcyjnej cenie, aby wdrożyć swój projekt w sposób efektywny kosztowo. Promocja jest ograniczona czasowo, więc nie wahaj się i skontaktuj się ze mną już teraz!',
+        },
+
         values: [
           {
             type: 'phone',

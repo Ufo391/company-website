@@ -1,8 +1,18 @@
 <div
   class="mb-5 text-center"
   *ngIf="(lService.MasterData$ | async)?.contact as c"
-  [@opacityAnimation]="fadeinAnimation"
+  [@opacityAnimation]="fadeinAnimationState"
 >
+  <p-dialog
+    header="{{ c.offerDialog.title }}"
+    [style]="dialogStyle"
+    [(visible)]="isOfferDialogVisible"
+    [modal]="true"
+    [resizable]="false"
+    [draggable]="false"
+  >
+    <p class="select-none text-left" [innerHTML]="offerDialogDesc"></p>
+  </p-dialog>
   <p-panel id="scrollToElement">
     <ng-template pTemplate="header">
       <h2 #title class="m-0 title-i">{{ c.title }}</h2>
@@ -10,6 +20,17 @@
     <ng-template pTemplate="content">
       <div class="sm:flex sm:flex-row">
         <div class="surface-section text-700 text-center mt-5 select-none">
+          <div class="mb-3 font-bold flex justify-content-start cursor-pointer">
+            <div
+              [@attentionRotateAnimation]="attentionAnimationState"
+              (click)="showOfferDialog()"
+            >
+              <i class="pi pi-percentage offer-color offer-font-size-t"></i>
+              <p class="p-0 m-0 text-center text-xs offer-color">
+                {{ c.offerName }}
+              </p>
+            </div>
+          </div>
           <img
             class="img-contact"
             [src]="'assets/free/communication.png'"
@@ -18,9 +39,17 @@
           <p class="text-900 font-bold text-5xl mb-3 p-0">
             {{ c.description.title }}
           </p>
-          <div class="text-700 text-2xl mb-5 text-center">
+          <p class="text-700 text-2xl mb-5 text-center">
             {{ c.description.value }}
-          </div>
+            <span class="underline select font-bold cursor-pointer">
+              <div
+                [@attentionAnimation]="attentionAnimationState"
+                (click)="showOfferDialog()"
+              >
+                <p class="offer-font-size-b">{{ c.offerDesc }}</p>
+              </div>
+            </span>
+          </p>
           <hr *ngIf="(vpService.breakPoint$ | async) === 'xs'" />
         </div>
         <p-divider
