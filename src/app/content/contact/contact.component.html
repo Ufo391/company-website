@@ -11,7 +11,14 @@
     [resizable]="false"
     [draggable]="false"
   >
-    <p class="select-none text-left" [innerHTML]="offerDialogDesc"></p>
+    <div class="flex flex-column justify-content-center align-items-center">
+      <img
+        class="m-4 border-round offer-img-h"
+        [src]="'assets/free/startup3.png'"
+        loading="eager"
+      />
+      <p class="select-none text-justify" [innerHTML]="offerDialogDesc"></p>
+    </div>
   </p-dialog>
   <p-panel id="scrollToElement">
     <ng-template pTemplate="header">
