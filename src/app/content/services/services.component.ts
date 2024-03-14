@@ -12,6 +12,7 @@ import { ViewportService } from 'src/app/services/viewport.service';
 import { opacityAnimation } from '../content.animation';
 import { ViewportModes } from 'src/app/models/viewportModes';
 import { STYLES_SERVICES as STYLES } from './services.styles';
+import { HtmlFormatterService } from 'src/app/services/html-formatter.service';
 
 @Component({
   selector: 'app-services',
@@ -43,11 +44,13 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   nxtElementAnimation: boolean = false;
   lstElementAnimation: boolean = false;
   fadeinAnimation = 'off';
+  cardsDescription: string[] = [];
 
   constructor(
     private chapterService: ChapterService,
     public lService: LanguageService,
-    public vpService: ViewportService
+    public vpService: ViewportService,
+    private htmlF: HtmlFormatterService
   ) {}
 
   ngOnInit() {
@@ -57,6 +60,12 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     });
     this.imgUris.forEach((u) => {
       this.preloadImage(u);
+    });
+    this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((m) => {
+      const styleClasses: string[] = ['font-bold'];
+      this.cardsDescription = m.services.values.map((s) =>
+        this.htmlF.formatTextToHtml(s.value, styleClasses)
+      );
     });
   }
 

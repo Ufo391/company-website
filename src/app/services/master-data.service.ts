@@ -38,7 +38,7 @@ export class MasterDataService {
       aboutMe: {
         title: 'Hintergrund',
         value:
-          '"Softwareingenieure lösen Probleme". In meiner 5-jährigen Berufserfahrung habe ich gelernt, dass es keine Probleme gibt - sondern lediglich Lösungen. Durch diese Denkweise konnte ich erfolgreich zahlreiche Prozesse digitalisieren und automatisieren. Mein Schwerpunkt liegt dabei auf Konzept- und Implementierungsarbeiten im Bereich der kaufmännischen Datenverarbeitung. \nAls Full-Stack-Developer zeichne ich mich durch die Fähigkeit aus, mich problemlos in unstrukturierte Umgebungen einzuarbeiten und durch methodische Ansätze stets positive Ergebnisse zu erzielen. Eine klare und offene Kommunikation ist für mich von zentraler Bedeutung, sowohl im Umgang mit geschätzten Kunden als auch in einem engagierten Team. \nUm stets auf dem neuesten Stand zu bleiben, investiere ich kontinuierlich in meine Weiterbildung. Mein Ziel ist es, durch diese fortlaufende Entwicklung hochwertige Lösungen zu bieten und langfristige Erfolge zu sichern.',
+          '"Softwareingenieure lösen Probleme". In meiner 5-jährigen Berufserfahrung habe ich gelernt, dass es keine Probleme gibt - nur Lösungen. Durch diese Denkweise konnte ich erfolgreich zahlreiche Prozesse digitalisieren und automatisieren. Mein Schwerpunkt liegt dabei auf Konzept- und Implementierungsarbeiten im Bereich der kaufmännischen Datenverarbeitung. \nAls Full-Stack-Developer zeichne ich mich durch die Fähigkeit aus, mich problemlos in unstrukturierte Umgebungen einzuarbeiten und durch methodische Ansätze stets positive Ergebnisse zu erzielen. Eine klare und offene Kommunikation ist für mich von zentraler Bedeutung, sowohl im Umgang mit geschätzten Kunden als auch in einem engagierten Team. \nUm stets auf dem neuesten Stand zu bleiben, investiere ich kontinuierlich in meine Weiterbildung. Mein Ziel ist es, durch diese fortlaufende Entwicklung hochwertige Lösungen zu bieten und langfristige Erfolge zu sichern.',
       },
       services: {
         title: 'Dienstleistungen',
@@ -51,7 +51,7 @@ export class MasterDataService {
           {
             title: 'Entwicklung',
             value:
-              'Ich setze auf test-getriebene Entwicklung mit C# und Angular, um Ihnen qualitativ hochwertige Softwarelösungen zu liefern. Meine Leistungen umfassen die Realisierung von Backend-Anwendungen in .Net Core, Desktopanwendungen in WPF, Low-Code-Lösungen mit der Microsoft Power-Plattform sowie die Entwicklung und Umsetzung von Datenbanken.',
+              'Ich setze auf test-getriebene Entwicklung mit |F-C#-| und |F-Angular-|, um Ihnen qualitativ hochwertige Softwarelösungen zu liefern. Meine Leistungen umfassen die Realisierung von Backend-Anwendungen in |F-.Net Core-|, Desktopanwendungen in |F-WPF-|, Low-Code-Lösungen mit der |F-Microsoft Power Plattform-| sowie die Entwicklung und Umsetzung von |F-Datenbanken-|.',
           },
           {
             title: 'Beratung',
