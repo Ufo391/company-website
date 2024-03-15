@@ -4,21 +4,29 @@
   [@opacityAnimation]="fadeinAnimationState"
 >
   <p-dialog
-    header="{{ c.offerDialog.title }}"
     [style]="dialogStyle"
     [(visible)]="isOfferDialogVisible"
     [modal]="true"
     [resizable]="false"
     [draggable]="false"
   >
-    <div class="flex flex-column justify-content-center align-items-center">
-      <img
-        class="m-4 border-round offer-img-h"
-        [src]="'assets/free/startup3.png'"
-        loading="eager"
-      />
-      <p class="select-none text-justify" [innerHTML]="offerDialogDesc"></p>
-    </div>
+    <ng-template pTemplate="header">
+      <h3 [@attentionAnimation]="attentionAnimationState" class="p-0 m-0">
+        {{ c.offerDialog.title }}
+      </h3>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div
+        class="flex flex-column sm:flex-row xl:flex-row justify-content-center align-items-center xl:text-2xl"
+      >
+        <img
+          class="m-4 border-round offer-img-h"
+          [src]="'assets/free/startup3.png'"
+          loading="eager"
+        />
+        <p class="select-none text-justify" [innerHTML]="offerDialogDesc"></p>
+      </div>
+    </ng-template>
   </p-dialog>
   <p-panel id="scrollToElement">
     <ng-template pTemplate="header">
