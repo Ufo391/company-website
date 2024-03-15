@@ -24,7 +24,7 @@
             class="flex flex-row justify-content-end pr-3 header-h-desktop-in"
           >
             <ng-container *ngFor="let c of chapterService.chapters$ | async">
-              <div class="primary-color flex flex-row align-items-center xl:align-items-end xl:text-2xl">
+              <div class="primary-color flex flex-row align-items-center xl:align-items-end text-xs xl:text-2xl">
                 <p
                   (click)="changeCurrentChapter($event)"
                   class="my-0 cursor-pointer"
@@ -105,9 +105,9 @@
           [style.height]="logoSize"
           loading="eager"
         />
-        <h3 class="text-center w-12 opacity-70">
+        <h4 class="text-center w-12 opacity-70">
           {{ md.companyName }}
-        </h3>
+        </h4>
       </div>
     </ng-template>
     <ng-template pTemplate="content">
@@ -177,9 +177,8 @@
           <h3 class="ml-2 cursor-pointer">{{ md.sidebar.langauge }}</h3>
         </div>
       </div>
-    </ng-template>
-    <ng-template pTemplate="footer"
-      ><hr />
+
+      <hr />
       <div class="text-sm text-center mt-3">
         <div class="flex justify-content-center mb-1">
           <a

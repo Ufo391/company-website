@@ -70,7 +70,7 @@ export class MasterDataService {
                 'In diesem Softwareprojekt lag das Hauptziel darin, potenziellen Kooperationspartnern die Option zu bieten, sich über eine webbasierte Plattform für Zusammenarbeiten zu bewerben, wobei sämtliche erforderlichen Genehmigungsverfahren implementiert wurden. Die erledigten Aufgaben umfassten:',
             },
             durationInMonths: 8,
-            industry: 'Baubranche (Konzern)',
+            industry: 'Baubranche',
             role: 'Full-Stack-Entwickler',
             techStack: ['Angular 16', 'ASP.Net 6 Core', 'Azure'],
             listing: [
@@ -95,7 +95,7 @@ export class MasterDataService {
                 'Das Projektziel bestand darin, eine mobile Anwendung zu entwickeln, die es ermöglicht, vor Ort beim Kunden Feedbackinterviews durchzuführen. Dabei sollte der Fragenkatalog flexibel an jedes Produkt und jeden Kunden angepasst werden können. Die Aufgaben und Ergebnisse des Projekts umfassen:',
             },
             durationInMonths: 12,
-            industry: 'Baubranche (Konzern)',
+            industry: 'Baubranche',
             role: 'Full-Stack-Entwickler',
             techStack: ['MS-Power-Apps', 'ASP.Net Core 6', 'MS-SQL'],
             listing: [
@@ -124,7 +124,7 @@ export class MasterDataService {
                 'Das Projekt hatte das Ziel, einen Ausschreibungsprozess durch die automatisierte Erstellung von Kanban-Karten zu beschleunigen. Dies wurde durch die Erweiterung einer bestehenden Backend-Anwendung erreicht. Dabei griff die Anwendung über REST auf die API eines externen Kanban-Tools zu und legte automatisch Kanban-Karten für neue Produkte an, wobei Produktinformationen aus ERP-Datenquellen verwendet wurden. Die Hauptaufgaben und Ergebnisse des Projekts sind:',
             },
             durationInMonths: 3,
-            industry: 'Baubranche (Konzern)',
+            industry: 'Baubranche',
             role: 'Full-Stack-Entwickler',
             techStack: ['ASP.Net Core 6', 'Kanban-Tool-DLL', 'MS-SQL'],
             listing: [
@@ -148,7 +148,7 @@ export class MasterDataService {
                 'Das Projektziel bestand darin, ein Center of Excellence für die Microsoft Power Platform aufzubauen. Dieses Low-Code Framework ermöglichte es nicht-IT-Mitarbeitern, Prozessautomatisierungen in den Geschäftsabläufen eigenständig umzusetzen. Die Hauptaufgaben und Ergebnisse des Projekts waren:',
             },
             durationInMonths: 13,
-            industry: 'Baubranche (Konzern)',
+            industry: 'Baubranche',
             role: 'Berater',
             techStack: ['MS-Power-Platform', '-', '-'],
             listing: [
@@ -541,7 +541,7 @@ export class MasterDataService {
             },
             durationInMonths: 13,
             industry: 'Przemysł budowlany',
-            role: 'Berater',
+            role: 'Konsultant',
             techStack: ['MS-Power-Platform', '-', '-'],
             listing: [
               'Wyłączny rozwój i reorganizacja procesów w związku z szeroko stosowaną platformą Power Platform.',
