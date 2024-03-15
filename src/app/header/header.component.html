@@ -16,7 +16,7 @@
         loading="eager"
       />
       <div
-        *ngIf="(vpService.breakPoint$ | async) === 'xl'"
+        *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
         class="w-12 py-3 header-h-desktop"
       >
         <div class="flex flex-column w-12">
@@ -24,7 +24,7 @@
             class="flex flex-row justify-content-end pr-3 header-h-desktop-in"
           >
             <ng-container *ngFor="let c of chapterService.chapters$ | async">
-              <div class="primary-color flex flex-row align-items-end text-2xl">
+              <div class="primary-color flex flex-row align-items-center xl:align-items-end xl:text-2xl">
                 <p
                   (click)="changeCurrentChapter($event)"
                   class="my-0 cursor-pointer"
@@ -43,7 +43,7 @@
               </div>
             </ng-container>
             <div
-              class="flex flex-row align-items-end"
+              class="flex flex-row align-items-center xl:align-items-end"
               (click)="changeLanguage()"
             >
               <div class="cursor-pointer flex align-items-center">
@@ -74,14 +74,14 @@
         </div>
       </div>
       <p
-        *ngIf="(vpService.breakPoint$ | async) !== 'xl'"
+        *ngIf="(vpService.breakPoint$ | async) === 'xs'"
         class="header-desc"
         [@opacityAnimation]="animationStatus"
       >
         {{ chapterService.currentChapter$ | async }}
       </p>
       <button
-        *ngIf="(vpService.breakPoint$ | async) !== 'xl'"
+        *ngIf="(vpService.breakPoint$ | async) === 'xs'"
         pButton
         type="button"
         icon="pi pi-bars"
