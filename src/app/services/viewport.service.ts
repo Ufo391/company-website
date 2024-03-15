@@ -18,6 +18,8 @@ export class ViewportService {
   private lgMatcher: MediaQueryList = matchMedia(this.lg);
   private xlMatcher: MediaQueryList = matchMedia(this.xl);
 
+  private mode: ViewportModes = 'xs';
+
   public breakPoint$!: BehaviorSubject<ViewportModes>;
 
   constructor() {
@@ -31,20 +33,29 @@ export class ViewportService {
 
   public onChangeHandler(e: MediaQueryListEvent): void {
     if (e.matches === true) {
+      let newValue: ViewportModes = 'xs';
+      const oldValue: ViewportModes = this.breakPoint$.value;
       if (e.media === this.xs) {
-        this.breakPoint$.next('xs');
+        newValue = 'xs';
+        this.breakPoint$.next(newValue);
       } else if (e.media === this.sm) {
-        this.breakPoint$.next('sm');
+        newValue = 'sm';
+        this.breakPoint$.next(newValue);
       } else if (e.media === this.md) {
-        this.breakPoint$.next('md');
+        newValue = 'md';
+        this.breakPoint$.next(newValue);
       } else if (e.media === this.lg) {
-        this.breakPoint$.next('lg');
+        newValue = 'lg';
+        this.breakPoint$.next(newValue);
       } else if (e.media === this.xl) {
-        this.breakPoint$.next('xl');
+        newValue = 'xl';
+        this.breakPoint$.next(newValue);
       } else {
         throw new Error('Not implemented!');
       }
-      this.reloadPage();
+      if (newValue === 'xl' || oldValue === 'xl') {
+        this.reloadPage();
+      }
     }
   }
 
