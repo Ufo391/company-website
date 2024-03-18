@@ -43,7 +43,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   isLastElement: boolean = false;
   nxtElementAnimation: boolean = false;
   lstElementAnimation: boolean = false;
-  fadeinAnimation = 'off';
+  fadeinAnimationState = 'off';
   cardsDescription: string[] = [];
 
   constructor(
@@ -127,11 +127,11 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   }
 
   private startFadeAnimation(): void {
-    this.fadeinAnimation = 'on';
+    this.fadeinAnimationState = 'on';
   }
 
   private resetComponent(): void {
-    this.fadeinAnimation = 'off';
+    this.fadeinAnimationState = 'off';
   }
 
   private switchImageStyle(mode: ViewportModes): object[] {
