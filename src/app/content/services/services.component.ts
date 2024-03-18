@@ -29,9 +29,9 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   currentStyle: object = {};
   anzahl = 3;
   cardStyles = [
-    { background: STYLES.CARD_BG_CL_0 },
-    { background: STYLES.CARD_BG_CL_1 },
-    { background: STYLES.CARD_BG_CL_2 },
+    { background: STYLES.CARD_BG_CL_0, height: STYLES.CARD_H },
+    { background: STYLES.CARD_BG_CL_1, height: STYLES.CARD_H },
+    { background: STYLES.CARD_BG_CL_2, height: STYLES.CARD_H },
   ];
   imgUris: string[] = [
     'assets/ai/services/Expertiese3.jpg',
