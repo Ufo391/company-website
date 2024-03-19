@@ -80,7 +80,7 @@
                   'opacity-80': hoverOverState == 1,
                   'border-1': hoverOverState == 1
                 }"
-                (click)="openDefaultPhoneApp()"
+                (click)="comService.openDefaultPhoneApp()"
                 (mouseenter)="hoverOverHandler(1)"
                 (mouseleave)="hoverOverHandler(0)"
               >
@@ -104,7 +104,7 @@
                   'opacity-80': hoverOverState == 2,
                   'border-1': hoverOverState == 2
                 }"
-                (click)="openDefaultEmailClient()"
+                (click)="comService.openDefaultEmailClient()"
                 (mouseenter)="hoverOverHandler(2)"
                 (mouseleave)="hoverOverHandler(0)"
               >

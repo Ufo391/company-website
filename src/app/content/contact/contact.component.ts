@@ -18,6 +18,7 @@ import {
 } from '../content.animation';
 import { HtmlFormatterService } from 'src/app/services/html-formatter.service';
 import { STYLES_CONTACT as STYLE } from './contact.styles';
+import { CommunicatorService } from 'src/app/services/communicator.service';
 
 @Component({
   selector: 'app-contact',
@@ -45,7 +46,8 @@ export class ContactComponent implements OnInit, AfterViewInit {
     private chapterService: ChapterService,
     public lService: LanguageService,
     public vpService: ViewportService,
-    private fService: HtmlFormatterService
+    private fService: HtmlFormatterService,
+    public comService: CommunicatorService
   ) {}
 
   ngOnInit() {}
@@ -76,23 +78,6 @@ export class ContactComponent implements OnInit, AfterViewInit {
       this.attentionAnimationState =
         this.attentionAnimationState === 'off' ? 'on' : 'off';
     }, attentionAnimationInMs);
-  }
-
-  openDefaultEmailClient() {
-    const to = 'info@klossitsolutions.com';
-    const subject = 'Anfrage';
-
-    const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}`;
-
-    window.location.href = mailtoLink;
-  }
-
-  openDefaultPhoneApp() {
-    const phoneNumber = '+4915235834040';
-
-    const telLink = `tel:${phoneNumber}`;
-
-    window.location.href = telLink;
   }
 
   openGoogleMaps() {
