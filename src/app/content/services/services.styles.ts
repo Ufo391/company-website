@@ -1,8 +1,7 @@
 export class STYLES_SERVICES {
-  public static readonly CARD_BG_CL_0 = '#daeaf0';
-  public static readonly CARD_BG_CL_1 = '#9fb1c5';
-  public static readonly CARD_BG_CL_2 = '#b2bccd';
-  public static readonly CARD_H = '100%';
+  public static readonly CARD_0 = { background: '#daeaf0', height: '100%' };
+  public static readonly CARD_1 = { background: '#9fb1c5', height: '100%' };
+  public static readonly CARD_2 = { background: '#b2bccd', height: '100%' };
   public static readonly IMG_SIZE_XS = [
     {
       width: '100%',

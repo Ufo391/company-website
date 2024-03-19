@@ -17,7 +17,7 @@ import {
   opacityAnimation,
 } from '../content.animation';
 import { HtmlFormatterService } from 'src/app/services/html-formatter.service';
-import { STYLES_CONTACT as STYLE } from './contact.styles';
+import { STYLES_CONTACT } from './contact.styles';
 import { CommunicatorService } from 'src/app/services/communicator.service';
 
 @Component({
@@ -41,6 +41,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
   isOfferDialogVisible: boolean = false;
   offerDialogDesc: string = '';
   dialogStyle: object = {};
+  STYLE = STYLES_CONTACT;
 
   constructor(
     private chapterService: ChapterService,
@@ -69,9 +70,9 @@ export class ContactComponent implements OnInit, AfterViewInit {
     });
     this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((v) => {
       if (v === 'xl') {
-        this.dialogStyle = { width: STYLE.DIALOG_W_XL };
+        this.dialogStyle = this.STYLE.DIALOG_W_XL;
       } else {
-        this.dialogStyle = { width: STYLE.DIALOG_W_nXL };
+        this.dialogStyle = this.STYLE.DIALOG_W_nXL;
       }
     });
     setInterval(() => {

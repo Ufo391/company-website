@@ -11,7 +11,7 @@ import { LanguageService } from 'src/app/services/language.service';
 import { opacityAnimation } from '../content.animation';
 import { ViewportService } from 'src/app/services/viewport.service';
 import { ScrollPanel } from 'primeng/scrollpanel';
-import { STYLES_PROJECTS as STYLES } from './projects.styles';
+import { STYLES_PROJECTS } from './projects.styles';
 
 @UntilDestroy()
 @Component({
@@ -26,9 +26,8 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   pointer!: number;
   fadeinContentAnimationStatus: boolean = false;
   fadeinAnimation = 'off';
-  cardStyle: object = { background: STYLES.CARD_BG_CL };
+  STYLES = STYLES_PROJECTS;
   scrollPanelStyle: object = {};
-  buttonStyle: object = { color: STYLES.BUTTON_CL };
 
   constructor(
     public chapterService: ChapterService,
@@ -53,9 +52,9 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     });
     this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((v) => {
       if (v === 'xl') {
-        this.scrollPanelStyle = { height: STYLES.SCROLLPANEL_H_XL };
+        this.scrollPanelStyle = this.STYLES.SCROLLPANEL_H_XL;
       } else {
-        this.scrollPanelStyle = { height: STYLES.SCROLLPANEL_H_nXL };
+        this.scrollPanelStyle = this.STYLES.SCROLLPANEL_H_nXL;
       }
     });
   }

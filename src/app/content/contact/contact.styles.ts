@@ -1,4 +1,4 @@
-export class STYLES_CONTACT{
-  public static readonly DIALOG_W_XL = "60vw";
-  public static readonly DIALOG_W_nXL = "90vw";
+export class STYLES_CONTACT {
+  public static readonly DIALOG_W_XL = { width: '60vw' };
+  public static readonly DIALOG_W_nXL = { width: '90vw' };
 }

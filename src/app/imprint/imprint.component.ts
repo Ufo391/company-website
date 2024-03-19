@@ -1,13 +1,11 @@
 import {
   Component,
-  ElementRef,
   OnDestroy,
-  OnInit,
-  ViewChild,
+  OnInit
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChapterService } from '../services/chapter.service';
-import { STYLES_IMPRINT as STYLE } from './imprint.styles';
+import { STYLES_IMPRINT } from './imprint.styles';
 
 @Component({
   selector: 'app-imprint',
@@ -15,7 +13,7 @@ import { STYLES_IMPRINT as STYLE } from './imprint.styles';
   styleUrls: ['./imprint.component.scss'],
 })
 export class ImprintComponent implements OnInit, OnDestroy {
-  buttonStyle: object = STYLE.BUTTON;
+  STYLES = STYLES_IMPRINT;
 
   constructor(private chapterService: ChapterService, private router: Router) {}
 

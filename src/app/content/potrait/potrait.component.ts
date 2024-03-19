@@ -10,7 +10,7 @@ import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { ViewportService } from 'src/app/services/viewport.service';
 import { opacityAnimation } from '../content.animation';
-import { STYLES_POTRAIT as STYLES } from './potrait.styles';
+import { STYLES_POTRAIT } from './potrait.styles';
 
 @Component({
   selector: 'app-potrait',
@@ -23,7 +23,7 @@ export class PotraitComponent implements OnInit, AfterViewInit {
   isFoldOut: boolean = false;
   fadeinAnimation = 'off';
   text: string[] = [];
-  cardStyle: object = { background: STYLES.CARD_BG_CL };
+  STYLES = STYLES_POTRAIT;
 
   constructor(
     private chapterService: ChapterService,

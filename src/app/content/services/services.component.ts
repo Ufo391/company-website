@@ -11,7 +11,7 @@ import { LanguageService } from 'src/app/services/language.service';
 import { ViewportService } from 'src/app/services/viewport.service';
 import { opacityAnimation } from '../content.animation';
 import { ViewportModes } from 'src/app/models/viewportModes';
-import { STYLES_SERVICES as STYLES } from './services.styles';
+import { STYLES_SERVICES } from './services.styles';
 import { HtmlFormatterService } from 'src/app/services/html-formatter.service';
 
 @Component({
@@ -28,11 +28,8 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   pointer: number = 0;
   currentStyle: object = {};
   anzahl = 3;
-  cardStyles = [
-    { background: STYLES.CARD_BG_CL_0, height: STYLES.CARD_H },
-    { background: STYLES.CARD_BG_CL_1, height: STYLES.CARD_H },
-    { background: STYLES.CARD_BG_CL_2, height: STYLES.CARD_H },
-  ];
+  STYLES = STYLES_SERVICES;
+  cardStyles = [this.STYLES.CARD_0, this.STYLES.CARD_1, this.STYLES.CARD_2];
   imgUris: string[] = [
     'assets/ai/services/Expertiese3.jpg',
     'assets/free/code-angular.jpg',
@@ -136,9 +133,9 @@ export class ServicesComponent implements OnInit, AfterViewInit {
 
   private switchImageStyle(mode: ViewportModes): object[] {
     if (mode === 'xs') {
-      return STYLES.IMG_SIZE_XS;
+      return this.STYLES.IMG_SIZE_XS;
     } else {
-      return STYLES.IMG_SIZE_nXS;
+      return this.STYLES.IMG_SIZE_nXS;
     }
   }
 
