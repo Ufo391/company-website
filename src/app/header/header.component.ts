@@ -6,6 +6,8 @@ import { ChapterService } from '../services/chapter.service';
 import { LanguageService } from '../services/language.service';
 import { ViewportService } from '../services/viewport.service';
 import { delayHeaderInMs, opacityAnimation } from './header.animations';
+import { CommunicatorService } from '../services/communicator.service';
+import { STYLES_HEADER } from './header.styles';
 
 @Component({
   selector: 'app-header',
@@ -21,13 +23,15 @@ export class HeaderComponent {
   public iconSize: string = '1.5rem';
   public flagSize: string = '1rem';
   public logoSize: string = '2.5rem';
+  public STYLES = STYLES_HEADER;
   private languagePointer: number = 0;
 
   constructor(
     public chapterService: ChapterService,
     public lService: LanguageService,
     public vpService: ViewportService,
-    private router: Router
+    private router: Router,
+    public comService: CommunicatorService,
   ) {
     this.chapterService.currentChapter$
       .pipe(untilDestroyed(this))

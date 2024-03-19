@@ -97,3 +97,11 @@ $maxH: 100px;
   font-size: 1.25rem;
   font-weight: bold;
 }
+
+.contact-container {
+  bottom: 1vh;
+  left: -7px;
+  position: fixed;
+  z-index: 3;
+  padding-bottom: 1vh
+}

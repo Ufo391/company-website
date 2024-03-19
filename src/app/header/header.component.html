@@ -24,7 +24,9 @@
             class="flex flex-row justify-content-end pr-3 header-h-desktop-in"
           >
             <ng-container *ngFor="let c of chapterService.chapters$ | async">
-              <div class="primary-color flex flex-row align-items-center xl:align-items-end text-xs xl:text-2xl">
+              <div
+                class="primary-color flex flex-row align-items-center xl:align-items-end text-xs xl:text-2xl"
+              >
                 <p
                   (click)="changeCurrentChapter($event)"
                   class="my-0 cursor-pointer"
@@ -177,7 +179,8 @@
           <h3 class="ml-2 cursor-pointer">{{ md.sidebar.langauge }}</h3>
         </div>
       </div>
-
+    </ng-template>
+    <ng-template pTemplate="footer">
       <hr />
       <div class="text-sm text-center mt-3">
         <div class="flex justify-content-center mb-1">
@@ -220,4 +223,21 @@
       </div>
     </ng-template>
   </p-sidebar>
+</div>
+<div class="contact-container" *ngIf="(vpService.breakPoint$ | async) !== 'xl'">
+  <div
+    class="flex flex-column opacity-80 fadeinleft animation-duration-1000 animation-iteration-1"
+  >
+    <p-button
+      class="mb-1"
+      icon="pi pi-phone"
+      [style]="STYLES.BTN_CALL"
+      (onClick)="comService.openDefaultPhoneApp()"
+    ></p-button>
+    <p-button
+      icon="pi pi-envelope"
+      [style]="STYLES.BTN_MAIL"
+      (onClick)="comService.openDefaultEmailClient()"
+    ></p-button>
+  </div>
 </div>
