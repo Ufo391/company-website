@@ -6,19 +6,23 @@ import {
   ViewChild,
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ViewportModes } from 'src/app/models/viewportModes';
 import { ChapterService } from 'src/app/services/chapter.service';
+import { HtmlFormatterService } from 'src/app/services/html-formatter.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { ViewportService } from 'src/app/services/viewport.service';
-import { opacityAnimation } from '../content.animation';
-import { ViewportModes } from 'src/app/models/viewportModes';
+import {
+  flyInOutAnimation,
+  flyInOutAnimationInMs,
+  opacityAnimation,
+} from '../content.animation';
 import { STYLES_SERVICES } from './services.styles';
-import { HtmlFormatterService } from 'src/app/services/html-formatter.service';
 
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.scss'],
-  animations: [opacityAnimation],
+  animations: [opacityAnimation, flyInOutAnimation],
 })
 @UntilDestroy()
 export class ServicesComponent implements OnInit, AfterViewInit {
@@ -42,6 +46,9 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   lstElementAnimation: boolean = false;
   fadeinAnimationState = 'off';
   cardsDescription: string[] = [];
+  isFlying: boolean = false;
+  isTouchHelpShowed: boolean = false;
+  isTouchHelpVisible: boolean = false;
 
   constructor(
     private chapterService: ChapterService,
@@ -87,6 +94,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
       }
       this.flipNext();
       this.onPointerChanged();
+      this.showTouchHelp();
     }
   }
 
@@ -98,6 +106,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
       }
       this.flipLast();
       this.onPointerChanged();
+      this.showTouchHelp();
     }
   }
 
@@ -125,6 +134,22 @@ export class ServicesComponent implements OnInit, AfterViewInit {
 
   private startFadeAnimation(): void {
     this.fadeinAnimationState = 'on';
+  }
+
+  showTouchHelp(): void {
+    if (this.isTouchHelpShowed === false) {
+      this.isTouchHelpShowed = true;
+      let counter: number = 0;
+      const id = setInterval(() => {
+        this.isTouchHelpVisible = true;
+        this.isFlying = !this.isFlying;
+        counter += 1;
+        if (counter > 3) {
+          clearInterval(id);
+          this.isTouchHelpVisible = false;
+        }
+      }, flyInOutAnimationInMs);
+    }
   }
 
   private resetComponent(): void {
