@@ -3,6 +3,6 @@ export interface IChapterData {
   element: HTMLElement;
   animationStartCallback: () => void;
   componentResetCallback: () => void;
-  keypressLeftCallback: () => void;
-  keypressRightCallback: () => void;
+  actionLeftCallback: () => void;
+  actionRightCallback: () => void;
 }

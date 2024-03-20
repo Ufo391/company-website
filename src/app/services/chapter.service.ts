@@ -22,7 +22,7 @@ export class ChapterService {
   private scrollState: SCROLL_STATE = 'Default';
 
   constructor(private vpService: ViewportService) {
-    this.currentChapter$ = new BehaviorSubject<string>('Kloss IT-Solutions');
+    this.currentChapter$ = new BehaviorSubject<string>('Kloß IT-Solutions');
     this.chapters$ = new BehaviorSubject<string[]>([]);
     this.offsetHeight = window.innerHeight * -0.1;
     this.addEventListener();
@@ -46,8 +46,8 @@ export class ChapterService {
       title: element.innerText,
       animationStartCallback: startCallback,
       componentResetCallback: resetCallback,
-      keypressLeftCallback: leftCallback,
-      keypressRightCallback: rightCallback,
+      actionLeftCallback: leftCallback,
+      actionRightCallback: rightCallback,
     };
     this.chapters.push(c);
     this.chapters.sort((a, b) => a.element.offsetTop - b.element.offsetTop);
@@ -140,6 +140,14 @@ export class ChapterService {
 
   disableSkipScroll(v: boolean): void {
     this.skipScrollIsDisabled = v;
+  }
+
+  onTouchMove(isLeftTouch: boolean): void {
+    if (isLeftTouch) {
+      this.chapters[this.pointer].actionLeftCallback();
+    } else {
+      this.chapters[this.pointer].actionRightCallback();
+    }
   }
 
   private detectChapterChange(
@@ -261,9 +269,9 @@ export class ChapterService {
       } else if (event.key === 'ArrowDown') {
         this.skipScroll(true);
       } else if (event.key === 'ArrowLeft') {
-        this.chapters[this.pointer].keypressLeftCallback();
+        this.chapters[this.pointer].actionLeftCallback();
       } else if (event.key === 'ArrowRight') {
-        this.chapters[this.pointer].keypressRightCallback();
+        this.chapters[this.pointer].actionRightCallback();
       }
     });
 
