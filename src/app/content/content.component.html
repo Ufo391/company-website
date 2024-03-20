@@ -1,4 +1,7 @@
-<div>
+<div
+  (touchstart)="onTouchStart($event)"
+  (touchend)="onTouchEnd($event)"
+>
   <div #invisible>
     <p class="inv-p">
       {{ (lService.MasterData$ | async)?.companyName }}
