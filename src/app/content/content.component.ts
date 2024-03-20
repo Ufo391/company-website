@@ -20,6 +20,7 @@ export class ContentComponent implements OnInit, AfterViewInit {
 
   touchStartX: number = 0;
   touchStartY: number = 0;
+  private readonly touchTreshold: number = 100;
 
   constructor(
     private chapterService: ChapterService,
@@ -53,7 +54,10 @@ export class ContentComponent implements OnInit, AfterViewInit {
     const deltaX = touchEndX - this.touchStartX;
     const deltaY = touchEndY - this.touchStartY;
 
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    const forceX = Math.abs(deltaX);
+    const forceY = Math.abs(deltaY);
+
+    if (forceX > forceY && forceX > this.touchTreshold) {
       this.chapterService.onTouchMove(deltaX > 0);
     }
   }
