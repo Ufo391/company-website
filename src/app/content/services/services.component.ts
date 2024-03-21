@@ -30,7 +30,6 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   readonly cardHeight: string = '90vh';
   readonly flipSpeedInMs: number = 1000;
   pointer: number = 0;
-  currentStyle: object = {};
   anzahl = 3;
   STYLES = STYLES_SERVICES;
   cardStyles = [this.STYLES.CARD_0, this.STYLES.CARD_1, this.STYLES.CARD_2];
@@ -111,7 +110,6 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   }
 
   private onPointerChanged(): void {
-    this.currentStyle = this.cardStyles[this.pointer];
     this.isFirstElement = this.pointer === 0;
     this.isLastElement =
       this.pointer ===

@@ -8,10 +8,8 @@
   *ngIf="(lService.MasterData$ | async)?.services as s"
 >
   <!-- Single Card -->
-  <div
-    *ngIf="(vpService.breakPoint$ | async) !== 'xl'"
-  >
-    <p-card [style]="cardStyles[pointer]">
+  <div *ngIf="(vpService.breakPoint$ | async) !== 'xl'">
+    <p-card [style]="cardStyles[0]">
       <ng-template pTemplate="header">
         <h2 #title class="title-i">{{ s.title }}</h2>
         <div class="sm:flex sm:flex-row sm:w-12">
@@ -59,10 +57,14 @@
               class="sm:w-2"
             />
             <div class="sm:w-6 select-none">
+              <p class="text-center sm:text-left font-bold text-2xl m-0">
+                {{ s.values[pointer].title }}
+              </p>
               <div style="position: relative">
-                <p class="text-center sm:text-left font-bold text-2xl m-0">
-                  {{ s.values[pointer].title }}
-                </p>
+                <p
+                  class="text-left"
+                  [innerHTML]="cardsDescription[pointer]"
+                ></p>
                 <div
                   *ngIf="isTouchHelpVisible"
                   style="position: absolute; top: 0; left: 0"
@@ -73,7 +75,6 @@
                 </div>
               </div>
             </div>
-            <p class="text-left" [innerHTML]="cardsDescription[pointer]"></p>
           </div>
           <div
             class="justify-content-center ml-5"
