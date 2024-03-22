@@ -4,7 +4,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { filter } from 'rxjs';
 import { ViewportService } from './services/viewport.service';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import { ViewportModes } from './models/viewportModes_';
+import { ViewportModes } from './models/viewportModes';
 
 @UntilDestroy()
 @Component({
