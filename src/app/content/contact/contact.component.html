@@ -1,76 +1,151 @@
 <div
-  class="mb-5"
+  class="mb-5 text-center"
   *ngIf="(lService.MasterData$ | async)?.contact as c"
-  [@opacityAnimation]="fadeinAnimation"
+  [@opacityAnimation]="fadeinAnimationState"
 >
-  <p-panel id="scrollToElement">
-    <ng-template pTemplate="header"
-      ><div class="w-12">
-        <h2 #title class="m-0">{{ c.title }}</h2>
+  <p-dialog
+    [style]="dialogStyle"
+    [(visible)]="isOfferDialogVisible"
+    [modal]="true"
+    [resizable]="false"
+    [draggable]="false"
+  >
+    <ng-template pTemplate="header">
+      <h3 [@attentionAnimation]="attentionAnimationState" class="p-0 m-0">
+        {{ c.offerDialog.title }}
+      </h3>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div
+        class="flex flex-column sm:flex-row xl:flex-row justify-content-center align-items-center xl:text-2xl"
+      >
+        <img
+          class="m-4 border-round offer-img-h"
+          [src]="'assets/free/startup3.png'"
+          loading="eager"
+        />
+        <p class="select-none text-justify xl:ml-3" [innerHTML]="offerDialogDesc"></p>
       </div>
     </ng-template>
-    <div>
-      <div class="surface-section text-700 text-center mt-5">
-        <div class="text-blue-600 font-bold mb-3">
-          <i class="pi pi-users">&#160;POWERED BY DISCORD </i>
-        </div>
-        <p class="text-900 font-bold text-5xl mb-3 p-0">
-          Join Our Design Community
-        </p>
-        <div class="text-700 text-2xl mb-5">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-          numquam eligendi quos.
-        </div>
-        <hr />
-      </div>
-
-      <div class="flex flex-row align-items-center ml-3 mb-3 mt-3">
-        <div class="shadow-5 icon-button p-2 w-3">
-          <i
-            class="pi pi-phone text-2xl mb-1"
-            (click)="openDefaultPhoneApp()"
-          ></i>
-          <p class="p-0 m-0 text-xs">{{ c.values[0].description }}</p>
-        </div>
-        <p-divider layout="vertical"></p-divider>
-        <div class="flex flex-column flex-wrap text-left">
-          <p class="text-sm">
-            <span class="font-bold">{{ c.values[0].value.title }}</span
-            ><br />{{ c.values[0].value.value }}
-          </p>
-        </div>
-      </div>
-      <div class="flex flex-row align-items-center ml-3 mb-3">
-        <div class="shadow-5 icon-button p-2 w-3">
-          <i
-            class="pi pi-envelope text-2xl"
-            (click)="openDefaultEmailClient()"
-          ></i>
-          <p class="p-0 m-0 text-xs">{{ c.values[1].description }}</p>
-        </div>
-        <p-divider layout="vertical"></p-divider>
-        <div class="flex flex-column text-left">
-          <p class="text-sm">
-            <span class="font-bold">{{ c.values[1].value.title }}</span
-            ><br />{{ c.values[1].value.value }}
-          </p>
-        </div>
-      </div>
-      <div class="flex flex-column">
-        <div class="flex flex-row align-items-center ml-3 mb-3">
-          <div class="shadow-5 icon-button p-2 w-3">
-            <i class="pi pi-map-marker text-2xl" (click)="openGoogleMaps()"></i>
-            <p class="p-0 m-0 text-xs">{{ c.values[2].description }}</p>
+  </p-dialog>
+  <p-panel id="scrollToElement">
+    <ng-template pTemplate="header">
+      <h2 #title class="m-0 title-i">{{ c.title }}</h2>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div class="sm:flex sm:flex-row">
+        <div class="surface-section text-700 text-center mt-5 select-none">
+          <div class="mb-3 font-bold flex justify-content-start cursor-pointer">
+            <div
+              [@attentionRotateAnimation]="attentionAnimationState"
+              (click)="showOfferDialog()"
+            >
+              <i class="pi pi-percentage offer-color offer-font-size-t"></i>
+              <p class="p-0 m-0 text-center text-xs offer-color">
+                {{ c.offerName }}
+              </p>
+            </div>
           </div>
-          <p-divider layout="vertical"></p-divider>
-          <div class="flex flex-column text-left">
-            <p class="text-sm">
-              <span class="font-bold">{{ c.values[2].value.title }}</span
-              ><br />{{ c.values[2].value.value }}
-            </p>
+          <img
+            class="img-contact"
+            [src]="'assets/free/communication.png'"
+            loading="eager"
+          />
+          <p class="text-900 font-bold text-5xl mb-3 p-0">
+            {{ c.description.title }}
+          </p>
+          <p class="text-700 text-2xl mb-5 text-center">
+            {{ c.description.value }}
+            <span class="underline select font-bold cursor-pointer">
+              <div
+                [@attentionAnimation]="attentionAnimationState"
+                (click)="showOfferDialog()"
+              >
+                <p class="offer-font-size-b">{{ c.offerDesc }}</p>
+              </div>
+            </span>
+          </p>
+          <hr *ngIf="(vpService.breakPoint$ | async) === 'xs'" />
+        </div>
+        <p-divider
+          *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
+          layout="vertical"
+        />
+        <div class="flex justify-content-center align-items-center">
+          <div>
+            <div class="flex flex-row align-items-center mb-3 mt-3">
+              <div
+                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer border-white"
+                [ngClass]="{
+                  'opacity-80': hoverOverState == 1,
+                  'border-1': hoverOverState == 1
+                }"
+                (click)="comService.openDefaultPhoneApp()"
+                (mouseenter)="hoverOverHandler(1)"
+                (mouseleave)="hoverOverHandler(0)"
+              >
+                <i class="pi pi-phone text-2xl mb-1"></i>
+                <p class="p-0 m-0 text-xs select-none">
+                  {{ c.values[0].description }}
+                </p>
+              </div>
+              <div class="flex flex-column flex-wrap text-left w-9 ml-3">
+                <p class="text-sm select-all">
+                  <span class="font-bold select-none"
+                    >{{ c.values[0].value.title }}<br /></span
+                  >{{ c.values[0].value.value }}
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-row align-items-center mb-3">
+              <div
+                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer border-white"
+                [ngClass]="{
+                  'opacity-80': hoverOverState == 2,
+                  'border-1': hoverOverState == 2
+                }"
+                (click)="comService.openDefaultEmailClient()"
+                (mouseenter)="hoverOverHandler(2)"
+                (mouseleave)="hoverOverHandler(0)"
+              >
+                <i class="pi pi-envelope text-2xl"></i>
+                <p class="p-0 m-0 text-xs select-none">
+                  {{ c.values[1].description }}
+                </p>
+              </div>
+              <div class="flex flex-column text-left w-9 ml-3">
+                <p class="text-sm select-all">
+                  <span class="font-bold select-none"
+                    >{{ c.values[1].value.title }}<br /></span
+                  >{{ c.values[1].value.value }}
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-row align-items-center mb-3">
+              <div
+                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer border-white"
+                [ngClass]="{
+                  'opacity-80': hoverOverState == 3,
+                  'border-1': hoverOverState == 3
+                }"
+                (click)="openGoogleMaps()"
+                (mouseenter)="hoverOverHandler(3)"
+                (mouseleave)="hoverOverHandler(0)"
+              >
+                <i class="pi pi-map-marker text-2xl select-none"></i>
+                <p class="p-0 m-0 text-xs">{{ c.values[2].description }}</p>
+              </div>
+              <div class="flex flex-column text-left w-9 ml-3">
+                <p class="text-sm select-all">
+                  <span class="font-bold select-none"
+                    >{{ c.values[2].value.title }}<br /></span
+                  >{{ c.values[2].value.value }}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </ng-template>
   </p-panel>
 </div>

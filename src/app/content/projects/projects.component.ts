@@ -9,23 +9,30 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { opacityAnimation } from '../content.animation';
+import { ViewportService } from 'src/app/services/viewport.service';
+import { ScrollPanel } from 'primeng/scrollpanel';
+import { STYLES_PROJECTS } from './projects.styles';
 
 @UntilDestroy()
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css'],
+  styleUrls: ['./projects.component.scss'],
   animations: [opacityAnimation],
 })
 export class ProjectsComponent implements OnInit, AfterViewInit {
   @ViewChild('title') myElement!: ElementRef;
+  @ViewChild('scroll') scroll!: ScrollPanel;
   pointer!: number;
   fadeinContentAnimationStatus: boolean = false;
   fadeinAnimation = 'off';
+  STYLES = STYLES_PROJECTS;
+  scrollPanelStyle: object = {};
 
   constructor(
-    private chapterService: ChapterService,
-    public lService: LanguageService
+    public chapterService: ChapterService,
+    public lService: LanguageService,
+    public vpService: ViewportService
   ) {}
 
   ngOnInit() {
@@ -36,10 +43,19 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     this.chapterService.addChapter(
       this.myElement,
       this.startFadeAnimation.bind(this),
-      this.leaveFadeAnimation.bind(this)
+      this.leaveFadeAnimation.bind(this),
+      this.clickLastItemHandler.bind(this),
+      this.clickNextItemHandler.bind(this)
     );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.projects.title);
+    });
+    this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((v) => {
+      if (v === 'xl') {
+        this.scrollPanelStyle = this.STYLES.SCROLLPANEL_H_XL;
+      } else {
+        this.scrollPanelStyle = this.STYLES.SCROLLPANEL_H_nXL;
+      }
     });
   }
 
@@ -52,6 +68,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
           : this.pointer + 1;
     }
     this.fadeinContent();
+    this.scroll.scrollTop(0);
   }
 
   clickLastItemHandler(): void {
@@ -62,13 +79,14 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
           : this.pointer - 1;
     }
     this.fadeinContent();
+    this.scroll.scrollTop(0);
   }
 
   private fadeinContent(): void {
     this.fadeinContentAnimationStatus = true;
     setTimeout(() => {
       this.fadeinContentAnimationStatus = false;
-    }, 1000);
+    }, 500);
   }
 
   private startFadeAnimation(): void {
@@ -77,5 +95,6 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 
   private leaveFadeAnimation(): void {
     this.fadeinAnimation = 'off';
+    this.scroll.scrollTop(0);
   }
 }

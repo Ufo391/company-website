@@ -1,26 +1,39 @@
-<div class="text-center" *ngIf="(lService.MasterData$ | async)?.aboutMe as ab">
-  <p-card [style]="{ background: '#F7F7F7' }">
-    <ng-template pTemplate="header">
-      <h2 class="p-3" #title>{{ ab.title }}</h2>
-    </ng-template>
+<div
+  class="text-center"
+  *ngIf="(lService.MasterData$ | async)?.aboutMe as ab"
+  [@opacityAnimation]="fadeinAnimation"
+>
+  <p-card [style]="STYLES.CARD_BG_CL">
     <ng-template pTemplate="content">
+      <h2 class="title-i" #title>
+        {{ ab.title }}
+      </h2>
       <div
-        class="flex flex-column md:flex-row-reverse mt-3 align-items-center justify-content-between"
+        class="flex flex-column sm:flex-row mt-3 align-items-center justify-content-between"
       >
         <img
-          class="picture"
+          class="picture border-round"
           src="assets/potrait.jpg"
-          alt="Potrait"
           loading="eager"
         />
-        <div class="sm:mt-5 w-12 md:w-8">
-          <div class="text-justify">
-            <p *ngIf="isFoldOut">
-              {{ ab.value }}
-            </p>
+        <p-divider
+          *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
+          class="Potrait"
+          layout="vertical"
+        />
+        <div class="mt-5 sm:mt-0 w-12 sm:w-8 select-none">
+          <div class="text-left text-size">
+            <div *ngIf="isFoldOut">
+              <ng-container *ngFor="let c of text">
+                <p>
+                  {{ c }}
+                </p>
+                <br />
+              </ng-container>
+            </div>
             <p
               *ngIf="!isFoldOut"
-              class="gradient-text"
+              class="gradient-text cursor-pointer"
               (click)="toggleFoldOut()"
             >
               {{ ab.value | slice : 0 : 500 }}
@@ -28,7 +41,7 @@
           </div>
           <i
             *ngIf="!isFoldOut"
-            class="pi pi-arrow-down w-12 opacity-50 fadeinup animation-duration-1000 animation-iteration-infinite"
+            class="pi pi-arrow-down cursor-pointer w-12 opacity-50 fadeinup animation-duration-1000 animation-iteration-infinite"
             (click)="toggleFoldOut()"
           ></i>
         </div>

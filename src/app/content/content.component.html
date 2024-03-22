@@ -1,20 +1,41 @@
-<div #invisible>
-  <p style="font-size: 0%">{{ (lService.MasterData$ | async)?.companyName }}</p>
-</div>
-<div class="">
-  <div class="block mt-3 mb-1">
+<div
+  (touchstart)="onTouchStart($event)"
+  (touchend)="onTouchEnd($event)"
+>
+  <div #invisible>
+    <p class="inv-p">
+      {{ (lService.MasterData$ | async)?.companyName }}
+    </p>
+  </div>
+  <div class="mt-3 mb-1">
     <app-block-image />
   </div>
-  <div class="block mt-3 mb-1 p-3 fadein animation-duration-2000 animation-iteration-1">
-    <app-potrait />
+  <div
+    class="mt-3 mb-1 p-3 xl:h-screen xl:flex xl:justify-content-center xl:align-items-center fadein animation-duration-2000 animation-iteration-1"
+  >
+    <div class="xl:w-10">
+      <app-potrait />
+    </div>
   </div>
-  <div class="block text-center border-round mb-1 p-3">
-    <app-services />
+  <div
+    class="xl:h-screen xl:flex xl:justify-content-center xl:align-items-center border-round mb-1 p-3"
+  >
+    <div class="xl:w-10">
+      <app-services />
+    </div>
   </div>
-  <div class="block text-center border-round mb-1 p-3">
-    <app-projects />
+  <div
+    class="xl:h-screen xl:flex xl:justify-content-center xl:align-items-center border-round mb-1 p-3"
+  >
+    <div class="xl:w-10">
+      <app-projects />
+    </div>
   </div>
-  <div class="block text-center border-round mb-1 p-3">
-    <app-contact />
+  <div
+    class="xl:flex xl:justify-content-center xl:align-items-center border-round mb-3 p-3"
+  >
+    <div class="xl:w-10">
+      <app-contact />
+    </div>
   </div>
 </div>

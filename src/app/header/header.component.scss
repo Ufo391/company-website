@@ -1,11 +1,16 @@
-@import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
-@import "primeicons/primeicons.css";
-@import "primeflex/primeflex.css";
-
 $minW: 577px;
 $maxW: 576px;
 $maxH: 100px;
+
+.primary-color {
+  color: #596970;
+}
+
+.link {
+  font-size: 19.89px;
+  margin-top: 16.38px;
+  margin-bottom: 16.38px;
+}
 
 .menu-button {
   background-color: transparent;
@@ -22,10 +27,32 @@ $maxH: 100px;
   top: 0px;
 }
 
+@media screen and (max-width: 1199px) {
+  .fixed-w {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .fixed-w {
+    width: 83.333%;
+  }
+}
+
 .nofixed {
   position: static;
   transition: 0.5s linear;
   top: -80px;
+}
+@media screen and (max-width: 1199px) {
+  .nofixed-w {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .nofixed-w {
+    width: 83.333vw;
+  }
 }
 
 @media screen and (min-width: $minW) {
@@ -56,4 +83,25 @@ $maxH: 100px;
     height: 10vh;
     max-height: $maxH;
   }
+}
+
+.header-h-desktop {
+  height: 100px;
+}
+
+.header-h-desktop-in {
+  height: 68px;
+}
+
+.header-desc {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.contact-container {
+  bottom: 1vh;
+  left: -7px;
+  position: fixed;
+  z-index: 3;
+  padding-bottom: 1vh
 }

@@ -1,68 +1,113 @@
 <div
   *ngIf="(lService.MasterData$ | async)?.projects as p"
   [@opacityAnimation]="fadeinAnimation"
+  class="text-center"
 >
-  <p-card [style]="{ background: '#F7F7F7' }">
+  <p-card [style]="STYLES.CARD_BG_CL">
     <ng-template pTemplate="header">
-      <div class="p-3 flex flex-column">
-        <h2 #title>{{ p.title }}</h2>
+      <h2 #title class="pt-3 select-none">{{ p.title }}</h2>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div class="sm:flex sm:flex-row sm:align-items-center">
+        <div class="w-1 pr-8" *ngIf="(vpService.breakPoint$ | async) !== 'xs'">
+          <i
+            class="pi pi-angle-left text-4xl cursor-pointer fadeinright animation-duration-2000 animation-iteration-infinite"
+            (click)="clickLastItemHandler()"
+            *ngIf="!fadeinContentAnimationStatus"
+          ></i>
+        </div>
         <div
-          class="animation-duration-1000 animation-iteration-1"
+          class="animation-duration-500 animation-iteration-1 sm:w-3 w-12"
           [ngClass]="{ fadein: fadeinContentAnimationStatus }"
         >
-          <p class="text-left font-bold p-0 m-0">
-            {{ p.values[pointer].content.title }}
+          <p class="text-left sm:text-right font-bold xl:text-4xl p-0 m-0">
+            {{ p.values[pointer].description.title }}
           </p>
-          <div class="flex flex-row flex-wrap">
-            <p class="text-left w-6 p-0 m-0">{{ p.values[pointer].role }}</p>
-            <p class="text-right w-6 p-0 m-0">
-              {{ p.values[pointer].techStack[0] }}
-            </p>
+          <div class="flex flex-row sm:flex-column justify-content-between">
+            <div>
+              <p class="text-left sm:text-right xl:text-2xl p-0 m-0">
+                {{ p.values[pointer].role }}
+              </p>
+              <p class="text-left sm:text-right xl:text-2xl p-0 m-0">
+                {{ p.values[pointer].industry }}
+              </p>
+              <p class="text-left sm:text-right xl:text-2xl p-0 m-0">
+                {{ p.values[pointer].durationInMonths }} {{ p.durationType }}
+              </p>
+            </div>
+            <br *ngIf="(vpService.breakPoint$ | async) !== 'xs'" />
+            <div>
+              <p class="text-right sm:text-right xl:text-2xl p-0 m-0">
+                {{ p.values[pointer].techStack[0] }}
+              </p>
+              <p class="text-right sm:text-right xl:text-2xl p-0 m-0">
+                {{ p.values[pointer].techStack[1] }}
+              </p>
+              <p class="text-right sm:text-right xl:text-2xl p-0 m-0">
+                {{ p.values[pointer].techStack[2] }}
+              </p>
+            </div>
           </div>
-          <div class="flex flex-row flex-wrap">
-            <p class="text-left w-6 p-0 m-0">
-              {{ p.values[pointer].industry }}
-            </p>
-            <p class="text-right w-6 p-0 m-0">
-              {{ p.values[pointer].techStack[1] }}
-            </p>
-          </div>
-          <div class="flex flex-row flex-wrap">
-            <p class="text-left w-6 p-0 m-0">
-              {{ p.values[pointer].durationInMonths }} {{ p.duration }}
-            </p>
-            <p class="text-right w-6 p-0 m-0">
-              {{ p.values[pointer].techStack[2] }}
-            </p>
-          </div>
+        </div>
+        <p-divider
+          *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
+          class="w-1"
+          [style]="scrollPanelStyle"
+          layout="vertical"
+        />
+        <p-divider *ngIf="(vpService.breakPoint$ | async) === 'xs'" />
+        <div
+          class="animation-duration-500 animation-iteration-1 sm:w-6 justify-content-center mt-5 sm:mt-0"
+          [ngClass]="{ fadein: fadeinContentAnimationStatus }"
+          (mouseenter)="chapterService.disableSkipScroll(true)"
+          (mouseleave)="chapterService.disableSkipScroll(false)"
+        >
+          <p-scrollPanel #scroll [style]="scrollPanelStyle">
+            <div class="text-left">
+              <p>
+                {{ p.values[pointer].description.value }}
+              </p>
+
+              <ul>
+                <li *ngFor="let v of p.values[pointer].listing">
+                  {{ v }}
+                </li>
+              </ul>
+              <p>
+                {{ p.values[pointer].conclusion }}
+              </p>
+            </div>
+          </p-scrollPanel>
+        </div>
+        <div class="w-1 pl-6" *ngIf="(vpService.breakPoint$ | async) !== 'xs'">
+          <i
+            class="pi pi-angle-right text-4xl cursor-pointer fadeinleft animation-duration-2000 animation-iteration-infinite"
+            (click)="clickNextItemHandler()"
+            *ngIf="!fadeinContentAnimationStatus"
+          ></i>
         </div>
       </div>
     </ng-template>
-    <div
-      class="animation-duration-1000 animation-iteration-1"
-      [ngClass]="{ fadein: fadeinContentAnimationStatus }"
-    >
-      <p-scrollPanel [style]="{ width: '100%', height: '40vh' }">
-        <p class="text-justify">{{ p.values[pointer].content.value }}</p>
-      </p-scrollPanel>
-    </div>
     <ng-template pTemplate="footer">
       <div
         class="animation-duration-1000 animation-iteration-1"
         [ngClass]="{ fadein: fadeinContentAnimationStatus }"
       >
-        <div class="flex justify-content-end flex-wrap card-container">
+        <div
+          *ngIf="(vpService.breakPoint$ | async) === 'xs'"
+          class="flex justify-content-end flex-wrap card-container"
+        >
           <p-button
             icon="pi pi-angle-left"
             styleClass="p-button-text"
-            [style]="{ color: 'inherit' }"
+            [style]="STYLES.BUTTON_CL"
             (click)="clickLastItemHandler()"
             [disabled]="fadeinContentAnimationStatus"
           ></p-button>
           <p-button
             icon="pi pi-angle-right"
             class="ml-1"
-            [style]="{ color: 'inherit' }"
+            [style]="STYLES.BUTTON_CL"
             styleClass="p-button-text"
             (click)="clickNextItemHandler()"
             [disabled]="fadeinContentAnimationStatus"

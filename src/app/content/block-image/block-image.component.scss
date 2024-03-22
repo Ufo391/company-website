@@ -1,10 +1,21 @@
 $minW: 577px;
 $maxW: 576px;
 
-.image-container {
-  width: 100vw;
+.image-container-w {
   overflow: hidden;
   position: relative;
+}
+
+@media screen and (max-width: 1199px) {
+  .image-container-w {
+    width: 100vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .image-container-w {
+    width: 83.333vw;
+  }
 }
 
 @media screen and (min-width: $minW) {

@@ -6,15 +6,23 @@ import {
   ViewChild,
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ViewportModes } from 'src/app/models/viewportModes';
 import { ChapterService } from 'src/app/services/chapter.service';
+import { HtmlFormatterService } from 'src/app/services/html-formatter.service';
 import { LanguageService } from 'src/app/services/language.service';
-import { opacityAnimation } from '../content.animation';
+import { ViewportService } from 'src/app/services/viewport.service';
+import {
+  flyInOutAnimation,
+  flyInOutAnimationInMs,
+  opacityAnimation,
+} from '../content.animation';
+import { STYLES_SERVICES } from './services.styles';
 
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.scss'],
-  animations: [opacityAnimation],
+  animations: [opacityAnimation, flyInOutAnimation],
 })
 @UntilDestroy()
 export class ServicesComponent implements OnInit, AfterViewInit {
@@ -22,58 +30,55 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   readonly cardHeight: string = '90vh';
   readonly flipSpeedInMs: number = 1000;
   pointer: number = 0;
-  currentStyle: object = {};
-  cardStyles = [
-    { background: '#daeaf0' },
-    { background: '#9fb1c5' },
-    { background: '#b2bccd' },
-  ];
-  fontStyles = [
-    { color: 'inherit' },
-    { color: 'white' },
-    { color: 'white' },
-  ];
+  anzahl = 3;
+  STYLES = STYLES_SERVICES;
+  cardStyles = [this.STYLES.CARD_0, this.STYLES.CARD_1, this.STYLES.CARD_2];
   imgUris: string[] = [
     'assets/ai/services/Expertiese3.jpg',
-    'assets/ai/services/Entwicklung4.jpg',
-
+    'assets/free/code-angular.jpg',
     'assets/ai/services/Beratung4.jpg',
   ];
-  imgStyles = [
-    {
-      width: '110%',
-      height: '110%',
-    },
-    {
-      width: '133%',
-      height: '133%',
-    },
-    {
-      width: '115%',
-      height: '115%',
-      transform: 'translate(0%, -5%)'
-    },
-  ];
+  imgStyles!: object[];
   isFirstElement: boolean = false;
   isLastElement: boolean = false;
   nxtElementAnimation: boolean = false;
   lstElementAnimation: boolean = false;
-  fadeinAnimation = 'off';
+  fadeinAnimationState = 'off';
+  cardsDescription: string[] = [];
+  isFlying: boolean = false;
+  isTouchHelpShowed: boolean = false;
+  isTouchHelpVisible: boolean = false;
 
   constructor(
     private chapterService: ChapterService,
-    public lService: LanguageService
+    public lService: LanguageService,
+    public vpService: ViewportService,
+    private htmlF: HtmlFormatterService
   ) {}
 
   ngOnInit() {
     this.onPointerChanged();
+    this.vpService.breakPoint$.pipe(untilDestroyed(this)).subscribe((m) => {
+      this.imgStyles = this.switchImageStyle(m);
+    });
+    this.imgUris.forEach((u) => {
+      this.preloadImage(u);
+    });
+    this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((m) => {
+      const styleClasses: string[] = ['font-bold'];
+      this.cardsDescription = m.services.values.map((s) =>
+        this.htmlF.formatTextToHtml(s.value, styleClasses)
+      );
+    });
   }
 
   ngAfterViewInit() {
     this.chapterService.addChapter(
       this.myElement,
       this.startFadeAnimation.bind(this),
-      this.resetComponent.bind(this)
+      this.resetComponent.bind(this),
+      this.clickLastItemHandler.bind(this),
+      this.clickNextItemHandler.bind(this)
     );
     this.lService.MasterData$.pipe(untilDestroyed(this)).subscribe((c) => {
       this.chapterService.translateChapter(this.myElement, c.services.title);
@@ -81,25 +86,30 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   }
 
   clickNextItemHandler(): void {
-    this.pointer = this.pointer + 1;
-    if (this.pointer >= this.cardStyles.length) {
-      this.pointer = 0;
+    if (!(this.nxtElementAnimation || this.lstElementAnimation)) {
+      this.pointer = this.pointer + 1;
+      if (this.pointer >= this.cardStyles.length) {
+        this.pointer = 0;
+      }
+      this.flipNext();
+      this.onPointerChanged();
+      this.showTouchHelp();
     }
-    this.flipNext();
-    this.onPointerChanged();
   }
 
   clickLastItemHandler(): void {
-    this.pointer = this.pointer - 1;
-    if (this.pointer < 0) {
-      this.pointer = this.cardStyles.length - 1;
+    if (!(this.nxtElementAnimation || this.lstElementAnimation)) {
+      this.pointer = this.pointer - 1;
+      if (this.pointer < 0) {
+        this.pointer = this.cardStyles.length - 1;
+      }
+      this.flipLast();
+      this.onPointerChanged();
+      this.showTouchHelp();
     }
-    this.flipLast();
-    this.onPointerChanged();
   }
 
   private onPointerChanged(): void {
-    this.currentStyle = this.cardStyles[this.pointer];
     this.isFirstElement = this.pointer === 0;
     this.isLastElement =
       this.pointer ===
@@ -121,10 +131,39 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   }
 
   private startFadeAnimation(): void {
-    this.fadeinAnimation = 'on';
+    this.fadeinAnimationState = 'on';
+  }
+
+  showTouchHelp(): void {
+    if (this.isTouchHelpShowed === false) {
+      this.isTouchHelpShowed = true;
+      let counter: number = 0;
+      const id = setInterval(() => {
+        this.isTouchHelpVisible = true;
+        this.isFlying = !this.isFlying;
+        counter += 1;
+        if (counter > 3) {
+          clearInterval(id);
+          this.isTouchHelpVisible = false;
+        }
+      }, flyInOutAnimationInMs);
+    }
   }
 
   private resetComponent(): void {
-    this.fadeinAnimation = 'off';
+    this.fadeinAnimationState = 'off';
+  }
+
+  private switchImageStyle(mode: ViewportModes): object[] {
+    if (mode === 'xs') {
+      return this.STYLES.IMG_SIZE_XS;
+    } else {
+      return this.STYLES.IMG_SIZE_nXS;
+    }
+  }
+
+  private preloadImage(url: string): void {
+    const img = new Image();
+    img.src = url;
   }
 }

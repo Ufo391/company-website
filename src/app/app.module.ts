@@ -13,9 +13,11 @@ import { SidebarModule } from 'primeng/sidebar';
 import { ContentModule } from './content/content.module';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { ImprintComponent } from './imprint/imprint.component';
+import { DsgvoComponent } from './dsgvo/dsgvo.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, ImprintComponent, DsgvoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

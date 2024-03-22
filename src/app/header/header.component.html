@@ -1,27 +1,99 @@
-<div *ngIf="lService.MasterData$ | async as md">
+<div
+  *ngIf="lService.MasterData$ | async as md"
+  class="xl:flex xl:justify-content-center"
+>
   <div *ngIf="navbarfixed" class="bg-white header-h w-screen"></div>
   <div
-    [ngClass]="navbarfixed ? 'fixed w-full' : 'nofixed'"
+    [ngClass]="navbarfixed ? 'fixed fixed-w' : 'nofixed nofixed-w'"
     class="bg-white header-h opacity-90"
     (scroll)="onscroll()"
   >
-    <div class="flex justify-content-between align-items-center">
-      <img class="p-3 company-icon" src="assets/logo.png" loading="eager" />
-      <h2 [@opacityAnimation]="animationStatus" style="color: #596970">
+    <div class="flex justify-content-between align-items-center select-none">
+      <img
+        class="p-3 company-icon cursor-pointer"
+        (click)="scrollToStart()"
+        src="assets/logo.png"
+        loading="eager"
+      />
+      <div
+        *ngIf="(vpService.breakPoint$ | async) !== 'xs'"
+        class="w-12 py-3 header-h-desktop"
+      >
+        <div class="flex flex-column w-12">
+          <div
+            class="flex flex-row justify-content-end pr-3 header-h-desktop-in"
+          >
+            <ng-container *ngFor="let c of chapterService.chapters$ | async">
+              <div
+                class="primary-color flex flex-row align-items-center xl:align-items-end text-xs xl:text-2xl"
+              >
+                <p
+                  (click)="changeCurrentChapter($event)"
+                  class="my-0 cursor-pointer"
+                  [ngClass]="{
+                      'font-bold':
+                        (chapterService.currentChapter$ | async) === c,
+                      'opacity-50':
+                        (chapterService.currentChapter$ | async) !== c,
+                      'opacity-100':
+                        (chapterService.currentChapter$ | async) === c,
+                    }"
+                >
+                  {{ c }}
+                </p>
+                <p class="mx-2 my-0">|</p>
+              </div>
+            </ng-container>
+            <div
+              class="flex flex-row align-items-center xl:align-items-end"
+              (click)="changeLanguage()"
+            >
+              <div class="cursor-pointer flex align-items-center">
+                <img
+                  *ngIf="md.langCode === 'de'"
+                  src="assets/countries/de.svg"
+                  [style.width]="flagSize"
+                  [style.height]="flagSize"
+                  loading="eager"
+                />
+                <img
+                  *ngIf="md.langCode === 'en'"
+                  src="assets/countries/gb.svg"
+                  [style.width]="flagSize"
+                  [style.height]="flagSize"
+                  loading="eager"
+                />
+                <img
+                  *ngIf="md.langCode === 'pl'"
+                  src="assets/countries/pl.svg"
+                  [style.width]="flagSize"
+                  [style.height]="flagSize"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p
+        *ngIf="(vpService.breakPoint$ | async) === 'xs'"
+        class="header-desc"
+        [@opacityAnimation]="animationStatus"
+      >
         {{ chapterService.currentChapter$ | async }}
-      </h2>
+      </p>
       <button
+        *ngIf="(vpService.breakPoint$ | async) === 'xs'"
         pButton
         type="button"
         icon="pi pi-bars"
         class="menu-button mr-3"
         (click)="toggleSidebar()"
-        style="color: #596970"
       ></button>
     </div>
   </div>
   <p-sidebar
-    class="z-1"
+    class="z-1 select-none"
     styleClass="w-9"
     [(visible)]="sidebarVisible"
     position="right"
@@ -31,48 +103,60 @@
         <img
           class="max-h-full"
           src="assets/logo.png"
-          alt="Firmenlogo"
           [style.width]="logoSize"
           [style.height]="logoSize"
           loading="eager"
         />
-        <h3 class="text-center w-12 opacity-70" style="color: #596970">
+        <h4 class="text-center w-12 opacity-70">
           {{ md.companyName }}
-        </h3>
+        </h4>
       </div>
     </ng-template>
     <ng-template pTemplate="content">
       <hr />
-      <div class="md:flex md:flex-wrap">
+      <div class="sm:flex sm:flex-wrap">
         <ng-container *ngFor="let c of chapterService.chapters$ | async">
           <div
-            class="md:w-6 sm:w-12 flex flex-row align-items-center"
-            style="color: #596970"
+            class="sm:w-6 w-12 flex flex-row align-items-center primary-color"
           >
-            <i class="pi pi-bookmark"></i>
-            <h3 (click)="changeCurrentChapter($event)" class="ml-2">{{ c }}</h3>
+            <i class="pi pi-bookmark cursor-pointer"></i>
+            <h3
+              (click)="changeCurrentChapter($event)"
+              class="ml-2 cursor-pointer"
+            >
+              {{ c }}
+            </h3>
           </div>
         </ng-container>
       </div>
       <hr />
-      <div class="md:flex md:flex-wrap" style="color: #596970">
-        <div class="md:w-6 sm:w-12 flex flex-row align-items-center">
-          <i class="pi pi-lock"></i>
-          <h3 class="ml-2">{{ md.sidebar.privacy }}</h3>
+      <div class="sm:flex sm:flex-wrap primary-color">
+        <div class="sm:w-6 w-12 flex flex-row align-items-center">
+          <i class="pi pi-file cursor-pointer"></i>
+          <a
+            href="imprint"
+            class="ml-2 cursor-pointer no-underline font-bold primary-color link"
+          >
+            {{ md.sidebar.imprint }}
+          </a>
         </div>
-        <div class="md:w-6 sm:w-12 flex flex-row align-items-center">
-          <i class="pi pi-file"></i>
-          <h3 class="ml-2">{{ md.sidebar.imprint }}</h3>
+        <div class="sm:w-6 w-12 flex flex-row align-items-center">
+          <i class="pi pi-lock cursor-pointer"></i>
+          <a
+            href="privacy"
+            class="ml-2 cursor-pointer no-underline font-bold primary-color link"
+          >
+            {{ md.sidebar.privacy }}
+          </a>
         </div>
         <div
-          class="md:w-6 sm:w-12 flex flex-row align-items-center"
+          class="sm:w-6 w-12 flex flex-row align-items-center"
           (click)="changeLanguage()"
         >
-          <div>
+          <div class="cursor-pointer">
             <img
               *ngIf="md.langCode === 'de'"
               src="assets/countries/de.svg"
-              alt="SVG-Grafik"
               [style.width]="flagSize"
               [style.height]="flagSize"
               loading="eager"
@@ -80,7 +164,6 @@
             <img
               *ngIf="md.langCode === 'en'"
               src="assets/countries/gb.svg"
-              alt="SVG-Grafik"
               [style.width]="flagSize"
               [style.height]="flagSize"
               loading="eager"
@@ -88,18 +171,17 @@
             <img
               *ngIf="md.langCode === 'pl'"
               src="assets/countries/pl.svg"
-              alt="SVG-Grafik"
               [style.width]="flagSize"
               [style.height]="flagSize"
               loading="eager"
             />
           </div>
-          <h3 class="ml-2">{{ md.sidebar.langauge }}</h3>
+          <h3 class="ml-2 cursor-pointer">{{ md.sidebar.langauge }}</h3>
         </div>
       </div>
     </ng-template>
-    <ng-template pTemplate="footer"
-      ><hr />
+    <ng-template pTemplate="footer">
+      <hr />
       <div class="text-sm text-center mt-3">
         <div class="flex justify-content-center mb-1">
           <a
@@ -109,7 +191,6 @@
           >
             <img
               src="assets/freelancermap_icon.png"
-              alt="background"
               [style.width]="iconSize"
               [style.height]="iconSize"
               loading="eager"
@@ -129,7 +210,6 @@
           >
             <img
               src="assets/xing_icon2.svg"
-              alt="background"
               [style.width]="iconSize"
               [style.height]="iconSize"
               loading="eager"
@@ -143,4 +223,21 @@
       </div>
     </ng-template>
   </p-sidebar>
+</div>
+<div class="contact-container" *ngIf="(vpService.breakPoint$ | async) !== 'xl'">
+  <div
+    class="flex flex-column opacity-80 fadeinleft animation-duration-1000 animation-iteration-1"
+  >
+    <p-button
+      class="mb-1"
+      icon="pi pi-phone"
+      [style]="STYLES.BTN_CALL"
+      (onClick)="comService.openDefaultPhoneApp()"
+    ></p-button>
+    <p-button
+      icon="pi pi-envelope"
+      [style]="STYLES.BTN_MAIL"
+      (onClick)="comService.openDefaultEmailClient()"
+    ></p-button>
+  </div>
 </div>

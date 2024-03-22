@@ -6,12 +6,28 @@
 
 @media screen and (min-width: 577px) {
   .picture {
-    height: 50vh
+    height: 50vh;
   }
 }
 
 @media screen and (max-width: 576px) {
   .picture {
-    height: 25vh
+    height: 25vh;
+  }
+}
+
+.title-i{
+  font-size: 0px
+}
+
+@media screen and (max-width: 1199px) {
+  .text-size{
+    font-size: 15.5px
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .text-size{
+    font-size: 20px
   }
 }

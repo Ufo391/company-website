@@ -1,12 +1,47 @@
+$minW: 577px;
+$maxW: 576px;
+
+.card-h-d{
+  height: 90vh;
+}
+
 .image-container {
-  width: 100%;
-  height: 30vh;
   overflow: hidden;
   position: relative;
 }
 
 .cropped-image {
   object-fit: cover;
-  filter: blur(1px) grayscale(1) brightness(125%);
-  opacity: 50%;
+  //filter: blur(0px) grayscale(0) brightness(100%);
+  //opacity: 100%;
+}
+
+@media screen and (min-width: $minW) {
+  .image-container-h {
+    height: 66vh;
+    width: 66vh;
+  }
+}
+
+@media screen and (max-width: $maxW) {
+  .image-container-h {
+    height: 33vh;
+  }
+}
+
+.image-container-h-desktop {
+  height: 30vh;
+}
+
+
+.title-i {
+  font-size: 0px;
+}
+
+i {
+  color: #333333;
+}
+
+p {
+  color: #333333;
 }

@@ -1,8 +1,9 @@
 import { ElementRef, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IChapterData } from '../models/IChapterData';
-
-type ChapterChangeType = 'cur' | 'nxt' | 'lst';
+import { ChapterChangeType } from '../models/chapterChangeType';
+import { SCROLL_STATE } from '../models/scrollStates';
+import { ViewportService } from './viewport.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,29 +13,52 @@ export class ChapterService {
   public currentChapter$!: BehaviorSubject<string>;
   public chapters$!: BehaviorSubject<string[]>;
   private pointer: number = 0;
+  private pointerSkipscroll: number = 0;
   private offsetHeight: number = 0;
+  private skipScrollIsDisabled: boolean = false;
+  private tsSkipScroll: Date = new Date(Date.now());
+  private readonly skipScrollDelayInMs: number = 550;
+  private readonly deltaYTreshold: number = 70;
+  private scrollState: SCROLL_STATE = 'Default';
 
-  constructor() {
-    this.currentChapter$ = new BehaviorSubject<string>('Kloss IT-Solutions');
+  constructor(private vpService: ViewportService) {
+    this.currentChapter$ = new BehaviorSubject<string>('Kloß IT-Solutions');
     this.chapters$ = new BehaviorSubject<string[]>([]);
-    this.offsetHeight = window.innerHeight * 0.1;
+    this.offsetHeight = window.innerHeight * -0.1;
+    this.addEventListener();
   }
 
   addChapter(
     e: ElementRef,
     startCallback: () => void,
-    resetCallback: () => void
+    resetCallback: () => void,
+    leftCallback: () => void,
+    rightCallback: () => void
   ): void {
     const element: HTMLElement = e.nativeElement;
+    if (this.chapters.some((c) => c.title === element.innerText)) {
+      this.chapters = this.chapters.filter(
+        (c) => c.title !== element.innerText
+      );
+    }
     const c: IChapterData = {
       element: element.parentElement !== null ? element.parentElement : element,
       title: element.innerText,
       animationStartCallback: startCallback,
       componentResetCallback: resetCallback,
+      actionLeftCallback: leftCallback,
+      actionRightCallback: rightCallback,
     };
     this.chapters.push(c);
     this.chapters.sort((a, b) => a.element.offsetTop - b.element.offsetTop);
     this.chapters$.next(this.chapters.map((c) => c.title));
+    if (window.innerHeight !== 0) {
+      this.scrollToChapter(0);
+    }
+  }
+
+  clear(): void {
+    this.chapters = [];
   }
 
   translateChapter(e: ElementRef, value: string): void {
@@ -45,16 +69,31 @@ export class ChapterService {
     this.currentChapter$.next(this.chapters[this.pointer].title);
   }
 
-  scrollToChapter(index: number): void {
-    const c: IChapterData = this.chapters[index];
-    const pos: number =
-      c.element.parentElement !== null
-        ? c.element.parentElement.offsetTop - this.offsetHeight + 3
-        : c.element.offsetTop - this.offsetHeight + 3;
+  scrollToChapter(index: number, mode: ScrollBehavior = 'smooth'): void {
+    let pos: number = 0;
+    if (
+      index >= this.chapters.length - 1 &&
+      this.vpService.breakPoint$.value === 'xl'
+    ) {
+      pos = document.body.scrollHeight;
+    } else {
+      const c: IChapterData = this.chapters[index];
+      const target: HTMLElement = c.element.parentElement
+        ? c.element.parentElement
+        : c.element;
+      pos =
+        index > 0
+          ? target.offsetTop -
+            (window.innerHeight - this.offsetHeight - target.offsetHeight) / 2
+          : 0;
+    }
+
     window.scrollTo({
       top: pos,
-      behavior: 'smooth',
+      behavior: mode,
     });
+
+    this.pointerSkipscroll = index;
   }
 
   onScrollPositionChanged(w: Window): void {
@@ -99,6 +138,18 @@ export class ChapterService {
     }
   }
 
+  disableSkipScroll(v: boolean): void {
+    this.skipScrollIsDisabled = v;
+  }
+
+  onTouchMove(isLeftTouch: boolean): void {
+    if (isLeftTouch) {
+      this.chapters[this.pointer].actionLeftCallback();
+    } else {
+      this.chapters[this.pointer].actionRightCallback();
+    }
+  }
+
   private detectChapterChange(
     y: number,
     curC: IChapterData,
@@ -106,7 +157,12 @@ export class ChapterService {
     lstC: IChapterData,
     yOffset: number = 0
   ): ChapterChangeType {
+    yOffset = Math.abs(yOffset);
     yOffset += y;
+    yOffset +=
+      this.vpService.breakPoint$.value === 'xl'
+        ? window.innerHeight * 0.5
+        : window.innerHeight * 0.33;
     const isCurChapter: boolean =
       y === 0 ||
       (yOffset > curC.element.offsetTop && yOffset < nxtC?.element.offsetTop);
@@ -174,5 +230,66 @@ export class ChapterService {
   private lstHeader(): void {
     this.pointer = this.pointer <= 0 ? 0 : this.pointer - 1;
     this.currentChapter$.next(this.chapters[this.pointer].title);
+  }
+
+  private skipScroll(jumpToNext: boolean): void {
+    if (
+      this.scrollState === 'SkipScroll' &&
+      this.isSkipScrollReady(this.tsSkipScroll)
+    ) {
+      this.tsSkipScroll = new Date(Date.now());
+      if (jumpToNext) {
+        // Scroll down
+        this.pointerSkipscroll =
+          this.pointerSkipscroll >= this.chapters.length
+            ? this.chapters.length - 1
+            : this.pointerSkipscroll + 1;
+      } else {
+        // Scroll up
+        this.pointerSkipscroll =
+          this.pointerSkipscroll === 0 ? 0 : this.pointerSkipscroll - 1;
+      }
+      this.scrollToChapter(this.pointerSkipscroll);
+    }
+  }
+
+  private isSkipScrollReady(ts: Date): boolean {
+    const now: Date = new Date(Date.now());
+    return now.getTime() - ts.getTime() >= this.skipScrollDelayInMs;
+  }
+
+  private addEventListener(): void {
+    window.addEventListener('wheel', (event) => {
+      this.debounceTouchpadSkipScroll(event);
+    });
+
+    window.addEventListener('keyup', (event) => {
+      if (event.key === 'ArrowUp') {
+        this.skipScroll(false);
+      } else if (event.key === 'ArrowDown') {
+        this.skipScroll(true);
+      } else if (event.key === 'ArrowLeft') {
+        this.chapters[this.pointer].actionLeftCallback();
+      } else if (event.key === 'ArrowRight') {
+        this.chapters[this.pointer].actionRightCallback();
+      }
+    });
+
+    this.vpService.breakPoint$.subscribe((v) => {
+      if (v === 'xl') {
+        this.scrollState = 'SkipScroll';
+      } else {
+        this.scrollState = 'Default';
+      }
+    });
+  }
+
+  private debounceTouchpadSkipScroll(event: WheelEvent): void {
+    if (
+      this.skipScrollIsDisabled === false &&
+      Math.abs(event.deltaY) >= this.deltaYTreshold
+    ) {
+      this.skipScroll(event.deltaY > 0);
+    }
   }
 }
