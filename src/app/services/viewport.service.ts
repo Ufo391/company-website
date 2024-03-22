@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ViewportModes } from '../models/viewportModes';
+import { ViewportModes } from '../models/viewportModes_';
 
 @Injectable({
   providedIn: 'root',

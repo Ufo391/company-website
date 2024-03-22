@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { ViewportModes } from 'src/app/models/viewportModes';
+import { ViewportModes } from 'src/app/models/viewportModes_';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { HtmlFormatterService } from 'src/app/services/html-formatter.service';
 import { LanguageService } from 'src/app/services/language.service';
