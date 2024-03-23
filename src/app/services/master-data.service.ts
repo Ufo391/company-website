@@ -36,7 +36,7 @@ export class MasterDataService {
         'Individuelle Softwarelösungen.',
       ],
       aboutMe: {
-        title: 'Hintergrund',
+        title: 'Über mich',
         value:
           '"Softwareingenieure lösen Probleme". In meiner 5-jährigen Berufserfahrung habe ich gelernt, dass es keine Probleme gibt - nur Lösungen. Durch diese Denkweise konnte ich erfolgreich zahlreiche Prozesse digitalisieren und automatisieren. Mein Schwerpunkt liegt dabei auf Konzept- und Implementierungsarbeiten im Bereich der kaufmännischen Datenverarbeitung. \nAls Full-Stack-Developer zeichne ich mich durch die Fähigkeit aus, mich problemlos in unstrukturierte Umgebungen einzuarbeiten und durch methodische Ansätze stets positive Ergebnisse zu erzielen. Eine klare und offene Kommunikation ist für mich von zentraler Bedeutung, sowohl im Umgang mit geschätzten Kunden als auch in einem engagierten Team. \nUm stets auf dem neuesten Stand zu bleiben, investiere ich kontinuierlich in meine Weiterbildung. Mein Ziel ist es, durch diese fortlaufende Entwicklung hochwertige Lösungen zu bieten und langfristige Erfolge zu sichern.',
       },
@@ -232,7 +232,7 @@ export class MasterDataService {
         'Customised software solutions.',
       ],
       aboutMe: {
-        title: 'Background',
+        title: 'About me',
         value:
           '"Software engineers solve problems". In my 5 years of professional experience, I have learnt that there are no problems - only solutions. This way of thinking has enabled me to successfully digitalise and automate numerous processes. My focus is on concept and implementation work in the area of commercial data processing. \nAs a full-stack developer, I am characterised by my ability to easily familiarise myself with unstructured environments and always achieve positive results through methodical approaches. Clear and open communication is key for me, both when dealing with valued customers and in a dedicated team. \nIn order to stay up to date, I continuously invest in my further training. My aim is to offer high-quality solutions and ensure long-term success through this ongoing development.',
       },
@@ -428,7 +428,7 @@ export class MasterDataService {
         'Indywidualne rozwiązania programowe.',
       ],
       aboutMe: {
-        title: 'Kontekst',
+        title: 'O mnie',
         value:
           '"Inżynierowie oprogramowania rozwiązują problemy". W ciągu mojego 5-letniego doświadczenia zawodowego nauczyłem się, że nie ma problemów - są tylko rozwiązania. Ten sposób myślenia umożliwił mi skuteczną cyfryzację i automatyzację wielu procesów. Skupiam się na pracach koncepcyjnych i wdrożeniowych w obszarze komercyjnego przetwarzania danych. \nJako programista full-stack charakteryzuję się umiejętnością łatwego zaznajamiania się z nieustrukturyzowanymi środowiskami i zawsze osiągam pozytywne wyniki dzięki metodycznemu podejściu. Jasna i otwarta komunikacja jest dla mnie kluczowa, zarówno w kontaktach z cenionymi klientami, jak i w dedykowanym zespole. \nAby być na bieżąco, stale inwestuję w swoje dalsze szkolenia. Moim celem jest oferowanie wysokiej jakości rozwiązań i zapewnienie długoterminowego sukcesu poprzez ciągły rozwój.',
       },
