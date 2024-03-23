@@ -27,7 +27,9 @@ export class ContentComponent implements OnInit, AfterViewInit {
     public lService: LanguageService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.chapterService.reset();
+  }
 
   ngAfterViewInit() {
     this.chapterService.addChapter(

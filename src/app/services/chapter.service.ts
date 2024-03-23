@@ -52,9 +52,6 @@ export class ChapterService {
     this.chapters.push(c);
     this.chapters.sort((a, b) => a.element.offsetTop - b.element.offsetTop);
     this.chapters$.next(this.chapters.map((c) => c.title));
-    if (window.innerHeight !== 0) {
-      this.scrollToChapter(0);
-    }
   }
 
   clear(): void {
@@ -67,6 +64,13 @@ export class ChapterService {
     c.title = value;
     this.chapters$.next(this.chapters.map((c) => c.title));
     this.currentChapter$.next(this.chapters[this.pointer].title);
+  }
+
+  reset(): void {
+    if (this.chapters.length > 0) {
+      this.scrollToChapter(0, 'instant');
+      this.pointer = 0;
+    }
   }
 
   scrollToChapter(index: number, mode: ScrollBehavior = 'smooth'): void {

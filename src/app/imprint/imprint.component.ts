@@ -19,6 +19,10 @@ export class ImprintComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.chapterService.disableSkipScroll(true);
+    window.scrollTo({
+      top: 0,
+      behavior: 'instant',
+    });
   }
 
   ngOnDestroy(): void {
