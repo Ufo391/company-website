@@ -9,12 +9,16 @@ import { STYLES_DSGVO } from './dsgvo.styles';
   styleUrls: ['./dsgvo.component.scss'],
 })
 export class DsgvoComponent implements OnInit, OnDestroy {
-  STYLES = STYLES_DSGVO
+  STYLES = STYLES_DSGVO;
 
   constructor(private chapterService: ChapterService, private router: Router) {}
 
   ngOnInit(): void {
     this.chapterService.disableSkipScroll(true);
+    window.scrollTo({
+      top: 0,
+      behavior: 'instant',
+    });
   }
 
   ngOnDestroy(): void {
