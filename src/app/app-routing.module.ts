@@ -8,8 +8,6 @@ const routes: Routes = [
   { path: '', component: ContentComponent },
   { path: 'imprint', component: ImprintComponent },
   { path: 'privacy', component: DsgvoComponent },
-  { path: 'company-website/imprint', component: ImprintComponent },
-  { path: 'company-website/privacy', component: DsgvoComponent },
 ];
 
 @NgModule({
