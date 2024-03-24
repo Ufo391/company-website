@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ViewportModes } from '../models/viewportModes';
+import { ViewportTypes } from '../models/viewportTypes';
 
 @Injectable({
   providedIn: 'root',
@@ -18,9 +18,9 @@ export class ViewportService {
   private lgMatcher: MediaQueryList = matchMedia(this.lg);
   private xlMatcher: MediaQueryList = matchMedia(this.xl);
 
-  private mode: ViewportModes = 'xs';
+  private mode: ViewportTypes = 'xs';
 
-  public breakPoint$!: BehaviorSubject<ViewportModes>;
+  public breakPoint$!: BehaviorSubject<ViewportTypes>;
 
   constructor() {
     this.xsMatcher.onchange = this.onChangeHandler.bind(this);
@@ -28,13 +28,13 @@ export class ViewportService {
     this.mdMatcher.onchange = this.onChangeHandler.bind(this);
     this.lgMatcher.onchange = this.onChangeHandler.bind(this);
     this.xlMatcher.onchange = this.onChangeHandler.bind(this);
-    this.breakPoint$ = new BehaviorSubject<ViewportModes>(this.initMode());
+    this.breakPoint$ = new BehaviorSubject<ViewportTypes>(this.initMode());
   }
 
   public onChangeHandler(e: MediaQueryListEvent): void {
     if (e.matches === true) {
-      let newValue: ViewportModes = 'xs';
-      const oldValue: ViewportModes = this.breakPoint$.value;
+      let newValue: ViewportTypes = 'xs';
+      const oldValue: ViewportTypes = this.breakPoint$.value;
       if (e.media === this.xs) {
         newValue = 'xs';
         this.breakPoint$.next(newValue);
@@ -59,7 +59,7 @@ export class ViewportService {
     }
   }
 
-  private initMode(): ViewportModes {
+  private initMode(): ViewportTypes {
     if (this.xsMatcher.matches) {
       return 'xs';
     } else if (this.smMatcher.matches) {

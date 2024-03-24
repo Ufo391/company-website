@@ -4,7 +4,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { filter } from 'rxjs';
 import { ViewportService } from './services/viewport.service';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import { ViewportModes } from './models/viewportModes';
+import { ViewportTypes } from './models/viewportTypes';
 
 @UntilDestroy()
 @Component({
@@ -51,7 +51,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   private bodyScrollLocker(
-    mode: ViewportModes,
+    mode: ViewportTypes,
     uri: string,
     e: HTMLElement | Element
   ): void {

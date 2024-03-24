@@ -1,8 +1,8 @@
 import { ElementRef, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IChapterData } from '../models/IChapterData';
-import { ChapterChangeType } from '../models/chapterChangeType';
-import { SCROLL_STATE } from '../models/scrollStates';
+import { ChapterChangeTypes } from '../models/chapterChangeTypes';
+import { ScrollStateTypes } from '../models/scrollStateTypes';
 import { ViewportService } from './viewport.service';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class ChapterService {
   private tsSkipScroll: Date = new Date(Date.now());
   private readonly skipScrollDelayInMs: number = 550;
   private readonly deltaYTreshold: number = 70;
-  private scrollState: SCROLL_STATE = 'Default';
+  private scrollState: ScrollStateTypes = 'Default';
 
   constructor(private vpService: ViewportService) {
     this.currentChapter$ = new BehaviorSubject<string>('Kloß IT-Solutions');
@@ -106,14 +106,14 @@ export class ChapterService {
     const nxtChapter: IChapterData = this.chapters[this.pointer + 1];
     const lstChapter: IChapterData = this.chapters[this.pointer - 1];
 
-    const cChangeHeader: ChapterChangeType = this.detectChapterChange(
+    const cChangeHeader: ChapterChangeTypes = this.detectChapterChange(
       y,
       curChapter,
       nxtChapter,
       lstChapter,
       this.offsetHeight
     );
-    const cChangeAnimation: ChapterChangeType = this.detectChapterChange(
+    const cChangeAnimation: ChapterChangeTypes = this.detectChapterChange(
       y,
       curChapter,
       nxtChapter,
@@ -160,7 +160,7 @@ export class ChapterService {
     nxtC: IChapterData,
     lstC: IChapterData,
     yOffset: number = 0
-  ): ChapterChangeType {
+  ): ChapterChangeTypes {
     yOffset = Math.abs(yOffset);
     yOffset += y;
     yOffset +=
@@ -197,7 +197,7 @@ export class ChapterService {
   }
 
   private changeResultAction(
-    cStatus: ChapterChangeType,
+    cStatus: ChapterChangeTypes,
     nxtAction: () => void,
     lstAction: () => void
   ): void {

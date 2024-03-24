@@ -1,7 +1,7 @@
 $minW: 577px;
 $maxW: 576px;
 
-.card-h-d{
+.card-h-d {
   height: 90vh;
 }
 
@@ -33,15 +33,12 @@ $maxW: 576px;
   height: 30vh;
 }
 
-
 .title-i {
   font-size: 0px;
 }
 
-i {
-  color: #333333;
-}
-
-p {
-  color: #333333;
+@media screen and (min-width: 1200px) {
+  p {
+    color: #2c2c2c;
+  }
 }

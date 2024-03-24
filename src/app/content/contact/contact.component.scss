@@ -31,31 +31,31 @@
   }
 }
 
-.offer-color{
+.offer-color {
   color: red;
 }
 
-.offer-font-size-t{
-  font-size: 2.5rem
+.offer-font-size-t {
+  font-size: 2.5rem;
 }
-.offer-font-size-b{
-  font-size: 1rem
+.offer-font-size-b {
+  font-size: 1rem;
 }
 
 @media screen and (max-width: 576px) {
-  .offer-img-h{
-    width: 95%
+  .offer-img-h {
+    width: 95%;
   }
 }
 
 @media screen and (min-width: 577px) and (max-width: 1199px) {
-  .offer-img-h{
-    height: 45vh
+  .offer-img-h {
+    height: 40vh;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .offer-img-h{
-    width: 50%
+  .offer-img-h {
+    height: 30vh
   }
 }

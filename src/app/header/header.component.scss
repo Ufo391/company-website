@@ -55,42 +55,22 @@ $maxH: 100px;
   }
 }
 
-@media screen and (min-width: $minW) {
-  .company-icon {
-    width: 10vw;
-    max-height: $maxH;
-    max-width: $maxH;
-  }
-}
-
 @media screen and (max-width: $maxW) {
-  .company-icon {
-    width: 20vw;
-    max-height: $maxH;
-    max-width: $maxH;
-  }
-}
-
-@media screen and (min-width: $minW) {
   .header-h {
-    height: 20vh;
-    max-height: $maxH;
+    height: 8vh;
   }
 }
 
-@media screen and (max-width: $maxW) {
+@media screen and (min-width: $minW) and (max-width: 1199px) {
+  .header-h {
+    height: 15vh;
+  }
+}
+
+@media screen and (min-width: 1200px) {
   .header-h {
     height: 10vh;
-    max-height: $maxH;
   }
-}
-
-.header-h-desktop {
-  height: 100px;
-}
-
-.header-h-desktop-in {
-  height: 68px;
 }
 
 .header-desc {
@@ -103,5 +83,5 @@ $maxH: 100px;
   left: -7px;
   position: fixed;
   z-index: 3;
-  padding-bottom: 1vh
+  padding-bottom: 1vh;
 }
