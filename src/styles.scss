@@ -5,12 +5,24 @@
 
 $textColor: #596970;
 
-body,
-html {
-  margin: 0;
-  padding: 0px;
-  font-size: 15.5px;
-  font-family: 'Roboto', sans-serif;
+@media screen and (min-width: 1200px) {
+  body,
+  html {
+    margin: 0;
+    padding: 0px;
+    font-size: 1.08vw;
+    font-family: "Roboto", sans-serif;
+  }
+}
+
+@media screen and (max-width: 1999px) {
+  body,
+  html {
+    margin: 0;
+    padding: 0px;
+    font-size: 15.5px;
+    font-family: "Roboto", sans-serif;
+  }
 }
 
 a:visited {

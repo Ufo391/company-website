@@ -61,7 +61,7 @@ export class MasterDataService {
         ],
       },
       projects: {
-        title: 'Projekte',
+        title: 'Erfahrungen',
         values: [
           {
             description: {
@@ -257,7 +257,7 @@ export class MasterDataService {
         ],
       },
       projects: {
-        title: 'Projects',
+        title: 'Experience',
         values: [
           {
             description: {
@@ -453,7 +453,7 @@ export class MasterDataService {
         ],
       },
       projects: {
-        title: 'Projekty',
+        title: 'Doświadczenie',
         values: [
           {
             description: {

@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { ViewportModes } from 'src/app/models/viewportModes';
+import { ViewportTypes } from 'src/app/models/viewportTypes';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { HtmlFormatterService } from 'src/app/services/html-formatter.service';
 import { LanguageService } from 'src/app/services/language.service';
@@ -86,26 +86,30 @@ export class ServicesComponent implements OnInit, AfterViewInit {
   }
 
   clickNextItemHandler(): void {
-    if (!(this.nxtElementAnimation || this.lstElementAnimation)) {
-      this.pointer = this.pointer + 1;
-      if (this.pointer >= this.cardStyles.length) {
-        this.pointer = 0;
+    if (this.vpService.breakPoint$.value !== 'xl') {
+      if (!(this.nxtElementAnimation || this.lstElementAnimation)) {
+        this.pointer = this.pointer + 1;
+        if (this.pointer >= this.cardStyles.length) {
+          this.pointer = 0;
+        }
+        this.flipNext();
+        this.onPointerChanged();
+        this.showTouchHelp();
       }
-      this.flipNext();
-      this.onPointerChanged();
-      this.showTouchHelp();
     }
   }
 
   clickLastItemHandler(): void {
-    if (!(this.nxtElementAnimation || this.lstElementAnimation)) {
-      this.pointer = this.pointer - 1;
-      if (this.pointer < 0) {
-        this.pointer = this.cardStyles.length - 1;
+    if (this.vpService.breakPoint$.value !== 'xl') {
+      if (!(this.nxtElementAnimation || this.lstElementAnimation)) {
+        this.pointer = this.pointer - 1;
+        if (this.pointer < 0) {
+          this.pointer = this.cardStyles.length - 1;
+        }
+        this.flipLast();
+        this.onPointerChanged();
+        this.showTouchHelp();
       }
-      this.flipLast();
-      this.onPointerChanged();
-      this.showTouchHelp();
     }
   }
 
@@ -154,7 +158,7 @@ export class ServicesComponent implements OnInit, AfterViewInit {
     this.fadeinAnimationState = 'off';
   }
 
-  private switchImageStyle(mode: ViewportModes): object[] {
+  private switchImageStyle(mode: ViewportTypes): object[] {
     if (mode === 'xs') {
       return this.STYLES.IMG_SIZE_XS;
     } else {
