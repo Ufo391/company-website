@@ -186,7 +186,7 @@ export class MasterDataService {
           value:
             'Profitieren Sie von meiner Expertise und bringen Sie Ihr Unternehmen mit maßgeschneiderten Lösungen auf die nächste Stufe.',
         },
-        offerDesc: 'Sichern Sie sich jetzt das Einführungsangebot!',
+        offerDesc: 'Einführungsaktion sichern!',
         offerName: 'ANGEBOT',
         offerDialog: {
           title: 'ERÖFFNUNGSANGEBOT',
@@ -382,7 +382,7 @@ export class MasterDataService {
           value:
             'Benefit from my expertise and take your company to the next level with customised solutions.',
         },
-        offerDesc: 'Get the introductory offer now!',
+        offerDesc: 'Get the introductory offer!',
         offerName: 'OFFER',
         offerDialog: {
           title: 'OPENING OFFER',
@@ -578,7 +578,7 @@ export class MasterDataService {
           value:
             'Skorzystaj z mojej wiedzy i przenieś swoją firmę na wyższy poziom dzięki niestandardowym rozwiązaniom.',
         },
-        offerDesc: 'Skorzystaj z oferty wstępnej już teraz!',
+        offerDesc: 'Bezpieczna kampania wprowadzająca!',
         offerName: 'OFERTA',
         offerDialog: {
           title: 'OFERTA OTWARCIA',

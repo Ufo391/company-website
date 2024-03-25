@@ -24,7 +24,10 @@
           [src]="'assets/free/startup3.png'"
           loading="eager"
         />
-        <p class="select-none text-justify xl:ml-3" [innerHTML]="offerDialogDesc"></p>
+        <p
+          class="select-none text-justify xl:ml-3"
+          [innerHTML]="offerDialogDesc"
+        ></p>
       </div>
     </ng-template>
   </p-dialog>
@@ -61,7 +64,16 @@
                 [@attentionAnimation]="attentionAnimationState"
                 (click)="showOfferDialog()"
               >
-                <p class="offer-font-size-b">{{ c.offerDesc }}</p>
+                <p-button
+                  styleClass="w-10 mt-3 shadow-5"
+                  [style]="{
+                    background: '#e0ebf0',
+                    color: '#596970',
+                    fontSize: '0.9rem',
+                    borderStyle: 'hidden'
+                  }"
+                  label="{{ c.offerDesc }}"
+                ></p-button>
               </div>
             </span>
           </p>
@@ -75,7 +87,7 @@
           <div>
             <div class="flex flex-row align-items-center mb-3 mt-3">
               <div
-                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer border-white"
+                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer border-white font-bold"
                 [ngClass]="{
                   'opacity-80': hoverOverState == 1,
                   'border-1': hoverOverState == 1
@@ -99,7 +111,7 @@
             </div>
             <div class="flex flex-row align-items-center mb-3">
               <div
-                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer border-white"
+                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer border-white font-bold"
                 [ngClass]="{
                   'opacity-80': hoverOverState == 2,
                   'border-1': hoverOverState == 2
@@ -123,7 +135,7 @@
             </div>
             <div class="flex flex-row align-items-center mb-3">
               <div
-                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer border-white"
+                class="shadow-5 i-btn-bg i-btn-h p-2 cursor-pointer border-white font-bold"
                 [ngClass]="{
                   'opacity-80': hoverOverState == 3,
                   'border-1': hoverOverState == 3
