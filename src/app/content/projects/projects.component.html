@@ -63,13 +63,13 @@
           (mouseleave)="chapterService.disableSkipScroll(false)"
         >
           <p-scrollPanel #scroll [style]="scrollPanelStyle">
-            <div class="text-left">
+            <div class="text-left pr-3">
               <p>
                 {{ p.values[pointer].description.value }}
               </p>
 
               <ul>
-                <li *ngFor="let v of p.values[pointer].listing">
+                <li class="mb-3" *ngFor="let v of p.values[pointer].listing">
                   {{ v }}
                 </li>
               </ul>
