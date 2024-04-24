@@ -65,6 +65,29 @@ export class MasterDataService {
         values: [
           {
             description: {
+              title: 'Visitenkarte',
+              value:
+                'Das Ziel dieses Projekts war die Entwicklung dieser digitalen Visitenkarte für meine freiberufliche Selbstständigkeit. Die folgenden Aufgaben wurden erfolgreich abgeschlossen:',
+            },
+            durationInMonths: 6,
+            industry: '-',
+            role: 'Frontend Entwickler',
+            techStack: ['Angular 16', 'PrimeNG', 'Azure'],
+            listing: [
+              'Entwurf von UI-Mockups für Desktop- und mobile Ansichten',
+              'Umsetzung und Optimierung der mobilen Ansicht für Smartphones',
+              'Implementierung und Optimierung der Desktop-Ansicht mit einem speziellen Step-Scroll-Feature',
+              'Integration von künstlicher Intelligenz zur Generierung von visuellen Assets',
+              'Entwurf und Implementierung von Animationen',
+              'Implementierung der Übersetzungsfunktionalität',
+              'Umsetzung der Wischfunktion in der mobilen Ansicht für die Komponenten "Dienstleistungen" und "Erfahrungen"',
+              'Einrichtung der Azure-Infrastruktur und CI/CD zum Hosting',
+            ],
+            conclusion:
+              'Die Umsetzung dieses Projekts war erfolgreich. Die entwickelte Website wurde bereits ausgerollt und steht nun zur Verfügung.',
+          },
+          {
+            description: {
               title: 'Kooperationsportal',
               value:
                 'In diesem Softwareprojekt lag das Hauptziel darin, potenziellen Kooperationspartnern die Option zu bieten, sich über eine webbasierte Plattform für Zusammenarbeiten zu bewerben, wobei sämtliche erforderlichen Genehmigungsverfahren implementiert wurden. Die erledigten Aufgaben umfassten:',
@@ -74,7 +97,7 @@ export class MasterDataService {
             role: 'Full-Stack-Entwickler',
             techStack: ['Angular 16', 'ASP.Net 6 Core', 'Azure'],
             listing: [
-              'Aktive Teilnahme an regelmäßigen Teamabstimmungen innerhalb eines 5-köpfigen Teams, um Architekturentscheidungen zu treffen und den agilen Entwicklungsprozess zu gestalten.',
+              'Aktive Teilnahme an regelmäßigen Teamabstimmungen innerhalb eines mehrköpfigen Teams, um Architekturentscheidungen zu treffen und den agilen Entwicklungsprozess zu gestalten.',
               'Umsetzung des Autorisierungsprozesses mithilfe eines Rollenmodells, Einbindung von Azure AD und MSAL für erhöhte Sicherheit.',
               'Realisierung des Genehmigungsprozesses und der Verwaltung von Stammdaten für potenzielle Kooperationspartner auf der Frontend-Ebene.',
               'Implementierung von Frontend-Komponenten zur Visualisierung von aktualisierten Stammdaten nach Änderungen und zur Validierung von Eingaben beim Hochladen von PDF-Dokumenten.',
@@ -261,6 +284,29 @@ export class MasterDataService {
         values: [
           {
             description: {
+              title: 'Business card',
+              value:
+                'The aim of this project was to develop this digital business card for my freelance business. The following tasks were successfully completed:',
+            },
+            durationInMonths: 6,
+            industry: '-',
+            role: 'Frontend  developer',
+            techStack: ['Angular 16', 'PrimeNG', 'Azure'],
+            listing: [
+              'Design of UI mockups for desktop and mobile views',
+              'Implementation and optimisation of the mobile view for smartphones',
+              'Implementation and optimisation of the desktop view with a special step-scroll feature',
+              'Integration of artificial intelligence to generate visual assets',
+              'Design and implementation of animations',
+              'Implementation of the translation functionality',
+              'Implementation of the swipe function in the mobile view for the "Services" and "Experiences" components',
+              'Setting up the Azure infrastructure and CI/CD for hosting',
+            ],
+            conclusion:
+              'The realisation of this project was successful. The developed website has already been rolled out and is now available.',
+          }
+          ,{
+            description: {
               title: 'Cooperation portal',
               value:
                 'In this software project, the main objective was to offer potential cooperation partners the option to apply for collaborations via a web-based platform, implementing all the necessary approval procedures. The tasks completed included:',
@@ -270,7 +316,7 @@ export class MasterDataService {
             role: 'Full stack developer',
             techStack: ['Angular 16', 'ASP.Net 6 Core', 'Azure'],
             listing: [
-              'Active participation in regular team meetings within a 5-person team to make architectural decisions and shape the agile development process.',
+              'Active participation in regular team meetings within a multi-member team to make architectural decisions and shape the agile development process.',
               'Implementation of the authorisation process using a role model, integration of Azure AD and MSAL for increased security.',
               'Realisation of the approval process and management of master data for potential cooperation partners at the front-end level.',
               'Implementation of front-end components to visualise updated master data after changes and to validate entries when uploading PDF documents.',
@@ -457,6 +503,29 @@ export class MasterDataService {
         values: [
           {
             description: {
+              title: 'Wizytówka',
+              value:
+                'Celem tego projektu było opracowanie cyfrowej wizytówki dla mojej niezależnej firmy. Następujące zadania zostały pomyślnie ukończone:',
+            },
+            durationInMonths: 6,
+            industry: '-',
+            role: 'Frontend Developer',
+            techStack: ['Angular 16', 'PrimeNG', 'Azure'],
+            listing: [
+              'Projektowanie makiet interfejsu użytkownika dla komputerów stacjonarnych i urządzeń mobilnych',
+              'Wdrożenie i optymalizacja widoku mobilnego dla smartfonów',
+              'Wdrożenie i optymalizacja widoku pulpitu ze specjalną funkcją przewijania krokowego',
+              'Integracja sztucznej inteligencji w celu generowania zasobów wizualnych',
+              'Projektowanie i wdrażanie animacji',
+              'Wdrożenie funkcji tłumaczenia',
+              'Wdrożenie funkcji przesuwania w widoku mobilnym dla komponentów "Usługi" i "Doświadczenia".',
+              'Konfigurowanie infrastruktury Azure i CI/CD na potrzeby hostingu',
+            ],
+            conclusion:
+              'Realizacja tego projektu zakończyła się sukcesem. Opracowana strona internetowa została już wdrożona i jest obecnie dostępna.',
+          },
+          {
+            description: {
               title: 'Portal współpracy',
               value:
                 'W tym projekcie oprogramowania głównym celem było zaoferowanie potencjalnym partnerom możliwości ubiegania się o współpracę za pośrednictwem platformy internetowej, wdrażając wszystkie niezbędne procedury zatwierdzania. Zrealizowane zadania obejmowały:',
@@ -466,7 +535,7 @@ export class MasterDataService {
             role: 'Full stack developer',
             techStack: ['Angular 16', 'ASP.Net 6 Core', 'Azure'],
             listing: [
-              'Aktywny udział w regularnych spotkaniach zespołu w ramach 5-osobowego zespołu w celu podejmowania decyzji architektonicznych i kształtowania zwinnego procesu rozwoju.',
+              'Aktywny udział w regularnych spotkaniach zespołu wieloosobowego w celu podejmowania decyzji architektonicznych i kształtowania zwinnego procesu rozwoju.',
               'Wdrożenie procesu autoryzacji przy użyciu modelu ról, integracja Azure AD i MSAL w celu zwiększenia bezpieczeństwa.',
               'Realizacja procesu zatwierdzania i zarządzania danymi podstawowymi dla potencjalnych partnerów do współpracy na poziomie front-end.',
               'Wdrożenie komponentów front-end do wizualizacji zaktualizowanych danych podstawowych po zmianach i do sprawdzania poprawności wpisów podczas przesyłania dokumentów PDF.',
