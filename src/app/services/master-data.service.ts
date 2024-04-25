@@ -38,7 +38,7 @@ export class MasterDataService {
       aboutMe: {
         title: 'Über mich',
         value:
-          '"Softwareingenieure lösen Probleme". In meiner 5-jährigen Berufserfahrung habe ich gelernt, dass es keine Probleme gibt - nur Lösungen. Durch diese Denkweise konnte ich erfolgreich zahlreiche Prozesse digitalisieren und automatisieren. Mein Schwerpunkt liegt dabei auf Konzept- und Implementierungsarbeiten im Bereich der kaufmännischen Datenverarbeitung. \nAls Full-Stack-Developer zeichne ich mich durch die Fähigkeit aus, mich problemlos in unstrukturierte Umgebungen einzuarbeiten und durch methodische Ansätze stets positive Ergebnisse zu erzielen. Eine klare und offene Kommunikation ist für mich von zentraler Bedeutung, sowohl im Umgang mit geschätzten Kunden als auch in einem engagierten Team. \nUm stets auf dem neuesten Stand zu bleiben, investiere ich kontinuierlich in meine Weiterbildung. Mein Ziel ist es, durch diese fortlaufende Entwicklung hochwertige Lösungen zu bieten und langfristige Erfolge zu sichern.',
+          '"Softwareingenieure lösen Probleme". In meiner mehr als 5-jährigen Berufserfahrung habe ich gelernt, dass es keine Probleme gibt - nur Lösungen. Durch diese Denkweise konnte ich erfolgreich zahlreiche Prozesse digitalisieren und automatisieren. Mein Schwerpunkt liegt dabei auf Konzept- und Implementierungsarbeiten im Bereich der kaufmännischen Datenverarbeitung. \nAls Full-Stack-Developer zeichne ich mich durch die Fähigkeit aus, mich problemlos in unstrukturierte Umgebungen einzuarbeiten und durch methodische Ansätze stets positive Ergebnisse zu erzielen. Eine klare und offene Kommunikation ist für mich von zentraler Bedeutung, sowohl im Umgang mit geschätzten Kunden als auch in einem engagierten Team. \nUm stets auf dem neuesten Stand zu bleiben, investiere ich kontinuierlich in meine Weiterbildung. Mein Ziel ist es, durch diese fortlaufende Entwicklung hochwertige Lösungen zu bieten und langfristige Erfolge zu sichern.',
       },
       services: {
         title: 'Dienstleistungen',
@@ -77,10 +77,10 @@ export class MasterDataService {
               'Entwurf von UI-Mockups für Desktop- und mobile Ansichten',
               'Umsetzung und Optimierung der mobilen Ansicht für Smartphones',
               'Implementierung und Optimierung der Desktop-Ansicht mit einem speziellen Step-Scroll-Feature',
-              'Integration von künstlicher Intelligenz zur Generierung von visuellen Assets',
+              'Künstlicher Intelligenz zur Generierung von visuellen Assets',
               'Entwurf und Implementierung von Animationen',
               'Implementierung der Übersetzungsfunktionalität',
-              'Umsetzung der Wischfunktion in der mobilen Ansicht für die Komponenten "Dienstleistungen" und "Erfahrungen"',
+              'Umsetzung einer Wischfunktion in der mobilen Ansicht für die Komponenten "Dienstleistungen" und "Erfahrungen"',
               'Einrichtung der Azure-Infrastruktur und CI/CD zum Hosting',
             ],
             conclusion:
@@ -257,7 +257,7 @@ export class MasterDataService {
       aboutMe: {
         title: 'About me',
         value:
-          '"Software engineers solve problems". In my 5 years of professional experience, I have learnt that there are no problems - only solutions. This way of thinking has enabled me to successfully digitalise and automate numerous processes. My focus is on concept and implementation work in the area of commercial data processing. \nAs a full-stack developer, I am characterised by my ability to easily familiarise myself with unstructured environments and always achieve positive results through methodical approaches. Clear and open communication is key for me, both when dealing with valued customers and in a dedicated team. \nIn order to stay up to date, I continuously invest in my further training. My aim is to offer high-quality solutions and ensure long-term success through this ongoing development.',
+          '"Software engineers solve problems". In my more than 5 years of professional experience, I have learnt that there are no problems - only solutions. This way of thinking has enabled me to successfully digitalise and automate numerous processes. My focus is on concept and implementation work in the field of commercial data processing. \nAs a full-stack developer, I am characterised by my ability to easily familiarise myself with unstructured environments and always achieve positive results through methodical approaches. Clear and open communication is key for me, both when dealing with valued customers and in a dedicated team. \nIn order to stay up to date, I continuously invest in my further training. My aim is to offer high-quality solutions and ensure long-term success through this ongoing development.',
       },
       services: {
         title: 'Services',
@@ -296,7 +296,7 @@ export class MasterDataService {
               'Design of UI mockups for desktop and mobile views',
               'Implementation and optimisation of the mobile view for smartphones',
               'Implementation and optimisation of the desktop view with a special step-scroll feature',
-              'Integration of artificial intelligence to generate visual assets',
+              'Artificial intelligence for the generation of visual assets',
               'Design and implementation of animations',
               'Implementation of the translation functionality',
               'Implementation of the swipe function in the mobile view for the "Services" and "Experiences" components',
@@ -476,7 +476,7 @@ export class MasterDataService {
       aboutMe: {
         title: 'O mnie',
         value:
-          '"Inżynierowie oprogramowania rozwiązują problemy". W ciągu mojego 5-letniego doświadczenia zawodowego nauczyłem się, że nie ma problemów - są tylko rozwiązania. Ten sposób myślenia umożliwił mi skuteczną cyfryzację i automatyzację wielu procesów. Skupiam się na pracach koncepcyjnych i wdrożeniowych w obszarze komercyjnego przetwarzania danych. \nJako programista full-stack charakteryzuję się umiejętnością łatwego zaznajamiania się z nieustrukturyzowanymi środowiskami i zawsze osiągam pozytywne wyniki dzięki metodycznemu podejściu. Jasna i otwarta komunikacja jest dla mnie kluczowa, zarówno w kontaktach z cenionymi klientami, jak i w dedykowanym zespole. \nAby być na bieżąco, stale inwestuję w swoje dalsze szkolenia. Moim celem jest oferowanie wysokiej jakości rozwiązań i zapewnienie długoterminowego sukcesu poprzez ciągły rozwój.',
+          '"Inżynierowie oprogramowania rozwiązują problemy". W ciągu mojego ponad 5-letniego doświadczenia zawodowego nauczyłem się, że nie ma problemów - są tylko rozwiązania. Ten sposób myślenia umożliwił mi skuteczną cyfryzację i automatyzację wielu procesów. Skupiam się na pracach koncepcyjnych i wdrożeniowych w obszarze przetwarzania danych komercyjnych. \Jako programista full-stack charakteryzuję się umiejętnością łatwego zaznajamiania się z nieustrukturyzowanymi środowiskami i zawsze osiągam pozytywne wyniki dzięki metodycznemu podejściu. Jasna i otwarta komunikacja jest dla mnie kluczowa, zarówno w kontaktach z cenionymi klientami, jak i w dedykowanym zespole. \Aby być na bieżąco, stale inwestuję w swoje dalsze szkolenia. Moim celem jest oferowanie wysokiej jakości rozwiązań i zapewnienie długoterminowego sukcesu poprzez ciągły rozwój.',
       },
       services: {
         title: 'usługi',
@@ -515,7 +515,7 @@ export class MasterDataService {
               'Projektowanie makiet interfejsu użytkownika dla komputerów stacjonarnych i urządzeń mobilnych',
               'Wdrożenie i optymalizacja widoku mobilnego dla smartfonów',
               'Wdrożenie i optymalizacja widoku pulpitu ze specjalną funkcją przewijania krokowego',
-              'Integracja sztucznej inteligencji w celu generowania zasobów wizualnych',
+              'Sztuczna inteligencja do generowania zasobów wizualnych',
               'Projektowanie i wdrażanie animacji',
               'Wdrożenie funkcji tłumaczenia',
               'Wdrożenie funkcji przesuwania w widoku mobilnym dla komponentów "Usługi" i "Doświadczenia".',
